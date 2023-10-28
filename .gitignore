@@ -1,0 +1,17 @@
+pom.xml
+pom.xml.asc
+*.jar
+*.class
+/lib/
+/classes/
+/target/
+.nrepl-port
+.cpcache/
+.portal/
+.clj-kondo/
+.calva/
+.lsp/
+/.dir-locals.el
+resources/.secrets.edn
+/test-results.xml
+/output
