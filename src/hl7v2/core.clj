@@ -2,6 +2,7 @@
   (:require
    [clojure.java.io :as io]
    [clojure.set :refer [map-invert]])
+  (:refer-clojure :exclude [format])
   (:import
    (java.io Reader)))
 
@@ -71,5 +72,15 @@
          (seg-tokens-seq)
          (mapv segment))))
 
+(defn format [hl7]
+  (let [msh (some #(when (= (:id %) "MSH") (:data %)) hl7)
+        fld (msh [1 0 0 0])
+        [cmp rep esc sub] (seq (msh [2 0 0 0]))]
+    (->> (for [[idx seg] (zipmap (range) hl7)
+           [k v] (:data seg)
+           :let [id (:id seg)]]
+           [(vec (concat [idx id] k)) v])
+         (sort-by first))))
+
 (comment
-  (parse "test/data/sample.hl7"))
+  (format (parse "test/data/sample.hl7")))
