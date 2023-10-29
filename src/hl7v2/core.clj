@@ -45,10 +45,31 @@
         esc-set #{(:esc enc-map)}
         token (fn [_] (next-token rdr delim-set esc-set enc->tag))]
     (apply concat
-           (concat [[msh nil] [fld nil] [enc :fld]]
+           (concat [[msh :fld] [fld :fld] [enc :fld]]
                    (take-while second (map token (range)))))))
 
-(with-open [rdr (io/reader "test/data/sample.hl7")]
-  (into [] (->> (tokenize rdr)
-                (partition-by #{:ret :nli})
-                (remove #{'(:ret) '(:nli) '("")}))))
+(defn seg-tokens-seq [tokens]
+  (remove #{'(:ret) '(:nli) '("")}
+          (partition-by #{:ret :nli} tokens)))
+
+(defn segment [tokens]
+  (let [[id & tail] tokens]
+    (loop [[h & t] tail
+           head {:fld 0, :rep 0, :cmp 0, :sub 0}
+           data {}]
+      (cond
+        (= h :fld) (recur t (merge head {:fld (inc (:fld head)), :rep 0, :cmp 0, :sub 0}) data)
+        (= h :rep) (recur t (merge head {:rep (inc (:rep head)), :cmp 0, :sub 0}) data)
+        (= h :cmp) (recur t (merge head {:cmp (inc (:cmp head)), :sub 0}) data)
+        (= h :sub) (recur t (update head h inc) data)
+        (some? h) (recur t head (assoc data (mapv head [:fld :rep :cmp :sub]) h))
+        :else {:id id, :data data}))))
+
+(defn parse [x]
+  (with-open [rdr (io/reader x)]
+    (->> (tokenize rdr)
+         (seg-tokens-seq)
+         (mapv segment))))
+
+(comment
+  (parse "test/data/sample.hl7"))
