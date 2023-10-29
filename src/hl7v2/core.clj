@@ -1,6 +1,7 @@
 (ns hl7v2.core
   (:require
-   [clojure.java.io :as io])
+   [clojure.java.io :as io]
+   [clojure.set :refer [map-invert]])
   (:import
    (java.io Reader)))
 
@@ -22,25 +23,23 @@
                 (reduced items)
                 items))) [] (char-seq rdr)))
 
-(defn next-item [rdr enc]
-  (let [enc-set (set (vals enc))
-        enc->tag (into {} (map (fn [k] [(k enc) k]) (keys enc)))
-        value (until rdr enc-set)]
-    {(enc->tag (last value)) (apply str (butlast value))}))
+(defn hl7-items [rdr]
+  (let [msh (seg-id rdr)
+        fld (next-char rdr)
+        encoding (until rdr #{fld})
+        enc (apply str (butlast encoding))
+        full-enc (concat encoding [\return \newline])
+        enc-set (set full-enc)
+        delim-map (zipmap [:cmp :rep :esc :sub :fld :ret :nli] full-enc)
+        enc->delim (map-invert delim-map)]
+    (concat [[msh :fld] [fld :fld] [enc :fld]]
+            (->> (range)
+                 (map (fn [_]
+                        (let [chars (until rdr enc-set)
+                              value (apply str (butlast chars))
+                              delim (enc->delim (last chars))]
+                          [value delim])))
+                 (take-while #(some? (second %)))))))
 
-;; TODO: use (with-open ...)
-(def ^Reader rdr (io/reader "test/data/sample.hl7"))
-
-(let [msh (seg-id rdr)
-      field (next-char rdr)
-      encoding (until rdr #{field})
-      [cmp rep esc sub] encoding
-      enc {:field field
-           :component cmp
-           :repetition rep
-           :escape esc
-           :subcomponent sub
-           :return \return
-           :newline \newline}]
-  (into [] (for [_ (range 10000)]
-             (next-item rdr enc))))
+(with-open [rdr (io/reader "test/data/sample.hl7")]
+  (into [] (hl7-items rdr)))
