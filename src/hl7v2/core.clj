@@ -10,24 +10,30 @@
     (when-not (= ch -1)
       (cons (char ch) (lazy-seq (char-seq rdr))))))
 
-(defn seg-id [^Reader rdr]
+(defn seg-id [rdr]
   (apply str (take 3 (char-seq rdr))))
 
-(defn next-char [^Reader rdr]
+(defn next-char [rdr]
   (first (char-seq rdr)))
 
 (defn until
-  ([^Reader rdr pred esc]
+  ([rdr pred esc]
    (reduce (fn [acc curr]
              (let [items (conj acc curr)]
                (if (and (not (esc (last acc)))
                         (pred curr))
                  (reduced items)
                  items))) [] (char-seq rdr)))
-  ([^Reader rdr pred]
+  ([rdr pred]
    (until rdr pred #{})))
 
-(defn hl7-items [rdr]
+(defn next-token [rdr delim-set esc-set enc->tag]
+  (let [chars (until rdr delim-set esc-set)
+        value (apply str (butlast chars))
+        tag (enc->tag (last chars))]
+    [value tag]))
+
+(defn tokenize [rdr]
   (let [msh (seg-id rdr)
         fld (next-char rdr)
         encoding (until rdr  #{fld})
@@ -36,15 +42,10 @@
         enc-map (zipmap [:cmp :rep :esc :sub :fld :ret :nli] full-enc)
         enc->tag (map-invert enc-map)
         delim-set (set (vals (select-keys enc-map [:cmp :rep :sub :fld :ret :nli])))
-        esc-set #{(:esc enc-map)}]
-    (concat [[msh :fld] [fld :fld] [enc :fld]]
-            (->> (range)
-                 (map (fn [_]
-                        (let [chars (until rdr delim-set esc-set)
-                              value (apply str (butlast chars))
-                              tag (enc->tag (last chars))]
-                          [value tag])))
-                 (take-while #(some? (second %)))))))
+        esc-set #{(:esc enc-map)}
+        token (fn [_] (next-token rdr delim-set esc-set enc->tag))]
+    (concat [[msh nil] [fld nil] [enc :fld]]
+            (take-while second (map token (range))))))
 
-(with-open [rdr (io/reader "test/data/sample.hl7")]
-  (into [] (hl7-items rdr)))
+(def tokens (with-open [rdr (io/reader "test/data/sample.hl7")]
+              (into [] (tokenize rdr))))
