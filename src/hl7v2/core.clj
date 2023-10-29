@@ -44,8 +44,11 @@
         delim-set (set (vals (select-keys enc-map [:cmp :rep :sub :fld :ret :nli])))
         esc-set #{(:esc enc-map)}
         token (fn [_] (next-token rdr delim-set esc-set enc->tag))]
-    (concat [[msh nil] [fld nil] [enc :fld]]
-            (take-while second (map token (range))))))
+    (apply concat
+           (concat [[msh nil] [fld nil] [enc :fld]]
+                   (take-while second (map token (range)))))))
 
-(def tokens (with-open [rdr (io/reader "test/data/sample.hl7")]
-              (into [] (tokenize rdr))))
+(with-open [rdr (io/reader "test/data/sample.hl7")]
+  (into [] (->> (tokenize rdr)
+                (partition-by #{:ret :nli})
+                (remove #{'(:ret) '(:nli) '("")}))))
