@@ -49,4 +49,19 @@
                             [3] "123456",
                             [4] "",
                             [5 0 0] "Doe",
+                            [5 0 1] "John"}}]))))
+  (t/testing "Format segment"
+    (t/is (= (str "MSH|^~\\&\r\n"
+                  "PID|||123456||Doe^John")
+             (sut/format [{:id "MSH",
+                           :data
+                           {[1] "|"
+                            [2] "^~\\&"}}
+                          {:id "PID",
+                           :data
+                           {[1] "",
+                            [2] "",
+                            [3] "123456",
+                            [4] "",
+                            [5 0 0] "Doe",
                             [5 0 1] "John"}}])))))
