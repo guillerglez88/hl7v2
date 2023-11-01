@@ -116,8 +116,3 @@
     (->> hl7
          (map #(format-segment % opts))
          (str/join line-break))))
-
-(comment
-  (let [hl7-str (slurp "test/data/sample.hl7")
-        hl7-msg (parse (.getBytes hl7-str))]
-    (= (str/trim hl7-str) (format hl7-msg))))
