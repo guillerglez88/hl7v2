@@ -72,13 +72,25 @@
          (seg-tokens-seq)
          (mapv segment))))
 
+(defn fill-segment [seg]
+  (->> (:data seg)
+       (sort-by first)
+       (partition 2 1)
+       (mapcat (fn [[prev next]]
+                 (concat [prev]
+                         (map (fn [fld] [[fld 0 0 0] ""])
+                              (range (inc (get-in prev [0 0]))
+                                     (get-in next [0 0])))
+                         [next])))
+       (distinct)))
+
 (defn format [hl7]
   (let [msh (some #(when (= (:id %) "MSH") (:data %)) hl7)
         fld (msh [1 0 0 0])
         [cmp rep esc sub] (seq (msh [2 0 0 0]))]
     (->> (for [[idx seg] (zipmap (range) hl7)
-           [k v] (:data seg)
-           :let [id (:id seg)]]
+               [k v] (:data seg)
+               :let [id (:id seg)]]
            [(vec (concat [idx id] k)) v])
          (sort-by first))))
 
