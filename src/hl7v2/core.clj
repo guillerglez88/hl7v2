@@ -79,8 +79,6 @@
                          [next])))
        (distinct)))
 
-
-
 (defn head->tag [head]
   (let [tags (reverse [:fld :rep :cmp :sub])]
     (->> head
@@ -105,7 +103,7 @@
          (str (:id seg)))))
 
 (defn parse [x]
-  (with-open [rdr (io/reader x)]
+  (with-open [rdr (io/reader (if (string? x) (.getBytes x) x))]
     (->> (tokenize rdr)
          (seg-tokens-seq)
          (mapv segment))))
@@ -120,4 +118,6 @@
          (str/join line-break))))
 
 (comment
-  (spit "output/sample.hl7" (format (parse "test/data/sample.hl7"))))
+  (let [hl7-str (slurp "test/data/sample.hl7")
+        hl7-msg (parse (.getBytes hl7-str))]
+    (= (str/trim hl7-str) (format hl7-msg))))
