@@ -25,43 +25,30 @@
   (t/testing "Format hl7 message"
     (t/is (= (str "MSH|^~\\&|TestSendingSystem||||200701011539||ADT^A01^ADT A01||||123\r\n"
                   "PID|||123456||Doe^John")
-             (sut/format [{:id "MSH",
+             (sut/format [{:id "MSH"
                            :data
                            {[1] "|"
                             [2] "^~\\&"
                             [3] "TestSendingSystem"
-                            [4] ""
-                            [5] ""
-                            [6] ""
                             [7] "200701011539"
-                            [8] ""
                             [9 0 0] "ADT"
                             [9 0 1] "A01"
                             [9 0 2] "ADT A01"
-                            [10] ""
-                            [11] ""
-                            [12] ""
                             [13] "123"}}
-                          {:id "PID",
+                          {:id "PID"
                            :data
-                           {[1] "",
-                            [2] "",
-                            [3] "123456",
-                            [4] "",
-                            [5 0 0] "Doe",
+                           {[3] "123456"
+                            [5 0 0] "Doe"
                             [5 0 1] "John"}}]))))
   (t/testing "Format segment"
     (t/is (= (str "MSH|^~\\&\r\n"
                   "PID|||123456||Doe^John")
-             (sut/format [{:id "MSH",
+             (sut/format [{:id "MSH"
                            :data
                            {[1] "|"
                             [2] "^~\\&"}}
-                          {:id "PID",
+                          {:id "PID"
                            :data
-                           {[1] "",
-                            [2] "",
-                            [3] "123456",
-                            [4] "",
-                            [5 0 0] "Doe",
+                           {[3] "123456"
+                            [5 0 0] "Doe"
                             [5 0 1] "John"}}])))))
