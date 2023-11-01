@@ -67,8 +67,12 @@
         (some? h) (recur t head (assoc data (mapv head [:fld :rep :cmp :sub]) h))
         :else {:id id, :data data}))))
 
+(defn pad-head [head]
+  (first (partition 4 4 [0 0 0 0] head)))
+
 (defn fill-segment [seg]
   (->> (:data seg)
+       (map (juxt (comp vec pad-head first) second))
        (sort-by first)
        (partition 2 1)
        (mapcat (fn [[prev next]]
@@ -77,14 +81,13 @@
                               (range (inc (get-in prev [0 0]))
                                      (get-in next [0 0])))
                          [next])))
-       (distinct)))
+       (distinct)
+       (into {})
+       (assoc seg :data)))
 
 (defn head->tag [head]
   (let [tags (reverse [:fld :rep :cmp :sub])]
-    (->> head
-         (partition 4 4 [0 0 0 0])
-         (first)
-         (reverse)
+    (->> (reverse head)
          (map vector tags)
          (filter #(not= 0 (second %)))
          (map first)
@@ -95,7 +98,8 @@
         msh-1? (fn [head]
                  (and (= id "MSH")
                       (= head [1 0 0 0])))]
-    (->> (fill-segment seg)
+    (->> (:data seg)
+         (sort-by first)
          (remove (comp msh-1? first))
          (mapcat (juxt (comp head->tag first) second))
          (map #(opts % %))
@@ -103,16 +107,17 @@
          (str (:id seg)))))
 
 (defn parse [x]
-  (with-open [rdr (io/reader (if (string? x) (.getBytes x) x))]
+  (with-open [rdr (io/reader x)]
     (->> (tokenize rdr)
          (seg-tokens-seq)
          (mapv segment))))
 
 (defn format [hl7 & {:keys [line-break] :or {line-break "\r\n"}}]
-  (let [msh (some #(when (= (:id %) "MSH") (:data %)) hl7)
+  (let [segments (mapv fill-segment hl7)
+        msh (some #(when (= (:id %) "MSH") (:data %)) segments)
         fld (msh [1 0 0 0])
         [cmp rep _esc sub] (seq (msh [2 0 0 0]))
         opts (zipmap [:fld :rep :cmp :sub] [fld rep cmp sub])]
-    (->> hl7
+    (->> segments
          (map #(format-segment % opts))
          (str/join line-break))))
