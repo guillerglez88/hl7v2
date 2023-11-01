@@ -1,7 +1,8 @@
 (ns hl7v2.core
   (:require
    [clojure.java.io :as io]
-   [clojure.set :refer [map-invert]])
+   [clojure.set :refer [map-invert]]
+   [clojure.string :as str])
   (:refer-clojure :exclude [format])
   (:import
    (java.io Reader)))
@@ -84,15 +85,29 @@
                          [next])))
        (distinct)))
 
-(defn format [hl7]
-  (let [msh (some #(when (= (:id %) "MSH") (:data %)) hl7)
-        fld (msh [1 0 0 0])
-        [cmp rep esc sub] (seq (msh [2 0 0 0]))]
-    (->> (for [[idx seg] (zipmap (range) hl7)
-               [k v] (:data seg)
-               :let [id (:id seg)]]
-           [(vec (concat [idx id] k)) v])
-         (sort-by first))))
+(defn head->tag [head]
+  (let [tags (reverse [:fld :rep :cmp :sub])]
+    (->> (reverse head)
+         (map vector tags)
+         (filter #(not= 0 (second %)))
+         (map first)
+         (first))))
+
+(defn format
+  ([seg opts]
+   (->> (fill-segment seg)
+        (remove #(and (= (:id seg) "MSH")
+                      (= (first %) [1 0 0 0])))
+        (mapcat (juxt (comp head->tag first) second))
+        (map #(opts % %))
+        (apply str)
+        (str (:id seg))))
+  ([hl7]
+   (let [msh (some #(when (= (:id %) "MSH") (:data %)) hl7)
+         fld (msh [1 0 0 0])
+         [cmp rep _esc sub] (seq (msh [2 0 0 0]))
+         opts (zipmap [:fld :rep :cmp :sub] [fld rep cmp sub])]
+     (str/join "\r\n" (map #(format % opts) hl7)))))
 
 (comment
-  (format (parse "test/data/sample.hl7")))
+  (spit "output/sample.hl7" (format (parse "test/data/sample.hl7"))))
