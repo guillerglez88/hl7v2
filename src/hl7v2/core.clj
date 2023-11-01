@@ -67,12 +67,6 @@
         (some? h) (recur t head (assoc data (mapv head [:fld :rep :cmp :sub]) h))
         :else {:id id, :data data}))))
 
-(defn parse [x]
-  (with-open [rdr (io/reader x)]
-    (->> (tokenize rdr)
-         (seg-tokens-seq)
-         (mapv segment))))
-
 (defn fill-segment [seg]
   (->> (:data seg)
        (sort-by first)
@@ -85,29 +79,45 @@
                          [next])))
        (distinct)))
 
+
+
 (defn head->tag [head]
   (let [tags (reverse [:fld :rep :cmp :sub])]
-    (->> (reverse head)
+    (->> head
+         (partition 4 4 [0 0 0 0])
+         (first)
+         (reverse)
          (map vector tags)
          (filter #(not= 0 (second %)))
          (map first)
          (first))))
 
-(defn format
-  ([seg opts]
-   (->> (fill-segment seg)
-        (remove #(and (= (:id seg) "MSH")
-                      (= (first %) [1 0 0 0])))
-        (mapcat (juxt (comp head->tag first) second))
-        (map #(opts % %))
-        (apply str)
-        (str (:id seg))))
-  ([hl7]
-   (let [msh (some #(when (= (:id %) "MSH") (:data %)) hl7)
-         fld (msh [1 0 0 0])
-         [cmp rep _esc sub] (seq (msh [2 0 0 0]))
-         opts (zipmap [:fld :rep :cmp :sub] [fld rep cmp sub])]
-     (str/join "\r\n" (map #(format % opts) hl7)))))
+(defn format-segment [seg opts]
+  (let [id (:id seg)
+        msh-1? (fn [head]
+                 (and (= id "MSH")
+                      (= head [1 0 0 0])))]
+    (->> (fill-segment seg)
+         (remove (comp msh-1? first))
+         (mapcat (juxt (comp head->tag first) second))
+         (map #(opts % %))
+         (apply str)
+         (str (:id seg)))))
+
+(defn parse [x]
+  (with-open [rdr (io/reader x)]
+    (->> (tokenize rdr)
+         (seg-tokens-seq)
+         (mapv segment))))
+
+(defn format [hl7 & {:keys [line-break] :or {line-break "\r\n"}}]
+  (let [msh (some #(when (= (:id %) "MSH") (:data %)) hl7)
+        fld (msh [1 0 0 0])
+        [cmp rep _esc sub] (seq (msh [2 0 0 0]))
+        opts (zipmap [:fld :rep :cmp :sub] [fld rep cmp sub])]
+    (->> hl7
+         (map #(format-segment % opts))
+         (str/join line-break))))
 
 (comment
   (spit "output/sample.hl7" (format (parse "test/data/sample.hl7"))))
