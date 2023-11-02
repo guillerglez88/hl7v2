@@ -57,6 +57,15 @@
   (remove #{'(:ret) '(:nli) '("")}
           (partition-by #{:ret :nli} tokens)))
 
+(defn pad-head [head]
+  (first (partition 4 4 [0 0 0 0] head)))
+
+(defn trim-head [head]
+  (->> (reverse head)
+       (drop-while (partial = 0))
+       (reverse)
+       (vec)))
+
 (defn segment [tokens]
   (let [[id & tail] tokens]
     (loop [[h & t] tail
@@ -67,11 +76,8 @@
         (= h :rep) (recur t (merge head {:rep (inc (:rep head)), :cmp 0, :sub 0}) data)
         (= h :cmp) (recur t (merge head {:cmp (inc (:cmp head)), :sub 0}) data)
         (= h :sub) (recur t (update head h inc) data)
-        (some? h) (recur t head (assoc data (mapv head [:fld :rep :cmp :sub]) h))
+        (some? h) (recur t head (assoc data (trim-head (mapv head [:fld :rep :cmp :sub])) h))
         :else [id data]))))
-
-(defn pad-head [head]
-  (first (partition 4 4 [0 0 0 0] head)))
 
 (defn fill-segment [seg]
   (let [[id data] seg]
