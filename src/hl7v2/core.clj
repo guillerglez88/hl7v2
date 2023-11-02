@@ -31,7 +31,8 @@
 
 (defn next-token [rdr delim-set esc-set enc->tag]
   (let [chars (until rdr delim-set esc-set)
-        value (apply str (butlast chars))
+        value (when-let [vchars (seq (butlast chars))]
+                (apply str vchars))
         tag (enc->tag (last chars))]
     [value tag]))
 
@@ -44,11 +45,13 @@
         enc-map (zipmap [:cmp :rep :esc :sub :fld :ret :nli] full-enc)
         enc->tag (map-invert enc-map)
         delim-set (set (vals (select-keys enc-map [:cmp :rep :sub :fld :ret :nli])))
-        esc-set #{(:esc enc-map)}
-        token (fn [_] (next-token rdr delim-set esc-set enc->tag))]
+        esc-set #{(:esc enc-map)}]
     (apply concat
            (concat [[msh :fld] [fld :fld] [enc :fld]]
-                   (take-while second (map token (range)))))))
+                   (->> (range)
+                        (map (fn [_] (next-token rdr delim-set esc-set enc->tag)))
+                        (take-while second)
+                        (remove (comp nil? first)))))))
 
 (defn seg-tokens-seq [tokens]
   (remove #{'(:ret) '(:nli) '("")}
@@ -65,25 +68,25 @@
         (= h :cmp) (recur t (merge head {:cmp (inc (:cmp head)), :sub 0}) data)
         (= h :sub) (recur t (update head h inc) data)
         (some? h) (recur t head (assoc data (mapv head [:fld :rep :cmp :sub]) h))
-        :else {:id id, :data data}))))
+        :else [id data]))))
 
 (defn pad-head [head]
   (first (partition 4 4 [0 0 0 0] head)))
 
 (defn fill-segment [seg]
-  (->> (:data seg)
-       (map (juxt (comp vec pad-head first) second))
-       (sort-by first)
-       (partition 2 1)
-       (mapcat (fn [[prev next]]
-                 (concat [prev]
-                         (map (fn [fld] [[fld 0 0 0] ""])
-                              (range (inc (get-in prev [0 0]))
-                                     (get-in next [0 0])))
-                         [next])))
-       (distinct)
-       (into {})
-       (assoc seg :data)))
+  (let [[id data] seg]
+    (->> (map (juxt (comp vec pad-head first) second) data)
+         (sort-by first)
+         (partition 2 1)
+         (mapcat (fn [[prev next]]
+                   (concat [prev]
+                           (map (fn [fld] [[fld 0 0 0] ""])
+                                (range (inc (get-in prev [0 0]))
+                                       (get-in next [0 0])))
+                           [next])))
+         (distinct)
+         (into {})
+         (vector id))))
 
 (defn head->tag [head]
   (let [tags (reverse [:fld :rep :cmp :sub])]
@@ -94,17 +97,16 @@
          (first))))
 
 (defn format-segment [seg opts]
-  (let [id (:id seg)
+  (let [[id data] seg
         msh-1? (fn [head]
                  (and (= id "MSH")
                       (= head [1 0 0 0])))]
-    (->> (:data seg)
-         (sort-by first)
+    (->> (sort-by first data)
          (remove (comp msh-1? first))
          (mapcat (juxt (comp head->tag first) second))
          (map #(opts % %))
          (apply str)
-         (str (:id seg)))))
+         (str id))))
 
 (defn parse [x]
   (with-open [rdr (io/reader x)]
