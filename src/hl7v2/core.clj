@@ -82,6 +82,7 @@
 (defn fill-segment [seg]
   (let [[id data] seg]
     (->> (map (juxt (comp vec pad-head first) second) data)
+         (cons [[1 0 0 0] ""])
          (sort-by first)
          (partition 2 1)
          (mapcat (fn [[prev next]]
@@ -122,7 +123,7 @@
 
 (defn format [hl7 & {:keys [line-break] :or {line-break "\r\n"}}]
   (let [segments (mapv fill-segment hl7)
-        msh (some #(when (= (:id %) "MSH") (:data %)) segments)
+        msh (some #(when (= (first %) "MSH") (second %)) segments)
         fld (msh [1 0 0 0])
         [cmp rep _esc sub] (seq (msh [2 0 0 0]))
         opts (zipmap [:fld :rep :cmp :sub] [fld rep cmp sub])]
