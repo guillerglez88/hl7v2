@@ -18,7 +18,7 @@
 (defn next-char [rdr]
   (first (char-seq rdr)))
 
-(defn until
+(defn read-until
   ([rdr pred esc]
    (reduce (fn [acc curr]
              (let [items (conj acc curr)]
@@ -27,35 +27,32 @@
                  (reduced items)
                  items))) [] (char-seq rdr)))
   ([rdr pred]
-   (until rdr pred #{})))
+   (read-until rdr pred #{})))
 
 (defn next-token [rdr delim-set esc-set enc->tag]
-  (let [chars (until rdr delim-set esc-set)
-        value (when-let [vchars (seq (butlast chars))]
-                (apply str vchars))
-        tag (enc->tag (last chars))]
-    [value tag]))
+  (let [buffer (read-until rdr delim-set esc-set)
+        str-val (fn [b]
+                  (when (seq b)
+                    (apply str b)))
+        pair (if-let [tag (enc->tag (last buffer))]
+               [(str-val (butlast buffer)) tag]
+               [(str-val buffer)])]
+    (seq (remove nil? pair))))
 
 (defn tokenize [rdr]
   (let [msh (seg-id rdr)
         fld (next-char rdr)
-        encoding (until rdr  #{fld})
+        encoding (read-until rdr  #{fld})
         enc (apply str (butlast encoding))
         full-enc (concat encoding [\return \newline])
         enc-map (zipmap [:cmp :rep :esc :sub :fld :ret :nli] full-enc)
         enc->tag (map-invert enc-map)
         delim-set (set (vals (select-keys enc-map [:cmp :rep :sub :fld :ret :nli])))
         esc-set #{(:esc enc-map)}]
-    (apply concat
-           (concat [[msh :fld] [fld :fld] [enc :fld]]
-                   (->> (range)
-                        (map (fn [_] (next-token rdr delim-set esc-set enc->tag)))
-                        (take-while second)
-                        (remove (comp nil? first)))))))
-
-(defn seg-tokens-seq [tokens]
-  (remove #{'(:ret) '(:nli) '("")}
-          (partition-by #{:ret :nli} tokens)))
+    (->> (repeatedly #(next-token rdr delim-set esc-set enc->tag))
+         (take-while some?)
+         (cons [msh fld :fld enc :fld])
+         (apply concat))))
 
 (defn pad-head [head]
   (first (partition 4 4 [0 0 0 0] head)))
@@ -69,7 +66,7 @@
 (defn segment [tokens]
   (let [[id & tail] tokens]
     (loop [[h & t] tail
-           head {:fld 0, :rep 0, :cmp 0, :sub 0}
+           head {:fld 1, :rep 0, :cmp 0, :sub 0}
            data {}]
       (cond
         (= h :fld) (recur t (merge head {:fld (inc (:fld head)), :rep 0, :cmp 0, :sub 0}) data)
@@ -118,7 +115,8 @@
 (defn parse [x]
   (with-open [rdr (io/reader x)]
     (->> (tokenize rdr)
-         (seg-tokens-seq)
+         (partition-by #{:ret :nli})
+         (remove #{'(:ret) '(:nli) '("")})
          (mapv segment))))
 
 (defn format [hl7 & {:keys [line-break] :or {line-break "\r\n"}}]
