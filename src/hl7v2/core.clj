@@ -12,22 +12,14 @@
     (when-not (= ch -1)
       (cons (char ch) (lazy-seq (char-seq rdr))))))
 
-(defn seg-id [rdr]
-  (apply str (take 3 (char-seq rdr))))
-
-(defn next-char [rdr]
-  (first (char-seq rdr)))
-
-(defn read-until
-  ([rdr pred esc]
-   (reduce (fn [acc curr]
-             (let [items (conj acc curr)]
-               (if (and (not (esc (last acc)))
-                        (pred curr))
-                 (reduced items)
-                 items))) [] (char-seq rdr)))
-  ([rdr pred]
-   (read-until rdr pred #{})))
+(defn read-until [rdr pred esc]
+  (loop [buffer []
+         prev nil
+         [curr] (char-seq rdr)]
+    (cond
+      (nil? curr) buffer
+      (and (not (esc prev)) (pred curr)) (conj buffer curr)
+      :else (recur (conj buffer curr) curr (char-seq rdr)))))
 
 (defn next-token [rdr delim-set esc-set enc->tag]
   (let [buffer (read-until rdr delim-set esc-set)
@@ -40,9 +32,9 @@
     (seq (remove nil? pair))))
 
 (defn tokenize [rdr]
-  (let [msh (seg-id rdr)
-        fld (next-char rdr)
-        encoding (read-until rdr  #{fld})
+  (let [msh (apply str (take 3 (char-seq rdr)))
+        fld (first (char-seq rdr))
+        encoding (read-until rdr #{fld} #{})
         enc (apply str (butlast encoding))
         full-enc (concat encoding [\return \newline])
         enc-map (zipmap [:cmp :rep :esc :sub :fld :ret :nli] full-enc)
@@ -51,7 +43,7 @@
         esc-set #{(:esc enc-map)}]
     (->> (repeatedly #(next-token rdr delim-set esc-set enc->tag))
          (take-while some?)
-         (cons [msh fld :fld enc :fld])
+         (cons [msh :fld fld :fld enc :fld])
          (apply concat))))
 
 (defn pad-head [head]
@@ -66,7 +58,7 @@
 (defn segment [tokens]
   (let [[id & tail] tokens]
     (loop [[h & t] tail
-           head {:fld 1, :rep 0, :cmp 0, :sub 0}
+           head {:fld 0, :rep 0, :cmp 0, :sub 0}
            data {}]
       (cond
         (= h :fld) (recur t (merge head {:fld (inc (:fld head)), :rep 0, :cmp 0, :sub 0}) data)
@@ -128,3 +120,4 @@
     (->> segments
          (map #(format-segment % opts))
          (str/join line-break))))
+

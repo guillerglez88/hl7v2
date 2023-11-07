@@ -2,10 +2,12 @@
 
 Hl7v2 Clojure lib. Only vectors and map.
 
+Standard files: https://www.hl7.org/implement/standards/product_brief.cfm?product_id=185
+Schema v2.5.1: https://www.hl7.org/documentcenter/private/standards/V251/HL7-xml%20v2.5.1.zip
 
 ## parse
 
-Parse hl7 message, any `io/reader` input is allowed (byte-array, file-path, etc), returns a vector of tuples `[seg map]` where `seg` is the three letters segment code and `map` is a Clojure map with the segment data with a vector as the key. The vector key may contain in this order: `[:field :repetition :component :subcomponent]`.
+Parse hl7 message, any `io/reader` input is allowed (byte-array, file-path, etc), returns a tuple `[seg map]` where `seg` is the three letters segment code and `map` is a clojure map with the segment data with a vector as the key. The key vector may contains in this order: `[:field :repetition :component :subcomponent]`.
 
 ``` clojure
 (parse (.getBytes (str "MSH|^~\\&|TestSendingSystem||||200701011539||ADT^A01^ADT A01||||123\r\n"
