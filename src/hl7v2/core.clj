@@ -34,16 +34,16 @@
 (defn tokenize [rdr]
   (let [msh (apply str (take 3 (char-seq rdr)))
         fld (first (char-seq rdr))
-        encoding (read-until rdr #{fld} #{})
-        enc (apply str (butlast encoding))
-        full-enc (concat encoding [\return \newline])
-        enc-map (zipmap [:cmp :rep :esc :sub :fld :ret :nli] full-enc)
+        enc (take 4 (char-seq rdr))
+        full-enc (concat [fld] enc [\return \newline])
+        enc-map (zipmap [:fld :cmp :rep :esc :sub :ret :nli] full-enc)
         enc->tag (map-invert enc-map)
-        delim-set (set (vals (select-keys enc-map [:cmp :rep :sub :fld :ret :nli])))
-        esc-set #{(:esc enc-map)}]
+        delim-set (set (vals (dissoc enc-map :esc)))
+        esc-set #{(:esc enc-map)}
+        _ (read-until rdr delim-set esc-set)]
     (->> (repeatedly #(next-token rdr delim-set esc-set enc->tag))
          (take-while some?)
-         (cons [msh :fld fld :fld enc :fld])
+         (cons [msh :fld fld :fld (apply str enc) :fld])
          (apply concat))))
 
 (defn pad-head [head]
@@ -108,7 +108,7 @@
   (with-open [rdr (io/reader x)]
     (->> (tokenize rdr)
          (partition-by #{:ret :nli})
-         (remove #{'(:ret) '(:nli) '("")})
+         (remove #{'(:ret) '(:nli)})
          (mapv segment))))
 
 (defn format [hl7 & {:keys [line-break] :or {line-break "\r\n"}}]
@@ -121,3 +121,6 @@
          (map #(format-segment % opts))
          (str/join line-break))))
 
+(comment
+  (parse (.getBytes (str "MSH|^~\\&|test|\r\n"
+                         "PID|||7005728^^^TML^MR"))))
