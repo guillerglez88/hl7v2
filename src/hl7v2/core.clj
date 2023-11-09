@@ -46,9 +46,6 @@
          (cons [msh :fld fld :fld (apply str enc) :fld])
          (apply concat))))
 
-(defn pad-head [head]
-  (first (partition 4 4 [0 0 0 0] head)))
-
 (defn trim-head [head]
   (->> (reverse head)
        (drop-while (partial = 0))
@@ -68,8 +65,25 @@
         (some? h) (recur t head (assoc data (trim-head (mapv head [:fld :rep :cmp :sub])) h))
         :else [id data]))))
 
+(defn parse [x]
+  (with-open [rdr (io/reader x)]
+    (->> (tokenize rdr)
+         (partition-by #{:ret :nli})
+         (remove #{'(:ret) '(:nli)})
+         (mapv segment))))
+
+(defn head->tag [head]
+  (let [tags (reverse [:fld :rep :cmp :sub])]
+    (->> (reverse head)
+         (map vector tags)
+         (filter #(not= 0 (second %)))
+         (map first)
+         (first))))
+
 (defn fill-segment [seg]
-  (let [[id data] seg]
+  (let [[id data] seg
+        pad-head (fn [head]
+                   (first (partition 4 4 [0 0 0 0] head)))]
     (->> (map (juxt (comp vec pad-head first) second) data)
          (cons [[1 0 0 0] ""])
          (sort-by first)
@@ -84,14 +98,6 @@
          (into {})
          (vector id))))
 
-(defn head->tag [head]
-  (let [tags (reverse [:fld :rep :cmp :sub])]
-    (->> (reverse head)
-         (map vector tags)
-         (filter #(not= 0 (second %)))
-         (map first)
-         (first))))
-
 (defn format-segment [seg opts]
   (let [[id data] seg
         msh-1? (fn [head]
@@ -104,13 +110,6 @@
          (apply str)
          (str id))))
 
-(defn parse [x]
-  (with-open [rdr (io/reader x)]
-    (->> (tokenize rdr)
-         (partition-by #{:ret :nli})
-         (remove #{'(:ret) '(:nli)})
-         (mapv segment))))
-
 (defn format [hl7 & {:keys [line-break] :or {line-break "\r\n"}}]
   (let [segments (mapv fill-segment hl7)
         msh (some #(when (= (first %) "MSH") (second %)) segments)
@@ -122,5 +121,5 @@
          (str/join line-break))))
 
 (comment
-  (parse (.getBytes (str "MSH|^~\\&|test|\r\n"
+  (parse (.getBytes (str "MSH|^~\\&\r\n"
                          "PID|||7005728^^^TML^MR"))))
