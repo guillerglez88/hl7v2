@@ -7,44 +7,54 @@
   (:import
    (java.io Reader)))
 
+(defn str-seq [coll]
+  (when (seq coll)
+    (apply str coll)))
+
 (defn char-seq [^Reader rdr]
   (let [ch (.read rdr)]
     (when-not (= ch -1)
       (cons (char ch) (lazy-seq (char-seq rdr))))))
 
-(defn read-until [rdr pred esc]
+(defn read-until [pred escape char-seq]
   (loop [buffer []
-         prev nil
-         [curr] (char-seq rdr)]
+         esc? false
+         [curr & rest] char-seq]
     (cond
-      (nil? curr) buffer
-      (and (not (esc prev)) (pred curr)) (conj buffer curr)
-      :else (recur (conj buffer curr) curr (char-seq rdr)))))
+      (nil? curr) [buffer rest]
+      (and (not esc?) (pred curr)) [(conj buffer curr) rest]
+      :else (recur (conj buffer curr) (escape curr) rest))))
 
-(defn next-token [rdr delim-set esc-set enc->tag]
-  (let [buffer (read-until rdr delim-set esc-set)
-        str-val (fn [b]
-                  (when (seq b)
-                    (apply str b)))
-        pair (if-let [tag (enc->tag (last buffer))]
-               [(str-val (butlast buffer)) tag]
-               [(str-val buffer)])]
-    (seq (remove nil? pair))))
+(defn read-nstr [n char-seq]
+  [(str-seq (take n char-seq))
+   (drop n char-seq)])
 
-(defn tokenize [rdr]
-  (let [msh (apply str (take 3 (char-seq rdr)))
-        fld (first (char-seq rdr))
-        enc (take 4 (char-seq rdr))
-        full-enc (concat [fld] enc [\return \newline])
-        enc-map (zipmap [:fld :cmp :rep :esc :sub :ret :nli] full-enc)
-        enc->tag (map-invert enc-map)
-        delim-set (set (vals (dissoc enc-map :esc)))
-        esc-set #{(:esc enc-map)}
-        _ (read-until rdr delim-set esc-set)]
-    (->> (repeatedly #(next-token rdr delim-set esc-set enc->tag))
-         (take-while some?)
-         (cons [msh :fld fld :fld (apply str enc) :fld])
-         (apply concat))))
+(defn next-token
+  [delimiters escape tag-map char-seq]
+  (let [[buffer rest] (read-until delimiters escape char-seq)]
+    [(seq (remove nil? (if-let [tag (get tag-map (last buffer))]
+                         [(str-seq (butlast buffer)) tag]
+                         [(str-seq buffer)]))) rest]))
+
+(defn tokenize [cs]
+  (let [[msh [fld & cs]] (read-nstr 3 cs)
+        [[cmp rep esc sub] cs] (read-until #{fld \return \newline} #{} cs)
+        enc-map {:fld fld
+                 :cmp cmp
+                 :rep rep
+                 :esc esc
+                 :sub sub
+                 :ret \return
+                 :nli \newline}
+        tag-map (map-invert enc-map)
+        delimiters (set (vals (dissoc enc-map :esc)))
+        escape #{(:esc enc-map)}]
+    (loop [tokens [msh :fld fld :fld (str-seq [cmp rep esc sub]) :fld]
+           cs cs]
+      (let [[token cs] (next-token delimiters escape tag-map cs)]
+        (if (seq token)
+          (recur (concat tokens token) cs)
+          tokens)))))
 
 (defn trim-head [head]
   (->> (reverse head)
@@ -65,9 +75,12 @@
         (some? h) (recur t head (assoc data (trim-head (mapv head [:fld :rep :cmp :sub])) h))
         :else [id data]))))
 
-(defn parse [x]
+(defn parse
+  "Parse a HL7v2 message."
+  [x]
   (with-open [rdr (io/reader x)]
-    (->> (tokenize rdr)
+    (->> (char-seq rdr)
+         (tokenize)
          (partition-by #{:ret :nli})
          (remove #{'(:ret) '(:nli)})
          (mapv segment))))
