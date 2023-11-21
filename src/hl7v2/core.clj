@@ -7,54 +7,43 @@
   (:import
    (java.io Reader)))
 
-(defn str-seq [coll]
-  (when (seq coll)
-    (apply str coll)))
-
 (defn char-seq [^Reader rdr]
   (let [ch (.read rdr)]
     (when-not (= ch -1)
       (cons (char ch) (lazy-seq (char-seq rdr))))))
 
-(defn read-until [pred escape char-seq]
+(defn str-seq [coll]
+  (when (seq coll)
+    (apply str coll)))
+
+(defn str-until [pred escape char-seq]
   (loop [buffer []
          esc? false
          [curr & rest] char-seq]
     (cond
-      (nil? curr) [buffer rest]
-      (and (not esc?) (pred curr)) [(conj buffer curr) rest]
+      (nil? curr) [(str-seq buffer)]
+      (and (not esc?) (pred curr)) (cons (str-seq buffer) (cons curr rest))
       :else (recur (conj buffer curr) (escape curr) rest))))
 
-(defn read-nstr [n char-seq]
-  [(str-seq (take n char-seq))
-   (drop n char-seq)])
-
-(defn next-token
-  [delimiters escape tag-map char-seq]
-  (let [[buffer rest] (read-until delimiters escape char-seq)]
-    [(seq (remove nil? (if-let [tag (get tag-map (last buffer))]
-                         [(str-seq (butlast buffer)) tag]
-                         [(str-seq buffer)]))) rest]))
+(defn str-count [n char-seq]
+  (cons (str-seq (take n char-seq))
+        (drop n char-seq)))
 
 (defn tokenize [cs]
-  (let [[msh [fld & cs]] (read-nstr 3 cs)
-        [[cmp rep esc sub] cs] (read-until #{fld \return \newline} #{} cs)
-        enc-map {:fld fld
-                 :cmp cmp
-                 :rep rep
-                 :esc esc
-                 :sub sub
-                 :ret \return
-                 :nli \newline}
-        tag-map (map-invert enc-map)
-        delimiters (set (vals (dissoc enc-map :esc)))
-        escape #{(:esc enc-map)}]
-    (loop [tokens [msh :fld fld :fld (str-seq [cmp rep esc sub]) :fld]
-           cs cs]
-      (let [[token cs] (next-token delimiters escape tag-map cs)]
-        (if (seq token)
-          (recur (concat tokens token) cs)
-          tokens)))))
+  (let [[ret nli] [\return \newline]
+        [msh fld & cs] (str-count 3 cs)
+        [enc enc-delim & cs] (str-until #{fld ret nli} #{} cs)
+        [cmp rep esc sub] (seq enc)
+        delim->tag {fld :fld, cmp :cmp, rep :rep, sub :sub, ret :ret, nli :nli}
+        meta-tokens [msh :fld fld :fld enc (delim->tag enc-delim)]]
+    (loop [tokens meta-tokens
+           char-seq cs]
+      (let [[head delim & tail] (str-until #{fld cmp rep sub ret nli} #{esc} char-seq)
+            tag (delim->tag delim)]
+        (cond
+          tag (recur (conj tokens head tag) tail)
+          head (recur (conj tokens head) tail)
+          :else tokens)))))
 
 (defn trim-head [head]
   (->> (reverse head)
