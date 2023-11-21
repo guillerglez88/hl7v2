@@ -1,7 +1,6 @@
 (ns hl7v2.core
   (:require
    [clojure.java.io :as io]
-   [clojure.set :refer [map-invert]]
    [clojure.string :as str])
   (:refer-clojure :exclude [format])
   (:import
@@ -35,15 +34,15 @@
         [enc enc-delim & cs] (str-until #{fld ret nli} #{} cs)
         [cmp rep esc sub] (seq enc)
         delim->tag {fld :fld, cmp :cmp, rep :rep, sub :sub, ret :ret, nli :nli}
-        meta-tokens [msh :fld fld :fld enc (delim->tag enc-delim)]]
+        meta-tokens [msh fld enc (delim->tag enc-delim)]]
     (loop [tokens meta-tokens
            char-seq cs]
       (let [[head delim & tail] (str-until #{fld cmp rep sub ret nli} #{esc} char-seq)
-            tag (delim->tag delim)]
-        (cond
-          tag (recur (conj tokens head tag) tail)
-          head (recur (conj tokens head) tail)
-          :else tokens)))))
+            tag (delim->tag delim)
+            items (remove nil? [head tag])]
+        (if (seq items)
+          (recur (concat tokens items) tail)
+          tokens)))))
 
 (defn trim-head [head]
   (->> (reverse head)
@@ -71,7 +70,7 @@
     (->> (char-seq rdr)
          (tokenize)
          (partition-by #{:ret :nli})
-         (remove #{'(:ret) '(:nli)})
+         (remove #{'(:ret) '(:nli) '(nil)})
          (mapv segment))))
 
 (defn head->tag [head]
@@ -123,5 +122,7 @@
          (str/join line-break))))
 
 (comment
-  (parse (.getBytes (str "MSH|^~\\&\r\n"
-                         "PID|||7005728^^^TML^MR"))))
+  (time
+   (with-open [rdr (io/reader (.getBytes (str "MSH|^~\\&\r\n"
+                                              "PID|||7005728^^^TML^MR")))]
+     (into [] (tokenize (char-seq rdr))))))
