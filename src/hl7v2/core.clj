@@ -1,67 +1,39 @@
 (ns hl7v2.core
   (:require
    [clojure.java.io :as io]
-   [clojure.string :as str])
+   [clojure.string :as str]
+   [clojure.zip :as zip])
   (:refer-clojure :exclude [format])
   (:import
    (java.io Reader)))
+
+(def ret \return)
+(def nli \newline)
 
 (defn char-seq [^Reader rdr]
   (let [ch (.read rdr)]
     (when-not (= ch -1)
       (cons (char ch) (lazy-seq (char-seq rdr))))))
 
-(defn str-seq [coll]
-  (when (seq coll)
-    (apply str coll)))
+(defn tokenize [^Reader rdr]
+  (let [[m s h fld cmp rep esc sub & cs] (char-seq rdr)
+        separator? (fn [ch]
+                     (and (not= esc ch)
+                          (#{fld cmp rep sub ret nli} ch)))]
+    (->> cs
+         (partition-by #(when (separator? %)
+                          (gensym)))
+         (map (partial apply str))
+         (cons (str cmp rep esc sub))
+         (cons (str fld))
+         (cons (str m s h)))))
 
-(defn str-until [pred escape char-seq]
-  (loop [buffer []
-         esc? false
-         [curr & rest] char-seq]
-    (cond
-      (nil? curr) [(str-seq buffer)]
-      (and (not esc?) (pred curr)) (cons (str-seq buffer) (cons curr rest))
-      :else (recur (conj buffer curr) (escape curr) rest))))
-
-(defn str-count [n char-seq]
-  (cons (str-seq (take n char-seq))
-        (drop n char-seq)))
-
-(defn tokenize [cs]
-  (let [[ret nli] [\return \newline]
-        [msh fld & cs] (str-count 3 cs)
-        [enc enc-delim & cs] (str-until #{fld ret nli} #{} cs)
-        [cmp rep esc sub] (seq enc)
-        delim->tag {fld :fld, cmp :cmp, rep :rep, sub :sub, ret :ret, nli :nli}
-        meta-tokens [msh fld enc (delim->tag enc-delim)]]
-    (loop [tokens meta-tokens
-           char-seq cs]
-      (let [[head delim & tail] (str-until #{fld cmp rep sub ret nli} #{esc} char-seq)
-            tag (delim->tag delim)
-            items (remove nil? [head tag])]
-        (if (seq items)
-          (recur (concat tokens items) tail)
-          tokens)))))
-
-(defn trim-head [head]
-  (->> (reverse head)
-       (drop-while (partial = 0))
-       (reverse)
-       (vec)))
-
-(defn segment [tokens]
-  (let [[id & tail] tokens]
-    (loop [[h & t] tail
-           head {:fld 0, :rep 0, :cmp 0, :sub 0}
-           data {}]
-      (cond
-        (= h :fld) (recur t (merge head {:fld (inc (:fld head)), :rep 0, :cmp 0, :sub 0}) data)
-        (= h :rep) (recur t (merge head {:rep (inc (:rep head)), :cmp 0, :sub 0}) data)
-        (= h :cmp) (recur t (merge head {:cmp (inc (:cmp head)), :sub 0}) data)
-        (= h :sub) (recur t (update head h inc) data)
-        (some? h) (recur t head (assoc data (trim-head (mapv head [:fld :rep :cmp :sub])) h))
-        :else [id data]))))
+(with-open [rdr (io/reader (.getBytes (str "MSH|^~\\&|Regional MPI||Master MPI|Alpha Hospital|20060501140010||ADT^A28|3948375|P^T|2.4|||ER\r\n"
+                                           "EVN|A28|20060501140008|||000338475^Author^Arthur^^^^^^Regional MPI&2.16.840.1.113883.19.201&ISO^L|20060501140008\r\n"
+                                           "PID|||000197245^^^NationalPN&2.16.840.1.113883.19.3&ISO^PN~4532^^^CarefulCareClinic&2.16.840.1.113883.19.2.400566&ISO^PI~3242346^^^GoodmanGP&2.16.840.1.113883.19.2.450998&ISO^PI||Patient^Particia^^^^^L||19750103|F|||Randomroad 23a&Randomroad&23a^^Anytown^^1200^^H||555 3542557^ORN^PH~555 3542558^ORN^FX|555 5557865^WPN^PH\r\n"
+                                           "PV1||N|")))]
+  (->> (tokenize rdr)
+       (into [])))
 
 (defn parse
   "Parse a HL7v2 message."
@@ -70,8 +42,8 @@
     (->> (char-seq rdr)
          (tokenize)
          (partition-by #{:ret :nli})
-         (remove #{'(:ret) '(:nli) '(nil)})
-         (mapv segment))))
+         (remove #{'(:ret) '(:nli)})
+         #_(mapv segment))))
 
 (defn head->tag [head]
   (let [tags (reverse [:fld :rep :cmp :sub])]
@@ -123,6 +95,7 @@
 
 (comment
   (time
-   (with-open [rdr (io/reader (.getBytes (str "MSH|^~\\&\r\n"
-                                              "PID|||7005728^^^TML^MR")))]
-     (into [] (tokenize (char-seq rdr))))))
+   (parse (.getBytes (str "MSH|^~\\&|Regional MPI||Master MPI|Alpha Hospital|20060501140010||ADT^A28|3948375|P^T|2.4|||ER\r\n"
+                          "EVN|A28|20060501140008|||000338475^Author^Arthur^^^^^^Regional MPI&2.16.840.1.113883.19.201&ISO^L|20060501140008\r\n"
+                          "PID|||000197245^^^NationalPN&2.16.840.1.113883.19.3&ISO^PN~4532^^^CarefulCareClinic&2.16.840.1.113883.19.2.400566&ISO^PI~3242346^^^GoodmanGP&2.16.840.1.113883.19.2.450998&ISO^PI||Patient^Particia^^^^^L||19750103|F|||Randomroad 23a&Randomroad&23a^^Anytown^^1200^^H||555 3542557^ORN^PH~555 3542558^ORN^FX|555 5557865^WPN^PH\r\n"
+                          "PV1||N|")))))
