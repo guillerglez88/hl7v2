@@ -7,42 +7,42 @@
   (:import
    (java.io Reader)))
 
-(def ret \return)
-(def nli \newline)
-
-(defn char-seq [^Reader rdr]
-  (let [ch (.read rdr)]
-    (when-not (= ch -1)
-      (cons (char ch) (lazy-seq (char-seq rdr))))))
-
-(defn tokenize [^Reader rdr]
-  (let [[m s h fld cmp rep esc sub & cs] (char-seq rdr)
-        separator? (fn [ch]
-                     (and (not= esc ch)
-                          (#{fld cmp rep sub ret nli} ch)))]
-    (->> cs
-         (partition-by #(when (separator? %)
-                          (gensym)))
-         (map (partial apply str))
-         (cons (str cmp rep esc sub))
-         (cons (str fld))
-         (cons (str m s h)))))
-
-(with-open [rdr (io/reader (.getBytes (str "MSH|^~\\&|Regional MPI||Master MPI|Alpha Hospital|20060501140010||ADT^A28|3948375|P^T|2.4|||ER\r\n"
-                                           "EVN|A28|20060501140008|||000338475^Author^Arthur^^^^^^Regional MPI&2.16.840.1.113883.19.201&ISO^L|20060501140008\r\n"
-                                           "PID|||000197245^^^NationalPN&2.16.840.1.113883.19.3&ISO^PN~4532^^^CarefulCareClinic&2.16.840.1.113883.19.2.400566&ISO^PI~3242346^^^GoodmanGP&2.16.840.1.113883.19.2.450998&ISO^PI||Patient^Particia^^^^^L||19750103|F|||Randomroad 23a&Randomroad&23a^^Anytown^^1200^^H||555 3542557^ORN^PH~555 3542558^ORN^FX|555 5557865^WPN^PH\r\n"
-                                           "PV1||N|")))]
-  (->> (tokenize rdr)
-       (into [])))
+(defn tokenize
+  "Split content into tokens sequence based on encoding separators"
+  [^Reader rdr]
+  (letfn [(char-seq [^Reader rdr]
+            (let [ch (.read rdr)]
+              (when-not (= ch -1)
+                (cons (char ch) (lazy-seq (char-seq rdr))))))
+          (escape [pred coll]
+            (let [[fst snd & rest] coll]
+              (when fst
+                (if (pred fst)
+                  (cons (str fst snd) (lazy-seq (escape pred rest)))
+                  (cons (str fst) (lazy-seq (escape pred (cons snd rest))))))))]
+    (let [[m s h fld cmp rep esc sub & rest] (char-seq rdr)
+          seg (str m s h)
+          encoding (str cmp rep esc sub)
+          separators (->> [fld cmp rep sub \return \newline]
+                          (map str)
+                          (set))]
+      (concat [seg (str fld) encoding]
+              (->> rest
+                   (escape #{esc})
+                   (partition-by #(when (separators %)
+                                    (gensym)))
+                   (map (partial apply str)))))))
 
 (defn parse
   "Parse a HL7v2 message."
   [x]
   (with-open [rdr (io/reader x)]
-    (->> (char-seq rdr)
-         (tokenize)
-         (partition-by #{:ret :nli})
-         (remove #{'(:ret) '(:nli)})
+    (->> (tokenize rdr)
+         (partition-by #{"\r" "\n"})
+         (remove #{'("\r") '("\n")})
+         (map (fn [[seg & data]]
+                [seg (vec data)]))
+         (into [])
          #_(mapv segment))))
 
 (defn head->tag [head]
@@ -97,5 +97,5 @@
   (time
    (parse (.getBytes (str "MSH|^~\\&|Regional MPI||Master MPI|Alpha Hospital|20060501140010||ADT^A28|3948375|P^T|2.4|||ER\r\n"
                           "EVN|A28|20060501140008|||000338475^Author^Arthur^^^^^^Regional MPI&2.16.840.1.113883.19.201&ISO^L|20060501140008\r\n"
-                          "PID|||000197245^^^NationalPN&2.16.840.1.113883.19.3&ISO^PN~4532^^^CarefulCareClinic&2.16.840.1.113883.19.2.400566&ISO^PI~3242346^^^GoodmanGP&2.16.840.1.113883.19.2.450998&ISO^PI||Patient^Particia^^^^^L||19750103|F|||Randomroad 23a&Randomroad&23a^^Anytown^^1200^^H||555 3542557^ORN^PH~555 3542558^ORN^FX|555 5557865^WPN^PH\r\n"
+                          "PID|||000197245^^^NationalPN&2.16.840.1.113883.19.3&ISO^PN~4532^^^Careful\\&CareClinic&2.16.840.1.113883.19.2.400566&ISO^PI~3242346^^^GoodmanGP&2.16.840.1.113883.19.2.450998&ISO^PI||Patient^Particia^^^^^L||19750103|F|||Randomroad 23a&Randomroad&23a^^Anytown^^1200^^H||555 3542557^ORN^PH~555 3542558^ORN^FX|555 5557865^WPN^PH\r\n"
                           "PV1||N|")))))
