@@ -36,52 +36,39 @@
          (cons (str fld))
          (cons seg))))
 
-(letfn [(split-by [pred coll]
-          (->> coll
-               (partition-by #(when (pred %)
-                                (gensym)))
-               (partition-all 2 1)
-               (mapcat (fn [[fst snd]]
-                         (when (pred (first fst))
-                           (if (pred (first snd))
-                             [(first fst) nil]
-                             [(first fst) snd]))))))]
-  (let [fld "|"
-        cmp "^"
-        rep "~"
-        sub "&"
-        tokens ["PID" "|" "|" "|" "000197245" "^" "^" "^" "NationalPN" "&" "2.16.840.1.113883.19.3" "&" "ISO" "^" "PN" "~" "4532" "^" "^" "^" "Careful\\&CareClinic" "&" "2.16.840.1.113883.19.2.400566" "&" "ISO" "^" "PI" "~" "3242346" "^" "^" "^" "GoodmanGP" "&" "2.16.840.1.113883.19.2.450998" "&" "ISO" "^" "PI" "|" "|" "Patient" "^" "Particia" "^" "^" "^" "^" "^" "L" "|" "|" "19750103" "|" "F" "|" "|" "|" "Randomroad 23a" "&" "Randomroad" "&" "23a" "^" "^" "Anytown" "^" "^" "1200" "^" "^" "H" "|" "|" "555 3542557" "^" "ORN" "^" "PH" "~" "555 3542558" "^" "ORN" "^" "FX" "|" "555 5557865" "^" "WPN" "^" "PH"]]
-    (->> (next tokens)
-         (split-by #{fld})
-         (map (fn [chunk]
-                (if (string? chunk)
-                  chunk
-                  (->> (cons rep chunk)
-                       (split-by #{rep})
-                       (map (fn [chunk]
-                              (if (string? chunk)
-                                chunk
-                                (->> (cons cmp chunk)
-                                     (split-by #{cmp})
-                                     (map (fn [chunk]
-                                            (if (string? chunk)
-                                              chunk
-                                              (->> (cons sub chunk)
-                                                   (split-by #{sub}))))))))))))))))
-
 (defn parse
   "Parse a HL7v2 message."
   [x]
-  (with-open [rdr (io/reader x)]
-    (let [tokens (tokenize rdr)
-          [seg fld [cmp rep esc sub]] tokens]
-      (when (not= "MSH" seg)
-        (throw (ex-info "Message should start with MSH" {:seg seg})))
-      (->> tokens
-           (partition-by #{"\r" "\n"})
-           (remove #{'("\r") '("\n")})
-           (into [])
-           #_(mapv segment)))))
+  (letfn [(split-by [pred coll]
+            (->> coll
+                 (partition-by #(when (pred %)
+                                  (gensym)))
+                 (partition-all 2 1)
+                 (mapcat (fn [[fst snd]]
+                           (when (pred (first fst))
+                             (if (pred (first snd))
+                               [(first fst) nil]
+                               [(first fst) snd]))))))
+          (nested-by-separators [separators coll]
+            (if (seq separators)
+              (let [[fst & rest] separators]
+                (for [chunk (split-by #{fst} (cons fst coll))]
+                  (if (seq? chunk)
+                    (nested-by-separators rest chunk)
+                    chunk)))
+              coll))]
+    (with-open [rdr (io/reader x)]
+      (let [tokens (tokenize rdr)
+            [seg fld [cmp rep esc sub]] tokens
+            separators (map str [fld rep cmp sub])]
+        (when (not= "MSH" seg)
+          (throw (ex-info "Message should start with MSH" {:seg seg})))
+        (->> tokens
+             (partition-by #{"\r" "\n"})
+             (remove #{'("\r") '("\n")})
+             (map (fn [[seg _fld & data]]
+                    (nested-by-separators separators data)))
+             (into []))))))
 
 (defn head->tag [head]
   (let [tags (reverse [:fld :rep :cmp :sub])]
