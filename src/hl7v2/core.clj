@@ -7,43 +7,81 @@
   (:import
    (java.io Reader)))
 
+(defn- char-seq [^Reader rdr]
+  (let [ch (.read rdr)]
+    (when-not (= ch -1)
+      (cons (char ch) (lazy-seq (char-seq rdr))))))
+
 (defn tokenize
   "Split content into tokens sequence based on encoding separators"
   [^Reader rdr]
-  (letfn [(char-seq [^Reader rdr]
-            (let [ch (.read rdr)]
-              (when-not (= ch -1)
-                (cons (char ch) (lazy-seq (char-seq rdr))))))
-          (escape [pred coll]
-            (let [[fst snd & rest] coll]
-              (when fst
-                (if (pred fst)
-                  (cons (str fst snd) (lazy-seq (escape pred rest)))
-                  (cons (str fst) (lazy-seq (escape pred (cons snd rest))))))))]
-    (let [[m s h fld cmp rep esc sub & rest] (char-seq rdr)
-          seg (str m s h)
-          encoding (str cmp rep esc sub)
-          separators (->> [fld cmp rep sub \return \newline]
-                          (map str)
-                          (set))]
-      (concat [seg (str fld) encoding]
-              (->> rest
-                   (escape #{esc})
-                   (partition-by #(when (separators %)
-                                    (gensym)))
-                   (map (partial apply str)))))))
+  (let [[m s h fld cmp rep esc sub & rest] (char-seq rdr)
+        seg (str m s h)
+        encoding (str cmp rep esc sub)
+        separators #{fld cmp rep sub \return \newline}]
+    (->> (concat [nil] rest [nil])
+         (partition-all 2 1)
+         (map (fn [[fst snd]]
+                (cond
+                  (= esc fst) {:val snd, :escaped true}
+                  (= esc snd) nil
+                  :else       {:val snd})))
+         (remove nil?)
+         (partition-by (fn [item]
+                         (when (and (separators (:val item))
+                                    (not (:escaped item)))
+                           (gensym))))
+         (map #(apply str (map :val %)))
+         (cons encoding)
+         (cons (str fld))
+         (cons seg))))
+
+(letfn [(split-by [pred coll]
+          (->> coll
+               (partition-by #(when (pred %)
+                                (gensym)))
+               (partition-all 2 1)
+               (mapcat (fn [[fst snd]]
+                         (when (pred (first fst))
+                           (if (pred (first snd))
+                             [(first fst) nil]
+                             [(first fst) snd]))))))]
+  (let [fld "|"
+        cmp "^"
+        rep "~"
+        sub "&"
+        tokens ["PID" "|" "|" "|" "000197245" "^" "^" "^" "NationalPN" "&" "2.16.840.1.113883.19.3" "&" "ISO" "^" "PN" "~" "4532" "^" "^" "^" "Careful\\&CareClinic" "&" "2.16.840.1.113883.19.2.400566" "&" "ISO" "^" "PI" "~" "3242346" "^" "^" "^" "GoodmanGP" "&" "2.16.840.1.113883.19.2.450998" "&" "ISO" "^" "PI" "|" "|" "Patient" "^" "Particia" "^" "^" "^" "^" "^" "L" "|" "|" "19750103" "|" "F" "|" "|" "|" "Randomroad 23a" "&" "Randomroad" "&" "23a" "^" "^" "Anytown" "^" "^" "1200" "^" "^" "H" "|" "|" "555 3542557" "^" "ORN" "^" "PH" "~" "555 3542558" "^" "ORN" "^" "FX" "|" "555 5557865" "^" "WPN" "^" "PH"]]
+    (->> (next tokens)
+         (split-by #{fld})
+         (map (fn [chunk]
+                (if (string? chunk)
+                  chunk
+                  (->> (cons rep chunk)
+                       (split-by #{rep})
+                       (map (fn [chunk]
+                              (if (string? chunk)
+                                chunk
+                                (->> (cons cmp chunk)
+                                     (split-by #{cmp})
+                                     (map (fn [chunk]
+                                            (if (string? chunk)
+                                              chunk
+                                              (->> (cons sub chunk)
+                                                   (split-by #{sub}))))))))))))))))
 
 (defn parse
   "Parse a HL7v2 message."
   [x]
   (with-open [rdr (io/reader x)]
-    (->> (tokenize rdr)
-         (partition-by #{"\r" "\n"})
-         (remove #{'("\r") '("\n")})
-         (map (fn [[seg & data]]
-                [seg (vec data)]))
-         (into [])
-         #_(mapv segment))))
+    (let [tokens (tokenize rdr)
+          [seg fld [cmp rep esc sub]] tokens]
+      (when (not= "MSH" seg)
+        (throw (ex-info "Message should start with MSH" {:seg seg})))
+      (->> tokens
+           (partition-by #{"\r" "\n"})
+           (remove #{'("\r") '("\n")})
+           (into [])
+           #_(mapv segment)))))
 
 (defn head->tag [head]
   (let [tags (reverse [:fld :rep :cmp :sub])]
