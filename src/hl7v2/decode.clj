@@ -43,30 +43,39 @@
                         (gensym)))
        (partition-all 2 1)
        (map (fn [[fst snd]]
-              (when (and (pred (first fst))
-                         (not (pred (first snd))))
-                snd)))))
+              (when (pred (first fst))
+                (if-not (pred (first snd))
+                  snd
+                  (first fst)))))
+       (remove nil?)
+       (map #(if (pred %) nil %))))
 
 (defn nest
   "Transform tokens sequence into nested structure each
   level corresponding to a separator in the same order"
-  [separators coll]
+  [separators offset coll]
   (if (seq separators)
     (let [{t :tag, s :val} (first separators)
           chunks (->> (cons s coll)
                       (chunks-by #{s})
                       (map #(when (seq? %)
-                              (nest (next separators) %))))]
+                              (nest (next separators) 1 %))))]
+      #dbg
       (cond
-        (#{:fld :cmp :sub} t) (->> chunks
-                                   (zipmap (map inc (range)))
-                                   (remove #(nil? (second %)))
-                                   (into {}))
-        (= :rep t) (->> chunks
-                        (reverse)
-                        (drop-while nil?)
-                        (reverse)
-                        (into []))
+        (#{:fld :cmp :sub} t) (let [entries (->> chunks
+                                                 (zipmap (drop offset (range)))
+                                                 (remove #(nil? (second %))))]
+                                (case (count entries)
+                                  0 nil
+                                  1 (second (first entries))
+                                  (into {} entries)))
+        (= :rep t) (let [entries (->> chunks
+                                      (reverse)
+                                      (drop-while nil?)
+                                      (reverse))]
+                     (if (= 1 (count entries))
+                       (first entries)
+                       (into [] entries)))
         :else chunks))
     (apply str coll)))
 
@@ -84,8 +93,10 @@
       (->> tokens
            (partition-by #{"\r" "\n"})
            (remove #{'("\r") '("\n")})
-           (map (fn [[seg _fld & data]]
-                  (nest separators data)))
+           (map (fn [[seg fld & data]]
+                  {seg (if (= "MSH" seg)
+                         (assoc (nest separators 2 data) 1 fld)
+                         (nest separators 1 data))}))
            (into [])))))
 
 (comment
