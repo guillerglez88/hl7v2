@@ -60,7 +60,6 @@
                       (chunks-by #{s})
                       (map #(when (seq? %)
                               (nest (next separators) 1 %))))]
-      #dbg
       (cond
         (#{:fld :cmp :sub} t) (let [entries (->> chunks
                                                  (zipmap (drop offset (range)))
