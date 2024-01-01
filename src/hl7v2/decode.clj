@@ -3,8 +3,9 @@
    (java.io Reader))
   (:require [clojure.java.io :as io]))
 
-(defn char-seq [^Reader rdr]
+(defn char-seq
   "Char sequence from rdr"
+  [^Reader rdr]
   (let [ch (.read rdr)]
     (when-not (= ch -1)
       (cons (char ch) (lazy-seq (char-seq rdr))))))
@@ -15,25 +16,28 @@
   (let [[m s h fld cmp rep esc sub & rest] (char-seq rdr)
         seg (str m s h)
         encoding (str cmp rep esc sub)
-        separators #{fld cmp rep sub \return \newline}]
+        mark-escaped (fn [[fst snd]]
+                       (cond
+                         (= esc fst) {:val snd, :escaped true}
+                         (= esc snd) nil
+                         :else       {:val snd}))
+        separator? (fn [item]
+                     (when (and (#{fld cmp rep sub \return \newline} (:val item))
+                                (not (:escaped item)))
+                       (gensym)))]
     (->> (concat [nil] rest [nil])
          (partition-all 2 1)
-         (map (fn [[fst snd]]
-                (cond
-                  (= esc fst) {:val snd, :escaped true}
-                  (= esc snd) nil
-                  :else       {:val snd})))
+         (map mark-escaped)
          (remove nil?)
-         (partition-by (fn [item]
-                         (when (and (separators (:val item))
-                                    (not (:escaped item)))
-                           (gensym))))
+         (partition-by separator?)
          (map #(apply str (map :val %)))
          (cons encoding)
          (cons (str fld))
          (cons seg))))
 
-(defn chunks-by [pred coll]
+(defn chunks-by
+  "Split tokens sequence into chunks based on predicate"
+  [pred coll]
   (->> coll
        (partition-by #(when (pred %)
                         (gensym)))
@@ -43,7 +47,10 @@
                          (not (pred (first snd))))
                 snd)))))
 
-(defn nest [separators coll]
+(defn nest
+  "Transform tokens sequence into nested structure each
+  level corresponding to a separator in the same order"
+  [separators coll]
   (if (seq separators)
     (let [{t :tag, s :val} (first separators)
           chunks (->> (cons s coll)
@@ -55,7 +62,11 @@
                                    (zipmap (map inc (range)))
                                    (remove #(nil? (second %)))
                                    (into {}))
-        (= :rep t) (into [] chunks)
+        (= :rep t) (->> chunks
+                        (reverse)
+                        (drop-while nil?)
+                        (reverse)
+                        (into []))
         :else chunks))
     (apply str coll)))
 
