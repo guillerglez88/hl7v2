@@ -7,7 +7,7 @@
   (:import
    (java.io Reader)))
 
-(defn- char-seq [^Reader rdr]
+(defn char-seq [^Reader rdr]
   (let [ch (.read rdr)]
     (when-not (= ch -1)
       (cons (char ch) (lazy-seq (char-seq rdr))))))
@@ -36,6 +36,14 @@
          (cons (str fld))
          (cons seg))))
 
+#_(defn- clean [m]
+    (prewalk (fn [v]
+               (cond
+                 (map? v) (into {} (remove #(-> % second nil?) v))
+                 (vector? v) (into [] (remove nil? v))
+                 (seq? v) (remove nil? v)
+                 :else v)) m))
+
 (defn parse
   "Parse a HL7v2 message."
   [x]
@@ -44,30 +52,41 @@
                  (partition-by #(when (pred %)
                                   (gensym)))
                  (partition-all 2 1)
-                 (mapcat (fn [[fst snd]]
-                           (when (pred (first fst))
-                             (if (pred (first snd))
-                               [(first fst) nil]
-                               [(first fst) snd]))))))
-          (nested-by-separators [separators coll]
+                 (map (fn [[fst snd]]
+                        (when (and (pred (first fst))
+                                   (not (pred (first snd))))
+                          snd)))))
+          (nest [separators coll]
             (if (seq separators)
-              (let [[fst & rest] separators]
-                (for [chunk (split-by #{fst} (cons fst coll))]
-                  (if (seq? chunk)
-                    (nested-by-separators rest chunk)
-                    chunk)))
-              coll))]
+              (let [{t :tag, s :val} (first separators)
+                    chunks (->> (cons s coll)
+                                (split-by #{s})
+                                (map #(when (seq? %)
+                                        (nest (next separators) %))))]
+                #dbg
+                (cond
+                  (#{:fld :cmp :sub} t) (->> chunks
+                                             (zipmap (map inc (range)))
+                                             (remove #(nil? (second %)))
+                                             (into {}))
+                  (= :rep t) (->> chunks
+                                  (remove nil?)
+                                  (into []))
+                  :else chunks))
+              (apply str coll)))]
     (with-open [rdr (io/reader x)]
       (let [tokens (tokenize rdr)
             [seg fld [cmp rep esc sub]] tokens
-            separators (map str [fld rep cmp sub])]
+            separators (map (fn [t s] {:tag t, :val (str s)})
+                            [:fld :rep :cmp :sub]
+                            [fld rep cmp sub])]
         (when (not= "MSH" seg)
           (throw (ex-info "Message should start with MSH" {:seg seg})))
         (->> tokens
              (partition-by #{"\r" "\n"})
              (remove #{'("\r") '("\n")})
              (map (fn [[seg _fld & data]]
-                    (nested-by-separators separators data)))
+                    (nest separators data)))
              (into []))))))
 
 (defn head->tag [head]
