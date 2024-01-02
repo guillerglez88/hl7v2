@@ -85,7 +85,7 @@
         (throw (ex-info "Message should start with MSH" {:seg seg})))
       (->> tokens
            (partition-by #{"\r" "\n"})
-           (remove #{'("\r") '("\n")})
+           (remove #{'("\r") '("\n") '("")})
            (map (fn [[seg fld & data]]
                   {(keyword seg) (if (= "MSH" seg)
                                    (assoc (nest separators 2 data)
