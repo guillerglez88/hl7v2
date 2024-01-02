@@ -97,32 +97,35 @@
 
 (defn format [hl7 & {:keys [line-break] :or {line-break "\r\n"}}]
   (letfn [(encode [data separators]
-            (cond
-              (vector? data) (->> data
-                                  (map #(encode % (next separators)))
-                                  (str/join (first separators)))
-              (map? data) (let [last (->> (keys data) (apply max))]
-                            (->> (range 1 (inc last))
-                                 (map #(encode (get data %) (next separators)))
-                                 (str/join (first separators))))
-              :else data))]
+            (let [{t :tag, s :val} (first separators)]
+              (cond
+                (vector? data) (->> data
+                                    (map #(encode % (next separators)))
+                                    (str/join s))
+                (map? data) (if (= :rep t)
+                              (encode data (next separators))
+                              (let [last (->> (keys data) (apply max))]
+                                (->> (range 1 (inc last))
+                                     (map #(encode (get data %) (next separators)))
+                                     (str/join s))))
+                :else data)))]
     (let [msh (some :MSH hl7)
           fld (get msh 1)
-          [cmp rep _esc sub] (seq (get msh 2))]
+          [cmp rep _esc sub] (seq (get msh 2))
+          separators (map (fn [t s] {:tag t, :val (str s)})
+                          [:fld :rep :cmp :sub]
+                          [fld rep cmp sub])]
       (str/join line-break
                 (for [seg hl7
                       :let [[id data] (first seg)]]
                   (if (= :MSH id)
                     (str (name id)
-                         (encode (dissoc data 1) [fld rep cmp sub]))
+                         (encode (dissoc data 1) separators))
                     (str (name id)
                          fld
-                         (encode data [fld rep cmp sub]))))))))
+                         (encode data separators))))))))
 
 (comment
-  (parse (.getBytes (str "MSH|^~\\&\r\n"
-                         "PID|||123456||Doe^John")))
-
   (format [{:MSH {1 "|", 2 "^~\\&"}}
            {:PID {3 [{1 "000197245",
                       4 {1 "NationalPN", 2 "2.16.840.1.113883.19.3", 3 "ISO"},
@@ -142,4 +145,7 @@
                       7 "H"},
                   13 [{1 "555 3542557", 2 "ORN", 3 "PH"}
                       {1 "555 3542558", 2 "ORN", 3 "FX"}],
-                  14 {1 "555 5557865", 2 "WPN", 3 "PH"}}}]))
+                  14 {1 "555 5557865", 2 "WPN", 3 "PH"}}}])
+
+  (format [{:MSH {2 "^~\\&", 1 "|"}}
+           {:PID {3 "123456", 5 {1 "Doe", 2 "John"}}}]))
