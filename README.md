@@ -4,14 +4,24 @@ Hl7v2 Clojure library.
 
 ## parse
 
-Parse hl7 message, any `io/reader` input is allowed. Returns a tuple `[seg map]` coll, `seg` is the three letters segment code and `map` is the segment data. The vector key may contain, in this order: `[:field :repetition :component :subcomponent]`.
+Parse hl7 message, any `io/reader` input is allowed.
 
 ``` clojure
-(hl7/parse (.getBytes (str "MSH|^~\\&|Test||||200701011539||ADT^A01^ADT A01||||123\r\n"
-                           "PID|||123456||Doe^John")))
+  (parse (.getBytes (str "MSH|^~\\&|Test||||200701011539||ADT^A01^ADT A01||||123\r\n"
+                         "PID|||123456||Doe^John")))
 
-;; => [["MSH" {[1] \|, [2] "^~\\&", [3] "Test", [7] "200701011539", [9] "ADT", [9 0 1] "A01", [9 0 2] "ADT A01", [13] "123"}]
-;;     ["PID" {[4] "123456", [6] "Doe", [6 0 1] "John"}]]
+  ;; => [{:MSH
+  ;;      {1 "|"
+  ;;       2 "^~\\&"
+  ;;       3 "Test"
+  ::       7 "200701011539"
+  ;;       9 {1 "ADT" 
+  ;;          2 "A01" 
+  ;;          3 "ADT A01"}
+  ;;       13 "123"}}
+  ;;     {:PID {3 "123456"
+  ;;            5 {1 "Doe"
+  ;;               2 "John"}}}]
 ```
 
 ## format
@@ -19,11 +29,17 @@ Parse hl7 message, any `io/reader` input is allowed. Returns a tuple `[seg map]`
 Encode data into hl7 string.
 
 ``` clojure
-(hl7/format [["MSH" {[1] \|, [2] "^~\\&", [3] "TestSendingSystem", [7] "200701011539", [9] "ADT", [9 0 1] "A01", [9 0 2] "ADT A01", [13] "123"}]
-             ["PID" {[4] "123456", [6] "Doe", [6 0 1] "John"}]])
+  (format [{:MSH
+            {7 "200701011539",
+             13 "123",
+             3 "Test",
+             2 "^~\\&",
+             9 {1 "ADT", 2 "A01", 3 "ADT A01"},
+             1 "|"}}
+           {:PID {3 "123456", 5 {1 "Doe", 2 "John"}}}])
 
-;; => MSH|^~\\&|TestSendingSystem||||200701011539||ADT^A01^ADT A01||||123\r\n
-;;    PID||||123456||Doe^John
+  ;; => "MSH|^~\\&|Test||||200701011539||ADT^A01^ADT A01||||123\r\n
+  ;;     PID|||123456||Doe^John"
 ```
 
 ---
