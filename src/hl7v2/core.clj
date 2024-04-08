@@ -27,7 +27,7 @@
                                  :head [1 1]})))
               (let [[fld & cseq] cseq
                     encoding (take-while (comp not #{fld \return \newline}) cseq)
-                    move-count (inc (count encoding))]
+                    move-count (count encoding)]
                 [{:MSH [nil (str fld) (apply str encoding)]}
                  (drop move-count cseq)
                  [1 move-count]])))
@@ -36,10 +36,11 @@
               (let [token (take-while (comp not (set (concat separators [\return \newline]))) cseq)
                     move-count (count token)
                     [separator & rest] (drop move-count cseq)]
-                (cons (when (seq token)
-                        (apply str token))
-                      (cons separator
-                            (lazy-seq (tokens separators rest)))))))]
+                (->> (lazy-seq (tokens separators rest))
+                     (cons separator)
+                     (cons (when (seq token)
+                             (apply str token)))
+                     (remove nil?)))))]
     (let [cseq (char-seq rdr)
           [seg cseq head] (msh cseq)
           [fld] (get-in seg [:MSH 1])
