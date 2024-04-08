@@ -44,10 +44,11 @@
     (let [cseq (char-seq rdr)
           [seg cseq head] (msh cseq)
           [fld] (get-in seg [:MSH 1])
-          [cmp rep esc sub] (get-in seg [:MSH 2])]
+          [cmp rep esc sub :as encoding] (get-in seg [:MSH 2])]
       (->> cseq
            (escape esc)
            (tokens [fld rep cmp sub])
+           (concat ["MSH" fld encoding])
            (vec)))))
 
 (defn- tokenize [^Reader rdr]
