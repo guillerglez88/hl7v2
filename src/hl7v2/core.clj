@@ -6,11 +6,67 @@
   (:import
    (java.io Reader)))
 
+(with-open [rdr (io/reader (.getBytes (str "MSH|^~\\&|TestSendingSystem||||200701011539||ADT^A01^ADT A01||||123\r\n"
+                                           "PID|||123456||Doe\\&Co.^John")))]
+  (letfn [(char-seq [^Reader rdr]
+            (let [ch (.read rdr)]
+              (when-not (= ch -1)
+                (cons (char ch) (lazy-seq (char-seq rdr))))))
+          (escape [esc cseq]
+            (let [[curr next & rest] cseq]
+              (when curr
+                (if (= esc curr)
+                  (cons (str curr next) (lazy-seq (escape esc rest)))
+                  (cons curr (lazy-seq (escape esc (cons next rest))))))))
+          (msh [cseq]
+            (let [[m s h & cseq] cseq]
+              (when-not (= [\M \S \H] [m s h])
+                (throw (ex-info "Unexpected segment"
+                                {:expected "MSH"
+                                 :actual (str m s h)
+                                 :head [1 1]})))
+              (let [[fld & cseq] cseq
+                    encoding (take-while (comp not #{fld \return \newline}) cseq)
+                    move-count (inc (count encoding))]
+                [{:MSH [nil (str fld) (apply str encoding)]}
+                 (drop move-count cseq)
+                 [1 move-count]])))
+          (tokens [separators cseq]
+            (when cseq
+              (let [token (take-while (comp not (set (concat separators [\return \newline]))) cseq)
+                    move-count (count token)
+                    [separator & rest] (drop move-count cseq)]
+                (cons (when (seq token)
+                        (apply str token))
+                      (cons separator
+                            (lazy-seq (tokens separators rest)))))))]
+    (let [cseq (char-seq rdr)
+          [seg cseq head] (msh cseq)
+          [fld] (get-in seg [:MSH 1])
+          [cmp rep esc sub] (get-in seg [:MSH 2])]
+      (->> cseq
+           (escape esc)
+           (tokens [fld rep cmp sub])
+           (vec)))))
+
 (defn- tokenize [^Reader rdr]
   (letfn [(char-seq [^Reader rdr]
             (let [ch (.read rdr)]
               (when-not (= ch -1)
-                (cons (char ch) (lazy-seq (char-seq rdr))))))]
+                (cons (char ch) (lazy-seq (char-seq rdr))))))
+          (msh [cseq]
+            (let [[m s h & cseq] cseq]
+              (when-not (= ["M" "S" "H"] [m s h])
+                (throw (ex-info "Unexpected segment"
+                                {:expected "MSH"
+                                 :actual (str m s h)
+                                 :head [1 1]})))
+              (let [[fld & cseq] cseq
+                    encoding (take-while (comp #{fld \return \newline} not) cseq)
+                    move-count (inc (count encoding))]
+                [{:MSH [fld (apply str)]}
+                 (drop move-count cseq)
+                 [1 move-count]])))]
     (let [[m s h fld cmp rep esc sub & rest] (char-seq rdr)
           seg (str m s h)
           encoding (str cmp rep esc sub)
