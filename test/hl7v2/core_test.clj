@@ -55,44 +55,55 @@
                                         "ORC|RE||T09-100442-RET-0^^OLIS_Site_ID^ISO|||||||||OLIST^BLAKE^DONALD^THOR^^^^L^921379\r\n"
                                         "OBR|0||T09-100442-RET-0^^OLIS_Site_ID^ISO|RET^RETICULOCYTE COUNT^HL79901 literal|||200905011106|||||||200905011106||OLIST^BLAKE^DONALD^THOR^^^^L^921379||7870279|7870279|T09-100442|MOHLTC|200905011130||B7|F||1^^^200905011106^^R\r\n"
                                         "OBX|1|ST|||Test Value")))))
-    (t/is (= [{:MSH {7 "20060501140010",
-                     1 "|",
-                     15 "ER",
-                     6 "Alpha Hospital",
-                     3 "Regional MPI",
-                     12 "2.4",
-                     2 "^~\\&",
-                     11 {1 "P", 2 "T"},
-                     9 {1 "ADT", 2 "A28"},
-                     5 "Master MPI",
-                     10 "3948375"}}
-              {:EVN {1 "A28",
-                     2 "20060501140008",
-                     5 {1 "000338475",
-                        3 "Arthur",
-                        2 "Author",
-                        9 {1 "Regional MPI", 2 "2.16.840.1.113883.19.201", 3 "ISO"},
-                        10 "L"},
-                     6 "20060501140008"}}
-              {:PID {7 "19750103",
-                     13 [{1 "555 3542557", 2 "ORN", 3 "PH"} {1 "555 3542558", 2 "ORN", 3 "FX"}],
-                     3 [{1 "000197245",
-                         4 {1 "NationalPN", 2 "2.16.840.1.113883.19.3", 3 "ISO"},
-                         5 "PN"}
-                        {1 "4532",
-                         4 {1 "Careful&CareClinic", 2 "2.16.840.1.113883.19.2.400566", 3 "ISO"},
-                         5 "PI"}
-                        {1 "3242346",
-                         4 {1 "GoodmanGP", 2 "2.16.840.1.113883.19.2.450998", 3 "ISO"},
-                         5 "PI"}],
-                     11 {1 {1 "Randomroad 23a", 2 "Randomroad", 3 "23a"},
-                         3 "Anytown",
-                         5 "1200",
-                         7 "H"},
-                     5 {1 "Patient", 2 "Particia", 7 "L"},
-                     14 {1 "555 5557865", 2 "WPN", 3 "PH"},
-                     8 "F"}}
-              {:PV1 {2 "N", 3 ""}}]
+    (t/is (= [{:MSH
+               {1 "|",
+                2 "^~\\&",
+                3 "Regional MPI",
+                5 "Master MPI",
+                6 "Alpha Hospital",
+                7 "20060501140010",
+                9 {1 "ADT", 2 "A28"},
+                10 "3948375",
+                11 {1 "P", 2 "T"},
+                12 "2.4",
+                15 "ER"}}
+              {:EVN
+               {1 "A28",
+                2 "20060501140008",
+                5
+                {1 "000338475",
+                 2 "Author",
+                 3 "Arthur",
+                 9 {1 "Regional MPI", 2 "2.16.840.1.113883.19.201", 3 "ISO"},
+                 10 "L"},
+                6 "20060501140008"}}
+              {:PID
+               {3
+                {0
+                 {1 "000197245",
+                  4 {1 "NationalPN", 2 "2.16.840.1.113883.19.3", 3 "ISO"},
+                  5 "PN"},
+                 1
+                 {1 "4532",
+                  4 {1 "Careful\\&CareClinic", 2 "2.16.840.1.113883.19.2.400566", 3 "ISO"},
+                  5 "PI"},
+                 2
+                 {1 "3242346",
+                  4 {1 "GoodmanGP", 2 "2.16.840.1.113883.19.2.450998", 3 "ISO"},
+                  5 "PI"}},
+                5 {1 "Patient", 2 "Particia", 7 "L"},
+                7 "19750103",
+                8 "F",
+                11
+                {1 {1 "Randomroad 23a", 2 "Randomroad", 3 "23a"},
+                 3 "Anytown",
+                 5 "1200",
+                 7 "H"},
+                13
+                {0 {1 "555 3542557", 2 "ORN", 3 "PH"},
+                 1 {1 "555 3542558", 2 "ORN", 3 "FX"}},
+                14 {1 "555 5557865", 2 "WPN", 3 "PH"}}}
+              {:PV1 {2 "N"}}]
              (sut/parse (.getBytes (str "MSH|^~\\&|Regional MPI||Master MPI|Alpha Hospital|20060501140010||ADT^A28|3948375|P^T|2.4|||ER\r\n"
                                         "EVN|A28|20060501140008|||000338475^Author^Arthur^^^^^^Regional MPI&2.16.840.1.113883.19.201&ISO^L|20060501140008\r\n"
                                         "PID|||000197245^^^NationalPN&2.16.840.1.113883.19.3&ISO^PN~4532^^^Careful\\&CareClinic&2.16.840.1.113883.19.2.400566&ISO^PI~3242346^^^GoodmanGP&2.16.840.1.113883.19.2.450998&ISO^PI||Patient^Particia^^^^^L||19750103|F|||Randomroad 23a&Randomroad&23a^^Anytown^^1200^^H||555 3542557^ORN^PH~555 3542558^ORN^FX|555 5557865^WPN^PH\r\n"
@@ -109,7 +120,7 @@
     (t/is (= [{:MSH {2 "^~\\&", 1 "|"}}
               {:PID {3 "123456", 5 {1 "Doe", 2 "John"}}}]
              (sut/parse (.getBytes (str "MSH|^~\\&\r\n"
-                         "PID|||123456||Doe^John")))))))
+                                        "PID|||123456||Doe^John")))))))
 
 (t/deftest format-test
   (t/testing "Format hl7 message"
