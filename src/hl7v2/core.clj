@@ -112,7 +112,10 @@
                                           (drop offset)
                                           (map (fn [d]
                                                  (if (map? d)
-                                                   (or (->> d (into {}) val-fn) d)
+                                                   (let [{k :kind :as d} (into {} d)]
+                                                     (if k
+                                                       (or (val-fn d) d)
+                                                       d))
                                                    d)))
                                           (first))
                                      (->> data
@@ -171,3 +174,4 @@
                     (str (name id)
                          fld
                          (encode data separators))))))))
+
