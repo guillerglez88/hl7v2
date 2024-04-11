@@ -119,7 +119,7 @@
                                         "PID|||123456||Doe^John")))))
     (t/is (= [{:MSH {2 "^~\\&", 1 "|"}}
               {:PID {3 "123456", 5 {1 "Doe", 2 "John"}}}]
-             (sut/parse (.getBytes (str "MSH|^~\\&\r\n"
+             (sut/parse (.getBytes (str "MSH|^~\\&|\r\n"
                                         "PID|||123456||Doe^John")))))))
 
 (t/deftest format-test
