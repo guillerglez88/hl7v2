@@ -108,7 +108,14 @@
                                         "EVN|A28|20060501140008|||000338475^Author^Arthur^^^^^^Regional MPI&2.16.840.1.113883.19.201&ISO^L|20060501140008\r\n"
                                         "PID|||000197245^^^NationalPN&2.16.840.1.113883.19.3&ISO^PN~4532^^^Careful\\&CareClinic&2.16.840.1.113883.19.2.400566&ISO^PI~3242346^^^GoodmanGP&2.16.840.1.113883.19.2.450998&ISO^PI||Patient^Particia^^^^^L||19750103|F|||Randomroad 23a&Randomroad&23a^^Anytown^^1200^^H||555 3542557^ORN^PH~555 3542558^ORN^FX|555 5557865^WPN^PH\r\n"
                                         "PV1||N|")))))
-    (t/is (= [{:MSH {1 "|", 2 "^~\\&"}} {:PID {3 "123456", 5 {1 "Doe", 2 "John"}}}]
+    (t/is (= [{:MSH
+               {1 "|",
+                2 "^~\\&",
+                3 "TestSendingSystem",
+                7 "200701011539",
+                9 {1 "ADT", 2 "A01", 3 "ADT A01"},
+                13 "123"}}
+              {:PID {3 "123456", 5 {1 "Doe", 2 "John"}}}]
              (sut/parse (.getBytes (str "MSH|^~\\&|TestSendingSystem||||200701011539||ADT^A01^ADT A01||||123\r\n"
                                         "PID|||123456||Doe^John")))))
     (t/is (= [{:MSH {1 "|", 2 "^~\\&"}} {:PID {3 "123456", 5 {1 "Doe", 2 "John"}}}]
