@@ -9,19 +9,37 @@ Parse hl7 message, any `io/reader` input is allowed.
 ``` clojure
   (parse (.getBytes (str "MSH|^~\\&|Test||||200701011539||ADT^A01^ADT A01||||123\r\n"
                          "PID|||123456||Doe^John")))
-
   ;; => [{:MSH
-  ;;      {1 "|"
-  ;;       2 "^~\\&"
-  ;;       3 "Test"
-  ;;       7 "200701011539"
-  ;;       9 {1 "ADT" 
-  ;;          2 "A01" 
-  ;;          3 "ADT A01"}
+  ;;      {1 "|",
+  ;;       2 "^~\\&",
+  ;;       3 "Test",
+  ;;       7 "200701011539",
+  ;;       9 {1 "ADT", 2 "A01", 3 "ADT A01"},
   ;;       13 "123"}}
-  ;;     {:PID {3 "123456"
-  ;;            5 {1 "Doe"
-  ;;               2 "John"}}}]
+  ;;     {:PID {3 "123456", 5 {1 "Doe", 2 "John"}}}]
+```
+
+Ability to output token data. Sample token:
+
+```clojure
+{:value "ADT"
+ :kind :data
+ :location {:from [1 31]
+            :to   [1 34]}}
+```
+
+```clojure
+  (parse (.getBytes (str "MSH|^~\\&|Test||||200701011539||ADT^A01^ADT A01||||123\r\n"
+                         "PID|||123456||Doe^John"))
+         :val-fn (juxt :value :location))
+  ;; => [{:MSH
+  ;;      {1 ["|" {:from [1 3], :to [1 4]}],
+  ;;       2 ["^~\\&" {:from [1 4], :to [1 8]}],
+  ;;       3 ["Test" {:from [1 9], :to [1 13]}],
+  ;;       7 ["200701011539" {:from [1 17], :to [1 29]}],
+  ;;       9 [nil nil],
+  ;;       13 ["123" {:from [1 50], :to [1 53]}]}}
+  ;;     {:PID {3 ["123456" {:from [2 6], :to [2 12]}], 5 [nil nil]}}]
 ```
 
 ## format
