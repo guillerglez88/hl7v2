@@ -27,14 +27,20 @@
                 :repetition rep
                 :subcomponent sub
                 :escape esc}))
-           (from-map [hl7]
-             (let [msh (some :MSH hl7)
-                   str-msh (str "MSH" (msh 1) (msh 2) (msh 1))]
-               (with-open [rx (io/reader (.getBytes str-msh))]
-                 (encoding rx))))]
+           (from-msh [msh]
+             (with-open [rx (io/reader
+                             (.getBytes
+                              (str "MSH"
+                                   (msh 1)
+                                   (msh 2)
+                                   (msh 1))))]
+               (encoding rx)))]
      (cond
        (instance? Reader input) (from-reader input)
-       (vector? input) (from-map input)
+       (vector? input) (from-msh (some :MSH input))
+       (map? input) (from-msh (:MSH input))
+       (string? input) (with-open [rx (io/reader (.getBytes input))]
+                         (from-reader rx))
        :else (throw (ex-info "Unknown input type" (type input)))))))
 
 (defn tokenize [^Reader rdr encoding]
@@ -187,12 +193,16 @@
                          (encode data separators))))))))
 
 (comment
+  (encoding [{:MSH {1 "|", 2 "^~\\&"}}])
+  (encoding {:MSH {1 "|", 2 "^~\\&"}})
+  (encoding "MSH|^~\\&|")
+
   (let [hl7 (str "MSH|^~\\&|ULTRA|TML|OLIS|OLIS|200905011130||ORU^R01|20169838-v25|T|2.5\r\n"
                  "PID|||7005728^^^TML^MR||TEST^RACHEL^DIAMOND||19310313|F|||200 ANYWHERE ST^^TORONTO^ON^M6G 2T9||(416)888-8888||||||1014071185^KR\r\n"
                  "PV1|1||OLIS||||OLIST^BLAKE^DONALD^THOR^^^^^921379^^^^OLIST\r\n"
                  "ORC|RE||T09-100442-RET-0^^OLIS_Site_ID^ISO|||||||||OLIST^BLAKE^DONALD^THOR^^^^L^921379\r\n"
                  "OBR|0||T09-100442-RET-0^^OLIS_Site_ID^ISO|RET^RETICULOCYTE COUNT^HL79901 literal|||200905011106|||||||200905011106||OLIST^BLAKE^DONALD^THOR^^^^L^921379||7870279|7870279|T09-100442|MOHLTC|200905011130||B7|F||1^^^200905011106^^R\r\n"
                  "OBX|1|ST|||Test Value")]
-    (encoding (parse (.getBytes hl7))))
+    (parse (.getBytes hl7)))
 
   :.)
