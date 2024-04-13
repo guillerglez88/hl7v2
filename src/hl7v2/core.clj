@@ -96,48 +96,48 @@
 
 (defn parse [x & {:keys [val-fn] :or {val-fn :value}}]
   (with-open [rdr (io/reader x)]
-    (letfn [(nest [sep [h & t :as tokens]]
-              (let [next-level (fn [sep offset tokens]
-                                 (let [data (->> tokens
-                                                 (partition-by (comp #{sep} :kind))
-                                                 (mapcat (fn [p]
-                                                           (if (= #{sep} (set (map :kind p)))
-                                                             (repeat (dec (count p)) (list))
-                                                             [p])))
-                                                 (map (partial nest sep))
-                                                 (concat (repeat offset nil))
-                                                 (into []))]
-                                   (if (= (inc offset) (count data))
-                                     (->> data
-                                          (drop offset)
-                                          (map (fn [d]
-                                                 (if (map? d)
-                                                   (let [{k :kind :as d} (into {} d)]
-                                                     (if k
-                                                       (or (val-fn d) d)
-                                                       d))
-                                                   d)))
-                                          (first))
-                                     (->> data
-                                          (map vector (range))
-                                          (remove (comp nil? second))
-                                          (into (sorted-map))))))]
-                (when (seq tokens)
-                  (case sep
-                    :message (vals (next-level :segment 0 tokens))
-                    :segment (let [seg (keyword (:value h))]
-                               (if (= :MSH seg)
-                                 (let [data (next-level :field 2 (rest t))]
-                                   (if (map? data)
-                                     {seg (assoc data 1 (val-fn (first t)))}
-                                     {seg {1 (str (val-fn (first t)))
-                                           2 data}}))
-                                 {seg (next-level :field 1 t)}))
-                    :field (next-level :repetition 0 tokens)
-                    :repetition (next-level :component 1 tokens)
-                    :component (next-level :subcomponent 1 tokens)
-                    :subcomponent (val-fn h)))))]
-
+    (letfn [(seq-data->map [offset val-fn data]
+              (if (= (inc offset) (count data))
+                (->> data
+                     (drop offset)
+                     (map (fn [d]
+                            (if (map? d)
+                              (let [{k :kind :as d} (into {} d)]
+                                (if k
+                                  (or (val-fn d) d)
+                                  d))
+                              d)))
+                     (first))
+                (->> data
+                     (map vector (range))
+                     (remove (comp nil? second))
+                     (into (sorted-map)))))
+            (dive [sep offset nest-fn tokens]
+              (->> tokens
+                   (partition-by (comp #{sep} :kind))
+                   (mapcat (fn [p]
+                             (if (= #{sep} (set (map :kind p)))
+                               (repeat (dec (count p)) (list))
+                               [p])))
+                   (map (partial nest-fn sep))
+                   (concat (repeat offset nil))
+                   (seq-data->map offset val-fn)))
+            (nest [sep [h & t :as tokens]]
+              (when (seq tokens)
+                (case sep
+                  :message (vals (dive :segment 0 nest tokens))
+                  :segment (let [seg (keyword (:value h))]
+                             (if (= :MSH seg)
+                               (let [data (dive :field 2 nest (rest t))]
+                                 (if (map? data)
+                                   {seg (assoc data 1 (val-fn (first t)))}
+                                   {seg {1 (str (val-fn (first t)))
+                                         2 data}}))
+                               {seg (dive :field 1 nest t)}))
+                  :field (dive :repetition 0 nest tokens)
+                  :repetition (dive :component 1 nest tokens)
+                  :component (dive :subcomponent 1 nest tokens)
+                  :subcomponent (val-fn h))))]
       (.mark rdr 32)
       (let [encoding (encoding rdr)]
         (.reset rdr)
@@ -175,3 +175,12 @@
                          fld
                          (encode data separators))))))))
 
+(comment
+  (parse (.getBytes (str "MSH|^~\\&|ULTRA|TML|OLIS|OLIS|200905011130||ORU^R01|20169838-v25|T|2.5\r\n"
+                         "PID|||7005728^^^TML^MR||TEST^RACHEL^DIAMOND||19310313|F|||200 ANYWHERE ST^^TORONTO^ON^M6G 2T9||(416)888-8888||||||1014071185^KR\r\n"
+                         "PV1|1||OLIS||||OLIST^BLAKE^DONALD^THOR^^^^^921379^^^^OLIST\r\n"
+                         "ORC|RE||T09-100442-RET-0^^OLIS_Site_ID^ISO|||||||||OLIST^BLAKE^DONALD^THOR^^^^L^921379\r\n"
+                         "OBR|0||T09-100442-RET-0^^OLIS_Site_ID^ISO|RET^RETICULOCYTE COUNT^HL79901 literal|||200905011106|||||||200905011106||OLIST^BLAKE^DONALD^THOR^^^^L^921379||7870279|7870279|T09-100442|MOHLTC|200905011130||B7|F||1^^^200905011106^^R\r\n"
+                         "OBX|1|ST|||Test Value")))
+
+  :.)
