@@ -11,20 +11,31 @@
     (when-not (= ch -1)
       (cons (char ch) (lazy-seq (char-seq rdr))))))
 
-(defn encoding [^Reader rdr]
-  (let [cseq (char-seq rdr)
-        [m s h fld cmp rep esc sub] cseq
-        [ret nli] [\return \newline]]
-    (when-not (= [\M \S \H] [m s h])
-      (throw (ex-info "Unexpected segment"
-                      {:expected "MSH"
-                       :actual (str m s h)})))
-    {:segment [ret nli]
-     :field fld
-     :component cmp
-     :repetition rep
-     :subcomponent sub
-     :escape esc}))
+(defn encoding
+  ([input]
+   (letfn [(from-reader [^Reader rx]
+             (let [cseq (char-seq rx)
+                   [m s h fld cmp rep esc sub] cseq
+                   [ret nli] [\return \newline]]
+               (when-not (= [\M \S \H] [m s h])
+                 (throw (ex-info "Unexpected segment"
+                                 {:expected "MSH"
+                                  :actual (str m s h)})))
+               {:segment [ret nli]
+                :field fld
+                :component cmp
+                :repetition rep
+                :subcomponent sub
+                :escape esc}))
+           (from-map [hl7]
+             (let [msh (some :MSH hl7)
+                   str-msh (str "MSH" (msh 1) (msh 2) (msh 1))]
+               (with-open [rx (io/reader (.getBytes str-msh))]
+                 (encoding rx))))]
+     (cond
+       (instance? Reader input) (from-reader input)
+       (vector? input) (from-map input)
+       :else (throw (ex-info "Unknown input type" (type input)))))))
 
 (defn tokenize [^Reader rdr encoding]
   (letfn [(escape [esc start cseq]
@@ -176,11 +187,12 @@
                          (encode data separators))))))))
 
 (comment
-  (parse (.getBytes (str "MSH|^~\\&|ULTRA|TML|OLIS|OLIS|200905011130||ORU^R01|20169838-v25|T|2.5\r\n"
-                         "PID|||7005728^^^TML^MR||TEST^RACHEL^DIAMOND||19310313|F|||200 ANYWHERE ST^^TORONTO^ON^M6G 2T9||(416)888-8888||||||1014071185^KR\r\n"
-                         "PV1|1||OLIS||||OLIST^BLAKE^DONALD^THOR^^^^^921379^^^^OLIST\r\n"
-                         "ORC|RE||T09-100442-RET-0^^OLIS_Site_ID^ISO|||||||||OLIST^BLAKE^DONALD^THOR^^^^L^921379\r\n"
-                         "OBR|0||T09-100442-RET-0^^OLIS_Site_ID^ISO|RET^RETICULOCYTE COUNT^HL79901 literal|||200905011106|||||||200905011106||OLIST^BLAKE^DONALD^THOR^^^^L^921379||7870279|7870279|T09-100442|MOHLTC|200905011130||B7|F||1^^^200905011106^^R\r\n"
-                         "OBX|1|ST|||Test Value")))
+  (let [hl7 (str "MSH|^~\\&|ULTRA|TML|OLIS|OLIS|200905011130||ORU^R01|20169838-v25|T|2.5\r\n"
+                 "PID|||7005728^^^TML^MR||TEST^RACHEL^DIAMOND||19310313|F|||200 ANYWHERE ST^^TORONTO^ON^M6G 2T9||(416)888-8888||||||1014071185^KR\r\n"
+                 "PV1|1||OLIS||||OLIST^BLAKE^DONALD^THOR^^^^^921379^^^^OLIST\r\n"
+                 "ORC|RE||T09-100442-RET-0^^OLIS_Site_ID^ISO|||||||||OLIST^BLAKE^DONALD^THOR^^^^L^921379\r\n"
+                 "OBR|0||T09-100442-RET-0^^OLIS_Site_ID^ISO|RET^RETICULOCYTE COUNT^HL79901 literal|||200905011106|||||||200905011106||OLIST^BLAKE^DONALD^THOR^^^^L^921379||7870279|7870279|T09-100442|MOHLTC|200905011130||B7|F||1^^^200905011106^^R\r\n"
+                 "OBX|1|ST|||Test Value")]
+    (encoding (parse (.getBytes hl7))))
 
   :.)
