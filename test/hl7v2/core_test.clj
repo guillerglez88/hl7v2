@@ -3,6 +3,11 @@
    [hl7v2.core :as sut]
    [clojure.test :as t]))
 
+(def ORU_R01
+  (delay
+    (read-string
+     (slurp "test/hl7v2/data/ORU_R01.edn"))))
+
 (t/deftest parse-test
   (t/testing "Parse hl7 string"
     (t/is (= [{:MSH
@@ -138,3 +143,62 @@
                   "PID|||123456||Doe^John")
              (sut/format [{:MSH {2 "^~\\&", 1 "|"}}
                           {:PID {3 "123456", 5 {1 "Doe", 2 "John"}}}])))))
+
+(t/deftest structure-test
+  (t/testing "Structure parsed message according to trigger-event"
+    (t/is (= {:ORU_R01
+              [{:MSH
+                {1 "|",
+                 2 "^~\\&",
+                 3 "ULTRA",
+                 4 "TML",
+                 5 "OLIS",
+                 6 "OLIS",
+                 7 "200905011130",
+                 9 {1 "ORU", 2 "R01"},
+                 10 "20169838-v25",
+                 11 "T",
+                 12 "2.5"}}
+               {:PATIENT-RESULTS
+                [{:PATIENT
+                  [{:PID
+                    {3 {1 "7005728", 4 "TML", 5 "MR"},
+                     5 {1 "TEST", 2 "RACHEL", 3 "DIAMOND"},
+                     7 "19310313",
+                     8 "F",
+                     11 {1 "200 ANYWHERE ST", 3 "TORONTO", 4 "ON", 5 "M6G 2T9"},
+                     13 "(416)888-8888",
+                     19 {1 "1014071185", 2 "KR"}}}
+                   {:VISIT
+                    [{:PV1
+                      {1 "1",
+                       3 "OLIS",
+                       7
+                       {1 "OLIST",
+                        2 "BLAKE",
+                        3 "DONALD",
+                        4 "THOR",
+                        9 "921379",
+                        13 "OLIST"}}}]}]}
+                 {:ORDER-OBSERVATION
+                  [{:ORC
+                    {1 "RE",
+                     3 {1 "T09-100442-RET-0", 3 "OLIS_Site_ID", 4 "ISO"},
+                     12 {1 "OLIST", 2 "BLAKE", 3 "DONALD", 4 "THOR", 8 "L", 9 "921379"}}}
+                   {:OBR
+                    {1 "0",
+                     3 {1 "T09-100442-RET-0", 3 "OLIS_Site_ID", 4 "ISO"},
+                     4 {1 "RET", 2 "RETICULOCYTE COUNT", 3 "HL79901 literal"},
+                     7 "200905011106",
+                     14 "200905011106",
+                     16 {1 "OLIST", 2 "BLAKE", 3 "DONALD", 4 "THOR", 8 "L", 9 "921379"},
+                     18 "7870279",
+                     19 "7870279",
+                     20 "T09-100442",
+                     21 "MOHLTC",
+                     22 "200905011130",
+                     24 "B7",
+                     25 "F",
+                     27 {1 "1", 4 "200905011106", 6 "R"}}}
+                   {:OBSERVATION [{:OBX {1 "1", 2 "ST", 5 "Test Value"}}]}]}]}]}
+             (sut/structure @ORU_R01 (sut/parse "test/hl7v2/data/oru-r01.hl7"))))))
