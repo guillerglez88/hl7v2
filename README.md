@@ -157,7 +157,7 @@ Encode data into hl7 string.
 
 ## structure
 
-Structure parsed hl7 according to a message structure. Structure is a trigger-event, declared using hiccup like format. The 
+Structure parsed hl7 according to a message structure. Structure is a trigger-event, declared using hiccup-like format. 
 
 ```clojure
 (def ORU_R01 [:ORU_R01 {:version "2.5.1"}
