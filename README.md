@@ -2,6 +2,10 @@
 
 Hl7v2 Clojure library.
 
+```
+com.github.guillerglez88/hl7v2 {:git/tag "0.0.1-SNAPSHOT", :git/sha "17efce5"}
+```
+
 ```clojure
 (require '[hl7v2.core :as hl7])
 ```
