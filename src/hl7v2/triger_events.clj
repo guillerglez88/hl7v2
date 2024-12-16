@@ -6,7 +6,7 @@
    [hl7v2.complex :refer [clean]]
    [clojure.string :as str]))
 
-(defn parse-schema [x]
+(defn parse-xsd [x]
   (with-open [rx (io/reader x)]
     (letfn [(tag [n]
               (when n
@@ -34,27 +34,33 @@
                     n))
                 (xml/parse rx)))))
 
-#_#_#_#_:required (when-let [min (get-in n [:attrs :minOccurs])]
-                    (> (parse-long min) 0))
-    :repeats (when-let [max (get-in n [:attrs :maxOccurs])]
-               (or (= "unbounded" max)
-                   (> (parse-long max) 0)))
+(defn xsd-schema-root [msg]
+  (->> (drop 1 msg)
+       (remove (comp #{"include"} first))
+       (filter #(= 1 (count (str/split (first %) #"\."))))
+       (first)))
 
-(fn [[_schema & content]]
-  (let [index (->> content
-                   (map (juxt first rest))
-                   (into {}))]
-    (->> (for [[tag attrs] content
-               :when (and (map? attrs)
-                          (some? (:type attrs)))]
-           (->> (get index (:type attrs))
-                (cons tag)
-                (into [])))
-         (into []))))
+(defn full-node [node index]
+  (let [[tag attrs] node]
+    (cond
+      (:type attrs) (->> (for [node (get index (:type attrs))]
+                           (full-node node index))
+                         (remove string?)
+                         (concat [(last (str/split tag #"\.")) attrs])
+                         (into []))
+      (get index tag) (let [[t a & more] (get index tag)]
+                        (full-node (concat [t (merge attrs a)] more) index))
+      :else node)))
+
+(defn parse-schema [x]
+  (let [[_root & content :as msg] (parse-xsd x)
+        index (into {} (map (juxt first identity) content))]
+    (-> (xsd-schema-root msg)
+        (full-node index))))
 
 (comment
 
-  (parse-schema (io/file "test/hl7v2/data/ACK.xsd"))
+  (parse-xsd (io/file "test/hl7v2/data/ACK.xsd"))
   ;;=> ["schema"
   ;;    ["include" {:schema "segments.xsd"}]
   ;;    ["ACK.CONTENT"
@@ -63,6 +69,14 @@
   ;;     ["MSA" {:min "1", :max "1"}]
   ;;     ["ERR" {:min "0", :max "unbounded"}]]
   ;;    ["ACK" {:type "ACK.CONTENT"}]]
+
+  (parse-schema (io/file "test/hl7v2/data/ACK.xsd"))
+  ;;=> ["ACK"
+  ;;    {:type "ACK.CONTENT"}
+  ;;    ["MSH" {:min "1", :max "1"}]
+  ;;    ["SFT" {:min "0", :max "unbounded"}]
+  ;;    ["MSA" {:min "1", :max "1"}]
+  ;;    ["ERR" {:min "0", :max "unbounded"}]]
 
   (parse-schema (io/file "test/hl7v2/data/ORU_R01.xsd"))
 
