@@ -41,15 +41,16 @@
        (first)))
 
 (defn full-node [node index]
-  (let [[tag attrs] node]
+  (let [[tag attrs & content] node]
     (cond
       (:type attrs) (->> (for [node (get index (:type attrs))]
                            (full-node node index))
                          (remove string?)
-                         (concat [(last (str/split tag #"\.")) attrs])
+                         (concat [(keyword (last (str/split tag #"\."))) attrs])
                          (into []))
-      (get index tag) (let [[t a & more] (get index tag)]
-                        (full-node (concat [t (merge attrs a)] more) index))
+      (get index tag) (let [[t a & content] (get index tag)]
+                        (full-node (concat [t (merge attrs a)] content) index))
+      (not (seq content)) [(keyword tag) (assoc attrs :type tag)]
       :else node)))
 
 (defn parse-schema [x]
