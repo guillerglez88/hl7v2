@@ -260,8 +260,8 @@ Plan:
   - [X] Tokenization
   - [X] Message Parser/formatter
   - [X] Value token info
-- [ ] Trigger Events api
-  - [ ] Message xsd to hiccup
+- [-] Trigger Events api
+  - [X] Message xsd to hiccup
   - [ ] DataType xsd to hiccup
   - [ ] Render er7 into hiccup
 - [ ] Message as a db

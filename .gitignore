@@ -16,3 +16,4 @@ resources/.secrets.edn
 /test-results.xml
 /output
 /.schemas
+/tmp
