@@ -2,9 +2,9 @@
   (:require
    [clojure.data.xml :as xml]
    [clojure.java.io :as io]
+   [clojure.string :as str]
    [clojure.walk :refer [postwalk]]
-   [hl7v2.complex :refer [clean]]
-   [clojure.string :as str])
+   [hl7v2.complex :refer [clean]])
   (:import
    (java.text Normalizer Normalizer$Form)))
 
@@ -32,6 +32,78 @@
        (filter vector?)
        (map (juxt first identity))
        (into {})))
+
+(defn node-tag [node]
+  (when (and (vector? node)
+             (string? (first node)))
+    (first node)))
+
+(defn node-attrs [node]
+  (when (and (vector? node)
+             (map? (second node)))
+    (second node)))
+
+(defn node-children [node]
+  (when (vector? node)
+    (->> node
+         (drop (if (node-attrs node) 2 1))
+         (into []))))
+
+(defn content-node? [node]
+  (when-let [attrs (node-attrs node)]
+    (= (str (node-tag node) ".CONTENT")
+       (:type attrs))))
+
+(defn sequence-node? [node]
+  (when-let [tag (node-tag node)]
+    (= "sequence" tag)))
+
+(defn group-node? [node]
+  (when-let [tag (node-tag node)]
+    (and (> (count (str/split tag #"\.")) 1)
+         (when-let [attrs (node-attrs node)]
+           (some? (:minOccurs attrs))))))
+
+(letfn [(load-schema []
+          (let [files ["tmp/HL7-xml v2.5.1/ORU_R01.xsd"
+                       "tmp/HL7-xml v2.5.1/segments.xsd"
+                       "tmp/HL7-xml v2.5.1/datatypes.xsd"
+                       "tmp/HL7-xml v2.5.1/fields.xsd"]]
+            (->> (for [f files]
+                   (-> (io/file f)
+                       (parse-xsd)
+                       (index-schema)))
+                 (apply merge))))
+        (fill-node [node index]
+          (let [tag (node-tag node)
+                attrs (node-attrs node)
+                children (node-children node)]
+            (cond
+              (content-node? node) (let [content (get index (:type attrs))
+                                         node (fill-node content index)]
+                                     (->> (node-children node)
+                                          (mapcat (fn [n]
+                                                    (if (sequence-node? n)
+                                                      (fill-node n index)
+                                                      [(fill-node n index)])))
+                                          (concat [tag (merge attrs (dissoc (node-attrs node) :type))])
+                                          (into [])))
+              (sequence-node? node) (->> (for [node children]
+                                           (fill-node node index))
+                                         (into []))
+              (group-node? node) (let [group (get index tag)
+                                       node (fill-node group index)
+                                       tag (last (str/split tag #"\."))]
+                                   (->> (node-children node)
+                                        (concat [tag (merge attrs (dissoc (node-attrs node) :type))])
+                                        (into [])))
+
+              :else node)))]
+  (let [tgr-evt "ORU_R01"
+        index (load-schema)
+        root (get index tgr-evt)]
+    (fill-node root index)
+    #_(get index "ORU_R01.CONTENT")))
 
 (defn sequence-item [sequence]
   [(first (str/split (first sequence) #"\."))
@@ -88,19 +160,19 @@
       (parse-xsd)
       (index-schema)
       (get "PID.CONTENT")
-      (sequence-item))
+      #_(sequence-item))
 
   (-> (io/file "tmp/HL7-xml v2.5.1/datatypes.xsd")
       (parse-xsd)
       (index-schema)
       (get "XPN")
-      (sequence-item))
+      #_(sequence-item))
 
   (-> (io/file "tmp/HL7-xml v2.5.1/datatypes.xsd")
       (parse-xsd)
       (index-schema)
       (get "FN")
-      (sequence-item))
+      #_(sequence-item))
 
   (-> (io/file "tmp/HL7-xml v2.5.1/fields.xsd")
       (parse-xsd)
