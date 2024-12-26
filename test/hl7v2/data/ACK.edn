@@ -1,0 +1,314 @@
+[:ACK
+ [:MSH
+  {:required true, :repeats false}
+  [:FieldSeparator
+   {:required true, :repeats false, :data-type :string}]
+  [:EncodingCharacters
+   {:required true, :repeats false, :data-type :string}]
+  [:SendingApplication
+   {:required false, :repeats false}
+   [:NamespaceId {:required false, :repeats false, :data-type :string}]
+   [:UniversalId {:required false, :repeats false, :data-type :string}]
+   [:UniversalIdType
+    {:required false, :repeats false, :data-type :string}]]
+  [:SendingFacility
+   {:required false, :repeats false}
+   [:NamespaceId {:required false, :repeats false, :data-type :string}]
+   [:UniversalId {:required false, :repeats false, :data-type :string}]
+   [:UniversalIdType
+    {:required false, :repeats false, :data-type :string}]]
+  [:ReceivingApplication
+   {:required false, :repeats false}
+   [:NamespaceId {:required false, :repeats false, :data-type :string}]
+   [:UniversalId {:required false, :repeats false, :data-type :string}]
+   [:UniversalIdType
+    {:required false, :repeats false, :data-type :string}]]
+  [:ReceivingFacility
+   {:required false, :repeats false}
+   [:NamespaceId {:required false, :repeats false, :data-type :string}]
+   [:UniversalId {:required false, :repeats false, :data-type :string}]
+   [:UniversalIdType
+    {:required false, :repeats false, :data-type :string}]]
+  [:DateortimeOfMessage
+   {:required true, :repeats false}
+   [:Time {:required true, :repeats false, :data-type :string}]
+   [:DegreeOfPrecision
+    {:required false, :repeats false, :data-type :string}]]
+  [:Security {:required false, :repeats false, :data-type :string}]
+  [:MessageType
+   {:required true, :repeats false}
+   [:MessageCode {:required true, :repeats false, :data-type :string}]
+   [:TriggerEvent {:required true, :repeats false, :data-type :string}]
+   [:MessageStructure
+    {:required true, :repeats false, :data-type :string}]]
+  [:MessageControlId
+   {:required true, :repeats false, :data-type :string}]
+  [:ProcessingId
+   {:required true, :repeats false}
+   [:ProcessingId
+    {:required false, :repeats false, :data-type :string}]
+   [:ProcessingMode
+    {:required false, :repeats false, :data-type :string}]]
+  [:VersionId
+   {:required true, :repeats false}
+   [:VersionId {:required false, :repeats false, :data-type :string}]
+   [:InternationalizationCode
+    {:required false, :repeats false}
+    [:Identifier {:required false, :repeats false, :data-type :string}]
+    [:Text {:required false, :repeats false, :data-type :string}]
+    [:NameOfCodingSystem
+     {:required false, :repeats false, :data-type :string}]
+    [:AlternateIdentifier
+     {:required false, :repeats false, :data-type :string}]
+    [:AlternateText
+     {:required false, :repeats false, :data-type :string}]
+    [:NameOfAlternateCodingSystem
+     {:required false, :repeats false, :data-type :string}]]
+   [:InternationalVersionId
+    {:required false, :repeats false}
+    [:Identifier {:required false, :repeats false, :data-type :string}]
+    [:Text {:required false, :repeats false, :data-type :string}]
+    [:NameOfCodingSystem
+     {:required false, :repeats false, :data-type :string}]
+    [:AlternateIdentifier
+     {:required false, :repeats false, :data-type :string}]
+    [:AlternateText
+     {:required false, :repeats false, :data-type :string}]
+    [:NameOfAlternateCodingSystem
+     {:required false, :repeats false, :data-type :string}]]]
+  [:SequenceNumber
+   {:required false, :repeats false, :data-type :string}]
+  [:ContinuationPointer
+   {:required false, :repeats false, :data-type :string}]
+  [:AcceptAcknowledgmentType
+   {:required false, :repeats false, :data-type :string}]
+  [:ApplicationAcknowledgmentType
+   {:required false, :repeats false, :data-type :string}]
+  [:CountryCode {:required false, :repeats false, :data-type :string}]
+  [:CharacterSet {:required false, :repeats true, :data-type :string}]
+  [:PrincipalLanguageOfMessage
+   {:required false, :repeats false}
+   [:Identifier {:required false, :repeats false, :data-type :string}]
+   [:Text {:required false, :repeats false, :data-type :string}]
+   [:NameOfCodingSystem
+    {:required false, :repeats false, :data-type :string}]
+   [:AlternateIdentifier
+    {:required false, :repeats false, :data-type :string}]
+   [:AlternateText
+    {:required false, :repeats false, :data-type :string}]
+   [:NameOfAlternateCodingSystem
+    {:required false, :repeats false, :data-type :string}]]
+  [:AlternateCharacterSetHandlingScheme
+   {:required false, :repeats false, :data-type :string}]
+  [:MessageProfileIdentifier
+   {:required false, :repeats true}
+   [:EntityIdentifier
+    {:required false, :repeats false, :data-type :string}]
+   [:NamespaceId {:required false, :repeats false, :data-type :string}]
+   [:UniversalId {:required false, :repeats false, :data-type :string}]
+   [:UniversalIdType
+    {:required false, :repeats false, :data-type :string}]]]
+ [:SFT
+  {:required false, :repeats true}
+  [:SoftwareVendorOrganization
+   {:required true, :repeats false}
+   [:OrganizationName
+    {:required false, :repeats false, :data-type :string}]
+   [:OrganizationNameTypeCode
+    {:required false, :repeats false, :data-type :string}]
+   [:IdNumber {:required false, :repeats false, :data-type :string}]
+   [:CheckDigit {:required false, :repeats false, :data-type :string}]
+   [:CheckDigitScheme
+    {:required false, :repeats false, :data-type :string}]
+   [:AssigningAuthority
+    {:required false, :repeats false}
+    [:NamespaceId
+     {:required false, :repeats false, :data-type :string}]
+    [:UniversalId
+     {:required false, :repeats false, :data-type :string}]
+    [:UniversalIdType
+     {:required false, :repeats false, :data-type :string}]]
+   [:IdentifierTypeCode
+    {:required false, :repeats false, :data-type :string}]
+   [:AssigningFacility
+    {:required false, :repeats false}
+    [:NamespaceId
+     {:required false, :repeats false, :data-type :string}]
+    [:UniversalId
+     {:required false, :repeats false, :data-type :string}]
+    [:UniversalIdType
+     {:required false, :repeats false, :data-type :string}]]
+   [:NameRepresentationCode
+    {:required false, :repeats false, :data-type :string}]
+   [:OrganizationIdentifier
+    {:required false, :repeats false, :data-type :string}]]
+  [:SoftwareCertifiedVersionOrReleaseNumber
+   {:required true, :repeats false, :data-type :string}]
+  [:SoftwareProductName
+   {:required true, :repeats false, :data-type :string}]
+  [:SoftwareBinaryId
+   {:required true, :repeats false, :data-type :string}]
+  [:SoftwareProductInformation
+   {:required false, :repeats false}
+   [:escape]]
+  [:SoftwareInstallDate
+   {:required false, :repeats false}
+   [:Time {:required true, :repeats false, :data-type :string}]
+   [:DegreeOfPrecision
+    {:required false, :repeats false, :data-type :string}]]]
+ [:MSA
+  {:required true, :repeats false}
+  [:AcknowledgmentCode
+   {:required true, :repeats false, :data-type :string}]
+  [:MessageControlId
+   {:required true, :repeats false, :data-type :string}]
+  [:TextMessage {:required false, :repeats false, :data-type :string}]
+  [:ExpectedSequenceNumber
+   {:required false, :repeats false, :data-type :string}]
+  [:ErrorCondition
+   {:required false, :repeats false}
+   [:Identifier {:required false, :repeats false, :data-type :string}]
+   [:Text {:required false, :repeats false, :data-type :string}]
+   [:NameOfCodingSystem
+    {:required false, :repeats false, :data-type :string}]
+   [:AlternateIdentifier
+    {:required false, :repeats false, :data-type :string}]
+   [:AlternateText
+    {:required false, :repeats false, :data-type :string}]
+   [:NameOfAlternateCodingSystem
+    {:required false, :repeats false, :data-type :string}]]]
+ [:ERR
+  {:required false, :repeats true}
+  [:ErrorCodeAndLocation
+   {:required false, :repeats true}
+   [:SegmentId {:required false, :repeats false, :data-type :string}]
+   [:SegmentSequence
+    {:required false, :repeats false, :data-type :string}]
+   [:FieldPosition
+    {:required false, :repeats false, :data-type :string}]
+   [:CodeIdentifyingError
+    {:required false, :repeats false}
+    [:Identifier {:required false, :repeats false, :data-type :string}]
+    [:Text {:required false, :repeats false, :data-type :string}]
+    [:NameOfCodingSystem
+     {:required false, :repeats false, :data-type :string}]
+    [:AlternateIdentifier
+     {:required false, :repeats false, :data-type :string}]
+    [:AlternateText
+     {:required false, :repeats false, :data-type :string}]
+    [:NameOfAlternateCodingSystem
+     {:required false, :repeats false, :data-type :string}]]]
+  [:ErrorLocation
+   {:required false, :repeats true}
+   [:SegmentId {:required true, :repeats false, :data-type :string}]
+   [:SegmentSequence
+    {:required true, :repeats false, :data-type :string}]
+   [:FieldPosition
+    {:required false, :repeats false, :data-type :string}]
+   [:FieldRepetition
+    {:required false, :repeats false, :data-type :string}]
+   [:ComponentNumber
+    {:required false, :repeats false, :data-type :string}]
+   [:SubcomponentNumber
+    {:required false, :repeats false, :data-type :string}]]
+  [:Hl7ErrorCode
+   {:required true, :repeats false}
+   [:Identifier {:required false, :repeats false, :data-type :string}]
+   [:Text {:required false, :repeats false, :data-type :string}]
+   [:NameOfCodingSystem
+    {:required false, :repeats false, :data-type :string}]
+   [:AlternateIdentifier
+    {:required false, :repeats false, :data-type :string}]
+   [:AlternateText
+    {:required false, :repeats false, :data-type :string}]
+   [:NameOfAlternateCodingSystem
+    {:required false, :repeats false, :data-type :string}]
+   [:CodingSystemVersionId
+    {:required false, :repeats false, :data-type :string}]
+   [:AlternateCodingSystemVersionId
+    {:required false, :repeats false, :data-type :string}]
+   [:OriginalText
+    {:required false, :repeats false, :data-type :string}]]
+  [:Severity {:required true, :repeats false, :data-type :string}]
+  [:ApplicationErrorCode
+   {:required false, :repeats false}
+   [:Identifier {:required false, :repeats false, :data-type :string}]
+   [:Text {:required false, :repeats false, :data-type :string}]
+   [:NameOfCodingSystem
+    {:required false, :repeats false, :data-type :string}]
+   [:AlternateIdentifier
+    {:required false, :repeats false, :data-type :string}]
+   [:AlternateText
+    {:required false, :repeats false, :data-type :string}]
+   [:NameOfAlternateCodingSystem
+    {:required false, :repeats false, :data-type :string}]
+   [:CodingSystemVersionId
+    {:required false, :repeats false, :data-type :string}]
+   [:AlternateCodingSystemVersionId
+    {:required false, :repeats false, :data-type :string}]
+   [:OriginalText
+    {:required false, :repeats false, :data-type :string}]]
+  [:ApplicationErrorParameter
+   {:required false, :repeats true, :data-type :string}]
+  [:DiagnosticInformation {:required false, :repeats false} [:escape]]
+  [:UserMessage {:required false, :repeats false} [:escape]]
+  [:InformPersonIndicator
+   {:required false, :repeats true, :data-type :string}]
+  [:OverrideType
+   {:required false, :repeats false}
+   [:Identifier {:required false, :repeats false, :data-type :string}]
+   [:Text {:required false, :repeats false, :data-type :string}]
+   [:NameOfCodingSystem
+    {:required false, :repeats false, :data-type :string}]
+   [:AlternateIdentifier
+    {:required false, :repeats false, :data-type :string}]
+   [:AlternateText
+    {:required false, :repeats false, :data-type :string}]
+   [:NameOfAlternateCodingSystem
+    {:required false, :repeats false, :data-type :string}]
+   [:CodingSystemVersionId
+    {:required false, :repeats false, :data-type :string}]
+   [:AlternateCodingSystemVersionId
+    {:required false, :repeats false, :data-type :string}]
+   [:OriginalText
+    {:required false, :repeats false, :data-type :string}]]
+  [:OverrideReasonCode
+   {:required false, :repeats true}
+   [:Identifier {:required false, :repeats false, :data-type :string}]
+   [:Text {:required false, :repeats false, :data-type :string}]
+   [:NameOfCodingSystem
+    {:required false, :repeats false, :data-type :string}]
+   [:AlternateIdentifier
+    {:required false, :repeats false, :data-type :string}]
+   [:AlternateText
+    {:required false, :repeats false, :data-type :string}]
+   [:NameOfAlternateCodingSystem
+    {:required false, :repeats false, :data-type :string}]
+   [:CodingSystemVersionId
+    {:required false, :repeats false, :data-type :string}]
+   [:AlternateCodingSystemVersionId
+    {:required false, :repeats false, :data-type :string}]
+   [:OriginalText
+    {:required false, :repeats false, :data-type :string}]]
+  [:HelpDeskContactPoint
+   {:required false, :repeats true}
+   [:TelephoneNumber
+    {:required false, :repeats false, :data-type :string}]
+   [:TelecommunicationUseCode
+    {:required false, :repeats false, :data-type :string}]
+   [:TelecommunicationEquipmentType
+    {:required false, :repeats false, :data-type :string}]
+   [:EmailAddress
+    {:required false, :repeats false, :data-type :string}]
+   [:CountryCode {:required false, :repeats false, :data-type :string}]
+   [:AreaorcityCode
+    {:required false, :repeats false, :data-type :string}]
+   [:LocalNumber {:required false, :repeats false, :data-type :string}]
+   [:Extension {:required false, :repeats false, :data-type :string}]
+   [:AnyText {:required false, :repeats false, :data-type :string}]
+   [:ExtensionPrefix
+    {:required false, :repeats false, :data-type :string}]
+   [:SpeedDialCode
+    {:required false, :repeats false, :data-type :string}]
+   [:UnformattedTelephoneNumber
+    {:required false, :repeats false, :data-type :string}]]]]

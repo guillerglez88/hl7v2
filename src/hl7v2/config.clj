@@ -2,4 +2,5 @@
 
 (def config
   (delay
-    {:standard-dir "tmp"}))
+    {:standard-dir "tmp"
+     :lang "en"}))
