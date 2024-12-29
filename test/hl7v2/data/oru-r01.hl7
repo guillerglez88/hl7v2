@@ -1,9 +1,13 @@
-MSH|^~\&#|^372520^L|^372521^L||^372523^L|20150926140551||ORU^R01^ORU_R01|LRI_3.0_1.1-NG|D|2.5.1|||AL|AL|||||LRI_Common_Component^^2.16.840.1.113883.9.16^ISO~LRI_NG_Component^^2.16.840.1.113883.9.13^ISO~LRI_FRU_Component^^2.16.840.1.113883.9.83^ISO
-PID|1||PATID1234^^^NIST MPI^MR||Jones^William^A^^^^L||19610627|M||2106-3^White^HL70005||||||||PATID1234^^^NIST MPI^AN
-ORC|RE|ORD777888^NIST EHR|R-220713^NIST Lab Filler|GORD874244^NIST EHR||||||||5742200012^Radon^Nicholas^^^^^^NPI^L^^^NPI
-OBR|1|ORD777888^NIST EHR|R-220713^NIST Lab Filler|24331-1^Lipid 1996 panel in Serum or Plasma^LN^345789^Lipid Panel^99USL^2.52^^Lipid 1996 panel in Serum or Plasma|||20150925||||||F^Patient was fasting prior to the procedure.^HL70916^^^^2.7.1^^fasting 12 hours|||5742200012^Radon^Nicholas^^^^^^NPI^L^^^NPI||||||20150926140551|||F|||10092000194^Hamlin^Pafford^^^^^^NPI^L^^^NPI|||||||||||||||||||||CC^Copies Requested^HL70507
-OBX|1|NM|2093-3^Cholesterol [Mass/volume] in Serum or Plasma^LN^^^^2.52^^Cholesterol [Mass/volume] in Serum or Plasma||196|mg/dL^milligrams per deciliter^UCUM^^^^1.9|Recommended: <200; Moderate Risk: 200-239 ; High Risk: >240|N|||F|||20150925|||||201509261400||||Century Hospital^^^^^CLIA^XX^^^24D9871327|2070 Test Park^^Los Angeles^CA^90067^^B|5432178916^Knowsalot^Phil^^^Dr.^^^NPI^L^^^NPI||||RSLT
-OBX|2|NM|2571-8^Triglyceride [Mass/volume] in Serum or Plasma^LN^^^^2.52^^Triglyceride [Mass/volume] in Serum or Plasma||100|mg/dL^milligrams per deciliter^UCUM^^^^1.9|40 to 160|N|||F|||20150925|||||201509261400||||Century Hospital^^^^^CLIA^XX^^^24D9871327|2070 Test Park^^Los Angeles^CA^90067^^B|5432178916^Knowsalot^Phil^^^Dr.^^^NPI^L^^^NPI||||RSLT
-OBX|3|NM|2085-9^Cholesterol in HDL [Mass/volume] in Serum or Plasma^LN^^^^2.52^^Cholesterol in HDL [Mass/volume] in Serum or Plasma||60|mg/dL^milligrams per deciliter^UCUM^^^^1.9|29 to 72|N|||F|||20150925|||||201509261400||||Century Hospital^^^^^CLIA^XX^^^24D9871327|2070 Test Park^^Los Angeles^CA^90067|5432178916^Knowsalot^Phil^^^Dr.^^^NPI^L^^^NPI||||RSLT
-OBX|4|NM|2089-1^Cholesterol in LDL [Mass/volume] in Serum or Plasma^LN^^^^2.52^^Cholesterol in LDL [Mass/volume] in Serum or Plasma||116|mg/dL^milligrams per deciliter^UCUM^^^^1.9|Recommended: <130; Moderate Risk: 130-159; High Risk: >160|N|||F|||20150925|||||201509261400||||Century Hospital^^^^^CLIA^XX^^^24D9871327|2070 Test Park^^Los Angeles^CA^90067^^B|5432178916^Knowsalot^Phil^^^Dr.^^^NPI^L^^^NPI||||RSLT
-SPM|1|S2015-777888&NIST EHR^S-220713-1&NIST Lab Filler||119297000^BLD^SCT^^^^201509USEd^^Blood|||||||||||||20150925
+MSH|^~\&|SIMHOSP|SFAC|RAPP|RFAC|20200508130644||ORU^R01|7|T|2.3|||AL||44|ASCII
+PID|1|1076943130^^^SIMULATOR MRN^MRN|1076943130^^^SIMULATOR MRN^MRN~2914785070^^^NHSNBR^NHSNMBR||Trivedi^Jacqueline^Pauline^^Mrs^^CURRENT||19371227000000|F|||44 Name House^Flanker Road^Westerham^^PK17 5OI^GBR^HOME||070 0130 6118^HOME|||||||||N^Black or Black British - African^^^||||||||
+PV1|1|I|OtherWard^MainRoom^Bed 1^Simulated Hospital^^BED^Main Building^4|28b|||C002^Smith^Elizabeth^^^Dr^^^DRNBR^PRSNL^^^ORGDR|||SUR|||||||||4637913778641671097^^^^visitid||||||||||||||||||||||ARRIVED|||20200508130644||
+ORC|RE|3529823179|2427424202||CM||||20200508130644
+OBR|1|3529823179|2427424202|us-0003^UREA AND ELECTROLYTES^WinPath^^||20200508130644|20200508130644|||||||20200508130644||||||||20200508130644|||F||1
+OBX|1|NM|tt-0003-02^Potassium^WinPath^^||5.10|MMOLL|3.5 - 5.3||||F|||20200508130644||
+OBX|2|NM|tt-0003-03^Sodium^WinPath^^||145.01|MMOLL|133 - 146||||F|||20200508130644||
+OBX|3|NM|tt-0003-04^Urea^WinPath^^||5.45|MMOLL|2.5 - 7.8||||F|||20200508130644||
+NTE|0||Music dinghy poet pyramid revenge human charles dictionary hydrofoil|
+OBX|4|NM|tt-0003-05^eGFR (MDRD)^WinPath^^||<15|MLMIN|[ ]||||F|||20200508130644||
+NTE|0||Objective chairlift pard mug mouse sweatshirt wildlife contract mode|
+OBX|5|NM|tt-0003-01^Creatinine^WinPath^^||86.25|UMOLL|49 - 92||||F|||20200508130644||
+NTE|0||Pyjama leash modem dressing pocket-watch resource essay|

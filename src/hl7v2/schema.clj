@@ -64,10 +64,11 @@
                               (-> (rm-diacritics s)
                                   (str/replace #"/" "Or")
                                   (str/replace #"-" "")
+                                  (str/replace #"'" "")
                                   (str/trim)
-                                  (str/capitalize))))
+                                  (str/lower-case))))
                        (remove str/blank?)
-                       (str/join "")
+                       (str/join "-")
                        (keyword)))))))
 
 (defn type-base [node]
@@ -111,7 +112,7 @@
 
 (defn fill-node [node index]
   (letfn [(interpret-attrs [attrs-m & more]
-            (let [{:keys [minOccurs maxOccurs name data-type]} (apply merge attrs-m more)]
+            (let [{:keys [minOccurs maxOccurs name data-type segment]} (apply merge attrs-m more)]
               (clean
                {:required (and minOccurs
                                (> (parse-long minOccurs) 0))
@@ -119,7 +120,8 @@
                               (or (= "unbounded" maxOccurs)
                                   (> (parse-long maxOccurs) 1)))
                 :name name
-                :data-type data-type})))]
+                :data-type data-type
+                :segment segment})))]
     (let [tag (node-tag node)
           attrs (node-attrs node)
           children (node-children node)]
@@ -166,7 +168,7 @@
                                   (into [])))
         (segment-node? node) (let [node (get index tag)]
                                (fill-node (->> (node-children node)
-                                               (concat [tag (merge attrs (node-attrs node))])
+                                               (concat [tag (merge attrs (node-attrs node) {:segment true})])
                                                (into []))
                                           index))
         (annotation-node? node) (attr-kw node)
