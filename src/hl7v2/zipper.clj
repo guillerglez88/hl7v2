@@ -90,6 +90,19 @@
               [{group-id group-data} segs]))
           [nil segs])))))
 
+(defn match [trigger-event er7]
+  (let [spec-tgr-evt (spec-tag trigger-event)
+        msh (first (filter (comp #{:MSH} key first) er7))
+        er7-tgr-evt (format "%s_%s" (get-in msh [:MSH 9 1 1]) (get-in msh [:MSH 9 1 2]))]
+    (when-not (= (name spec-tgr-evt) er7-tgr-evt)
+      (throw (ex-info "Trigger event mismatch"
+                      {:spec spec-tgr-evt, :er7 er7-tgr-evt})))
+    (let [[matched rem-segs] (match-group trigger-event er7)]
+      (when (seq rem-segs)
+        (throw (ex-info "Incomplete trigger-event or incorrect er7"
+                        {:matched matched, :remaining-segments rem-segs})))
+      (get matched spec-tgr-evt))))
+
 (comment
 
   (require '[clojure.java.io :as io])
@@ -104,6 +117,6 @@
     (-> (io/file "test/hl7v2/data/oru-r01.hl7")
         (parse-er7)))
 
-  (match-group spec er7)
+  (match spec er7)
 
   :.)
