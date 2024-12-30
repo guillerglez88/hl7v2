@@ -1,6 +1,4 @@
-(ns hl7v2.zipper
-  (:require
-   [clojure.zip :as zip]))
+(ns hl7v2.zipper)
 
 (defn spec-tag [spec]
   (when (vector? spec)
@@ -22,7 +20,7 @@
     (-> seg first key)))
 
 (defn match-components [spec data]
-  (if-let [components (seq (drop 2 spec))]
+  (if-let [components (seq (spec-children spec))]
     (->> (for [[idx cmp-spec] (map-indexed (fn [idx cmp]
                                              [(inc idx) cmp])
                                            components)
@@ -39,11 +37,11 @@
 (defn match-fields [spec data]
   (->> (for [[idx field-spec] (map-indexed (fn [idx field]
                                              [(inc idx) field])
-                                           (drop 2 spec))
-             :let [attr (first field-spec)
-                   field-data (get-in data [(first spec) idx])]
+                                           (spec-children spec))
+             :let [attr (spec-tag field-spec)
+                   field-data (get-in data [(spec-tag spec) idx])]
              :when field-data]
-         (if (:repeats (second field-spec))
+         (if (:repeats (spec-attrs field-spec))
            [attr (->> (for [[idx rep-data] (if (map? field-data)
                                              field-data
                                              {1 field-data})]
@@ -57,37 +55,40 @@
        (into {})))
 
 (defn match-segment [spec data]
-  (let [id (spec-tag spec)
-        attrs (spec-attrs spec)]
+  (let [id (spec-tag spec)]
     (loop [[seg & more :as segs] data
-           result []]
+           acc []]
       (if (or (nil? seg) (not= id (seg-id seg)))
-        [(if (:repeats attrs)
-           (->> result
-                (map-indexed (fn [idx item]
-                               [(inc idx) item]))
-                (into (sorted-map)))
-           (first result))
+        [(when (seq acc)
+           (if (-> spec spec-attrs :repeats)
+             {id (mapv (comp val first) acc)}
+             (first acc)))
          segs]
-        (recur more (concat result [{id (match-fields spec seg)}]))))))
+        (recur more (conj acc {id (match-fields spec seg)}))))))
 
-(defn spec-zip [spec]
-  (zip/zipper (fn [spec]
-                (let [attrs (spec-attrs spec)]
-                  (or (nil? attrs)
-                      (not (:segment attrs)))))
-              spec-children
-              (fn [node children]
-                (cons (spec-tag node) children))
-              spec))
-
-(match-segment (->> (spec-zip spec)
-                    (iterate zip/next)
-                    (take-while (complement zip/end?))
-                    (map zip/node)
-                    (drop 14)
-                    (first))
-               (drop 4 er7))
+(defn match-group [spec data]
+  (loop [[curr & more] (spec-children spec)
+         [seg :as segs] data
+         acc []]
+    (let [{:keys [required segment]} (spec-attrs curr)]
+      (if (and curr seg)
+        (let [[result segs] (if segment
+                              (match-segment curr segs)
+                              (match-group curr segs))]
+          (if (and required (nil? result))
+            (recur nil segs acc)
+            (recur more segs (conj acc result))))
+        (if-let [items (->> acc (remove nil?) seq)]
+          (let [group-id (spec-tag spec)
+                group-data (apply merge items)]
+            (if (-> spec spec-attrs :repeats)
+              (let [[result segs] (match-group spec segs)]
+                [{group-id (->> (get result group-id)
+                                (cons group-data)
+                                (into []))}
+                 segs])
+              [{group-id group-data} segs]))
+          [nil segs])))))
 
 (comment
 
@@ -103,22 +104,6 @@
     (-> (io/file "test/hl7v2/data/oru-r01.hl7")
         (parse-er7)))
 
-  (match-segment (->> spec (drop 1) (first))
-                 (->> er7 (first)))
-
-  (loop [loc (spec-zip spec)]
-    (if (zip/end? loc)
-      (zip/node loc)
-      (if (-> loc zip/node spec-attrs :segment)
-        (recur (zip/next (zip/replace loc {})))
-        (recur (zip/next loc)))))
-
-  (->> (spec-zip spec)
-       (iterate zip/next)
-       (take-while (complement zip/end?))
-       (map zip/node)
-       (map (juxt first
-                  (comp :segment spec-attrs)
-                  (comp :repeats spec-attrs))))
+  (match-group spec er7)
 
   :.)
