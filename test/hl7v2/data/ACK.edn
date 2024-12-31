@@ -1,6 +1,6 @@
 [:ACK
  [:MSH
-  {:required true, :repeats false}
+  {:required true, :repeats false, :segment true}
   [:FieldSeparator
    {:required true, :repeats false, :data-type :string}]
   [:EncodingCharacters
@@ -109,7 +109,7 @@
    [:UniversalIdType
     {:required false, :repeats false, :data-type :string}]]]
  [:SFT
-  {:required false, :repeats true}
+  {:required false, :repeats true, :segment true}
   [:SoftwareVendorOrganization
    {:required true, :repeats false}
    [:OrganizationName
@@ -157,7 +157,7 @@
    [:DegreeOfPrecision
     {:required false, :repeats false, :data-type :string}]]]
  [:MSA
-  {:required true, :repeats false}
+  {:required true, :repeats false, :segment true}
   [:AcknowledgmentCode
    {:required true, :repeats false, :data-type :string}]
   [:MessageControlId
@@ -178,7 +178,7 @@
    [:NameOfAlternateCodingSystem
     {:required false, :repeats false, :data-type :string}]]]
  [:ERR
-  {:required false, :repeats true}
+  {:required false, :repeats true, :segment true}
   [:ErrorCodeAndLocation
    {:required false, :repeats true}
    [:SegmentId {:required false, :repeats false, :data-type :string}]
