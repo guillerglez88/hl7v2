@@ -24,13 +24,12 @@
     (->> (for [[idx cmp-spec] (map-indexed (fn [idx cmp]
                                              [(inc idx) cmp])
                                            components)
-               :let [attr (first cmp-spec)
-                     data (if (string? data)
+               :let [data (if (string? data)
                             (when (= 1 idx)
                               data)
                             (get data idx))]
                :when data]
-           [attr data])
+           [(first cmp-spec) data])
          (into {}))
     data))
 
@@ -41,17 +40,16 @@
              :let [attr (spec-tag field-spec)
                    field-data (get-in data [(spec-tag spec) idx])]
              :when field-data]
-         (if (:repeats (spec-attrs field-spec))
-           [attr (->> (for [[idx rep-data] (if (map? field-data)
-                                             field-data
-                                             {1 field-data})]
-                        [idx (match-components field-spec rep-data)])
-                      (into {}))]
-           [attr (match-components
-                  field-spec
+         [attr
+          (if (:repeats (spec-attrs field-spec))
+            (mapv (partial match-components field-spec)
                   (if (map? field-data)
-                    (val (first field-data))
-                    field-data))]))
+                    (vals field-data)
+                    [field-data]))
+            (match-components field-spec
+                              (if (map? field-data)
+                                (val (first field-data))
+                                field-data)))])
        (into {})))
 
 (defn match-segment [spec data]

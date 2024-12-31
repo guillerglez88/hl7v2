@@ -147,6 +147,7 @@
                                                          (-> (node-attrs item)
                                                              (dissoc :name)
                                                              (interpret-attrs (node-attrs child)))])
+                                                (remove nil?)
                                                 (into [])))
                                          (->> (node-children item)
                                               (concat [(keyword tag)
@@ -175,18 +176,19 @@
         (type-node? node) (let [node (get index (type-base node))]
                             (if (restricted-node? node)
                               [(keyword (node-tag node))
-                               (let [chld (first (node-children node))
-                                     base (:base (node-attrs chld))]
+                               (let [child (first (node-children node))
+                                     base (:base (node-attrs child))]
                                  {:data-type (->> (re-seq #"^xsd:(.+)$" base)
                                                   (map (comp keyword second))
                                                   (first))})]
-                              (->> (node-children node)
-                                   (mapcat (fn [n]
-                                             (if (sequence-node? n)
-                                               (fill-node n index)
-                                               [(fill-node n index)])))
-                                   (concat [(keyword (node-tag node))])
-                                   (into []))))
+                              (when node
+                                (->> (node-children node)
+                                     (mapcat (fn [n]
+                                               (if (sequence-node? n)
+                                                 (fill-node n index)
+                                                 [(fill-node n index)])))
+                                     (concat [(keyword (node-tag node))])
+                                     (into [])))))
         :else node))))
 
 (defn gen-structure [trigger-event]

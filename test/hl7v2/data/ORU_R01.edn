@@ -6275,7 +6275,7 @@
        {:required false, :repeats false, :data-type :string}]]
      [:observation-subid
       {:required false, :repeats false, :data-type :string}]
-     [:observation-value {:required false, :repeats true} [nil]]
+     [:observation-value {:required false, :repeats true}]
      [:units
       {:required false, :repeats false}
       [:identifier
@@ -6479,9 +6479,9 @@
       [:time {:required true, :repeats false, :data-type :string}]
       [:degree-of-precision
        {:required false, :repeats false, :data-type :string}]]
-     [:reserved-for-harmonization-with-v2.6 {:required false} [nil]]
-     [:reserved-for-harmonization-with-v2.6 {:required false} [nil]]
-     [:reserved-for-harmonization-with-v2.6 {:required false} [nil]]
+     [:reserved-for-harmonization-with-v2.6 {:required false}]
+     [:reserved-for-harmonization-with-v2.6 {:required false}]
+     [:reserved-for-harmonization-with-v2.6 {:required false}]
      [:performing-organization-name
       {:required false, :repeats false}
       [:organization-name
@@ -7976,7 +7976,7 @@
        {:required false, :repeats false, :data-type :string}]]
      [:observation-subid
       {:required false, :repeats false, :data-type :string}]
-     [:observation-value {:required false, :repeats true} [nil]]
+     [:observation-value {:required false, :repeats true}]
      [:units
       {:required false, :repeats false}
       [:identifier
@@ -8180,9 +8180,9 @@
       [:time {:required true, :repeats false, :data-type :string}]
       [:degree-of-precision
        {:required false, :repeats false, :data-type :string}]]
-     [:reserved-for-harmonization-with-v2.6 {:required false} [nil]]
-     [:reserved-for-harmonization-with-v2.6 {:required false} [nil]]
-     [:reserved-for-harmonization-with-v2.6 {:required false} [nil]]
+     [:reserved-for-harmonization-with-v2.6 {:required false}]
+     [:reserved-for-harmonization-with-v2.6 {:required false}]
+     [:reserved-for-harmonization-with-v2.6 {:required false}]
      [:performing-organization-name
       {:required false, :repeats false}
       [:organization-name
