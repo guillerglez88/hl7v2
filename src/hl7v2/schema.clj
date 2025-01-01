@@ -46,9 +46,7 @@
 
 (defn node-children [node]
   (when (vector? node)
-    (->> node
-         (drop (if (node-attrs node) 2 1))
-         (into []))))
+    (drop (if (node-attrs node) 2 1) node)))
 
 (defn attr-kw [node]
   (letfn [(rm-diacritics [s]
@@ -57,19 +55,23 @@
                   (Normalizer/normalize Normalizer$Form/NFD)
                   (str/replace #"[\u0300-\u036f]" ""))))]
     (->> (node-children node)
-         (some #(when (and (= "documentation" (first %))
-                           (= (:lang @config) (:lang (second %))))
-                  (->> (str/split (str/replace (last %) #"\(.+" "") #"\s+")
-                       (map (fn [s]
-                              (-> (rm-diacritics s)
-                                  (str/replace #"/" "Or")
-                                  (str/replace #"-" "")
-                                  (str/replace #"'" "")
-                                  (str/trim)
-                                  (str/lower-case))))
-                       (remove str/blank?)
-                       (str/join "-")
-                       (keyword)))))))
+         (some (fn [child]
+                 (when (and (= "documentation" (first child))
+                            (= (:lang @config) (:lang (second child))))
+                   (->> (str/split (last child) #"\(")
+                        (take 1)
+                        (mapcat #(str/split % #"\s+"))
+                        (map (fn [s]
+                               (-> (rm-diacritics s)
+                                   (str/replace #"/" "or")
+                                   (str/replace #"-" "")
+                                   (str/replace #"'" "")
+                                   (str/replace #"\)" "")
+                                   (str/trim)
+                                   (str/lower-case))))
+                        (remove str/blank?)
+                        (str/join "-")
+                        (keyword))))))))
 
 (defn type-base [node]
   (->> (node-children node)
@@ -94,6 +96,7 @@
 (defn segment-node? [node]
   (when-let [tag (node-tag node)]
     (and (= 1 (count (str/split tag #"\.")))
+         (not= "anyHL7Segment" tag)
          (when-let [attrs (node-attrs node)]
            (some? (:minOccurs attrs))))))
 
@@ -110,86 +113,88 @@
     (and (first children)
          (= "restriction" (node-tag (first children))))))
 
-(defn fill-node [node index]
-  (letfn [(interpret-attrs [attrs-m & more]
-            (let [{:keys [minOccurs maxOccurs name data-type segment]} (apply merge attrs-m more)]
-              (clean
-               {:required (and minOccurs
-                               (> (parse-long minOccurs) 0))
-                :repeats (and maxOccurs
-                              (or (= "unbounded" maxOccurs)
-                                  (> (parse-long maxOccurs) 1)))
-                :name name
-                :data-type data-type
-                :segment segment})))]
-    (let [tag (node-tag node)
-          attrs (node-attrs node)
-          children (node-children node)]
-      (cond
-        (= "any" tag) nil
-        (content-node? node) (let [node (-> (get index (:type attrs))
-                                            (fill-node index))]
-                               (->> (node-children node)
-                                    (mapcat (fn [n]
-                                              (if (sequence-node? n)
-                                                (fill-node n index)
-                                                [(fill-node n index)])))
-                                    (concat [(keyword tag) (interpret-attrs attrs (node-attrs node))])
-                                    (remove nil?)
-                                    (into [])))
-        (sequence-node? node) (->> (for [node children
-                                         :let [item (fill-node node index)]]
-                                     (if-let [tag (node-tag item)]
-                                       (if (parse-long tag)
-                                         (let [child (first (node-children item))]
-                                           (->> (node-children child)
-                                                (concat [(:name (node-attrs item))
+(defn fill-node [node index max-depth]
+  (when (pos? max-depth)
+    (letfn [(interpret-attrs [attrs-m & more]
+              (let [{:keys [minOccurs maxOccurs name data-type segment]} (apply merge attrs-m more)]
+                (clean
+                 {:required (and minOccurs
+                                 (> (parse-long minOccurs) 0))
+                  :repeats (and maxOccurs
+                                (or (= "unbounded" maxOccurs)
+                                    (> (parse-long maxOccurs) 1)))
+                  :name name
+                  :data-type data-type
+                  :segment segment})))]
+      (let [tag (node-tag node)
+            attrs (node-attrs node)
+            children (node-children node)]
+        (cond
+          (= "any" tag) nil
+          (content-node? node) (let [node (-> (get index (:type attrs))
+                                              (fill-node index (dec max-depth)))]
+                                 (->> (node-children node)
+                                      (mapcat (fn [n]
+                                                (if (sequence-node? n)
+                                                  (fill-node n index (dec max-depth))
+                                                  [(fill-node n index (dec max-depth))])))
+                                      (concat [(keyword tag) (interpret-attrs attrs (node-attrs node))])
+                                      (remove nil?)
+                                      (into [])))
+          (sequence-node? node) (->> (for [node children
+                                           :let [item (fill-node node index (dec max-depth))]]
+                                       (if-let [tag (node-tag item)]
+                                         (if (parse-long tag)
+                                           (let [child (first (node-children item))]
+                                             (->> (node-children child)
+                                                  (concat [(:name (node-attrs item))
+                                                           (-> (node-attrs item)
+                                                               (dissoc :name)
+                                                               (interpret-attrs (node-attrs child)))])
+                                                  (remove nil?)
+                                                  (into [])))
+                                           (->> (node-children item)
+                                                (concat [(keyword tag)
                                                          (-> (node-attrs item)
-                                                             (dissoc :name)
-                                                             (interpret-attrs (node-attrs child)))])
+                                                             (interpret-attrs))])
                                                 (remove nil?)
                                                 (into [])))
-                                         (->> (node-children item)
-                                              (concat [(keyword tag)
-                                                       (-> (node-attrs item)
-                                                           (interpret-attrs))])
-                                              (remove nil?)
-                                              (into [])))
-                                       item))
-                                   (into []))
-        (group-node? node) (let [group (get index tag)
-                                 node (fill-node group index)
-                                 tag (last (str/split tag #"\."))
-                                 children (node-children node)]
-                             (->> children
-                                  (drop-while keyword?)
-                                  (concat [tag (merge attrs
-                                                      (node-attrs node)
-                                                      {:name (first (filter keyword children))})])
-                                  (into [])))
-        (segment-node? node) (let [node (get index tag)]
-                               (fill-node (->> (node-children node)
-                                               (concat [tag (merge attrs (node-attrs node) {:segment true})])
-                                               (into []))
-                                          index))
-        (annotation-node? node) (attr-kw node)
-        (type-node? node) (let [node (get index (type-base node))]
-                            (if (restricted-node? node)
-                              [(keyword (node-tag node))
-                               (let [child (first (node-children node))
-                                     base (:base (node-attrs child))]
-                                 {:data-type (->> (re-seq #"^xsd:(.+)$" base)
-                                                  (map (comp keyword second))
-                                                  (first))})]
-                              (when node
-                                (->> (node-children node)
-                                     (mapcat (fn [n]
-                                               (if (sequence-node? n)
-                                                 (fill-node n index)
-                                                 [(fill-node n index)])))
-                                     (concat [(keyword (node-tag node))])
-                                     (into [])))))
-        :else node))))
+                                         item))
+                                     (into []))
+          (group-node? node) (let [group (get index tag)
+                                   node (fill-node group index (dec max-depth))
+                                   tag (last (str/split tag #"\."))
+                                   children (node-children node)]
+                               (->> children
+                                    (drop-while keyword?)
+                                    (concat [tag (merge attrs
+                                                        (node-attrs node)
+                                                        {:name (first (filter keyword children))})])
+                                    (into [])))
+          (segment-node? node) (let [node (get index tag)]
+                                 (fill-node (->> (node-children node)
+                                                 (concat [tag (merge attrs (node-attrs node) {:segment true})])
+                                                 (into []))
+                                            index
+                                            (dec max-depth)))
+          (annotation-node? node) (attr-kw node)
+          (type-node? node) (let [node (get index (type-base node))]
+                              (if (restricted-node? node)
+                                [(keyword (node-tag node))
+                                 (let [child (first (node-children node))
+                                       base (:base (node-attrs child))]
+                                   {:data-type (->> (re-seq #"^xsd:(.+)$" base)
+                                                    (map (comp keyword second))
+                                                    (first))})]
+                                (when node
+                                  (->> (node-children node)
+                                       (mapcat (fn [n]
+                                                 (if (sequence-node? n)
+                                                   (fill-node n index (dec max-depth))
+                                                   [(fill-node n index (dec max-depth))])))
+                                       (concat [(keyword (node-tag node))])
+                                       (into [])))))
+          :else node)))))
 
 (defn gen-structure [trigger-event]
   (letfn [(load-schema [tgr-evt]
@@ -205,38 +210,25 @@
                    (apply merge))))]
     (let [index (load-schema trigger-event)
           root (get index trigger-event)]
-      (fill-node root index))))
+      (fill-node root index 20))))
 
 (comment
 
-  (require '[clojure.pprint :as pp])
-
-  (spit
-   "test/hl7v2/data/ORU_R01.edn"
-   (with-out-str
-     (pp/pprint (gen-structure "ORU_R01"))))
-
-  (spit
-   "test/hl7v2/data/ACK.edn"
-   (with-out-str
-     (pp/pprint (gen-structure "ACK"))))
-
-  (-> (io/file "test/hl7v2/data/ACK.xsd")
+  (-> (io/file "structures/v2.5.1/ACK.edn")
       (parse-xsd)
       (index-schema))
 
-  (-> (io/file "tmp/HL7-xml v2.5.1/segments.xsd")
+  (-> (io/file "structures/v2.5.1/segments.xsd")
       (parse-xsd)
       (index-schema))
 
-  (-> (io/file "tmp/HL7-xml v2.5.1/datatypes.xsd")
+  (-> (io/file "structures/v2.5.1/datatypes.xsd")
       (parse-xsd)
       (index-schema))
 
-  (-> (io/file "tmp/HL7-xml v2.5.1/fields.xsd")
+  (-> (io/file "structures/v2.5.1/fields.xsd")
       (parse-xsd)
       (index-schema))
-
 
   (parse-xsd (io/file "tmp/ORU_R01.xsd"))
   (parse-xsd (io/file "tmp/fields.xsd"))
