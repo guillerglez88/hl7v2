@@ -1,0 +1,3307 @@
+[:MFN_M19
+ [:MSH
+  {:required true, :repeats false, :segment true}
+  [:field-separator
+   {:required true, :repeats false, :data-type :string}]
+  [:encoding-characters
+   {:required true, :repeats false, :data-type :string}]
+  [:sending-application
+   {:required false, :repeats false}
+   [:namespace-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id-type
+    {:required false, :repeats false, :data-type :string}]]
+  [:sending-facility
+   {:required false, :repeats false}
+   [:namespace-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id-type
+    {:required false, :repeats false, :data-type :string}]]
+  [:receiving-application
+   {:required false, :repeats false}
+   [:namespace-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id-type
+    {:required false, :repeats false, :data-type :string}]]
+  [:receiving-facility
+   {:required false, :repeats true}
+   [:namespace-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id-type
+    {:required false, :repeats false, :data-type :string}]]
+  [:dateortime-of-message
+   {:required true, :repeats false, :data-type :string}]
+  [:security {:required false, :repeats false, :data-type :string}]
+  [:message-type
+   {:required true, :repeats false}
+   [:message-code {:required true, :repeats false, :data-type :string}]
+   [:trigger-event
+    {:required true, :repeats false, :data-type :string}]
+   [:message-structure
+    {:required true, :repeats false, :data-type :string}]]
+  [:message-control-id
+   {:required true, :repeats false, :data-type :string}]
+  [:processing-id
+   {:required true, :repeats false}
+   [:processing-id
+    {:required true, :repeats false, :data-type :string}]
+   [:processing-mode
+    {:required false, :repeats false, :data-type :string}]]
+  [:version-id
+   {:required true, :repeats false}
+   [:version-id {:required true, :repeats false, :data-type :string}]
+   [:internationalization-code
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:original-text
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-second-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:value-set-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-value-set-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-value-set-version-id
+     {:required false, :repeats false, :data-type :string}]]
+   [:international-version-id
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:original-text
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-second-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:value-set-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-value-set-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-value-set-version-id
+     {:required false, :repeats false, :data-type :string}]]]
+  [:sequence-number
+   {:required false, :repeats false, :data-type :string}]
+  [:continuation-pointer
+   {:required false, :repeats false, :data-type :string}]
+  [:accept-acknowledgment
+   {:required false, :repeats false, :data-type :string}]
+  [:application-acknowledgment-type
+   {:required false, :repeats false, :data-type :string}]
+  [:country-code {:required false, :repeats false, :data-type :string}]
+  [:character-set {:required false, :repeats true, :data-type :string}]
+  [:principal-language-of-message
+   {:required false, :repeats false}
+   [:identifier {:required false, :repeats false, :data-type :string}]
+   [:text {:required false, :repeats false, :data-type :string}]
+   [:name-of-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-identifier
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-text
+    {:required false, :repeats false, :data-type :string}]
+   [:name-of-alternate-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:original-text
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-identifier
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-text
+    {:required false, :repeats false, :data-type :string}]
+   [:name-of-second-alternate-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:coding-system-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:value-set-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:value-set-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-coding-system-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-value-set-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-value-set-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-coding-system-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-value-set-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-value-set-version-id
+    {:required false, :repeats false, :data-type :string}]]
+  [:alternate-character-set-handling-scheme
+   {:required false, :repeats false, :data-type :string}]
+  [:message-profile-identifier {:required false, :repeats true}]
+  [:sending-responsible-organization
+   {:required false, :repeats false}
+   [:organization-name
+    {:required false, :repeats false, :data-type :string}]
+   [:organization-name-type-code
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:original-text
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-second-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:value-set-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-value-set-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-value-set-version-id
+     {:required false, :repeats false, :data-type :string}]]
+   [:assigning-authority
+    {:required false, :repeats false}
+    [:namespace-id
+     {:required false, :repeats false, :data-type :string}]
+    [:universal-id
+     {:required false, :repeats false, :data-type :string}]
+    [:universal-id-type
+     {:required false, :repeats false, :data-type :string}]]
+   [:identifier-type-code
+    {:required false, :repeats false, :data-type :string}]
+   [:assigning-facility
+    {:required false, :repeats false}
+    [:namespace-id
+     {:required false, :repeats false, :data-type :string}]
+    [:universal-id
+     {:required false, :repeats false, :data-type :string}]
+    [:universal-id-type
+     {:required false, :repeats false, :data-type :string}]]
+   [:name-representation-code
+    {:required false, :repeats false, :data-type :string}]
+   [:organization-identifier
+    {:required false, :repeats false, :data-type :string}]]
+  [:receiving-responsible-organization
+   {:required false, :repeats false}
+   [:organization-name
+    {:required false, :repeats false, :data-type :string}]
+   [:organization-name-type-code
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:original-text
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-second-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:value-set-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-value-set-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-value-set-version-id
+     {:required false, :repeats false, :data-type :string}]]
+   [:assigning-authority
+    {:required false, :repeats false}
+    [:namespace-id
+     {:required false, :repeats false, :data-type :string}]
+    [:universal-id
+     {:required false, :repeats false, :data-type :string}]
+    [:universal-id-type
+     {:required false, :repeats false, :data-type :string}]]
+   [:identifier-type-code
+    {:required false, :repeats false, :data-type :string}]
+   [:assigning-facility
+    {:required false, :repeats false}
+    [:namespace-id
+     {:required false, :repeats false, :data-type :string}]
+    [:universal-id
+     {:required false, :repeats false, :data-type :string}]
+    [:universal-id-type
+     {:required false, :repeats false, :data-type :string}]]
+   [:name-representation-code
+    {:required false, :repeats false, :data-type :string}]
+   [:organization-identifier
+    {:required false, :repeats false, :data-type :string}]]
+  [:sending-network-address
+   {:required false, :repeats false}
+   [:namespace-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id-type
+    {:required false, :repeats false, :data-type :string}]]
+  [:receiving-network-address
+   {:required false, :repeats false}
+   [:namespace-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id-type
+    {:required false, :repeats false, :data-type :string}]]
+  [:security-classification-tag
+   {:required false, :repeats false}
+   [:identifier {:required false, :repeats false, :data-type :string}]
+   [:text {:required false, :repeats false, :data-type :string}]
+   [:name-of-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-identifier
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-text
+    {:required false, :repeats false, :data-type :string}]
+   [:name-of-alternate-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:original-text
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-identifier
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-text
+    {:required false, :repeats false, :data-type :string}]
+   [:name-of-second-alternate-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:coding-system-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:value-set-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:value-set-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-coding-system-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-value-set-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-value-set-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-coding-system-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-value-set-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-value-set-version-id
+    {:required false, :repeats false, :data-type :string}]]
+  [:security-handling-instructions
+   {:required false, :repeats true}
+   [:identifier {:required false, :repeats false, :data-type :string}]
+   [:text {:required false, :repeats false, :data-type :string}]
+   [:name-of-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-identifier
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-text
+    {:required false, :repeats false, :data-type :string}]
+   [:name-of-alternate-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:original-text
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-identifier
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-text
+    {:required false, :repeats false, :data-type :string}]
+   [:name-of-second-alternate-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:coding-system-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:value-set-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:value-set-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-coding-system-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-value-set-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-value-set-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-coding-system-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-value-set-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-value-set-version-id
+    {:required false, :repeats false, :data-type :string}]]
+  [:special-access-restriction-instructions
+   {:required false, :repeats true, :data-type :string}]]
+ [:SFT
+  {:required false, :repeats true, :segment true}
+  [:software-vendor-organization
+   {:required true, :repeats false}
+   [:organization-name
+    {:required false, :repeats false, :data-type :string}]
+   [:organization-name-type-code
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:original-text
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-second-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:value-set-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-value-set-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-value-set-version-id
+     {:required false, :repeats false, :data-type :string}]]
+   [:assigning-authority
+    {:required false, :repeats false}
+    [:namespace-id
+     {:required false, :repeats false, :data-type :string}]
+    [:universal-id
+     {:required false, :repeats false, :data-type :string}]
+    [:universal-id-type
+     {:required false, :repeats false, :data-type :string}]]
+   [:identifier-type-code
+    {:required false, :repeats false, :data-type :string}]
+   [:assigning-facility
+    {:required false, :repeats false}
+    [:namespace-id
+     {:required false, :repeats false, :data-type :string}]
+    [:universal-id
+     {:required false, :repeats false, :data-type :string}]
+    [:universal-id-type
+     {:required false, :repeats false, :data-type :string}]]
+   [:name-representation-code
+    {:required false, :repeats false, :data-type :string}]
+   [:organization-identifier
+    {:required false, :repeats false, :data-type :string}]]
+  [:software-certified-version-or-release-number
+   {:required true, :repeats false, :data-type :string}]
+  [:software-product-name
+   {:required true, :repeats false, :data-type :string}]
+  [:software-binary-id
+   {:required true, :repeats false, :data-type :string}]
+  [:software-product-information
+   {:required false, :repeats false, :data-type :string}]
+  [:software-install-date
+   {:required false, :repeats false, :data-type :string}]]
+ [:UAC
+  {:required false, :repeats false, :segment true}
+  [:user-authentication-credential-type-code
+   {:required true, :repeats false}
+   [:identifier {:required false, :repeats false, :data-type :string}]
+   [:text {:required false, :repeats false, :data-type :string}]
+   [:name-of-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-identifier
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-text
+    {:required false, :repeats false, :data-type :string}]
+   [:name-of-alternate-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:original-text
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-identifier
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-text
+    {:required false, :repeats false, :data-type :string}]
+   [:name-of-second-alternate-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:coding-system-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:value-set-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:value-set-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-coding-system-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-value-set-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-value-set-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-coding-system-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-value-set-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-value-set-version-id
+    {:required false, :repeats false, :data-type :string}]]
+  [:user-authentication-credential
+   {:required true, :repeats false}
+   [:source-application
+    {:required false, :repeats false}
+    [:namespace-id
+     {:required false, :repeats false, :data-type :string}]
+    [:universal-id
+     {:required false, :repeats false, :data-type :string}]
+    [:universal-id-type
+     {:required false, :repeats false, :data-type :string}]]
+   [:type-of-data {:required true, :repeats false, :data-type :string}]
+   [:data-subtype
+    {:required false, :repeats false, :data-type :string}]
+   [:encoding {:required true, :repeats false, :data-type :string}]
+   [:data {:required true, :repeats false, :data-type :string}]]]
+ [:MFI
+  {:required true, :repeats false, :segment true}
+  [:master-file-identifier
+   {:required true, :repeats false}
+   [:identifier {:required false, :repeats false, :data-type :string}]
+   [:text {:required false, :repeats false, :data-type :string}]
+   [:name-of-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-identifier
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-text
+    {:required false, :repeats false, :data-type :string}]
+   [:name-of-alternate-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:original-text
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-identifier
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-text
+    {:required false, :repeats false, :data-type :string}]
+   [:name-of-second-alternate-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:coding-system-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:value-set-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:value-set-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-coding-system-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-value-set-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-value-set-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-coding-system-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-value-set-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-value-set-version-id
+    {:required false, :repeats false, :data-type :string}]]
+  [:master-file-application-identifier
+   {:required false, :repeats true}
+   [:namespace-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id-type
+    {:required false, :repeats false, :data-type :string}]]
+  [:filelevel-event-code
+   {:required true, :repeats false, :data-type :string}]
+  [:entered-dateortime
+   {:required false, :repeats false, :data-type :string}]
+  [:effective-dateortime
+   {:required false, :repeats false, :data-type :string}]
+  [:response-level-code
+   {:required true, :repeats false, :data-type :string}]]
+ [:CONTRACT_RECORD
+  {:required true, :repeats true}
+  [:MFE
+   {:required true, :repeats false, :segment true}
+   [:recordlevel-event-code
+    {:required true, :repeats false, :data-type :string}]
+   [:mfn-control-id
+    {:required false, :repeats false, :data-type :string}]
+   [:effective-dateortime
+    {:required false, :repeats false, :data-type :string}]
+   [:primary-key-value-mfe {:required true, :repeats true}]
+   [:primary-key-value-type
+    {:required true, :repeats true, :data-type :string}]
+   [:entered-dateortime
+    {:required false, :repeats false, :data-type :string}]
+   [:entered-by
+    {:required false, :repeats false}
+    [:person-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:family-name
+     {:required false, :repeats false}
+     [:surname {:required true, :repeats false, :data-type :string}]
+     [:own-surname-prefix
+      {:required false, :repeats false, :data-type :string}]
+     [:own-surname
+      {:required false, :repeats false, :data-type :string}]
+     [:surname-prefix-from-partnerorspouse
+      {:required false, :repeats false, :data-type :string}]
+     [:surname-from-partnerorspouse
+      {:required false, :repeats false, :data-type :string}]]
+    [:given-name {:required false, :repeats false, :data-type :string}]
+    [:second-and-further-given-names-or-initials-thereof
+     {:required false, :repeats false, :data-type :string}]
+    [:suffix {:required false, :repeats false, :data-type :string}]
+    [:prefix {:required false, :repeats false, :data-type :string}]
+    [:source-table
+     {:required false, :repeats false}
+     [:identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:original-text
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-second-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]]
+    [:assigning-authority
+     {:required false, :repeats false}
+     [:namespace-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id-type
+      {:required false, :repeats false, :data-type :string}]]
+    [:name-type-code
+     {:required false, :repeats false, :data-type :string}]
+    [:identifier-check-digit
+     {:required false, :repeats false, :data-type :string}]
+    [:check-digit-scheme
+     {:required false, :repeats false, :data-type :string}]
+    [:identifier-type-code
+     {:required false, :repeats false, :data-type :string}]
+    [:assigning-facility
+     {:required false, :repeats false}
+     [:namespace-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id-type
+      {:required false, :repeats false, :data-type :string}]]
+    [:name-representation-code
+     {:required false, :repeats false, :data-type :string}]
+    [:name-context
+     {:required false, :repeats false}
+     [:identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:original-text
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-second-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]]
+    [:name-assembly-order
+     {:required false, :repeats false, :data-type :string}]
+    [:effective-date
+     {:required false, :repeats false, :data-type :string}]
+    [:expiration-date
+     {:required false, :repeats false, :data-type :string}]
+    [:professional-suffix
+     {:required false, :repeats false, :data-type :string}]
+    [:assigning-jurisdiction
+     {:required false, :repeats false}
+     [:identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:original-text
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-second-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]]
+    [:assigning-agency-or-department
+     {:required false, :repeats false}
+     [:identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:original-text
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-second-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]]
+    [:security-check
+     {:required false, :repeats false, :data-type :string}]
+    [:security-check-scheme
+     {:required false, :repeats false, :data-type :string}]]]
+  [:CTR
+   {:required true, :repeats false, :segment true}
+   [:contract-identifier
+    {:required true, :repeats false}
+    [:entity-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:namespace-id
+     {:required false, :repeats false, :data-type :string}]
+    [:universal-id
+     {:required false, :repeats false, :data-type :string}]
+    [:universal-id-type
+     {:required false, :repeats false, :data-type :string}]]
+   [:contract-description
+    {:required false, :repeats false, :data-type :string}]
+   [:contract-status
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:original-text
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-second-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:value-set-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-value-set-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-value-set-version-id
+     {:required false, :repeats false, :data-type :string}]]
+   [:effective-date
+    {:required true, :repeats false, :data-type :string}]
+   [:expiration-date
+    {:required true, :repeats false, :data-type :string}]
+   [:contract-owner-name
+    {:required false, :repeats false}
+    [:family-name
+     {:required false, :repeats false}
+     [:surname {:required true, :repeats false, :data-type :string}]
+     [:own-surname-prefix
+      {:required false, :repeats false, :data-type :string}]
+     [:own-surname
+      {:required false, :repeats false, :data-type :string}]
+     [:surname-prefix-from-partnerorspouse
+      {:required false, :repeats false, :data-type :string}]
+     [:surname-from-partnerorspouse
+      {:required false, :repeats false, :data-type :string}]]
+    [:given-name {:required false, :repeats false, :data-type :string}]
+    [:second-and-further-given-names-or-initials-thereof
+     {:required false, :repeats false, :data-type :string}]
+    [:suffix {:required false, :repeats false, :data-type :string}]
+    [:prefix {:required false, :repeats false, :data-type :string}]
+    [:name-type-code
+     {:required false, :repeats false, :data-type :string}]
+    [:name-representation-code
+     {:required false, :repeats false, :data-type :string}]
+    [:name-context
+     {:required false, :repeats false}
+     [:identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:original-text
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-second-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]]
+    [:name-assembly-order
+     {:required false, :repeats false, :data-type :string}]
+    [:effective-date
+     {:required false, :repeats false, :data-type :string}]
+    [:expiration-date
+     {:required false, :repeats false, :data-type :string}]
+    [:professional-suffix
+     {:required false, :repeats false, :data-type :string}]
+    [:called-by {:required false, :repeats false, :data-type :string}]]
+   [:contract-originator-name
+    {:required false, :repeats false}
+    [:family-name
+     {:required false, :repeats false}
+     [:surname {:required true, :repeats false, :data-type :string}]
+     [:own-surname-prefix
+      {:required false, :repeats false, :data-type :string}]
+     [:own-surname
+      {:required false, :repeats false, :data-type :string}]
+     [:surname-prefix-from-partnerorspouse
+      {:required false, :repeats false, :data-type :string}]
+     [:surname-from-partnerorspouse
+      {:required false, :repeats false, :data-type :string}]]
+    [:given-name {:required false, :repeats false, :data-type :string}]
+    [:second-and-further-given-names-or-initials-thereof
+     {:required false, :repeats false, :data-type :string}]
+    [:suffix {:required false, :repeats false, :data-type :string}]
+    [:prefix {:required false, :repeats false, :data-type :string}]
+    [:name-type-code
+     {:required false, :repeats false, :data-type :string}]
+    [:name-representation-code
+     {:required false, :repeats false, :data-type :string}]
+    [:name-context
+     {:required false, :repeats false}
+     [:identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:original-text
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-second-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]]
+    [:name-assembly-order
+     {:required false, :repeats false, :data-type :string}]
+    [:effective-date
+     {:required false, :repeats false, :data-type :string}]
+    [:expiration-date
+     {:required false, :repeats false, :data-type :string}]
+    [:professional-suffix
+     {:required false, :repeats false, :data-type :string}]
+    [:called-by {:required false, :repeats false, :data-type :string}]]
+   [:supplier-type
+    {:required true, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:original-text
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-second-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:value-set-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-value-set-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-value-set-version-id
+     {:required false, :repeats false, :data-type :string}]]
+   [:contract-type
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:original-text
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-second-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:value-set-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-value-set-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-value-set-version-id
+     {:required false, :repeats false, :data-type :string}]]
+   [:free-on-board-freight-terms
+    {:required false, :repeats false}
+    [:identifier {:required true, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:original-text
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-second-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:value-set-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-value-set-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-value-set-version-id
+     {:required false, :repeats false, :data-type :string}]]
+   [:price-protection-date
+    {:required false, :repeats false, :data-type :string}]
+   [:fixed-price-contract-indicator
+    {:required false, :repeats false}
+    [:identifier {:required true, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:original-text
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-second-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:value-set-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-value-set-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-value-set-version-id
+     {:required false, :repeats false, :data-type :string}]]
+   [:group-purchasing-organization
+    {:required false, :repeats false}
+    [:organization-name
+     {:required false, :repeats false, :data-type :string}]
+    [:organization-name-type-code
+     {:required false, :repeats false}
+     [:identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:original-text
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-second-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]]
+    [:assigning-authority
+     {:required false, :repeats false}
+     [:namespace-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id-type
+      {:required false, :repeats false, :data-type :string}]]
+    [:identifier-type-code
+     {:required false, :repeats false, :data-type :string}]
+    [:assigning-facility
+     {:required false, :repeats false}
+     [:namespace-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id-type
+      {:required false, :repeats false, :data-type :string}]]
+    [:name-representation-code
+     {:required false, :repeats false, :data-type :string}]
+    [:organization-identifier
+     {:required false, :repeats false, :data-type :string}]]
+   [:maximum-markup
+    {:required false, :repeats false}
+    [:money-or-percentage-indicator
+     {:required true, :repeats false, :data-type :string}]
+    [:money-or-percentage-quantity
+     {:required true, :repeats false, :data-type :string}]
+    [:monetary-denomination
+     {:required false, :repeats false, :data-type :string}]]
+   [:actual-markup
+    {:required false, :repeats false}
+    [:money-or-percentage-indicator
+     {:required true, :repeats false, :data-type :string}]
+    [:money-or-percentage-quantity
+     {:required true, :repeats false, :data-type :string}]
+    [:monetary-denomination
+     {:required false, :repeats false, :data-type :string}]]
+   [:corporation
+    {:required false, :repeats true}
+    [:organization-name
+     {:required false, :repeats false, :data-type :string}]
+    [:organization-name-type-code
+     {:required false, :repeats false}
+     [:identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:original-text
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-second-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]]
+    [:assigning-authority
+     {:required false, :repeats false}
+     [:namespace-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id-type
+      {:required false, :repeats false, :data-type :string}]]
+    [:identifier-type-code
+     {:required false, :repeats false, :data-type :string}]
+    [:assigning-facility
+     {:required false, :repeats false}
+     [:namespace-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id-type
+      {:required false, :repeats false, :data-type :string}]]
+    [:name-representation-code
+     {:required false, :repeats false, :data-type :string}]
+    [:organization-identifier
+     {:required false, :repeats false, :data-type :string}]]
+   [:parent-of-corporation
+    {:required false, :repeats false}
+    [:organization-name
+     {:required false, :repeats false, :data-type :string}]
+    [:organization-name-type-code
+     {:required false, :repeats false}
+     [:identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:original-text
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-second-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]]
+    [:assigning-authority
+     {:required false, :repeats false}
+     [:namespace-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id-type
+      {:required false, :repeats false, :data-type :string}]]
+    [:identifier-type-code
+     {:required false, :repeats false, :data-type :string}]
+    [:assigning-facility
+     {:required false, :repeats false}
+     [:namespace-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id-type
+      {:required false, :repeats false, :data-type :string}]]
+    [:name-representation-code
+     {:required false, :repeats false, :data-type :string}]
+    [:organization-identifier
+     {:required false, :repeats false, :data-type :string}]]
+   [:pricing-tier-level
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:original-text
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-second-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:value-set-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-value-set-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-value-set-version-id
+     {:required false, :repeats false, :data-type :string}]]
+   [:contract-priority
+    {:required false, :repeats false, :data-type :string}]
+   [:class-of-trade
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:original-text
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-second-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:value-set-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-value-set-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-value-set-version-id
+     {:required false, :repeats false, :data-type :string}]]
+   [:associated-contract-id
+    {:required false, :repeats false}
+    [:entity-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:namespace-id
+     {:required false, :repeats false, :data-type :string}]
+    [:universal-id
+     {:required false, :repeats false, :data-type :string}]
+    [:universal-id-type
+     {:required false, :repeats false, :data-type :string}]]]
+  [:NTE
+   {:required false, :repeats true, :segment true}
+   [:set-id-nte {:required false, :repeats false, :data-type :string}]
+   [:source-of-comment
+    {:required false, :repeats false, :data-type :string}]
+   [:comment {:required false, :repeats true, :data-type :string}]
+   [:comment-type
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:original-text
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-second-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:value-set-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-value-set-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-value-set-version-id
+     {:required false, :repeats false, :data-type :string}]]
+   [:entered-by
+    {:required false, :repeats false}
+    [:person-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:family-name
+     {:required false, :repeats false}
+     [:surname {:required true, :repeats false, :data-type :string}]
+     [:own-surname-prefix
+      {:required false, :repeats false, :data-type :string}]
+     [:own-surname
+      {:required false, :repeats false, :data-type :string}]
+     [:surname-prefix-from-partnerorspouse
+      {:required false, :repeats false, :data-type :string}]
+     [:surname-from-partnerorspouse
+      {:required false, :repeats false, :data-type :string}]]
+    [:given-name {:required false, :repeats false, :data-type :string}]
+    [:second-and-further-given-names-or-initials-thereof
+     {:required false, :repeats false, :data-type :string}]
+    [:suffix {:required false, :repeats false, :data-type :string}]
+    [:prefix {:required false, :repeats false, :data-type :string}]
+    [:source-table
+     {:required false, :repeats false}
+     [:identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:original-text
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-second-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]]
+    [:assigning-authority
+     {:required false, :repeats false}
+     [:namespace-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id-type
+      {:required false, :repeats false, :data-type :string}]]
+    [:name-type-code
+     {:required false, :repeats false, :data-type :string}]
+    [:identifier-check-digit
+     {:required false, :repeats false, :data-type :string}]
+    [:check-digit-scheme
+     {:required false, :repeats false, :data-type :string}]
+    [:identifier-type-code
+     {:required false, :repeats false, :data-type :string}]
+    [:assigning-facility
+     {:required false, :repeats false}
+     [:namespace-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id-type
+      {:required false, :repeats false, :data-type :string}]]
+    [:name-representation-code
+     {:required false, :repeats false, :data-type :string}]
+    [:name-context
+     {:required false, :repeats false}
+     [:identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:original-text
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-second-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]]
+    [:name-assembly-order
+     {:required false, :repeats false, :data-type :string}]
+    [:effective-date
+     {:required false, :repeats false, :data-type :string}]
+    [:expiration-date
+     {:required false, :repeats false, :data-type :string}]
+    [:professional-suffix
+     {:required false, :repeats false, :data-type :string}]
+    [:assigning-jurisdiction
+     {:required false, :repeats false}
+     [:identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:original-text
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-second-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]]
+    [:assigning-agency-or-department
+     {:required false, :repeats false}
+     [:identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:original-text
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-second-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]]
+    [:security-check
+     {:required false, :repeats false, :data-type :string}]
+    [:security-check-scheme
+     {:required false, :repeats false, :data-type :string}]]
+   [:entered-dateortime
+    {:required false, :repeats false, :data-type :string}]
+   [:effective-start-date
+    {:required false, :repeats false, :data-type :string}]
+   [:expiration-date
+    {:required false, :repeats false, :data-type :string}]
+   [:coded-comment
+    {:required false, :repeats true}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:original-text
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-second-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:value-set-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-value-set-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-value-set-version-id
+     {:required false, :repeats false, :data-type :string}]]]
+  [:MATERIAL_ITEM_RECORD
+   {:required true, :repeats true}
+   [:ITM
+    {:required true, :repeats false, :segment true}
+    [:item-identifier {:required true, :repeats false}]
+    [:item-description
+     {:required false, :repeats false, :data-type :string}]
+    [:item-status
+     {:required false, :repeats false}
+     [:identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:original-text
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-second-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]]
+    [:item-type
+     {:required false, :repeats false}
+     [:identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:original-text
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-second-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]]
+    [:item-category
+     {:required false, :repeats false}
+     [:identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:original-text
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-second-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]]
+    [:subject-to-expiration-indicator
+     {:required false, :repeats false}
+     [:identifier {:required true, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:original-text
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-second-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]]
+    [:manufacturer-identifier
+     {:required false, :repeats false}
+     [:entity-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:namespace-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id-type
+      {:required false, :repeats false, :data-type :string}]]
+    [:manufacturer-name
+     {:required false, :repeats false, :data-type :string}]
+    [:manufacturer-catalog-number
+     {:required false, :repeats false, :data-type :string}]
+    [:manufacturer-labeler-identification-code
+     {:required false, :repeats false}
+     [:identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:original-text
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-second-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]]
+    [:patient-chargeable-indicator
+     {:required false, :repeats false}
+     [:identifier {:required true, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:original-text
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-second-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]]
+    [:transaction-code {:required false, :repeats false}]
+    [:transaction-amount-unit
+     {:required false, :repeats false}
+     [:price
+      {:required true, :repeats false}
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]]
+     [:price-type
+      {:required false, :repeats false, :data-type :string}]
+     [:from-value
+      {:required false, :repeats false, :data-type :string}]
+     [:to-value {:required false, :repeats false, :data-type :string}]
+     [:range-units
+      {:required false, :repeats false}
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]]
+     [:range-type
+      {:required false, :repeats false, :data-type :string}]]
+    [:stocked-item-indicator
+     {:required false, :repeats false}
+     [:identifier {:required true, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:original-text
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-second-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]]
+    [:supply-risk-codes
+     {:required false, :repeats false}
+     [:identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:original-text
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-second-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]]
+    [:approving-regulatory-agency
+     {:required false, :repeats true}
+     [:organization-name
+      {:required false, :repeats false, :data-type :string}]
+     [:organization-name-type-code
+      {:required false, :repeats false}
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]]
+     [:assigning-authority
+      {:required false, :repeats false}
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]]
+     [:identifier-type-code
+      {:required false, :repeats false, :data-type :string}]
+     [:assigning-facility
+      {:required false, :repeats false}
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]]
+     [:name-representation-code
+      {:required false, :repeats false, :data-type :string}]
+     [:organization-identifier
+      {:required false, :repeats false, :data-type :string}]]
+    [:latex-indicator
+     {:required false, :repeats false}
+     [:identifier {:required true, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:original-text
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-second-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]]
+    [:ruling-act
+     {:required false, :repeats true}
+     [:identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:original-text
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-second-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]]
+    [:item-natural-account-code
+     {:required false, :repeats false}
+     [:identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:original-text
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-second-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]]
+    [:approved-to-buy-quantity
+     {:required false, :repeats false, :data-type :string}]
+    [:approved-to-buy-price
+     {:required false, :repeats false}
+     [:quantity {:required false, :repeats false, :data-type :string}]
+     [:denomination
+      {:required false, :repeats false, :data-type :string}]]
+    [:taxable-item-indicator
+     {:required false, :repeats false}
+     [:identifier {:required true, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:original-text
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-second-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]]
+    [:freight-charge-indicator
+     {:required false, :repeats false}
+     [:identifier {:required true, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:original-text
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-second-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]]
+    [:item-set-indicator
+     {:required false, :repeats false}
+     [:identifier {:required true, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:original-text
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-second-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]]
+    [:item-set-identifier
+     {:required false, :repeats false}
+     [:entity-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:namespace-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id-type
+      {:required false, :repeats false, :data-type :string}]]
+    [:track-department-usage-indicator
+     {:required false, :repeats false}
+     [:identifier {:required true, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:original-text
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-second-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]]
+    [:procedure-code
+     {:required false, :repeats false}
+     [:identifier {:required true, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:original-text
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-second-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]]
+    [:procedure-code-modifier
+     {:required false, :repeats true}
+     [:identifier {:required true, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:original-text
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-second-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]]
+    [:special-handling-code
+     {:required false, :repeats false}
+     [:identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:original-text
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-second-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]]
+    [:hazardous-indicator
+     {:required false, :repeats false}
+     [:identifier {:required true, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:original-text
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-second-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]]
+    [:sterile-indicator
+     {:required false, :repeats false}
+     [:identifier {:required true, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:original-text
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-second-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]]
+    [:material-data-safety-sheet-number
+     {:required false, :repeats false}
+     [:entity-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:namespace-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id-type
+      {:required false, :repeats false, :data-type :string}]]
+    [:united-nations-standard-products-and-services-code
+     {:required false, :repeats false}
+     [:identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:original-text
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-second-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-coding-system-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-oid
+      {:required false, :repeats false, :data-type :string}]
+     [:second-alternate-value-set-version-id
+      {:required false, :repeats false, :data-type :string}]]
+    [:contract-date
+     {:required false, :repeats false}
+     [:range-start-dateortime
+      {:required false, :repeats false, :data-type :string}]
+     [:range-end-dateortime
+      {:required false, :repeats false, :data-type :string}]]
+    [:manufacturer-contact-name
+     {:required false, :repeats false}
+     [:family-name
+      {:required false, :repeats false}
+      [{:required true, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]]
+     [:given-name
+      {:required false, :repeats false, :data-type :string}]
+     [:second-and-further-given-names-or-initials-thereof
+      {:required false, :repeats false, :data-type :string}]
+     [:suffix {:required false, :repeats false, :data-type :string}]
+     [:prefix {:required false, :repeats false, :data-type :string}]
+     [:name-type-code
+      {:required false, :repeats false, :data-type :string}]
+     [:name-representation-code
+      {:required false, :repeats false, :data-type :string}]
+     [:name-context
+      {:required false, :repeats false}
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]]
+     [:name-assembly-order
+      {:required false, :repeats false, :data-type :string}]
+     [:effective-date
+      {:required false, :repeats false, :data-type :string}]
+     [:expiration-date
+      {:required false, :repeats false, :data-type :string}]
+     [:professional-suffix
+      {:required false, :repeats false, :data-type :string}]
+     [:called-by
+      {:required false, :repeats false, :data-type :string}]]
+    [:manufacturer-contact-information
+     {:required false, :repeats false}
+     [:telecommunication-use-code
+      {:required false, :repeats false, :data-type :string}]
+     [:telecommunication-equipment-type
+      {:required true, :repeats false, :data-type :string}]
+     [:communication-address
+      {:required false, :repeats false, :data-type :string}]
+     [:country-code
+      {:required false, :repeats false, :data-type :string}]
+     [:areaorcity-code
+      {:required false, :repeats false, :data-type :string}]
+     [:local-number
+      {:required false, :repeats false, :data-type :string}]
+     [:extension {:required false, :repeats false, :data-type :string}]
+     [:any-text {:required false, :repeats false, :data-type :string}]
+     [:extension-prefix
+      {:required false, :repeats false, :data-type :string}]
+     [:speed-dial-code
+      {:required false, :repeats false, :data-type :string}]
+     [:unformatted-telephone-number
+      {:required false, :repeats false, :data-type :string}]
+     [:effective-start-date
+      {:required false, :repeats false, :data-type :string}]
+     [:expiration-date
+      {:required false, :repeats false, :data-type :string}]
+     [:expiration-reason
+      {:required false, :repeats false}
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]]
+     [:protection-code
+      {:required false, :repeats false}
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]]
+     [:shared-telecommunication-identifier
+      {:required false, :repeats false}
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]]
+     [:preference-order
+      {:required false, :repeats false, :data-type :string}]]
+    [:class-of-trade
+     {:required false, :repeats false, :data-type :string}]
+    [:field-level-event-code
+     {:required false, :repeats false, :data-type :string}]]
+   [:PURCHASING_VENDOR
+    {:required true, :repeats true}
+    [:VND
+     {:required true, :repeats false, :segment true}
+     [:set-id-vnd {:required true, :repeats false, :data-type :string}]
+     [:vendor-identifier
+      {:required false, :repeats false}
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]]
+     [:vendor-name
+      {:required false, :repeats false, :data-type :string}]
+     [:vendor-catalog-number
+      {:required false, :repeats false}
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]]
+     [:primary-vendor-indicator
+      {:required false, :repeats false}
+      [{:required true, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]]
+     [:corporation
+      {:required false, :repeats true}
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]]
+     [:primary-contact
+      {:required false, :repeats false}
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]]
+     [:contract-adjustment
+      {:required false, :repeats false}
+      [{:required true, :repeats false}]
+      [{:required true, :repeats false}]
+      [{:required false, :repeats false}]]
+     [:associated-contract-id
+      {:required false, :repeats true}
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]]
+     [:class-of-trade
+      {:required false, :repeats true, :data-type :string}]
+     [:pricing-tier-level
+      {:required false, :repeats false}
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]
+      [{:required false, :repeats false}]]]
+    [:PACKAGING
+     {:required false, :repeats true}
+     [:PKG
+      {:required true, :repeats false, :segment true}
+      [:set-id-pkg
+       {:required true, :repeats false, :data-type :string}]
+      [:packaging-units {:required false, :repeats false}]
+      [:default-order-unit-of-measure-indicator
+       {:required false, :repeats false}]
+      [:package-quantity
+       {:required false, :repeats false, :data-type :string}]
+      [:price {:required false, :repeats false}]
+      [:future-item-price {:required false, :repeats false}]
+      [:future-item-price-effective-date
+       {:required false, :repeats false, :data-type :string}]
+      [:global-trade-item-number {:required false, :repeats false}]
+      [:contract-price {:required false, :repeats false}]
+      [:quantity-of-each
+       {:required false, :repeats false, :data-type :string}]
+      [:vendor-catalog-number {:required false, :repeats false}]]]]]]]

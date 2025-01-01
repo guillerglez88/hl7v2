@@ -1,0 +1,1010 @@
+[:QBP_Q11
+ [:MSH
+  {:required true, :repeats false, :segment true}
+  [:field-separator
+   {:required true, :repeats false, :data-type :string}]
+  [:encoding-characters
+   {:required true, :repeats false, :data-type :string}]
+  [:sending-application
+   {:required false, :repeats false}
+   [:namespace-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id-type
+    {:required false, :repeats false, :data-type :string}]]
+  [:sending-facility
+   {:required false, :repeats false}
+   [:namespace-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id-type
+    {:required false, :repeats false, :data-type :string}]]
+  [:receiving-application
+   {:required false, :repeats false}
+   [:namespace-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id-type
+    {:required false, :repeats false, :data-type :string}]]
+  [:receiving-facility
+   {:required false, :repeats true}
+   [:namespace-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id-type
+    {:required false, :repeats false, :data-type :string}]]
+  [:dateortime-of-message
+   {:required true, :repeats false, :data-type :string}]
+  [:security {:required false, :repeats false, :data-type :string}]
+  [:message-type
+   {:required true, :repeats false}
+   [:message-code {:required true, :repeats false, :data-type :string}]
+   [:trigger-event
+    {:required true, :repeats false, :data-type :string}]
+   [:message-structure
+    {:required true, :repeats false, :data-type :string}]]
+  [:message-control-id
+   {:required true, :repeats false, :data-type :string}]
+  [:processing-id
+   {:required true, :repeats false}
+   [:processing-id
+    {:required true, :repeats false, :data-type :string}]
+   [:processing-mode
+    {:required false, :repeats false, :data-type :string}]]
+  [:version-id
+   {:required true, :repeats false}
+   [:version-id {:required true, :repeats false, :data-type :string}]
+   [:internationalization-code
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:original-text
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-second-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:value-set-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-value-set-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-value-set-version-id
+     {:required false, :repeats false, :data-type :string}]]
+   [:international-version-id
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:original-text
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-second-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:value-set-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-value-set-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-value-set-version-id
+     {:required false, :repeats false, :data-type :string}]]]
+  [:sequence-number
+   {:required false, :repeats false, :data-type :string}]
+  [:continuation-pointer
+   {:required false, :repeats false, :data-type :string}]
+  [:accept-acknowledgment
+   {:required false, :repeats false, :data-type :string}]
+  [:application-acknowledgment-type
+   {:required false, :repeats false, :data-type :string}]
+  [:country-code {:required false, :repeats false, :data-type :string}]
+  [:character-set {:required false, :repeats true, :data-type :string}]
+  [:principal-language-of-message
+   {:required false, :repeats false}
+   [:identifier {:required false, :repeats false, :data-type :string}]
+   [:text {:required false, :repeats false, :data-type :string}]
+   [:name-of-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-identifier
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-text
+    {:required false, :repeats false, :data-type :string}]
+   [:name-of-alternate-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:original-text
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-identifier
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-text
+    {:required false, :repeats false, :data-type :string}]
+   [:name-of-second-alternate-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:coding-system-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:value-set-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:value-set-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-coding-system-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-value-set-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-value-set-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-coding-system-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-value-set-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-value-set-version-id
+    {:required false, :repeats false, :data-type :string}]]
+  [:alternate-character-set-handling-scheme
+   {:required false, :repeats false, :data-type :string}]
+  [:message-profile-identifier {:required false, :repeats true}]
+  [:sending-responsible-organization
+   {:required false, :repeats false}
+   [:organization-name
+    {:required false, :repeats false, :data-type :string}]
+   [:organization-name-type-code
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:original-text
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-second-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:value-set-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-value-set-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-value-set-version-id
+     {:required false, :repeats false, :data-type :string}]]
+   [:assigning-authority
+    {:required false, :repeats false}
+    [:namespace-id
+     {:required false, :repeats false, :data-type :string}]
+    [:universal-id
+     {:required false, :repeats false, :data-type :string}]
+    [:universal-id-type
+     {:required false, :repeats false, :data-type :string}]]
+   [:identifier-type-code
+    {:required false, :repeats false, :data-type :string}]
+   [:assigning-facility
+    {:required false, :repeats false}
+    [:namespace-id
+     {:required false, :repeats false, :data-type :string}]
+    [:universal-id
+     {:required false, :repeats false, :data-type :string}]
+    [:universal-id-type
+     {:required false, :repeats false, :data-type :string}]]
+   [:name-representation-code
+    {:required false, :repeats false, :data-type :string}]
+   [:organization-identifier
+    {:required false, :repeats false, :data-type :string}]]
+  [:receiving-responsible-organization
+   {:required false, :repeats false}
+   [:organization-name
+    {:required false, :repeats false, :data-type :string}]
+   [:organization-name-type-code
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:original-text
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-second-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:value-set-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-value-set-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-value-set-version-id
+     {:required false, :repeats false, :data-type :string}]]
+   [:assigning-authority
+    {:required false, :repeats false}
+    [:namespace-id
+     {:required false, :repeats false, :data-type :string}]
+    [:universal-id
+     {:required false, :repeats false, :data-type :string}]
+    [:universal-id-type
+     {:required false, :repeats false, :data-type :string}]]
+   [:identifier-type-code
+    {:required false, :repeats false, :data-type :string}]
+   [:assigning-facility
+    {:required false, :repeats false}
+    [:namespace-id
+     {:required false, :repeats false, :data-type :string}]
+    [:universal-id
+     {:required false, :repeats false, :data-type :string}]
+    [:universal-id-type
+     {:required false, :repeats false, :data-type :string}]]
+   [:name-representation-code
+    {:required false, :repeats false, :data-type :string}]
+   [:organization-identifier
+    {:required false, :repeats false, :data-type :string}]]
+  [:sending-network-address
+   {:required false, :repeats false}
+   [:namespace-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id-type
+    {:required false, :repeats false, :data-type :string}]]
+  [:receiving-network-address
+   {:required false, :repeats false}
+   [:namespace-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id-type
+    {:required false, :repeats false, :data-type :string}]]
+  [:security-classification-tag
+   {:required false, :repeats false}
+   [:identifier {:required false, :repeats false, :data-type :string}]
+   [:text {:required false, :repeats false, :data-type :string}]
+   [:name-of-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-identifier
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-text
+    {:required false, :repeats false, :data-type :string}]
+   [:name-of-alternate-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:original-text
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-identifier
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-text
+    {:required false, :repeats false, :data-type :string}]
+   [:name-of-second-alternate-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:coding-system-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:value-set-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:value-set-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-coding-system-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-value-set-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-value-set-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-coding-system-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-value-set-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-value-set-version-id
+    {:required false, :repeats false, :data-type :string}]]
+  [:security-handling-instructions
+   {:required false, :repeats true}
+   [:identifier {:required false, :repeats false, :data-type :string}]
+   [:text {:required false, :repeats false, :data-type :string}]
+   [:name-of-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-identifier
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-text
+    {:required false, :repeats false, :data-type :string}]
+   [:name-of-alternate-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:original-text
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-identifier
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-text
+    {:required false, :repeats false, :data-type :string}]
+   [:name-of-second-alternate-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:coding-system-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:value-set-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:value-set-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-coding-system-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-value-set-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-value-set-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-coding-system-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-value-set-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-value-set-version-id
+    {:required false, :repeats false, :data-type :string}]]
+  [:special-access-restriction-instructions
+   {:required false, :repeats true, :data-type :string}]]
+ [:ARV
+  {:required false, :repeats true, :segment true}
+  [:set-id {:required false, :repeats false, :data-type :string}]
+  [:access-restriction-action-code
+   {:required true, :repeats false}
+   [:identifier {:required true, :repeats false, :data-type :string}]
+   [:text {:required false, :repeats false, :data-type :string}]
+   [:name-of-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-identifier
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-text
+    {:required false, :repeats false, :data-type :string}]
+   [:name-of-alternate-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:original-text
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-identifier
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-text
+    {:required false, :repeats false, :data-type :string}]
+   [:name-of-second-alternate-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:coding-system-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:value-set-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:value-set-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-coding-system-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-value-set-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-value-set-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-coding-system-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-value-set-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-value-set-version-id
+    {:required false, :repeats false, :data-type :string}]]
+  [:access-restriction-value
+   {:required true, :repeats false}
+   [:identifier {:required false, :repeats false, :data-type :string}]
+   [:text {:required false, :repeats false, :data-type :string}]
+   [:name-of-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-identifier
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-text
+    {:required false, :repeats false, :data-type :string}]
+   [:name-of-alternate-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:original-text
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-identifier
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-text
+    {:required false, :repeats false, :data-type :string}]
+   [:name-of-second-alternate-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:coding-system-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:value-set-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:value-set-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-coding-system-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-value-set-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-value-set-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-coding-system-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-value-set-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-value-set-version-id
+    {:required false, :repeats false, :data-type :string}]]
+  [:access-restriction-reason
+   {:required false, :repeats true}
+   [:identifier {:required false, :repeats false, :data-type :string}]
+   [:text {:required false, :repeats false, :data-type :string}]
+   [:name-of-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-identifier
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-text
+    {:required false, :repeats false, :data-type :string}]
+   [:name-of-alternate-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:original-text
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-identifier
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-text
+    {:required false, :repeats false, :data-type :string}]
+   [:name-of-second-alternate-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:coding-system-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:value-set-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:value-set-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-coding-system-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-value-set-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-value-set-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-coding-system-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-value-set-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-value-set-version-id
+    {:required false, :repeats false, :data-type :string}]]
+  [:special-access-restriction-instructions
+   {:required false, :repeats true, :data-type :string}]
+  [:access-restriction-date-range
+   {:required false, :repeats false}
+   [:range-start-dateortime
+    {:required false, :repeats false, :data-type :string}]
+   [:range-end-dateortime
+    {:required false, :repeats false, :data-type :string}]]
+  [:security-classification-tag
+   {:required true, :repeats false}
+   [:identifier {:required false, :repeats false, :data-type :string}]
+   [:text {:required false, :repeats false, :data-type :string}]
+   [:name-of-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-identifier
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-text
+    {:required false, :repeats false, :data-type :string}]
+   [:name-of-alternate-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:original-text
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-identifier
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-text
+    {:required false, :repeats false, :data-type :string}]
+   [:name-of-second-alternate-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:coding-system-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:value-set-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:value-set-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-coding-system-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-value-set-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-value-set-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-coding-system-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-value-set-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-value-set-version-id
+    {:required false, :repeats false, :data-type :string}]]
+  [:security-handling-instructions
+   {:required false, :repeats true}
+   [:identifier {:required false, :repeats false, :data-type :string}]
+   [:text {:required false, :repeats false, :data-type :string}]
+   [:name-of-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-identifier
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-text
+    {:required false, :repeats false, :data-type :string}]
+   [:name-of-alternate-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:original-text
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-identifier
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-text
+    {:required false, :repeats false, :data-type :string}]
+   [:name-of-second-alternate-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:coding-system-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:value-set-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:value-set-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-coding-system-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-value-set-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-value-set-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-coding-system-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-value-set-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-value-set-version-id
+    {:required false, :repeats false, :data-type :string}]]
+  [:access-restriction-message-location
+   {:required false, :repeats true}
+   [:segment-id {:required true, :repeats false, :data-type :string}]
+   [:segment-sequence
+    {:required true, :repeats false, :data-type :string}]
+   [:field-position
+    {:required false, :repeats false, :data-type :string}]
+   [:field-repetition
+    {:required false, :repeats false, :data-type :string}]
+   [:component-number
+    {:required false, :repeats false, :data-type :string}]
+   [:subcomponent-number
+    {:required false, :repeats false, :data-type :string}]]
+  [:access-restriction-instance-identifier
+   {:required false, :repeats false}
+   [:entity-identifier
+    {:required false, :repeats false, :data-type :string}]
+   [:namespace-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id-type
+    {:required false, :repeats false, :data-type :string}]]]
+ [:SFT
+  {:required false, :repeats true, :segment true}
+  [:software-vendor-organization
+   {:required true, :repeats false}
+   [:organization-name
+    {:required false, :repeats false, :data-type :string}]
+   [:organization-name-type-code
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:original-text
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-second-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:value-set-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-value-set-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-value-set-version-id
+     {:required false, :repeats false, :data-type :string}]]
+   [:assigning-authority
+    {:required false, :repeats false}
+    [:namespace-id
+     {:required false, :repeats false, :data-type :string}]
+    [:universal-id
+     {:required false, :repeats false, :data-type :string}]
+    [:universal-id-type
+     {:required false, :repeats false, :data-type :string}]]
+   [:identifier-type-code
+    {:required false, :repeats false, :data-type :string}]
+   [:assigning-facility
+    {:required false, :repeats false}
+    [:namespace-id
+     {:required false, :repeats false, :data-type :string}]
+    [:universal-id
+     {:required false, :repeats false, :data-type :string}]
+    [:universal-id-type
+     {:required false, :repeats false, :data-type :string}]]
+   [:name-representation-code
+    {:required false, :repeats false, :data-type :string}]
+   [:organization-identifier
+    {:required false, :repeats false, :data-type :string}]]
+  [:software-certified-version-or-release-number
+   {:required true, :repeats false, :data-type :string}]
+  [:software-product-name
+   {:required true, :repeats false, :data-type :string}]
+  [:software-binary-id
+   {:required true, :repeats false, :data-type :string}]
+  [:software-product-information
+   {:required false, :repeats false, :data-type :string}]
+  [:software-install-date
+   {:required false, :repeats false, :data-type :string}]]
+ [:UAC
+  {:required false, :repeats false, :segment true}
+  [:user-authentication-credential-type-code
+   {:required true, :repeats false}
+   [:identifier {:required false, :repeats false, :data-type :string}]
+   [:text {:required false, :repeats false, :data-type :string}]
+   [:name-of-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-identifier
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-text
+    {:required false, :repeats false, :data-type :string}]
+   [:name-of-alternate-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:original-text
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-identifier
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-text
+    {:required false, :repeats false, :data-type :string}]
+   [:name-of-second-alternate-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:coding-system-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:value-set-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:value-set-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-coding-system-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-value-set-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-value-set-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-coding-system-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-value-set-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-value-set-version-id
+    {:required false, :repeats false, :data-type :string}]]
+  [:user-authentication-credential
+   {:required true, :repeats false}
+   [:source-application
+    {:required false, :repeats false}
+    [:namespace-id
+     {:required false, :repeats false, :data-type :string}]
+    [:universal-id
+     {:required false, :repeats false, :data-type :string}]
+    [:universal-id-type
+     {:required false, :repeats false, :data-type :string}]]
+   [:type-of-data {:required true, :repeats false, :data-type :string}]
+   [:data-subtype
+    {:required false, :repeats false, :data-type :string}]
+   [:encoding {:required true, :repeats false, :data-type :string}]
+   [:data {:required true, :repeats false, :data-type :string}]]]
+ [:QPD
+  {:required true, :repeats false, :segment true}
+  [:message-query-name
+   {:required true, :repeats false}
+   [:identifier {:required false, :repeats false, :data-type :string}]
+   [:text {:required false, :repeats false, :data-type :string}]
+   [:name-of-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-identifier
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-text
+    {:required false, :repeats false, :data-type :string}]
+   [:name-of-alternate-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:original-text
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-identifier
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-text
+    {:required false, :repeats false, :data-type :string}]
+   [:name-of-second-alternate-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:coding-system-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:value-set-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:value-set-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-coding-system-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-value-set-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-value-set-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-coding-system-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-value-set-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-value-set-version-id
+    {:required false, :repeats false, :data-type :string}]]
+  [:query-tag {:required false, :repeats false, :data-type :string}]
+  [:user-parameters {:required false, :repeats false}]]
+ [:QBP
+  {:required false, :repeats false}
+  [:anyHL7Segment {:required false, :repeats false}]]
+ [:RCP
+  {:required true, :repeats false, :segment true}
+  [:query-priority
+   {:required false, :repeats false, :data-type :string}]
+  [:quantity-limited-request
+   {:required false, :repeats false}
+   [:quantity {:required false, :repeats false, :data-type :string}]
+   [:units
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:original-text
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-second-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:value-set-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-value-set-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-coding-system-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-value-set-oid
+     {:required false, :repeats false, :data-type :string}]
+    [:second-alternate-value-set-version-id
+     {:required false, :repeats false, :data-type :string}]]]
+  [:response-modality
+   {:required false, :repeats false}
+   [:identifier {:required true, :repeats false, :data-type :string}]
+   [:text {:required false, :repeats false, :data-type :string}]
+   [:name-of-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-identifier
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-text
+    {:required false, :repeats false, :data-type :string}]
+   [:name-of-alternate-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:original-text
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-identifier
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-text
+    {:required false, :repeats false, :data-type :string}]
+   [:name-of-second-alternate-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:coding-system-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:value-set-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:value-set-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-coding-system-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-value-set-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-value-set-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-coding-system-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-value-set-oid
+    {:required false, :repeats false, :data-type :string}]
+   [:second-alternate-value-set-version-id
+    {:required false, :repeats false, :data-type :string}]]
+  [:execution-and-delivery-time
+   {:required false, :repeats false, :data-type :string}]
+  [:modify-indicator
+   {:required false, :repeats false, :data-type :string}]
+  [:sortby-field
+   {:required false, :repeats true}
+   [:sortby-field {:required true, :repeats false, :data-type :string}]
+   [:sequencing {:required false, :repeats false, :data-type :string}]]
+  [:segment-group-inclusion
+   {:required false, :repeats true, :data-type :string}]]
+ [:DSC
+  {:required false, :repeats false, :segment true}
+  [:continuation-pointer
+   {:required false, :repeats false, :data-type :string}]
+  [:continuation-style
+   {:required false, :repeats false, :data-type :string}]]]
