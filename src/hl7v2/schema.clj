@@ -46,9 +46,7 @@
 
 (defn node-children [node]
   (when (vector? node)
-    (->> node
-         (drop (if (node-attrs node) 2 1))
-         (into []))))
+    (drop (if (node-attrs node) 2 1) node)))
 
 (defn attr-kw [node]
   (letfn [(rm-diacritics [s]
@@ -57,19 +55,23 @@
                   (Normalizer/normalize Normalizer$Form/NFD)
                   (str/replace #"[\u0300-\u036f]" ""))))]
     (->> (node-children node)
-         (some #(when (and (= "documentation" (first %))
-                           (= (:lang @config) (:lang (second %))))
-                  (->> (str/split (str/replace (last %) #"\(.+" "") #"\s+")
-                       (map (fn [s]
-                              (-> (rm-diacritics s)
-                                  (str/replace #"/" "Or")
-                                  (str/replace #"-" "")
-                                  (str/replace #"'" "")
-                                  (str/trim)
-                                  (str/lower-case))))
-                       (remove str/blank?)
-                       (str/join "-")
-                       (keyword)))))))
+         (some (fn [child]
+                 (when (and (= "documentation" (first child))
+                            (= (:lang @config) (:lang (second child))))
+                   (->> (str/split (last child) #"\(")
+                        (take 1)
+                        (mapcat #(str/split % #"\s+"))
+                        (map (fn [s]
+                               (-> (rm-diacritics s)
+                                   (str/replace #"/" "or")
+                                   (str/replace #"-" "")
+                                   (str/replace #"'" "")
+                                   (str/replace #"\)" "")
+                                   (str/trim)
+                                   (str/lower-case))))
+                        (remove str/blank?)
+                        (str/join "-")
+                        (keyword))))))))
 
 (defn type-base [node]
   (->> (node-children node)
@@ -94,6 +96,7 @@
 (defn segment-node? [node]
   (when-let [tag (node-tag node)]
     (and (= 1 (count (str/split tag #"\.")))
+         (not= "anyHL7Segment" tag)
          (when-let [attrs (node-attrs node)]
            (some? (:minOccurs attrs))))))
 
@@ -209,34 +212,21 @@
 
 (comment
 
-  (require '[clojure.pprint :as pp])
-
-  (spit
-   "test/hl7v2/data/ORU_R01.edn"
-   (with-out-str
-     (pp/pprint (gen-structure "ORU_R01"))))
-
-  (spit
-   "test/hl7v2/data/ACK.edn"
-   (with-out-str
-     (pp/pprint (gen-structure "ACK"))))
-
-  (-> (io/file "test/hl7v2/data/ACK.xsd")
+  (-> (io/file "structures/v2.5.1/ACK.edn")
       (parse-xsd)
       (index-schema))
 
-  (-> (io/file "tmp/HL7-xml v2.5.1/segments.xsd")
+  (-> (io/file "structures/v2.5.1/segments.xsd")
       (parse-xsd)
       (index-schema))
 
-  (-> (io/file "tmp/HL7-xml v2.5.1/datatypes.xsd")
+  (-> (io/file "structures/v2.5.1/datatypes.xsd")
       (parse-xsd)
       (index-schema))
 
-  (-> (io/file "tmp/HL7-xml v2.5.1/fields.xsd")
+  (-> (io/file "structures/v2.5.1/fields.xsd")
       (parse-xsd)
       (index-schema))
-
 
   (parse-xsd (io/file "tmp/ORU_R01.xsd"))
   (parse-xsd (io/file "tmp/fields.xsd"))

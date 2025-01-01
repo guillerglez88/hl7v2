@@ -1,314 +1,327 @@
 [:ACK
  [:MSH
   {:required true, :repeats false, :segment true}
-  [:FieldSeparator
+  [:field-separator
    {:required true, :repeats false, :data-type :string}]
-  [:EncodingCharacters
+  [:encoding-characters
    {:required true, :repeats false, :data-type :string}]
-  [:SendingApplication
+  [:sending-application
    {:required false, :repeats false}
-   [:NamespaceId {:required false, :repeats false, :data-type :string}]
-   [:UniversalId {:required false, :repeats false, :data-type :string}]
-   [:UniversalIdType
+   [:namespace-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id-type
     {:required false, :repeats false, :data-type :string}]]
-  [:SendingFacility
+  [:sending-facility
    {:required false, :repeats false}
-   [:NamespaceId {:required false, :repeats false, :data-type :string}]
-   [:UniversalId {:required false, :repeats false, :data-type :string}]
-   [:UniversalIdType
+   [:namespace-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id-type
     {:required false, :repeats false, :data-type :string}]]
-  [:ReceivingApplication
+  [:receiving-application
    {:required false, :repeats false}
-   [:NamespaceId {:required false, :repeats false, :data-type :string}]
-   [:UniversalId {:required false, :repeats false, :data-type :string}]
-   [:UniversalIdType
+   [:namespace-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id-type
     {:required false, :repeats false, :data-type :string}]]
-  [:ReceivingFacility
+  [:receiving-facility
    {:required false, :repeats false}
-   [:NamespaceId {:required false, :repeats false, :data-type :string}]
-   [:UniversalId {:required false, :repeats false, :data-type :string}]
-   [:UniversalIdType
+   [:namespace-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id-type
     {:required false, :repeats false, :data-type :string}]]
-  [:DateortimeOfMessage
+  [:dateortime-of-message
    {:required true, :repeats false}
-   [:Time {:required true, :repeats false, :data-type :string}]
-   [:DegreeOfPrecision
+   [:time {:required true, :repeats false, :data-type :string}]
+   [:degree-of-precision
     {:required false, :repeats false, :data-type :string}]]
-  [:Security {:required false, :repeats false, :data-type :string}]
-  [:MessageType
+  [:security {:required false, :repeats false, :data-type :string}]
+  [:message-type
    {:required true, :repeats false}
-   [:MessageCode {:required true, :repeats false, :data-type :string}]
-   [:TriggerEvent {:required true, :repeats false, :data-type :string}]
-   [:MessageStructure
+   [:message-code {:required true, :repeats false, :data-type :string}]
+   [:trigger-event
+    {:required true, :repeats false, :data-type :string}]
+   [:message-structure
     {:required true, :repeats false, :data-type :string}]]
-  [:MessageControlId
+  [:message-control-id
    {:required true, :repeats false, :data-type :string}]
-  [:ProcessingId
+  [:processing-id
    {:required true, :repeats false}
-   [:ProcessingId
+   [:processing-id
     {:required false, :repeats false, :data-type :string}]
-   [:ProcessingMode
+   [:processing-mode
     {:required false, :repeats false, :data-type :string}]]
-  [:VersionId
+  [:version-id
    {:required true, :repeats false}
-   [:VersionId {:required false, :repeats false, :data-type :string}]
-   [:InternationalizationCode
+   [:version-id {:required false, :repeats false, :data-type :string}]
+   [:internationalization-code
     {:required false, :repeats false}
-    [:Identifier {:required false, :repeats false, :data-type :string}]
-    [:Text {:required false, :repeats false, :data-type :string}]
-    [:NameOfCodingSystem
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
      {:required false, :repeats false, :data-type :string}]
-    [:AlternateIdentifier
+    [:alternate-identifier
      {:required false, :repeats false, :data-type :string}]
-    [:AlternateText
+    [:alternate-text
      {:required false, :repeats false, :data-type :string}]
-    [:NameOfAlternateCodingSystem
+    [:name-of-alternate-coding-system
      {:required false, :repeats false, :data-type :string}]]
-   [:InternationalVersionId
+   [:international-version-id
     {:required false, :repeats false}
-    [:Identifier {:required false, :repeats false, :data-type :string}]
-    [:Text {:required false, :repeats false, :data-type :string}]
-    [:NameOfCodingSystem
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
      {:required false, :repeats false, :data-type :string}]
-    [:AlternateIdentifier
+    [:alternate-identifier
      {:required false, :repeats false, :data-type :string}]
-    [:AlternateText
+    [:alternate-text
      {:required false, :repeats false, :data-type :string}]
-    [:NameOfAlternateCodingSystem
+    [:name-of-alternate-coding-system
      {:required false, :repeats false, :data-type :string}]]]
-  [:SequenceNumber
+  [:sequence-number
    {:required false, :repeats false, :data-type :string}]
-  [:ContinuationPointer
+  [:continuation-pointer
    {:required false, :repeats false, :data-type :string}]
-  [:AcceptAcknowledgmentType
+  [:accept-acknowledgment-type
    {:required false, :repeats false, :data-type :string}]
-  [:ApplicationAcknowledgmentType
+  [:application-acknowledgment-type
    {:required false, :repeats false, :data-type :string}]
-  [:CountryCode {:required false, :repeats false, :data-type :string}]
-  [:CharacterSet {:required false, :repeats true, :data-type :string}]
-  [:PrincipalLanguageOfMessage
+  [:country-code {:required false, :repeats false, :data-type :string}]
+  [:character-set {:required false, :repeats true, :data-type :string}]
+  [:principal-language-of-message
    {:required false, :repeats false}
-   [:Identifier {:required false, :repeats false, :data-type :string}]
-   [:Text {:required false, :repeats false, :data-type :string}]
-   [:NameOfCodingSystem
+   [:identifier {:required false, :repeats false, :data-type :string}]
+   [:text {:required false, :repeats false, :data-type :string}]
+   [:name-of-coding-system
     {:required false, :repeats false, :data-type :string}]
-   [:AlternateIdentifier
+   [:alternate-identifier
     {:required false, :repeats false, :data-type :string}]
-   [:AlternateText
+   [:alternate-text
     {:required false, :repeats false, :data-type :string}]
-   [:NameOfAlternateCodingSystem
+   [:name-of-alternate-coding-system
     {:required false, :repeats false, :data-type :string}]]
-  [:AlternateCharacterSetHandlingScheme
+  [:alternate-character-set-handling-scheme
    {:required false, :repeats false, :data-type :string}]
-  [:MessageProfileIdentifier
+  [:message-profile-identifier
    {:required false, :repeats true}
-   [:EntityIdentifier
+   [:entity-identifier
     {:required false, :repeats false, :data-type :string}]
-   [:NamespaceId {:required false, :repeats false, :data-type :string}]
-   [:UniversalId {:required false, :repeats false, :data-type :string}]
-   [:UniversalIdType
+   [:namespace-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id-type
     {:required false, :repeats false, :data-type :string}]]]
  [:SFT
   {:required false, :repeats true, :segment true}
-  [:SoftwareVendorOrganization
+  [:software-vendor-organization
    {:required true, :repeats false}
-   [:OrganizationName
+   [:organization-name
     {:required false, :repeats false, :data-type :string}]
-   [:OrganizationNameTypeCode
+   [:organization-name-type-code
     {:required false, :repeats false, :data-type :string}]
-   [:IdNumber {:required false, :repeats false, :data-type :string}]
-   [:CheckDigit {:required false, :repeats false, :data-type :string}]
-   [:CheckDigitScheme
+   [:id-number {:required false, :repeats false, :data-type :string}]
+   [:check-digit {:required false, :repeats false, :data-type :string}]
+   [:check-digit-scheme
     {:required false, :repeats false, :data-type :string}]
-   [:AssigningAuthority
+   [:assigning-authority
     {:required false, :repeats false}
-    [:NamespaceId
+    [:namespace-id
      {:required false, :repeats false, :data-type :string}]
-    [:UniversalId
+    [:universal-id
      {:required false, :repeats false, :data-type :string}]
-    [:UniversalIdType
+    [:universal-id-type
      {:required false, :repeats false, :data-type :string}]]
-   [:IdentifierTypeCode
+   [:identifier-type-code
     {:required false, :repeats false, :data-type :string}]
-   [:AssigningFacility
+   [:assigning-facility
     {:required false, :repeats false}
-    [:NamespaceId
+    [:namespace-id
      {:required false, :repeats false, :data-type :string}]
-    [:UniversalId
+    [:universal-id
      {:required false, :repeats false, :data-type :string}]
-    [:UniversalIdType
+    [:universal-id-type
      {:required false, :repeats false, :data-type :string}]]
-   [:NameRepresentationCode
+   [:name-representation-code
     {:required false, :repeats false, :data-type :string}]
-   [:OrganizationIdentifier
+   [:organization-identifier
     {:required false, :repeats false, :data-type :string}]]
-  [:SoftwareCertifiedVersionOrReleaseNumber
+  [:software-certified-version-or-release-number
    {:required true, :repeats false, :data-type :string}]
-  [:SoftwareProductName
+  [:software-product-name
    {:required true, :repeats false, :data-type :string}]
-  [:SoftwareBinaryId
+  [:software-binary-id
    {:required true, :repeats false, :data-type :string}]
-  [:SoftwareProductInformation
+  [:software-product-information
    {:required false, :repeats false}
    [:escape]]
-  [:SoftwareInstallDate
+  [:software-install-date
    {:required false, :repeats false}
-   [:Time {:required true, :repeats false, :data-type :string}]
-   [:DegreeOfPrecision
+   [:time {:required true, :repeats false, :data-type :string}]
+   [:degree-of-precision
     {:required false, :repeats false, :data-type :string}]]]
  [:MSA
   {:required true, :repeats false, :segment true}
-  [:AcknowledgmentCode
+  [:acknowledgment-code
    {:required true, :repeats false, :data-type :string}]
-  [:MessageControlId
+  [:message-control-id
    {:required true, :repeats false, :data-type :string}]
-  [:TextMessage {:required false, :repeats false, :data-type :string}]
-  [:ExpectedSequenceNumber
+  [:text-message {:required false, :repeats false, :data-type :string}]
+  [:expected-sequence-number
    {:required false, :repeats false, :data-type :string}]
-  [:ErrorCondition
+  [:error-condition
    {:required false, :repeats false}
-   [:Identifier {:required false, :repeats false, :data-type :string}]
-   [:Text {:required false, :repeats false, :data-type :string}]
-   [:NameOfCodingSystem
+   [:identifier {:required false, :repeats false, :data-type :string}]
+   [:text {:required false, :repeats false, :data-type :string}]
+   [:name-of-coding-system
     {:required false, :repeats false, :data-type :string}]
-   [:AlternateIdentifier
+   [:alternate-identifier
     {:required false, :repeats false, :data-type :string}]
-   [:AlternateText
+   [:alternate-text
     {:required false, :repeats false, :data-type :string}]
-   [:NameOfAlternateCodingSystem
+   [:name-of-alternate-coding-system
     {:required false, :repeats false, :data-type :string}]]]
  [:ERR
   {:required false, :repeats true, :segment true}
-  [:ErrorCodeAndLocation
+  [:error-code-and-location
    {:required false, :repeats true}
-   [:SegmentId {:required false, :repeats false, :data-type :string}]
-   [:SegmentSequence
+   [:segment-id {:required false, :repeats false, :data-type :string}]
+   [:segment-sequence
     {:required false, :repeats false, :data-type :string}]
-   [:FieldPosition
+   [:field-position
     {:required false, :repeats false, :data-type :string}]
-   [:CodeIdentifyingError
+   [:code-identifying-error
     {:required false, :repeats false}
-    [:Identifier {:required false, :repeats false, :data-type :string}]
-    [:Text {:required false, :repeats false, :data-type :string}]
-    [:NameOfCodingSystem
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
      {:required false, :repeats false, :data-type :string}]
-    [:AlternateIdentifier
+    [:alternate-identifier
      {:required false, :repeats false, :data-type :string}]
-    [:AlternateText
+    [:alternate-text
      {:required false, :repeats false, :data-type :string}]
-    [:NameOfAlternateCodingSystem
+    [:name-of-alternate-coding-system
      {:required false, :repeats false, :data-type :string}]]]
-  [:ErrorLocation
+  [:error-location
    {:required false, :repeats true}
-   [:SegmentId {:required true, :repeats false, :data-type :string}]
-   [:SegmentSequence
+   [:segment-id {:required true, :repeats false, :data-type :string}]
+   [:segment-sequence
     {:required true, :repeats false, :data-type :string}]
-   [:FieldPosition
+   [:field-position
     {:required false, :repeats false, :data-type :string}]
-   [:FieldRepetition
+   [:field-repetition
     {:required false, :repeats false, :data-type :string}]
-   [:ComponentNumber
+   [:component-number
     {:required false, :repeats false, :data-type :string}]
-   [:SubcomponentNumber
+   [:subcomponent-number
     {:required false, :repeats false, :data-type :string}]]
-  [:Hl7ErrorCode
+  [:hl7-error-code
    {:required true, :repeats false}
-   [:Identifier {:required false, :repeats false, :data-type :string}]
-   [:Text {:required false, :repeats false, :data-type :string}]
-   [:NameOfCodingSystem
+   [:identifier {:required false, :repeats false, :data-type :string}]
+   [:text {:required false, :repeats false, :data-type :string}]
+   [:name-of-coding-system
     {:required false, :repeats false, :data-type :string}]
-   [:AlternateIdentifier
+   [:alternate-identifier
     {:required false, :repeats false, :data-type :string}]
-   [:AlternateText
+   [:alternate-text
     {:required false, :repeats false, :data-type :string}]
-   [:NameOfAlternateCodingSystem
+   [:name-of-alternate-coding-system
     {:required false, :repeats false, :data-type :string}]
-   [:CodingSystemVersionId
+   [:coding-system-version-id
     {:required false, :repeats false, :data-type :string}]
-   [:AlternateCodingSystemVersionId
+   [:alternate-coding-system-version-id
     {:required false, :repeats false, :data-type :string}]
-   [:OriginalText
+   [:original-text
     {:required false, :repeats false, :data-type :string}]]
-  [:Severity {:required true, :repeats false, :data-type :string}]
-  [:ApplicationErrorCode
+  [:severity {:required true, :repeats false, :data-type :string}]
+  [:application-error-code
    {:required false, :repeats false}
-   [:Identifier {:required false, :repeats false, :data-type :string}]
-   [:Text {:required false, :repeats false, :data-type :string}]
-   [:NameOfCodingSystem
+   [:identifier {:required false, :repeats false, :data-type :string}]
+   [:text {:required false, :repeats false, :data-type :string}]
+   [:name-of-coding-system
     {:required false, :repeats false, :data-type :string}]
-   [:AlternateIdentifier
+   [:alternate-identifier
     {:required false, :repeats false, :data-type :string}]
-   [:AlternateText
+   [:alternate-text
     {:required false, :repeats false, :data-type :string}]
-   [:NameOfAlternateCodingSystem
+   [:name-of-alternate-coding-system
     {:required false, :repeats false, :data-type :string}]
-   [:CodingSystemVersionId
+   [:coding-system-version-id
     {:required false, :repeats false, :data-type :string}]
-   [:AlternateCodingSystemVersionId
+   [:alternate-coding-system-version-id
     {:required false, :repeats false, :data-type :string}]
-   [:OriginalText
+   [:original-text
     {:required false, :repeats false, :data-type :string}]]
-  [:ApplicationErrorParameter
+  [:application-error-parameter
    {:required false, :repeats true, :data-type :string}]
-  [:DiagnosticInformation {:required false, :repeats false} [:escape]]
-  [:UserMessage {:required false, :repeats false} [:escape]]
-  [:InformPersonIndicator
+  [:diagnostic-information {:required false, :repeats false} [:escape]]
+  [:user-message {:required false, :repeats false} [:escape]]
+  [:inform-person-indicator
    {:required false, :repeats true, :data-type :string}]
-  [:OverrideType
+  [:override-type
    {:required false, :repeats false}
-   [:Identifier {:required false, :repeats false, :data-type :string}]
-   [:Text {:required false, :repeats false, :data-type :string}]
-   [:NameOfCodingSystem
+   [:identifier {:required false, :repeats false, :data-type :string}]
+   [:text {:required false, :repeats false, :data-type :string}]
+   [:name-of-coding-system
     {:required false, :repeats false, :data-type :string}]
-   [:AlternateIdentifier
+   [:alternate-identifier
     {:required false, :repeats false, :data-type :string}]
-   [:AlternateText
+   [:alternate-text
     {:required false, :repeats false, :data-type :string}]
-   [:NameOfAlternateCodingSystem
+   [:name-of-alternate-coding-system
     {:required false, :repeats false, :data-type :string}]
-   [:CodingSystemVersionId
+   [:coding-system-version-id
     {:required false, :repeats false, :data-type :string}]
-   [:AlternateCodingSystemVersionId
+   [:alternate-coding-system-version-id
     {:required false, :repeats false, :data-type :string}]
-   [:OriginalText
+   [:original-text
     {:required false, :repeats false, :data-type :string}]]
-  [:OverrideReasonCode
+  [:override-reason-code
    {:required false, :repeats true}
-   [:Identifier {:required false, :repeats false, :data-type :string}]
-   [:Text {:required false, :repeats false, :data-type :string}]
-   [:NameOfCodingSystem
+   [:identifier {:required false, :repeats false, :data-type :string}]
+   [:text {:required false, :repeats false, :data-type :string}]
+   [:name-of-coding-system
     {:required false, :repeats false, :data-type :string}]
-   [:AlternateIdentifier
+   [:alternate-identifier
     {:required false, :repeats false, :data-type :string}]
-   [:AlternateText
+   [:alternate-text
     {:required false, :repeats false, :data-type :string}]
-   [:NameOfAlternateCodingSystem
+   [:name-of-alternate-coding-system
     {:required false, :repeats false, :data-type :string}]
-   [:CodingSystemVersionId
+   [:coding-system-version-id
     {:required false, :repeats false, :data-type :string}]
-   [:AlternateCodingSystemVersionId
+   [:alternate-coding-system-version-id
     {:required false, :repeats false, :data-type :string}]
-   [:OriginalText
+   [:original-text
     {:required false, :repeats false, :data-type :string}]]
-  [:HelpDeskContactPoint
+  [:help-desk-contact-point
    {:required false, :repeats true}
-   [:TelephoneNumber
+   [:telephone-number
     {:required false, :repeats false, :data-type :string}]
-   [:TelecommunicationUseCode
+   [:telecommunication-use-code
     {:required false, :repeats false, :data-type :string}]
-   [:TelecommunicationEquipmentType
+   [:telecommunication-equipment-type
     {:required false, :repeats false, :data-type :string}]
-   [:EmailAddress
+   [:email-address
     {:required false, :repeats false, :data-type :string}]
-   [:CountryCode {:required false, :repeats false, :data-type :string}]
-   [:AreaorcityCode
+   [:country-code
     {:required false, :repeats false, :data-type :string}]
-   [:LocalNumber {:required false, :repeats false, :data-type :string}]
-   [:Extension {:required false, :repeats false, :data-type :string}]
-   [:AnyText {:required false, :repeats false, :data-type :string}]
-   [:ExtensionPrefix
+   [:areaorcity-code
     {:required false, :repeats false, :data-type :string}]
-   [:SpeedDialCode
+   [:local-number
     {:required false, :repeats false, :data-type :string}]
-   [:UnformattedTelephoneNumber
+   [:extension {:required false, :repeats false, :data-type :string}]
+   [:any-text {:required false, :repeats false, :data-type :string}]
+   [:extension-prefix
+    {:required false, :repeats false, :data-type :string}]
+   [:speed-dial-code
+    {:required false, :repeats false, :data-type :string}]
+   [:unformatted-telephone-number
     {:required false, :repeats false, :data-type :string}]]]]

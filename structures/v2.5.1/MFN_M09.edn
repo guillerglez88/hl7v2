@@ -1,0 +1,799 @@
+[:MFN_M09
+ [:MSH
+  {:required true, :repeats false, :segment true}
+  [:field-separator
+   {:required true, :repeats false, :data-type :string}]
+  [:encoding-characters
+   {:required true, :repeats false, :data-type :string}]
+  [:sending-application
+   {:required false, :repeats false}
+   [:namespace-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id-type
+    {:required false, :repeats false, :data-type :string}]]
+  [:sending-facility
+   {:required false, :repeats false}
+   [:namespace-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id-type
+    {:required false, :repeats false, :data-type :string}]]
+  [:receiving-application
+   {:required false, :repeats false}
+   [:namespace-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id-type
+    {:required false, :repeats false, :data-type :string}]]
+  [:receiving-facility
+   {:required false, :repeats false}
+   [:namespace-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id-type
+    {:required false, :repeats false, :data-type :string}]]
+  [:dateortime-of-message
+   {:required true, :repeats false}
+   [:time {:required true, :repeats false, :data-type :string}]
+   [:degree-of-precision
+    {:required false, :repeats false, :data-type :string}]]
+  [:security {:required false, :repeats false, :data-type :string}]
+  [:message-type
+   {:required true, :repeats false}
+   [:message-code {:required true, :repeats false, :data-type :string}]
+   [:trigger-event
+    {:required true, :repeats false, :data-type :string}]
+   [:message-structure
+    {:required true, :repeats false, :data-type :string}]]
+  [:message-control-id
+   {:required true, :repeats false, :data-type :string}]
+  [:processing-id
+   {:required true, :repeats false}
+   [:processing-id
+    {:required false, :repeats false, :data-type :string}]
+   [:processing-mode
+    {:required false, :repeats false, :data-type :string}]]
+  [:version-id
+   {:required true, :repeats false}
+   [:version-id {:required false, :repeats false, :data-type :string}]
+   [:internationalization-code
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]]
+   [:international-version-id
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]]]
+  [:sequence-number
+   {:required false, :repeats false, :data-type :string}]
+  [:continuation-pointer
+   {:required false, :repeats false, :data-type :string}]
+  [:accept-acknowledgment-type
+   {:required false, :repeats false, :data-type :string}]
+  [:application-acknowledgment-type
+   {:required false, :repeats false, :data-type :string}]
+  [:country-code {:required false, :repeats false, :data-type :string}]
+  [:character-set {:required false, :repeats true, :data-type :string}]
+  [:principal-language-of-message
+   {:required false, :repeats false}
+   [:identifier {:required false, :repeats false, :data-type :string}]
+   [:text {:required false, :repeats false, :data-type :string}]
+   [:name-of-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-identifier
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-text
+    {:required false, :repeats false, :data-type :string}]
+   [:name-of-alternate-coding-system
+    {:required false, :repeats false, :data-type :string}]]
+  [:alternate-character-set-handling-scheme
+   {:required false, :repeats false, :data-type :string}]
+  [:message-profile-identifier
+   {:required false, :repeats true}
+   [:entity-identifier
+    {:required false, :repeats false, :data-type :string}]
+   [:namespace-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id-type
+    {:required false, :repeats false, :data-type :string}]]]
+ [:SFT
+  {:required false, :repeats true, :segment true}
+  [:software-vendor-organization
+   {:required true, :repeats false}
+   [:organization-name
+    {:required false, :repeats false, :data-type :string}]
+   [:organization-name-type-code
+    {:required false, :repeats false, :data-type :string}]
+   [:id-number {:required false, :repeats false, :data-type :string}]
+   [:check-digit {:required false, :repeats false, :data-type :string}]
+   [:check-digit-scheme
+    {:required false, :repeats false, :data-type :string}]
+   [:assigning-authority
+    {:required false, :repeats false}
+    [:namespace-id
+     {:required false, :repeats false, :data-type :string}]
+    [:universal-id
+     {:required false, :repeats false, :data-type :string}]
+    [:universal-id-type
+     {:required false, :repeats false, :data-type :string}]]
+   [:identifier-type-code
+    {:required false, :repeats false, :data-type :string}]
+   [:assigning-facility
+    {:required false, :repeats false}
+    [:namespace-id
+     {:required false, :repeats false, :data-type :string}]
+    [:universal-id
+     {:required false, :repeats false, :data-type :string}]
+    [:universal-id-type
+     {:required false, :repeats false, :data-type :string}]]
+   [:name-representation-code
+    {:required false, :repeats false, :data-type :string}]
+   [:organization-identifier
+    {:required false, :repeats false, :data-type :string}]]
+  [:software-certified-version-or-release-number
+   {:required true, :repeats false, :data-type :string}]
+  [:software-product-name
+   {:required true, :repeats false, :data-type :string}]
+  [:software-binary-id
+   {:required true, :repeats false, :data-type :string}]
+  [:software-product-information
+   {:required false, :repeats false}
+   [:escape]]
+  [:software-install-date
+   {:required false, :repeats false}
+   [:time {:required true, :repeats false, :data-type :string}]
+   [:degree-of-precision
+    {:required false, :repeats false, :data-type :string}]]]
+ [:MFI
+  {:required true, :repeats false, :segment true}
+  [:master-file-identifier
+   {:required true, :repeats false}
+   [:identifier {:required false, :repeats false, :data-type :string}]
+   [:text {:required false, :repeats false, :data-type :string}]
+   [:name-of-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-identifier
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-text
+    {:required false, :repeats false, :data-type :string}]
+   [:name-of-alternate-coding-system
+    {:required false, :repeats false, :data-type :string}]]
+  [:master-file-application-identifier
+   {:required false, :repeats false}
+   [:namespace-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id-type
+    {:required false, :repeats false, :data-type :string}]]
+  [:filelevel-event-code
+   {:required true, :repeats false, :data-type :string}]
+  [:entered-dateortime
+   {:required false, :repeats false}
+   [:time {:required true, :repeats false, :data-type :string}]
+   [:degree-of-precision
+    {:required false, :repeats false, :data-type :string}]]
+  [:effective-dateortime
+   {:required false, :repeats false}
+   [:time {:required true, :repeats false, :data-type :string}]
+   [:degree-of-precision
+    {:required false, :repeats false, :data-type :string}]]
+  [:response-level-code
+   {:required true, :repeats false, :data-type :string}]]
+ [:MF_TEST_CATEGORICAL
+  {:required true, :repeats true}
+  [:MFE
+   {:required true, :repeats false, :segment true}
+   [:recordlevel-event-code
+    {:required true, :repeats false, :data-type :string}]
+   [:mfn-control-id
+    {:required false, :repeats false, :data-type :string}]
+   [:effective-dateortime
+    {:required false, :repeats false}
+    [:time {:required true, :repeats false, :data-type :string}]
+    [:degree-of-precision
+     {:required false, :repeats false, :data-type :string}]]
+   [:primary-key-value-mfe {:required true, :repeats true}]
+   [:primary-key-value-type
+    {:required true, :repeats true, :data-type :string}]]
+  [:OM1
+   {:required true, :repeats false, :segment true}
+   [:sequence-number-testorobservation-master-file
+    {:required true, :repeats false, :data-type :string}]
+   [:producers-serviceortestorobservation-id
+    {:required true, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]]
+   [:permitted-data-types
+    {:required false, :repeats true, :data-type :string}]
+   [:specimen-required
+    {:required true, :repeats false, :data-type :string}]
+   [:producer-id
+    {:required true, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]]
+   [:observation-description
+    {:required false, :repeats false}
+    [:escape]]
+   [:other-serviceortestorobservation-ids-for-the-observation
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]]
+   [:other-names {:required true, :repeats true, :data-type :string}]
+   [:preferred-report-name-for-the-observation
+    {:required false, :repeats false, :data-type :string}]
+   [:preferred-short-name-or-mnemonic-for-observation
+    {:required false, :repeats false, :data-type :string}]
+   [:preferred-long-name-for-the-observation
+    {:required false, :repeats false, :data-type :string}]
+   [:orderability
+    {:required false, :repeats false, :data-type :string}]
+   [:identity-of-instrument-used-to-perform-this-study
+    {:required false, :repeats true}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]]
+   [:coded-representation-of-method
+    {:required false, :repeats true}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]]
+   [:portable-device-indicator
+    {:required false, :repeats false, :data-type :string}]
+   [:observation-producing-departmentorsection
+    {:required false, :repeats true}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]]
+   [:telephone-number-of-section
+    {:required false, :repeats false}
+    [:telephone-number
+     {:required false, :repeats false, :data-type :string}]
+    [:telecommunication-use-code
+     {:required false, :repeats false, :data-type :string}]
+    [:telecommunication-equipment-type
+     {:required false, :repeats false, :data-type :string}]
+    [:email-address
+     {:required false, :repeats false, :data-type :string}]
+    [:country-code
+     {:required false, :repeats false, :data-type :string}]
+    [:areaorcity-code
+     {:required false, :repeats false, :data-type :string}]
+    [:local-number
+     {:required false, :repeats false, :data-type :string}]
+    [:extension {:required false, :repeats false, :data-type :string}]
+    [:any-text {:required false, :repeats false, :data-type :string}]
+    [:extension-prefix
+     {:required false, :repeats false, :data-type :string}]
+    [:speed-dial-code
+     {:required false, :repeats false, :data-type :string}]
+    [:unformatted-telephone-number
+     {:required false, :repeats false, :data-type :string}]]
+   [:nature-of-serviceortestorobservation
+    {:required true, :repeats false, :data-type :string}]
+   [:report-subheader
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]]
+   [:report-display-order
+    {:required false, :repeats false, :data-type :string}]
+   [:dateortime-stamp-for-any-change-in-definition-for-the-observation
+    {:required false, :repeats false}
+    [:time {:required true, :repeats false, :data-type :string}]
+    [:degree-of-precision
+     {:required false, :repeats false, :data-type :string}]]
+   [:effective-dateortime-of-change
+    {:required false, :repeats false}
+    [:time {:required true, :repeats false, :data-type :string}]
+    [:degree-of-precision
+     {:required false, :repeats false, :data-type :string}]]
+   [:typical-turnaround-time
+    {:required false, :repeats false, :data-type :string}]
+   [:processing-time
+    {:required false, :repeats false, :data-type :string}]
+   [:processing-priority
+    {:required false, :repeats true, :data-type :string}]
+   [:reporting-priority
+    {:required false, :repeats false, :data-type :string}]
+   [:outside-site
+    {:required false, :repeats true}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]]
+   [:address-of-outside-site
+    {:required false, :repeats true}
+    [:street-address
+     {:required false, :repeats false}
+     [:street-or-mailing-address
+      {:required false, :repeats false, :data-type :string}]
+     [:street-name
+      {:required false, :repeats false, :data-type :string}]
+     [:dwelling-number
+      {:required false, :repeats false, :data-type :string}]]
+    [:other-designation
+     {:required false, :repeats false, :data-type :string}]
+    [:city {:required false, :repeats false, :data-type :string}]
+    [:state-or-province
+     {:required false, :repeats false, :data-type :string}]
+    [:zip-or-postal-code
+     {:required false, :repeats false, :data-type :string}]
+    [:country {:required false, :repeats false, :data-type :string}]
+    [:address-type
+     {:required false, :repeats false, :data-type :string}]
+    [:other-geographic-designation
+     {:required false, :repeats false, :data-type :string}]
+    [:countyorparish-code
+     {:required false, :repeats false, :data-type :string}]
+    [:census-tract
+     {:required false, :repeats false, :data-type :string}]
+    [:address-representation-code
+     {:required false, :repeats false, :data-type :string}]
+    [:address-validity-range
+     {:required false, :repeats false}
+     [:range-start-dateortime
+      {:required false, :repeats false}
+      [:time {:required true, :repeats false, :data-type :string}]
+      [:degree-of-precision
+       {:required false, :repeats false, :data-type :string}]]
+     [:range-end-dateortime
+      {:required false, :repeats false}
+      [:time {:required true, :repeats false, :data-type :string}]
+      [:degree-of-precision
+       {:required false, :repeats false, :data-type :string}]]]
+    [:effective-date
+     {:required false, :repeats false}
+     [:time {:required true, :repeats false, :data-type :string}]
+     [:degree-of-precision
+      {:required false, :repeats false, :data-type :string}]]
+    [:expiration-date
+     {:required false, :repeats false}
+     [:time {:required true, :repeats false, :data-type :string}]
+     [:degree-of-precision
+      {:required false, :repeats false, :data-type :string}]]]
+   [:phone-number-of-outside-site
+    {:required false, :repeats false}
+    [:telephone-number
+     {:required false, :repeats false, :data-type :string}]
+    [:telecommunication-use-code
+     {:required false, :repeats false, :data-type :string}]
+    [:telecommunication-equipment-type
+     {:required false, :repeats false, :data-type :string}]
+    [:email-address
+     {:required false, :repeats false, :data-type :string}]
+    [:country-code
+     {:required false, :repeats false, :data-type :string}]
+    [:areaorcity-code
+     {:required false, :repeats false, :data-type :string}]
+    [:local-number
+     {:required false, :repeats false, :data-type :string}]
+    [:extension {:required false, :repeats false, :data-type :string}]
+    [:any-text {:required false, :repeats false, :data-type :string}]
+    [:extension-prefix
+     {:required false, :repeats false, :data-type :string}]
+    [:speed-dial-code
+     {:required false, :repeats false, :data-type :string}]
+    [:unformatted-telephone-number
+     {:required false, :repeats false, :data-type :string}]]
+   [:confidentiality-code
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:original-text
+     {:required false, :repeats false, :data-type :string}]]
+   [:observations-required-to-interpret-the-observation
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]]
+   [:interpretation-of-observations
+    {:required false, :repeats false}
+    [:escape]]
+   [:contraindications-to-observations
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]]
+   [:reflex-testsorobservations
+    {:required false, :repeats true}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]]
+   [:rules-that-trigger-reflex-testing
+    {:required false, :repeats false}
+    [:escape]]
+   [:fixed-canned-message
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]]
+   [:patient-preparation {:required false, :repeats false} [:escape]]
+   [:procedure-medication
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]]
+   [:factors-that-may-affect-the-observation
+    {:required false, :repeats false}
+    [:escape]]
+   [:serviceortestorobservation-performance-schedule
+    {:required false, :repeats true, :data-type :string}]
+   [:description-of-test-methods
+    {:required false, :repeats false}
+    [:escape]]
+   [:kind-of-quantity-observed
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]]
+   [:point-versus-interval
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]]
+   [:challenge-information {:required false, :repeats false} [:escape]]
+   [:relationship-modifier
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]]
+   [:target-anatomic-site-of-test
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]]
+   [:modality-of-imaging-measurement
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]]]
+  [:MF_TEST_CAT_DETAIL
+   {:required false, :repeats false}
+   [:OM3
+    {:required true, :repeats false, :segment true}
+    [:sequence-number-testorobservation-master-file
+     {:required false, :repeats false, :data-type :string}]
+    [:preferred-coding-system
+     {:required false, :repeats false}
+     [:identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]]
+    [:valid-coded-"answers"
+     {:required false, :repeats false}
+     [:identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]]
+    [:normal-textorcodes-for-categorical-observations
+     {:required false, :repeats true}
+     [:identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]]
+    [:abnormal-textorcodes-for-categorical-observations
+     {:required false, :repeats true}
+     [:identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]]
+    [:critical-textorcodes-for-categorical-observations
+     {:required false, :repeats true}
+     [:identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]]
+    [:value-type
+     {:required false, :repeats false, :data-type :string}]]
+   [:OM4
+    {:required false, :repeats true, :segment true}
+    [:sequence-number-testorobservation-master-file
+     {:required false, :repeats false, :data-type :string}]
+    [:derived-specimen
+     {:required false, :repeats false, :data-type :string}]
+    [:container-description
+     {:required false, :repeats false}
+     [:escape]]
+    [:container-volume
+     {:required false, :repeats false, :data-type :string}]
+    [:container-units
+     {:required false, :repeats false}
+     [:identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]]
+    [:specimen
+     {:required false, :repeats false}
+     [:identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]]
+    [:additive
+     {:required false, :repeats false}
+     [:identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:original-text
+      {:required false, :repeats false, :data-type :string}]]
+    [:preparation {:required false, :repeats false} [:escape]]
+    [:special-handling-requirements
+     {:required false, :repeats false}
+     [:escape]]
+    [:normal-collection-volume
+     {:required false, :repeats false}
+     [:quantity {:required false, :repeats false, :data-type :string}]
+     [:units
+      {:required false, :repeats false}
+      [:identifier
+       {:required false, :repeats false, :data-type :string}]
+      [:text {:required false, :repeats false, :data-type :string}]
+      [:name-of-coding-system
+       {:required false, :repeats false, :data-type :string}]
+      [:alternate-identifier
+       {:required false, :repeats false, :data-type :string}]
+      [:alternate-text
+       {:required false, :repeats false, :data-type :string}]
+      [:name-of-alternate-coding-system
+       {:required false, :repeats false, :data-type :string}]]]
+    [:minimum-collection-volume
+     {:required false, :repeats false}
+     [:quantity {:required false, :repeats false, :data-type :string}]
+     [:units
+      {:required false, :repeats false}
+      [:identifier
+       {:required false, :repeats false, :data-type :string}]
+      [:text {:required false, :repeats false, :data-type :string}]
+      [:name-of-coding-system
+       {:required false, :repeats false, :data-type :string}]
+      [:alternate-identifier
+       {:required false, :repeats false, :data-type :string}]
+      [:alternate-text
+       {:required false, :repeats false, :data-type :string}]
+      [:name-of-alternate-coding-system
+       {:required false, :repeats false, :data-type :string}]]]
+    [:specimen-requirements
+     {:required false, :repeats false}
+     [:escape]]
+    [:specimen-priorities
+     {:required false, :repeats true, :data-type :string}]
+    [:specimen-retention-time
+     {:required false, :repeats false}
+     [:quantity {:required false, :repeats false, :data-type :string}]
+     [:units
+      {:required false, :repeats false}
+      [:identifier
+       {:required false, :repeats false, :data-type :string}]
+      [:text {:required false, :repeats false, :data-type :string}]
+      [:name-of-coding-system
+       {:required false, :repeats false, :data-type :string}]
+      [:alternate-identifier
+       {:required false, :repeats false, :data-type :string}]
+      [:alternate-text
+       {:required false, :repeats false, :data-type :string}]
+      [:name-of-alternate-coding-system
+       {:required false, :repeats false, :data-type :string}]]]]]]]
