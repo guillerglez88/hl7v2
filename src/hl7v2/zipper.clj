@@ -125,20 +125,19 @@
                      (group-child? n))))
           (children [n]
             (cond
-              (> (count n) 1)
-              (for [[k v] n]
-                {k v})
-                  ;;
-              (vector? (val (first n)))
-              (-> n first val seq)
-                  ;;
-              (group-child? n)
-              (for [[k v] (val (first n))]
-                {k v})
-              :else n))]
+              (> (count n) 1) (for [[k v] n] {k v})
+              (vector? (val (first n))) (-> n first val seq)
+              (group-child? n) (for [[k v] (val (first n))] {k v})
+              :else n))
+          (edit [node children]
+            (cond
+              (> (count node) 1) (apply merge children)
+              (vector? (val (first node))) {(ffirst node) (into [] children)}
+              (group-child? node) {(ffirst node) (apply merge children)}
+              :else (throw (ex-info "unknown node kind" {:node node, :children children}))))]
     (zip/zipper branch?
                 children
-                nil
+                edit
                 hl7)))
 
 (defn segments-seq [hl7]
@@ -165,5 +164,20 @@
   (def hl7 (match-trigger-event er7 spec))
 
   (segments-seq hl7)
+
+  (-> (hl7-zip hl7)
+      (zip/down)
+      (zip/edit assoc-in [:MSH :field-separator] "=")
+      (zip/up)
+      (zip/node))
+
+  (->> (hl7-zip hl7)
+       (iterate zip/next)
+       (take-while (complement zip/end?))
+       (filter (comp #{:PID} ffirst zip/node))
+       (take 1)
+       (map #(zip/edit % assoc-in [:PID :birth-place] "Some City"))
+       (first)
+       (zip/root))
 
   :.)
