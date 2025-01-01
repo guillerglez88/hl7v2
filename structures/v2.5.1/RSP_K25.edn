@@ -1,0 +1,1872 @@
+[:RSP_K25
+ [:MSH
+  {:required true, :repeats false, :segment true}
+  [:field-separator
+   {:required true, :repeats false, :data-type :string}]
+  [:encoding-characters
+   {:required true, :repeats false, :data-type :string}]
+  [:sending-application
+   {:required false, :repeats false}
+   [:namespace-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id-type
+    {:required false, :repeats false, :data-type :string}]]
+  [:sending-facility
+   {:required false, :repeats false}
+   [:namespace-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id-type
+    {:required false, :repeats false, :data-type :string}]]
+  [:receiving-application
+   {:required false, :repeats false}
+   [:namespace-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id-type
+    {:required false, :repeats false, :data-type :string}]]
+  [:receiving-facility
+   {:required false, :repeats false}
+   [:namespace-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id-type
+    {:required false, :repeats false, :data-type :string}]]
+  [:dateortime-of-message
+   {:required true, :repeats false}
+   [:time {:required true, :repeats false, :data-type :string}]
+   [:degree-of-precision
+    {:required false, :repeats false, :data-type :string}]]
+  [:security {:required false, :repeats false, :data-type :string}]
+  [:message-type
+   {:required true, :repeats false}
+   [:message-code {:required true, :repeats false, :data-type :string}]
+   [:trigger-event
+    {:required true, :repeats false, :data-type :string}]
+   [:message-structure
+    {:required true, :repeats false, :data-type :string}]]
+  [:message-control-id
+   {:required true, :repeats false, :data-type :string}]
+  [:processing-id
+   {:required true, :repeats false}
+   [:processing-id
+    {:required false, :repeats false, :data-type :string}]
+   [:processing-mode
+    {:required false, :repeats false, :data-type :string}]]
+  [:version-id
+   {:required true, :repeats false}
+   [:version-id {:required false, :repeats false, :data-type :string}]
+   [:internationalization-code
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]]
+   [:international-version-id
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]]]
+  [:sequence-number
+   {:required false, :repeats false, :data-type :string}]
+  [:continuation-pointer
+   {:required false, :repeats false, :data-type :string}]
+  [:accept-acknowledgment-type
+   {:required false, :repeats false, :data-type :string}]
+  [:application-acknowledgment-type
+   {:required false, :repeats false, :data-type :string}]
+  [:country-code {:required false, :repeats false, :data-type :string}]
+  [:character-set {:required false, :repeats true, :data-type :string}]
+  [:principal-language-of-message
+   {:required false, :repeats false}
+   [:identifier {:required false, :repeats false, :data-type :string}]
+   [:text {:required false, :repeats false, :data-type :string}]
+   [:name-of-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-identifier
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-text
+    {:required false, :repeats false, :data-type :string}]
+   [:name-of-alternate-coding-system
+    {:required false, :repeats false, :data-type :string}]]
+  [:alternate-character-set-handling-scheme
+   {:required false, :repeats false, :data-type :string}]
+  [:message-profile-identifier
+   {:required false, :repeats true}
+   [:entity-identifier
+    {:required false, :repeats false, :data-type :string}]
+   [:namespace-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id
+    {:required false, :repeats false, :data-type :string}]
+   [:universal-id-type
+    {:required false, :repeats false, :data-type :string}]]]
+ [:SFT
+  {:required false, :repeats true, :segment true}
+  [:software-vendor-organization
+   {:required true, :repeats false}
+   [:organization-name
+    {:required false, :repeats false, :data-type :string}]
+   [:organization-name-type-code
+    {:required false, :repeats false, :data-type :string}]
+   [:id-number {:required false, :repeats false, :data-type :string}]
+   [:check-digit {:required false, :repeats false, :data-type :string}]
+   [:check-digit-scheme
+    {:required false, :repeats false, :data-type :string}]
+   [:assigning-authority
+    {:required false, :repeats false}
+    [:namespace-id
+     {:required false, :repeats false, :data-type :string}]
+    [:universal-id
+     {:required false, :repeats false, :data-type :string}]
+    [:universal-id-type
+     {:required false, :repeats false, :data-type :string}]]
+   [:identifier-type-code
+    {:required false, :repeats false, :data-type :string}]
+   [:assigning-facility
+    {:required false, :repeats false}
+    [:namespace-id
+     {:required false, :repeats false, :data-type :string}]
+    [:universal-id
+     {:required false, :repeats false, :data-type :string}]
+    [:universal-id-type
+     {:required false, :repeats false, :data-type :string}]]
+   [:name-representation-code
+    {:required false, :repeats false, :data-type :string}]
+   [:organization-identifier
+    {:required false, :repeats false, :data-type :string}]]
+  [:software-certified-version-or-release-number
+   {:required true, :repeats false, :data-type :string}]
+  [:software-product-name
+   {:required true, :repeats false, :data-type :string}]
+  [:software-binary-id
+   {:required true, :repeats false, :data-type :string}]
+  [:software-product-information
+   {:required false, :repeats false}
+   [:escape]]
+  [:software-install-date
+   {:required false, :repeats false}
+   [:time {:required true, :repeats false, :data-type :string}]
+   [:degree-of-precision
+    {:required false, :repeats false, :data-type :string}]]]
+ [:MSA
+  {:required true, :repeats false, :segment true}
+  [:acknowledgment-code
+   {:required true, :repeats false, :data-type :string}]
+  [:message-control-id
+   {:required true, :repeats false, :data-type :string}]
+  [:text-message {:required false, :repeats false, :data-type :string}]
+  [:expected-sequence-number
+   {:required false, :repeats false, :data-type :string}]
+  [:error-condition
+   {:required false, :repeats false}
+   [:identifier {:required false, :repeats false, :data-type :string}]
+   [:text {:required false, :repeats false, :data-type :string}]
+   [:name-of-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-identifier
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-text
+    {:required false, :repeats false, :data-type :string}]
+   [:name-of-alternate-coding-system
+    {:required false, :repeats false, :data-type :string}]]]
+ [:ERR
+  {:required false, :repeats true, :segment true}
+  [:error-code-and-location
+   {:required false, :repeats true}
+   [:segment-id {:required false, :repeats false, :data-type :string}]
+   [:segment-sequence
+    {:required false, :repeats false, :data-type :string}]
+   [:field-position
+    {:required false, :repeats false, :data-type :string}]
+   [:code-identifying-error
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]]]
+  [:error-location
+   {:required false, :repeats true}
+   [:segment-id {:required true, :repeats false, :data-type :string}]
+   [:segment-sequence
+    {:required true, :repeats false, :data-type :string}]
+   [:field-position
+    {:required false, :repeats false, :data-type :string}]
+   [:field-repetition
+    {:required false, :repeats false, :data-type :string}]
+   [:component-number
+    {:required false, :repeats false, :data-type :string}]
+   [:subcomponent-number
+    {:required false, :repeats false, :data-type :string}]]
+  [:hl7-error-code
+   {:required true, :repeats false}
+   [:identifier {:required false, :repeats false, :data-type :string}]
+   [:text {:required false, :repeats false, :data-type :string}]
+   [:name-of-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-identifier
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-text
+    {:required false, :repeats false, :data-type :string}]
+   [:name-of-alternate-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:original-text
+    {:required false, :repeats false, :data-type :string}]]
+  [:severity {:required true, :repeats false, :data-type :string}]
+  [:application-error-code
+   {:required false, :repeats false}
+   [:identifier {:required false, :repeats false, :data-type :string}]
+   [:text {:required false, :repeats false, :data-type :string}]
+   [:name-of-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-identifier
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-text
+    {:required false, :repeats false, :data-type :string}]
+   [:name-of-alternate-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:original-text
+    {:required false, :repeats false, :data-type :string}]]
+  [:application-error-parameter
+   {:required false, :repeats true, :data-type :string}]
+  [:diagnostic-information {:required false, :repeats false} [:escape]]
+  [:user-message {:required false, :repeats false} [:escape]]
+  [:inform-person-indicator
+   {:required false, :repeats true, :data-type :string}]
+  [:override-type
+   {:required false, :repeats false}
+   [:identifier {:required false, :repeats false, :data-type :string}]
+   [:text {:required false, :repeats false, :data-type :string}]
+   [:name-of-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-identifier
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-text
+    {:required false, :repeats false, :data-type :string}]
+   [:name-of-alternate-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:original-text
+    {:required false, :repeats false, :data-type :string}]]
+  [:override-reason-code
+   {:required false, :repeats true}
+   [:identifier {:required false, :repeats false, :data-type :string}]
+   [:text {:required false, :repeats false, :data-type :string}]
+   [:name-of-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-identifier
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-text
+    {:required false, :repeats false, :data-type :string}]
+   [:name-of-alternate-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-coding-system-version-id
+    {:required false, :repeats false, :data-type :string}]
+   [:original-text
+    {:required false, :repeats false, :data-type :string}]]
+  [:help-desk-contact-point
+   {:required false, :repeats true}
+   [:telephone-number
+    {:required false, :repeats false, :data-type :string}]
+   [:telecommunication-use-code
+    {:required false, :repeats false, :data-type :string}]
+   [:telecommunication-equipment-type
+    {:required false, :repeats false, :data-type :string}]
+   [:email-address
+    {:required false, :repeats false, :data-type :string}]
+   [:country-code
+    {:required false, :repeats false, :data-type :string}]
+   [:areaorcity-code
+    {:required false, :repeats false, :data-type :string}]
+   [:local-number
+    {:required false, :repeats false, :data-type :string}]
+   [:extension {:required false, :repeats false, :data-type :string}]
+   [:any-text {:required false, :repeats false, :data-type :string}]
+   [:extension-prefix
+    {:required false, :repeats false, :data-type :string}]
+   [:speed-dial-code
+    {:required false, :repeats false, :data-type :string}]
+   [:unformatted-telephone-number
+    {:required false, :repeats false, :data-type :string}]]]
+ [:QAK
+  {:required true, :repeats false, :segment true}
+  [:query-tag {:required false, :repeats false, :data-type :string}]
+  [:query-response-status
+   {:required false, :repeats false, :data-type :string}]
+  [:message-query-name
+   {:required false, :repeats false}
+   [:identifier {:required false, :repeats false, :data-type :string}]
+   [:text {:required false, :repeats false, :data-type :string}]
+   [:name-of-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-identifier
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-text
+    {:required false, :repeats false, :data-type :string}]
+   [:name-of-alternate-coding-system
+    {:required false, :repeats false, :data-type :string}]]
+  [:hit-count {:required false, :repeats false, :data-type :string}]
+  [:this-payload {:required false, :repeats false, :data-type :string}]
+  [:hits-remaining
+   {:required false, :repeats false, :data-type :string}]]
+ [:QPD
+  {:required true, :repeats false, :segment true}
+  [:message-query-name
+   {:required true, :repeats false}
+   [:identifier {:required false, :repeats false, :data-type :string}]
+   [:text {:required false, :repeats false, :data-type :string}]
+   [:name-of-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-identifier
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-text
+    {:required false, :repeats false, :data-type :string}]
+   [:name-of-alternate-coding-system
+    {:required false, :repeats false, :data-type :string}]]
+  [:query-tag {:required false, :repeats false, :data-type :string}]
+  [:user-parameters {:required false, :repeats false}]]
+ [:RCP
+  {:required true, :repeats false, :segment true}
+  [:query-priority
+   {:required false, :repeats false, :data-type :string}]
+  [:quantity-limited-request
+   {:required false, :repeats false}
+   [:quantity {:required false, :repeats false, :data-type :string}]
+   [:units
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]]]
+  [:response-modality
+   {:required false, :repeats false}
+   [:identifier {:required false, :repeats false, :data-type :string}]
+   [:text {:required false, :repeats false, :data-type :string}]
+   [:name-of-coding-system
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-identifier
+    {:required false, :repeats false, :data-type :string}]
+   [:alternate-text
+    {:required false, :repeats false, :data-type :string}]
+   [:name-of-alternate-coding-system
+    {:required false, :repeats false, :data-type :string}]]
+  [:execution-and-delivery-time
+   {:required false, :repeats false}
+   [:time {:required true, :repeats false, :data-type :string}]
+   [:degree-of-precision
+    {:required false, :repeats false, :data-type :string}]]
+  [:modify-indicator
+   {:required false, :repeats false, :data-type :string}]
+  [:sortby-field
+   {:required false, :repeats true}
+   [:sortby-field {:required true, :repeats false, :data-type :string}]
+   [:sequencing {:required false, :repeats false, :data-type :string}]]
+  [:segment-group-inclusion
+   {:required false, :repeats true, :data-type :string}]]
+ [:STAFF
+  {:required true, :repeats true}
+  [:STF
+   {:required true, :repeats false, :segment true}
+   [:primary-key-value-stf
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]]
+   [:staff-identifier-list
+    {:required false, :repeats true}
+    [:id-number {:required true, :repeats false, :data-type :string}]
+    [:check-digit
+     {:required false, :repeats false, :data-type :string}]
+    [:check-digit-scheme
+     {:required false, :repeats false, :data-type :string}]
+    [:assigning-authority
+     {:required false, :repeats false}
+     [:namespace-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id-type
+      {:required false, :repeats false, :data-type :string}]]
+    [:identifier-type-code
+     {:required false, :repeats false, :data-type :string}]
+    [:assigning-facility
+     {:required false, :repeats false}
+     [:namespace-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id-type
+      {:required false, :repeats false, :data-type :string}]]
+    [:effective-date
+     {:required false, :repeats false, :data-type :string}]
+    [:expiration-date
+     {:required false, :repeats false, :data-type :string}]
+    [:assigning-jurisdiction
+     {:required false, :repeats false}
+     [:identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:original-text
+      {:required false, :repeats false, :data-type :string}]]
+    [:assigning-agency-or-department
+     {:required false, :repeats false}
+     [:identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:original-text
+      {:required false, :repeats false, :data-type :string}]]]
+   [:staff-name
+    {:required false, :repeats true}
+    [:family-name
+     {:required false, :repeats false}
+     [:surname {:required true, :repeats false, :data-type :string}]
+     [:own-surname-prefix
+      {:required false, :repeats false, :data-type :string}]
+     [:own-surname
+      {:required false, :repeats false, :data-type :string}]
+     [:surname-prefix-from-partnerorspouse
+      {:required false, :repeats false, :data-type :string}]
+     [:surname-from-partnerorspouse
+      {:required false, :repeats false, :data-type :string}]]
+    [:given-name {:required false, :repeats false, :data-type :string}]
+    [:second-and-further-given-names-or-initials-thereof
+     {:required false, :repeats false, :data-type :string}]
+    [:suffix {:required false, :repeats false, :data-type :string}]
+    [:prefix {:required false, :repeats false, :data-type :string}]
+    [:degree {:required false, :repeats false, :data-type :string}]
+    [:name-type-code
+     {:required false, :repeats false, :data-type :string}]
+    [:name-representation-code
+     {:required false, :repeats false, :data-type :string}]
+    [:name-context
+     {:required false, :repeats false}
+     [:identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]]
+    [:name-validity-range
+     {:required false, :repeats false}
+     [:range-start-dateortime {:required false, :repeats false}]
+     [:range-end-dateortime {:required false, :repeats false}]]
+    [:name-assembly-order
+     {:required false, :repeats false, :data-type :string}]
+    [:effective-date
+     {:required false, :repeats false}
+     [:time {:required true, :repeats false, :data-type :string}]
+     [:degree-of-precision
+      {:required false, :repeats false, :data-type :string}]]
+    [:expiration-date
+     {:required false, :repeats false}
+     [:time {:required true, :repeats false, :data-type :string}]
+     [:degree-of-precision
+      {:required false, :repeats false, :data-type :string}]]
+    [:professional-suffix
+     {:required false, :repeats false, :data-type :string}]]
+   [:staff-type {:required false, :repeats true, :data-type :string}]
+   [:administrative-sex
+    {:required false, :repeats false, :data-type :string}]
+   [:dateortime-of-birth
+    {:required false, :repeats false}
+    [:time {:required true, :repeats false, :data-type :string}]
+    [:degree-of-precision
+     {:required false, :repeats false, :data-type :string}]]
+   [:activeorinactive-flag
+    {:required false, :repeats false, :data-type :string}]
+   [:department
+    {:required false, :repeats true}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]]
+   [:hospital-service-stf
+    {:required false, :repeats true}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]]
+   [:phone
+    {:required false, :repeats true}
+    [:telephone-number
+     {:required false, :repeats false, :data-type :string}]
+    [:telecommunication-use-code
+     {:required false, :repeats false, :data-type :string}]
+    [:telecommunication-equipment-type
+     {:required false, :repeats false, :data-type :string}]
+    [:email-address
+     {:required false, :repeats false, :data-type :string}]
+    [:country-code
+     {:required false, :repeats false, :data-type :string}]
+    [:areaorcity-code
+     {:required false, :repeats false, :data-type :string}]
+    [:local-number
+     {:required false, :repeats false, :data-type :string}]
+    [:extension {:required false, :repeats false, :data-type :string}]
+    [:any-text {:required false, :repeats false, :data-type :string}]
+    [:extension-prefix
+     {:required false, :repeats false, :data-type :string}]
+    [:speed-dial-code
+     {:required false, :repeats false, :data-type :string}]
+    [:unformatted-telephone-number
+     {:required false, :repeats false, :data-type :string}]]
+   [:officeorhome-addressorbirthplace
+    {:required false, :repeats true}
+    [:street-address
+     {:required false, :repeats false}
+     [:street-or-mailing-address
+      {:required false, :repeats false, :data-type :string}]
+     [:street-name
+      {:required false, :repeats false, :data-type :string}]
+     [:dwelling-number
+      {:required false, :repeats false, :data-type :string}]]
+    [:other-designation
+     {:required false, :repeats false, :data-type :string}]
+    [:city {:required false, :repeats false, :data-type :string}]
+    [:state-or-province
+     {:required false, :repeats false, :data-type :string}]
+    [:zip-or-postal-code
+     {:required false, :repeats false, :data-type :string}]
+    [:country {:required false, :repeats false, :data-type :string}]
+    [:address-type
+     {:required false, :repeats false, :data-type :string}]
+    [:other-geographic-designation
+     {:required false, :repeats false, :data-type :string}]
+    [:countyorparish-code
+     {:required false, :repeats false, :data-type :string}]
+    [:census-tract
+     {:required false, :repeats false, :data-type :string}]
+    [:address-representation-code
+     {:required false, :repeats false, :data-type :string}]
+    [:address-validity-range
+     {:required false, :repeats false}
+     [:range-start-dateortime {:required false, :repeats false}]
+     [:range-end-dateortime {:required false, :repeats false}]]
+    [:effective-date
+     {:required false, :repeats false}
+     [:time {:required true, :repeats false, :data-type :string}]
+     [:degree-of-precision
+      {:required false, :repeats false, :data-type :string}]]
+    [:expiration-date
+     {:required false, :repeats false}
+     [:time {:required true, :repeats false, :data-type :string}]
+     [:degree-of-precision
+      {:required false, :repeats false, :data-type :string}]]]
+   [:institution-activation-date
+    {:required false, :repeats true}
+    [:date
+     {:required true, :repeats false}
+     [:time {:required true, :repeats false, :data-type :string}]
+     [:degree-of-precision
+      {:required false, :repeats false, :data-type :string}]]
+    [:institution-name
+     {:required true, :repeats false}
+     [:identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]]]
+   [:institution-inactivation-date
+    {:required false, :repeats true}
+    [:date
+     {:required true, :repeats false}
+     [:time {:required true, :repeats false, :data-type :string}]
+     [:degree-of-precision
+      {:required false, :repeats false, :data-type :string}]]
+    [:institution-name
+     {:required true, :repeats false}
+     [:identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]]]
+   [:backup-person-id
+    {:required false, :repeats true}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]]
+   [:email-address
+    {:required false, :repeats true, :data-type :string}]
+   [:preferred-method-of-contact
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]]
+   [:marital-status
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]]
+   [:job-title {:required false, :repeats false, :data-type :string}]
+   [:job-codeorclass
+    {:required false, :repeats false}
+    [:job-code {:required false, :repeats false, :data-type :string}]
+    [:job-class {:required false, :repeats false, :data-type :string}]
+    [:job-description-text
+     {:required false, :repeats false}
+     [:escape]]]
+   [:employment-status-code
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]]
+   [:additional-insured-on-auto
+    {:required false, :repeats false, :data-type :string}]
+   [:drivers-license-number-staff
+    {:required false, :repeats false}
+    [:license-number
+     {:required true, :repeats false, :data-type :string}]
+    [:issuing-state,-province,-country
+     {:required false, :repeats false, :data-type :string}]
+    [:expiration-date
+     {:required false, :repeats false, :data-type :string}]]
+   [:copy-auto-ins
+    {:required false, :repeats false, :data-type :string}]
+   [:auto-ins.-expires
+    {:required false, :repeats false, :data-type :string}]
+   [:date-last-dmv-review
+    {:required false, :repeats false, :data-type :string}]
+   [:date-next-dmv-review
+    {:required false, :repeats false, :data-type :string}]
+   [:race
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]]
+   [:ethnic-group
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]]
+   [:reactivation-approval-indicator
+    {:required false, :repeats false, :data-type :string}]
+   [:citizenship
+    {:required false, :repeats true}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]]
+   [:death-date-and-time
+    {:required false, :repeats false}
+    [:time {:required true, :repeats false, :data-type :string}]
+    [:degree-of-precision
+     {:required false, :repeats false, :data-type :string}]]
+   [:death-indicator
+    {:required false, :repeats false, :data-type :string}]
+   [:institution-relationship-type-code
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:original-text
+     {:required false, :repeats false, :data-type :string}]]
+   [:institution-relationship-period
+    {:required false, :repeats false}
+    [:range-start-dateortime
+     {:required false, :repeats false}
+     [:time {:required true, :repeats false, :data-type :string}]
+     [:degree-of-precision
+      {:required false, :repeats false, :data-type :string}]]
+    [:range-end-dateortime
+     {:required false, :repeats false}
+     [:time {:required true, :repeats false, :data-type :string}]
+     [:degree-of-precision
+      {:required false, :repeats false, :data-type :string}]]]
+   [:expected-return-date
+    {:required false, :repeats false, :data-type :string}]
+   [:cost-center-code
+    {:required false, :repeats true}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:original-text
+     {:required false, :repeats false, :data-type :string}]]
+   [:generic-classification-indicator
+    {:required false, :repeats false, :data-type :string}]
+   [:inactive-reason-code
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:original-text
+     {:required false, :repeats false, :data-type :string}]]]
+  [:PRA
+   {:required false, :repeats true, :segment true}
+   [:primary-key-value-pra
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]]
+   [:practitioner-group
+    {:required false, :repeats true}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]]
+   [:practitioner-category
+    {:required false, :repeats true, :data-type :string}]
+   [:provider-billing
+    {:required false, :repeats false, :data-type :string}]
+   [:specialty
+    {:required false, :repeats true}
+    [:specialty-name
+     {:required true, :repeats false, :data-type :string}]
+    [:governing-board
+     {:required false, :repeats false, :data-type :string}]
+    [:eligible-or-certified
+     {:required false, :repeats false, :data-type :string}]
+    [:date-of-certification
+     {:required false, :repeats false, :data-type :string}]]
+   [:practitioner-id-numbers
+    {:required false, :repeats true}
+    [:id-number {:required true, :repeats false, :data-type :string}]
+    [:type-of-id-number
+     {:required true, :repeats false, :data-type :string}]
+    [:stateorother-qualifying-information
+     {:required false, :repeats false, :data-type :string}]
+    [:expiration-date
+     {:required false, :repeats false, :data-type :string}]]
+   [:privileges
+    {:required false, :repeats true}
+    [:privilege
+     {:required true, :repeats false}
+     [:identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]]
+    [:privilege-class
+     {:required false, :repeats false}
+     [:identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]]
+    [:expiration-date
+     {:required false, :repeats false, :data-type :string}]
+    [:activation-date
+     {:required false, :repeats false, :data-type :string}]
+    [:facility
+     {:required false, :repeats false}
+     [:entity-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:namespace-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id-type
+      {:required false, :repeats false, :data-type :string}]]]
+   [:date-entered-practice
+    {:required false, :repeats false, :data-type :string}]
+   [:institution
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]]
+   [:date-left-practice
+    {:required false, :repeats false, :data-type :string}]
+   [:government-reimbursement-billing-eligibility
+    {:required false, :repeats true}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]]
+   [:set-id-pra {:required false, :repeats false, :data-type :string}]]
+  [:ORG
+   {:required false, :repeats true, :segment true}
+   [:set-id-org {:required true, :repeats false, :data-type :string}]
+   [:organization-unit-code
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]]
+   [:organization-unit-type-code
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]]
+   [:primary-org-unit-indicator
+    {:required false, :repeats false, :data-type :string}]
+   [:practitioner-org-unit-identifier
+    {:required false, :repeats false}
+    [:id-number {:required true, :repeats false, :data-type :string}]
+    [:check-digit
+     {:required false, :repeats false, :data-type :string}]
+    [:check-digit-scheme
+     {:required false, :repeats false, :data-type :string}]
+    [:assigning-authority
+     {:required false, :repeats false}
+     [:namespace-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id-type
+      {:required false, :repeats false, :data-type :string}]]
+    [:identifier-type-code
+     {:required false, :repeats false, :data-type :string}]
+    [:assigning-facility
+     {:required false, :repeats false}
+     [:namespace-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id-type
+      {:required false, :repeats false, :data-type :string}]]
+    [:effective-date
+     {:required false, :repeats false, :data-type :string}]
+    [:expiration-date
+     {:required false, :repeats false, :data-type :string}]
+    [:assigning-jurisdiction
+     {:required false, :repeats false}
+     [:identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:original-text
+      {:required false, :repeats false, :data-type :string}]]
+    [:assigning-agency-or-department
+     {:required false, :repeats false}
+     [:identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:original-text
+      {:required false, :repeats false, :data-type :string}]]]
+   [:health-care-provider-type-code
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]]
+   [:health-care-provider-classification-code
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]]
+   [:health-care-provider-area-of-specialization-code
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]]
+   [:effective-date-range
+    {:required false, :repeats false}
+    [:range-start-dateortime
+     {:required false, :repeats false}
+     [:time {:required true, :repeats false, :data-type :string}]
+     [:degree-of-precision
+      {:required false, :repeats false, :data-type :string}]]
+    [:range-end-dateortime
+     {:required false, :repeats false}
+     [:time {:required true, :repeats false, :data-type :string}]
+     [:degree-of-precision
+      {:required false, :repeats false, :data-type :string}]]]
+   [:employment-status-code
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]]
+   [:board-approval-indicator
+    {:required false, :repeats false, :data-type :string}]
+   [:primary-care-physician-indicator
+    {:required false, :repeats false, :data-type :string}]]
+  [:AFF
+   {:required false, :repeats true, :segment true}
+   [:set-id-aff {:required true, :repeats false, :data-type :string}]
+   [:professional-organization
+    {:required true, :repeats false}
+    [:organization-name
+     {:required false, :repeats false, :data-type :string}]
+    [:organization-name-type-code
+     {:required false, :repeats false, :data-type :string}]
+    [:id-number {:required false, :repeats false, :data-type :string}]
+    [:check-digit
+     {:required false, :repeats false, :data-type :string}]
+    [:check-digit-scheme
+     {:required false, :repeats false, :data-type :string}]
+    [:assigning-authority
+     {:required false, :repeats false}
+     [:namespace-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id-type
+      {:required false, :repeats false, :data-type :string}]]
+    [:identifier-type-code
+     {:required false, :repeats false, :data-type :string}]
+    [:assigning-facility
+     {:required false, :repeats false}
+     [:namespace-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id-type
+      {:required false, :repeats false, :data-type :string}]]
+    [:name-representation-code
+     {:required false, :repeats false, :data-type :string}]
+    [:organization-identifier
+     {:required false, :repeats false, :data-type :string}]]
+   [:professional-organization-address
+    {:required false, :repeats false}
+    [:street-address
+     {:required false, :repeats false}
+     [:street-or-mailing-address
+      {:required false, :repeats false, :data-type :string}]
+     [:street-name
+      {:required false, :repeats false, :data-type :string}]
+     [:dwelling-number
+      {:required false, :repeats false, :data-type :string}]]
+    [:other-designation
+     {:required false, :repeats false, :data-type :string}]
+    [:city {:required false, :repeats false, :data-type :string}]
+    [:state-or-province
+     {:required false, :repeats false, :data-type :string}]
+    [:zip-or-postal-code
+     {:required false, :repeats false, :data-type :string}]
+    [:country {:required false, :repeats false, :data-type :string}]
+    [:address-type
+     {:required false, :repeats false, :data-type :string}]
+    [:other-geographic-designation
+     {:required false, :repeats false, :data-type :string}]
+    [:countyorparish-code
+     {:required false, :repeats false, :data-type :string}]
+    [:census-tract
+     {:required false, :repeats false, :data-type :string}]
+    [:address-representation-code
+     {:required false, :repeats false, :data-type :string}]
+    [:address-validity-range
+     {:required false, :repeats false}
+     [:range-start-dateortime {:required false, :repeats false}]
+     [:range-end-dateortime {:required false, :repeats false}]]
+    [:effective-date
+     {:required false, :repeats false}
+     [:time {:required true, :repeats false, :data-type :string}]
+     [:degree-of-precision
+      {:required false, :repeats false, :data-type :string}]]
+    [:expiration-date
+     {:required false, :repeats false}
+     [:time {:required true, :repeats false, :data-type :string}]
+     [:degree-of-precision
+      {:required false, :repeats false, :data-type :string}]]]
+   [:professional-organization-affiliation-date-range
+    {:required false, :repeats true}
+    [:range-start-dateortime
+     {:required false, :repeats false}
+     [:time {:required true, :repeats false, :data-type :string}]
+     [:degree-of-precision
+      {:required false, :repeats false, :data-type :string}]]
+    [:range-end-dateortime
+     {:required false, :repeats false}
+     [:time {:required true, :repeats false, :data-type :string}]
+     [:degree-of-precision
+      {:required false, :repeats false, :data-type :string}]]]
+   [:professional-affiliation-additional-information
+    {:required false, :repeats false, :data-type :string}]]
+  [:LAN
+   {:required false, :repeats true, :segment true}
+   [:set-id-lan {:required true, :repeats false, :data-type :string}]
+   [:language-code
+    {:required true, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]]
+   [:language-ability-code
+    {:required false, :repeats true}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]]
+   [:language-proficiency-code
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]]]
+  [:EDU
+   {:required false, :repeats true, :segment true}
+   [:set-id-edu {:required true, :repeats false, :data-type :string}]
+   [:academic-degree
+    {:required false, :repeats false, :data-type :string}]
+   [:academic-degree-program-date-range
+    {:required false, :repeats false}
+    [:range-start-dateortime
+     {:required false, :repeats false}
+     [:time {:required true, :repeats false, :data-type :string}]
+     [:degree-of-precision
+      {:required false, :repeats false, :data-type :string}]]
+    [:range-end-dateortime
+     {:required false, :repeats false}
+     [:time {:required true, :repeats false, :data-type :string}]
+     [:degree-of-precision
+      {:required false, :repeats false, :data-type :string}]]]
+   [:academic-degree-program-participation-date-range
+    {:required false, :repeats false}
+    [:range-start-dateortime
+     {:required false, :repeats false}
+     [:time {:required true, :repeats false, :data-type :string}]
+     [:degree-of-precision
+      {:required false, :repeats false, :data-type :string}]]
+    [:range-end-dateortime
+     {:required false, :repeats false}
+     [:time {:required true, :repeats false, :data-type :string}]
+     [:degree-of-precision
+      {:required false, :repeats false, :data-type :string}]]]
+   [:academic-degree-granted-date
+    {:required false, :repeats false, :data-type :string}]
+   [:school
+    {:required false, :repeats false}
+    [:organization-name
+     {:required false, :repeats false, :data-type :string}]
+    [:organization-name-type-code
+     {:required false, :repeats false, :data-type :string}]
+    [:id-number {:required false, :repeats false, :data-type :string}]
+    [:check-digit
+     {:required false, :repeats false, :data-type :string}]
+    [:check-digit-scheme
+     {:required false, :repeats false, :data-type :string}]
+    [:assigning-authority
+     {:required false, :repeats false}
+     [:namespace-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id-type
+      {:required false, :repeats false, :data-type :string}]]
+    [:identifier-type-code
+     {:required false, :repeats false, :data-type :string}]
+    [:assigning-facility
+     {:required false, :repeats false}
+     [:namespace-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id-type
+      {:required false, :repeats false, :data-type :string}]]
+    [:name-representation-code
+     {:required false, :repeats false, :data-type :string}]
+    [:organization-identifier
+     {:required false, :repeats false, :data-type :string}]]
+   [:school-type-code
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]]
+   [:school-address
+    {:required false, :repeats false}
+    [:street-address
+     {:required false, :repeats false}
+     [:street-or-mailing-address
+      {:required false, :repeats false, :data-type :string}]
+     [:street-name
+      {:required false, :repeats false, :data-type :string}]
+     [:dwelling-number
+      {:required false, :repeats false, :data-type :string}]]
+    [:other-designation
+     {:required false, :repeats false, :data-type :string}]
+    [:city {:required false, :repeats false, :data-type :string}]
+    [:state-or-province
+     {:required false, :repeats false, :data-type :string}]
+    [:zip-or-postal-code
+     {:required false, :repeats false, :data-type :string}]
+    [:country {:required false, :repeats false, :data-type :string}]
+    [:address-type
+     {:required false, :repeats false, :data-type :string}]
+    [:other-geographic-designation
+     {:required false, :repeats false, :data-type :string}]
+    [:countyorparish-code
+     {:required false, :repeats false, :data-type :string}]
+    [:census-tract
+     {:required false, :repeats false, :data-type :string}]
+    [:address-representation-code
+     {:required false, :repeats false, :data-type :string}]
+    [:address-validity-range
+     {:required false, :repeats false}
+     [:range-start-dateortime {:required false, :repeats false}]
+     [:range-end-dateortime {:required false, :repeats false}]]
+    [:effective-date
+     {:required false, :repeats false}
+     [:time {:required true, :repeats false, :data-type :string}]
+     [:degree-of-precision
+      {:required false, :repeats false, :data-type :string}]]
+    [:expiration-date
+     {:required false, :repeats false}
+     [:time {:required true, :repeats false, :data-type :string}]
+     [:degree-of-precision
+      {:required false, :repeats false, :data-type :string}]]]
+   [:major-field-of-study
+    {:required false, :repeats true}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:original-text
+     {:required false, :repeats false, :data-type :string}]]]
+  [:CER
+   {:required false, :repeats true, :segment true}
+   [:set-id-cer {:required true, :repeats false, :data-type :string}]
+   [:serial-number
+    {:required false, :repeats false, :data-type :string}]
+   [:version {:required false, :repeats false, :data-type :string}]
+   [:granting-authority
+    {:required false, :repeats false}
+    [:organization-name
+     {:required false, :repeats false, :data-type :string}]
+    [:organization-name-type-code
+     {:required false, :repeats false, :data-type :string}]
+    [:id-number {:required false, :repeats false, :data-type :string}]
+    [:check-digit
+     {:required false, :repeats false, :data-type :string}]
+    [:check-digit-scheme
+     {:required false, :repeats false, :data-type :string}]
+    [:assigning-authority
+     {:required false, :repeats false}
+     [:namespace-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id-type
+      {:required false, :repeats false, :data-type :string}]]
+    [:identifier-type-code
+     {:required false, :repeats false, :data-type :string}]
+    [:assigning-facility
+     {:required false, :repeats false}
+     [:namespace-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id-type
+      {:required false, :repeats false, :data-type :string}]]
+    [:name-representation-code
+     {:required false, :repeats false, :data-type :string}]
+    [:organization-identifier
+     {:required false, :repeats false, :data-type :string}]]
+   [:issuing-authority
+    {:required false, :repeats false}
+    [:id-number {:required false, :repeats false, :data-type :string}]
+    [:family-name
+     {:required false, :repeats false}
+     [:surname {:required true, :repeats false, :data-type :string}]
+     [:own-surname-prefix
+      {:required false, :repeats false, :data-type :string}]
+     [:own-surname
+      {:required false, :repeats false, :data-type :string}]
+     [:surname-prefix-from-partnerorspouse
+      {:required false, :repeats false, :data-type :string}]
+     [:surname-from-partnerorspouse
+      {:required false, :repeats false, :data-type :string}]]
+    [:given-name {:required false, :repeats false, :data-type :string}]
+    [:second-and-further-given-names-or-initials-thereof
+     {:required false, :repeats false, :data-type :string}]
+    [:suffix {:required false, :repeats false, :data-type :string}]
+    [:prefix {:required false, :repeats false, :data-type :string}]
+    [:degree {:required false, :repeats false, :data-type :string}]
+    [:source-table
+     {:required false, :repeats false, :data-type :string}]
+    [:assigning-authority
+     {:required false, :repeats false}
+     [:namespace-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id-type
+      {:required false, :repeats false, :data-type :string}]]
+    [:name-type-code
+     {:required false, :repeats false, :data-type :string}]
+    [:identifier-check-digit
+     {:required false, :repeats false, :data-type :string}]
+    [:check-digit-scheme
+     {:required false, :repeats false, :data-type :string}]
+    [:identifier-type-code
+     {:required false, :repeats false, :data-type :string}]
+    [:assigning-facility
+     {:required false, :repeats false}
+     [:namespace-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id-type
+      {:required false, :repeats false, :data-type :string}]]
+    [:name-representation-code
+     {:required false, :repeats false, :data-type :string}]
+    [:name-context
+     {:required false, :repeats false}
+     [:identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]]
+    [:name-validity-range
+     {:required false, :repeats false}
+     [:range-start-dateortime {:required false, :repeats false}]
+     [:range-end-dateortime {:required false, :repeats false}]]
+    [:name-assembly-order
+     {:required false, :repeats false, :data-type :string}]
+    [:effective-date
+     {:required false, :repeats false}
+     [:time {:required true, :repeats false, :data-type :string}]
+     [:degree-of-precision
+      {:required false, :repeats false, :data-type :string}]]
+    [:expiration-date
+     {:required false, :repeats false}
+     [:time {:required true, :repeats false, :data-type :string}]
+     [:degree-of-precision
+      {:required false, :repeats false, :data-type :string}]]
+    [:professional-suffix
+     {:required false, :repeats false, :data-type :string}]
+    [:assigning-jurisdiction
+     {:required false, :repeats false}
+     [:identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:original-text
+      {:required false, :repeats false, :data-type :string}]]
+    [:assigning-agency-or-department
+     {:required false, :repeats false}
+     [:identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:text {:required false, :repeats false, :data-type :string}]
+     [:name-of-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-identifier
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-text
+      {:required false, :repeats false, :data-type :string}]
+     [:name-of-alternate-coding-system
+      {:required false, :repeats false, :data-type :string}]
+     [:coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:alternate-coding-system-version-id
+      {:required false, :repeats false, :data-type :string}]
+     [:original-text
+      {:required false, :repeats false, :data-type :string}]]]
+   [:signature-of-issuing-authority
+    {:required false, :repeats false}
+    [:source-application
+     {:required false, :repeats false}
+     [:namespace-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id
+      {:required false, :repeats false, :data-type :string}]
+     [:universal-id-type
+      {:required false, :repeats false, :data-type :string}]]
+    [:type-of-data
+     {:required true, :repeats false, :data-type :string}]
+    [:data-subtype
+     {:required false, :repeats false, :data-type :string}]
+    [:encoding {:required true, :repeats false, :data-type :string}]
+    [:data {:required true, :repeats false} [:escape]]]
+   [:granting-country
+    {:required false, :repeats false, :data-type :string}]
+   [:granting-stateorprovince
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:original-text
+     {:required false, :repeats false, :data-type :string}]]
+   [:granting-countyorparish
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:original-text
+     {:required false, :repeats false, :data-type :string}]]
+   [:certificate-type
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:original-text
+     {:required false, :repeats false, :data-type :string}]]
+   [:certificate-domain
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:original-text
+     {:required false, :repeats false, :data-type :string}]]
+   [:subject-id {:required false, :repeats false, :data-type :string}]
+   [:subject-name {:required true, :repeats false, :data-type :string}]
+   [:subject-directory-attribute-extension
+    {:required false, :repeats true}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:original-text
+     {:required false, :repeats false, :data-type :string}]]
+   [:subject-public-key-info
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:original-text
+     {:required false, :repeats false, :data-type :string}]]
+   [:authority-key-identifier
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:original-text
+     {:required false, :repeats false, :data-type :string}]]
+   [:basic-constraint
+    {:required false, :repeats false, :data-type :string}]
+   [:crl-distribution-point
+    {:required false, :repeats true}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:original-text
+     {:required false, :repeats false, :data-type :string}]]
+   [:jurisdiction-country
+    {:required false, :repeats false, :data-type :string}]
+   [:jurisdiction-stateorprovince
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:original-text
+     {:required false, :repeats false, :data-type :string}]]
+   [:jurisdiction-countyorparish
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:original-text
+     {:required false, :repeats false, :data-type :string}]]
+   [:jurisdiction-breadth
+    {:required false, :repeats true}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:original-text
+     {:required false, :repeats false, :data-type :string}]]
+   [:granting-date
+    {:required false, :repeats false}
+    [:time {:required true, :repeats false, :data-type :string}]
+    [:degree-of-precision
+     {:required false, :repeats false, :data-type :string}]]
+   [:issuing-date
+    {:required false, :repeats false}
+    [:time {:required true, :repeats false, :data-type :string}]
+    [:degree-of-precision
+     {:required false, :repeats false, :data-type :string}]]
+   [:activation-date
+    {:required false, :repeats false}
+    [:time {:required true, :repeats false, :data-type :string}]
+    [:degree-of-precision
+     {:required false, :repeats false, :data-type :string}]]
+   [:inactivation-date
+    {:required false, :repeats false}
+    [:time {:required true, :repeats false, :data-type :string}]
+    [:degree-of-precision
+     {:required false, :repeats false, :data-type :string}]]
+   [:expiration-date
+    {:required false, :repeats false}
+    [:time {:required true, :repeats false, :data-type :string}]
+    [:degree-of-precision
+     {:required false, :repeats false, :data-type :string}]]
+   [:renewal-date
+    {:required false, :repeats false}
+    [:time {:required true, :repeats false, :data-type :string}]
+    [:degree-of-precision
+     {:required false, :repeats false, :data-type :string}]]
+   [:revocation-date
+    {:required false, :repeats false}
+    [:time {:required true, :repeats false, :data-type :string}]
+    [:degree-of-precision
+     {:required false, :repeats false, :data-type :string}]]
+   [:revocation-reason-code
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]]
+   [:certificate-status
+    {:required false, :repeats false}
+    [:identifier {:required false, :repeats false, :data-type :string}]
+    [:text {:required false, :repeats false, :data-type :string}]
+    [:name-of-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-identifier
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-text
+     {:required false, :repeats false, :data-type :string}]
+    [:name-of-alternate-coding-system
+     {:required false, :repeats false, :data-type :string}]
+    [:coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:alternate-coding-system-version-id
+     {:required false, :repeats false, :data-type :string}]
+    [:original-text
+     {:required false, :repeats false, :data-type :string}]]]]
+ [:DSC
+  {:required false, :repeats false, :segment true}
+  [:continuation-pointer
+   {:required false, :repeats false, :data-type :string}]
+  [:continuation-style
+   {:required false, :repeats false, :data-type :string}]]]
