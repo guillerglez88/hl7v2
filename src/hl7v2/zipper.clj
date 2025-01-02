@@ -1,4 +1,7 @@
-(ns hl7v2.zipper)
+(ns hl7v2.zipper
+  (:require
+   [clojure.string :as str]
+   [clojure.zip :as zip]))
 
 (defn spec-tag [spec]
   (when (vector? spec)
@@ -18,6 +21,13 @@
 (defn seg-id [seg]
   (when (and seg (map? seg))
     (-> seg first key)))
+
+(defn hl7-seg? [n]
+  (and (map? n)
+       (= 1 (count n))
+       (let [id (name (ffirst n))]
+         (and (= 3 (count id))
+              (= id (str/upper-case id))))))
 
 (defn match-components [spec data]
   (if-let [components (seq (spec-children spec))]
@@ -88,18 +98,54 @@
               [{group-id group-data} segs]))
           [nil segs])))))
 
-(defn match [trigger-event er7]
-  (let [spec-tgr-evt (spec-tag trigger-event)
+(defn match-trigger-event [er7 structure]
+  (let [spec-tgr-evt (spec-tag structure)
         msh (first (filter (comp #{:MSH} key first) er7))
         er7-tgr-evt (format "%s_%s" (get-in msh [:MSH 9 1 1]) (get-in msh [:MSH 9 1 2]))]
     (when-not (= (name spec-tgr-evt) er7-tgr-evt)
       (throw (ex-info "Trigger event mismatch"
                       {:spec spec-tgr-evt, :er7 er7-tgr-evt})))
-    (let [[matched rem-segs] (match-group trigger-event er7)]
+    (let [[matched rem-segs] (match-group structure er7)]
       (when (seq rem-segs)
         (throw (ex-info "Incomplete trigger-event or incorrect er7"
                         {:matched matched, :remaining-segments rem-segs})))
       (get matched spec-tgr-evt))))
+
+(defn hl7-zip [hl7]
+  (letfn [(group-child? [n]
+            (and (map? n)
+                 (let [child (val (first n))]
+                   (and (map? child)
+                        (not (hl7-seg? child))))))
+          (branch? [n]
+            (and (map? n)
+                 (not (hl7-seg? n))
+                 (or (> (count n) 1)
+                     (vector? (val (first n)))
+                     (group-child? n))))
+          (children [n]
+            (cond
+              (> (count n) 1) (for [[k v] n] {k v})
+              (vector? (val (first n))) (-> n first val seq)
+              (group-child? n) (for [[k v] (val (first n))] {k v})
+              :else n))
+          (edit [node children]
+            (cond
+              (> (count node) 1) (apply merge children)
+              (vector? (val (first node))) {(ffirst node) (into [] children)}
+              (group-child? node) {(ffirst node) (apply merge children)}
+              :else (throw (ex-info "unknown node kind" {:node node, :children children}))))]
+    (zip/zipper branch?
+                children
+                edit
+                hl7)))
+
+(defn segments-seq [hl7]
+  (->> (hl7-zip hl7)
+       (iterate zip/next)
+       (take-while (complement zip/end?))
+       (map zip/node)
+       (filter hl7-seg?)))
 
 (comment
 
@@ -108,13 +154,30 @@
   (require '[hl7v2.er7 :refer [parse-er7]])
 
   (def spec
-    (-> (slurp "test/hl7v2/data/ORU_R01.edn")
+    (-> (slurp "structures/v2.5.1/ORU_R01.edn")
         (edn/read-string)))
 
   (def er7
     (-> (io/file "test/hl7v2/data/oru-r01.hl7")
         (parse-er7)))
 
-  (match spec er7)
+  (def hl7 (match-trigger-event er7 spec))
+
+  (segments-seq hl7)
+
+  (-> (hl7-zip hl7)
+      (zip/down)
+      (zip/edit assoc-in [:MSH :field-separator] "=")
+      (zip/up)
+      (zip/node))
+
+  (->> (hl7-zip hl7)
+       (iterate zip/next)
+       (take-while (complement zip/end?))
+       (filter (comp #{:PID} ffirst zip/node))
+       (take 1)
+       (map #(zip/edit % assoc-in [:PID :birth-place] "Some City"))
+       (first)
+       (zip/root))
 
   :.)
