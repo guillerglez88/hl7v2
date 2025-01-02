@@ -5423,9 +5423,9 @@
       {:required false, :repeats false}
       [{:required true, :repeats false}]
       [{:required false, :repeats false}]]
-     [:reserved-for-harmonization-with-v2.6 {:required false}]
-     [:reserved-for-harmonization-with-v2.6 {:required false}]
-     [:reserved-for-harmonization-with-v2.6 {:required false}]
+     [:reserved-for-harmonization-with-v26 {:required false}]
+     [:reserved-for-harmonization-with-v26 {:required false}]
+     [:reserved-for-harmonization-with-v26 {:required false}]
      [:performing-organization-name
       {:required false, :repeats false}
       [{:required false, :repeats false}]

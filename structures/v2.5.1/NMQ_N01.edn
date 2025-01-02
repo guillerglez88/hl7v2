@@ -345,7 +345,7 @@
      {:required false, :repeats false, :data-type :string}]
     [:name-of-alternate-coding-system
      {:required false, :repeats false, :data-type :string}]]
-   [:what-data-code-value-qual.
+   [:what-data-code-value-qual
     {:required false, :repeats true}
     [:first-data-code-value
      {:required false, :repeats false, :data-type :string}]

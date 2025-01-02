@@ -753,7 +753,7 @@
      {:required false, :repeats false, :data-type :string}]]
    [:copy-auto-ins
     {:required false, :repeats false, :data-type :string}]
-   [:auto-ins.-expires
+   [:auto-ins-expires
     {:required false, :repeats false, :data-type :string}]
    [:date-last-dmv-review
     {:required false, :repeats false, :data-type :string}]

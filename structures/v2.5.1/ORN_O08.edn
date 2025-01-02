@@ -1979,7 +1979,7 @@
       {:required false, :repeats false, :data-type :string}]
      [:name-of-alternate-coding-system
       {:required false, :repeats false, :data-type :string}]]
-    [:dept.-cost-center
+    [:dept-cost-center
      {:required false, :repeats false, :data-type :string}]
     [:item-natural-account-code
      {:required false, :repeats false, :data-type :string}]
