@@ -4420,7 +4420,7 @@
      {:required false, :repeats false, :data-type :string}]
     [:name-of-alternate-coding-system
      {:required false, :repeats false, :data-type :string}]]
-   [:medically-necessary-duplicate-procedure-reason.
+   [:medically-necessary-duplicate-procedure-reason
     {:required false, :repeats false}
     [:identifier {:required false, :repeats false, :data-type :string}]
     [:text {:required false, :repeats false, :data-type :string}]

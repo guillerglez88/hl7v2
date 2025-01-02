@@ -995,7 +995,7 @@
      {:required false, :repeats false, :data-type :string}]
     [:organization-identifier
      {:required false, :repeats false, :data-type :string}]]
-   [:patient-primary-care-provider-name-&-id-no.
+   [:patient-primary-care-provider-name-and-id-no
     {:required false, :repeats true}
     [:id-number {:required false, :repeats false, :data-type :string}]
     [:family-name
@@ -3117,7 +3117,7 @@
        {:required false, :repeats true}]
       [:filler-supplemental-service-information
        {:required false, :repeats true}]
-      [:medically-necessary-duplicate-procedure-reason.
+      [:medically-necessary-duplicate-procedure-reason
        {:required false, :repeats false}]
       [:result-handling
        {:required false, :repeats false, :data-type :string}]
@@ -3159,9 +3159,9 @@
       [:observation-method {:required false, :repeats true}]
       [:equipment-instance-identifier {:required false, :repeats true}]
       [:dateortime-of-the-analysis {:required false, :repeats false}]
-      [:reserved-for-harmonization-with-v2.6 {:required false}]
-      [:reserved-for-harmonization-with-v2.6 {:required false}]
-      [:reserved-for-harmonization-with-v2.6 {:required false}]
+      [:reserved-for-harmonization-with-v26 {:required false}]
+      [:reserved-for-harmonization-with-v26 {:required false}]
+      [:reserved-for-harmonization-with-v26 {:required false}]
       [:performing-organization-name {:required false, :repeats false}]
       [:performing-organization-address
        {:required false, :repeats false}]

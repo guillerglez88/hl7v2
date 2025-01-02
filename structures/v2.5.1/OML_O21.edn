@@ -1013,7 +1013,7 @@
      {:required false, :repeats false, :data-type :string}]
     [:organization-identifier
      {:required false, :repeats false, :data-type :string}]]
-   [:patient-primary-care-provider-name-&-id-no.
+   [:patient-primary-care-provider-name-and-id-no
     {:required false, :repeats true}
     [:id-number {:required false, :repeats false, :data-type :string}]
     [:family-name
@@ -3543,7 +3543,7 @@
      {:required false, :repeats false, :data-type :string}]
     [:coordination-of-benefits
      {:required false, :repeats false, :data-type :string}]
-    [:coord-of-ben.-priority
+    [:coord-of-ben-priority
      {:required false, :repeats false, :data-type :string}]
     [:notice-of-admission-flag
      {:required false, :repeats false, :data-type :string}]
@@ -3653,7 +3653,7 @@
      {:required false, :repeats false, :data-type :string}]
     [:lifetime-reserve-days
      {:required false, :repeats false, :data-type :string}]
-    [:delay-before-l.r.-day
+    [:delay-before-lr-day
      {:required false, :repeats false, :data-type :string}]
     [:company-plan-code
      {:required false, :repeats false, :data-type :string}]
@@ -4599,7 +4599,7 @@
      {:required false, :repeats false, :data-type :string}]
     [:relationship-to-the-patient-stop-date
      {:required false, :repeats true, :data-type :string}]
-    [:insurance-co.-contact-reason
+    [:insurance-co-contact-reason
      {:required false, :repeats false, :data-type :string}]
     [:insurance-co-contact-phone-number
      {:required false, :repeats false}
@@ -8336,7 +8336,7 @@
       {:required false, :repeats false, :data-type :string}]
      [:name-of-alternate-coding-system
       {:required false, :repeats false, :data-type :string}]]
-    [:medically-necessary-duplicate-procedure-reason.
+    [:medically-necessary-duplicate-procedure-reason
      {:required false, :repeats false}
      [:identifier
       {:required false, :repeats false, :data-type :string}]
@@ -8932,9 +8932,9 @@
       {:required false, :repeats false}
       [{:required true, :repeats false}]
       [{:required false, :repeats false}]]
-     [:reserved-for-harmonization-with-v2.6 {:required false}]
-     [:reserved-for-harmonization-with-v2.6 {:required false}]
-     [:reserved-for-harmonization-with-v2.6 {:required false}]
+     [:reserved-for-harmonization-with-v26 {:required false}]
+     [:reserved-for-harmonization-with-v26 {:required false}]
+     [:reserved-for-harmonization-with-v26 {:required false}]
      [:performing-organization-name
       {:required false, :repeats false}
       [{:required false, :repeats false}]
@@ -9374,9 +9374,9 @@
       {:required false, :repeats false}
       [{:required true, :repeats false}]
       [{:required false, :repeats false}]]
-     [:reserved-for-harmonization-with-v2.6 {:required false}]
-     [:reserved-for-harmonization-with-v2.6 {:required false}]
-     [:reserved-for-harmonization-with-v2.6 {:required false}]
+     [:reserved-for-harmonization-with-v26 {:required false}]
+     [:reserved-for-harmonization-with-v26 {:required false}]
+     [:reserved-for-harmonization-with-v26 {:required false}]
      [:performing-organization-name
       {:required false, :repeats false}
       [{:required false, :repeats false}]
@@ -9524,9 +9524,9 @@
       [:observation-method {:required false, :repeats true}]
       [:equipment-instance-identifier {:required false, :repeats true}]
       [:dateortime-of-the-analysis {:required false, :repeats false}]
-      [:reserved-for-harmonization-with-v2.6 {:required false}]
-      [:reserved-for-harmonization-with-v2.6 {:required false}]
-      [:reserved-for-harmonization-with-v2.6 {:required false}]
+      [:reserved-for-harmonization-with-v26 {:required false}]
+      [:reserved-for-harmonization-with-v26 {:required false}]
+      [:reserved-for-harmonization-with-v26 {:required false}]
       [:performing-organization-name {:required false, :repeats false}]
       [:performing-organization-address
        {:required false, :repeats false}]
@@ -9595,7 +9595,7 @@
       [:living-arrangement
        {:required false, :repeats false, :data-type :string}]
       [:patient-primary-facility {:required false, :repeats true}]
-      [:patient-primary-care-provider-name-&-id-no.
+      [:patient-primary-care-provider-name-and-id-no
        {:required false, :repeats true}]
       [:student-indicator
        {:required false, :repeats false, :data-type :string}]
@@ -9946,7 +9946,7 @@
        {:required false, :repeats true}]
       [:filler-supplemental-service-information
        {:required false, :repeats true}]
-      [:medically-necessary-duplicate-procedure-reason.
+      [:medically-necessary-duplicate-procedure-reason
        {:required false, :repeats false}]
       [:result-handling
        {:required false, :repeats false, :data-type :string}]
@@ -10589,7 +10589,7 @@
      {:required false, :repeats false, :data-type :string}]
     [:name-of-alternate-coding-system
      {:required false, :repeats false, :data-type :string}]]
-   [:medically-necessary-duplicate-procedure-reason.
+   [:medically-necessary-duplicate-procedure-reason
     {:required false, :repeats false}
     [:identifier {:required false, :repeats false, :data-type :string}]
     [:text {:required false, :repeats false, :data-type :string}]

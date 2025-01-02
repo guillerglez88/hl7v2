@@ -180,4 +180,7 @@
        (first)
        (zip/root))
 
+  (-> (hl7-zip hl7)
+      (zip/down))
+
   :.)

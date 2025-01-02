@@ -4420,7 +4420,7 @@
      {:required false, :repeats false, :data-type :string}]
     [:name-of-alternate-coding-system
      {:required false, :repeats false, :data-type :string}]]
-   [:medically-necessary-duplicate-procedure-reason.
+   [:medically-necessary-duplicate-procedure-reason
     {:required false, :repeats false}
     [:identifier {:required false, :repeats false, :data-type :string}]
     [:text {:required false, :repeats false, :data-type :string}]
@@ -5501,9 +5501,9 @@
     [:time {:required true, :repeats false, :data-type :string}]
     [:degree-of-precision
      {:required false, :repeats false, :data-type :string}]]
-   [:reserved-for-harmonization-with-v2.6 {:required false}]
-   [:reserved-for-harmonization-with-v2.6 {:required false}]
-   [:reserved-for-harmonization-with-v2.6 {:required false}]
+   [:reserved-for-harmonization-with-v26 {:required false}]
+   [:reserved-for-harmonization-with-v26 {:required false}]
+   [:reserved-for-harmonization-with-v26 {:required false}]
    [:performing-organization-name
     {:required false, :repeats false}
     [:organization-name

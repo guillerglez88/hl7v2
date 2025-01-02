@@ -1457,7 +1457,7 @@
        {:required false, :repeats true}]
       [:filler-supplemental-service-information
        {:required false, :repeats true}]
-      [:medically-necessary-duplicate-procedure-reason.
+      [:medically-necessary-duplicate-procedure-reason
        {:required false, :repeats false}]
       [:result-handling
        {:required false, :repeats false, :data-type :string}]

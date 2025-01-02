@@ -1984,7 +1984,7 @@
      {:required false, :repeats false, :data-type :string}]
     [:organization-identifier
      {:required false, :repeats false, :data-type :string}]]
-   [:patient-primary-care-provider-name-&-id-no.
+   [:patient-primary-care-provider-name-and-id-no
     {:required false, :repeats true}
     [:id-number {:required false, :repeats false, :data-type :string}]
     [:family-name
@@ -3951,9 +3951,9 @@
     [:time {:required true, :repeats false, :data-type :string}]
     [:degree-of-precision
      {:required false, :repeats false, :data-type :string}]]
-   [:reserved-for-harmonization-with-v2.6 {:required false}]
-   [:reserved-for-harmonization-with-v2.6 {:required false}]
-   [:reserved-for-harmonization-with-v2.6 {:required false}]
+   [:reserved-for-harmonization-with-v26 {:required false}]
+   [:reserved-for-harmonization-with-v26 {:required false}]
+   [:reserved-for-harmonization-with-v26 {:required false}]
    [:performing-organization-name
     {:required false, :repeats false}
     [:organization-name

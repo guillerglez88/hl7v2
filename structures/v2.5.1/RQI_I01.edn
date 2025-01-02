@@ -3424,7 +3424,7 @@
      {:required false, :repeats false, :data-type :string}]
     [:coordination-of-benefits
      {:required false, :repeats false, :data-type :string}]
-    [:coord-of-ben.-priority
+    [:coord-of-ben-priority
      {:required false, :repeats false, :data-type :string}]
     [:notice-of-admission-flag
      {:required false, :repeats false, :data-type :string}]
@@ -3534,7 +3534,7 @@
      {:required false, :repeats false, :data-type :string}]
     [:lifetime-reserve-days
      {:required false, :repeats false, :data-type :string}]
-    [:delay-before-l.r.-day
+    [:delay-before-lr-day
      {:required false, :repeats false, :data-type :string}]
     [:company-plan-code
      {:required false, :repeats false, :data-type :string}]
@@ -4480,7 +4480,7 @@
      {:required false, :repeats false, :data-type :string}]
     [:relationship-to-the-patient-stop-date
      {:required false, :repeats true, :data-type :string}]
-    [:insurance-co.-contact-reason
+    [:insurance-co-contact-reason
      {:required false, :repeats false, :data-type :string}]
     [:insurance-co-contact-phone-number
      {:required false, :repeats false}

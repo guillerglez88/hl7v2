@@ -368,7 +368,7 @@
     {:required false, :repeats false, :data-type :string}]
    [:name-of-alternate-coding-system
     {:required false, :repeats false, :data-type :string}]]
-  [:what-data-code-value-qual.
+  [:what-data-code-value-qual
    {:required false, :repeats true}
    [:first-data-code-value
     {:required false, :repeats false, :data-type :string}]
@@ -2784,7 +2784,7 @@
       {:required false, :repeats false, :data-type :string}]
      [:name-of-alternate-coding-system
       {:required false, :repeats false, :data-type :string}]]
-    [:medically-necessary-duplicate-procedure-reason.
+    [:medically-necessary-duplicate-procedure-reason
      {:required false, :repeats false}
      [:identifier
       {:required false, :repeats false, :data-type :string}]
@@ -3211,9 +3211,9 @@
       {:required false, :repeats false}
       [{:required true, :repeats false}]
       [{:required false, :repeats false}]]
-     [:reserved-for-harmonization-with-v2.6 {:required false}]
-     [:reserved-for-harmonization-with-v2.6 {:required false}]
-     [:reserved-for-harmonization-with-v2.6 {:required false}]
+     [:reserved-for-harmonization-with-v26 {:required false}]
+     [:reserved-for-harmonization-with-v26 {:required false}]
+     [:reserved-for-harmonization-with-v26 {:required false}]
      [:performing-organization-name
       {:required false, :repeats false}
       [{:required false, :repeats false}]
