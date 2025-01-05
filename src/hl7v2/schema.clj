@@ -137,3 +137,13 @@
     (-> (get index trigger-event)
         (xsd-zip index)
         (materialize-schema))))
+
+(defn schema-zip [schema]
+  (zip/zipper (comp seq node-children)
+              node-children
+              (fn [n c]
+                (->> [[(node-tag n) (node-attrs n)] c]
+                     (apply concat)
+                     (remove nil?)
+                     (into [])))
+              schema))

@@ -1,22 +1,12 @@
 (ns hl7v2.structures
   (:require
+   [clojure.string :as str]
    [clojure.zip :as zip]
    [hl7v2.primitives :refer [slug]]
    [hl7v2.complex :refer [clean]]
-   [hl7v2.schema :as sch]
-   [clojure.string :as str]))
+   [hl7v2.schema :as sch]))
 
-(defn schema-zip [schema]
-  (zip/zipper (comp seq sch/node-children)
-              sch/node-children
-              (fn [n c]
-                (->> [[(sch/node-tag n) (sch/node-attrs n)] c]
-                     (apply concat)
-                     (remove nil?)
-                     (into [])))
-              schema))
-
-(defn process-annotation [loc & {:keys [lang] :or {lang "en"}}]
+(defn annotation [loc & {:keys [lang] :or {lang "en"}}]
   (->> (zip/down loc)
        (iterate zip/right)
        (take-while (complement nil?))
@@ -39,7 +29,7 @@
              (or (= (some-> loc zip/down zip/down zip/down zip/right zip/down zip/down zip/node sch/node-tag) "restriction")
                  (= (some-> loc zip/down zip/down zip/down zip/right zip/down zip/node sch/node-tag) "extension")
                  (= (some-> loc zip/down zip/down zip/down zip/right zip/down zip/node sch/node-tag) "varies")))
-    [(-> loc zip/down zip/down zip/down (process-annotation :lang lang))
+    [(-> loc zip/down zip/down zip/down (annotation :lang lang))
      (let [{:keys [minOccurs maxOccurs]} (-> loc zip/node sch/node-attrs)]
        (clean
         {:field (-> loc zip/node sch/node-tag)
@@ -59,7 +49,7 @@
              (= (some-> loc zip/down zip/down zip/down zip/node sch/node-tag) "annotation")
              (= (some-> loc zip/down zip/down zip/down zip/right zip/node sch/node-tag) "complexContent")
              (= (some-> loc zip/down zip/down zip/down zip/right zip/down zip/down zip/node sch/node-tag) "sequence"))
-    (->> [[(-> loc zip/down zip/down zip/down (process-annotation :lang lang))
+    (->> [[(-> loc zip/down zip/down zip/down (annotation :lang lang))
            (let [{:keys [minOccurs maxOccurs]} (-> loc zip/node sch/node-attrs)]
              (clean
               {:field (-> loc zip/node sch/node-tag)
@@ -105,14 +95,14 @@
          (into []))))
 
 (defn gen-structure [trigger-event & {:keys [standard-dir version lang]}]
-  (loop [loc (schema-zip (sch/load-schema trigger-event standard-dir))
+  (loop [loc (sch/schema-zip (sch/load-schema trigger-event standard-dir))
          [process & more :as processors] [#(leaf % :lang lang)
                                           #(complex % :lang lang)
                                           group
                                           #(root % :version version)]]
     (if (zip/end? loc)
       (if (seq more)
-        (recur (schema-zip (zip/root loc)) more)
+        (recur (sch/schema-zip (zip/root loc)) more)
         (zip/root loc))
       (if-let [sub (process loc)]
         (recur (zip/replace loc sub) processors)
@@ -124,8 +114,8 @@
        ["documentation" {:lang "en"} ["Namespace ID"]]
        ["documentation" {:lang "de"} ["Identifikator"]]
        ["appinfo" ["Type" ["HD.1"]] ["LongName" ["Namespace ID"]]]]
-      (schema-zip)
-      (process-annotation))
+      (sch/schema-zip)
+      (annotation))
   ;;=> :namespace-id
 
   (-> ["HD.1"
@@ -138,7 +128,7 @@
           ["documentation" {:lang "de"} ["Identifikator"]]
           ["appinfo" ["Type" ["HD.1"]] ["LongName" ["Namespace ID"]]]]
          ["complexContent" ["IS" ["restriction" {:base "xsd:string"} ["restriction" {:base "xsd:string"}]]]]]]]
-      (schema-zip)
+      (sch/schema-zip)
       (leaf))
   ;;=> [:namespace-id {:field "HD.1", :required false, :repeats false, :type "IS"}]
 
@@ -157,7 +147,7 @@
             [:namespace-id {:field "HD.1", :required false, :repeats false, :type "IS"}]
             [:universal-id {:field "HD.2", :required false, :repeats false, :type "ST"}]
             [:universal-id-type {:field "HD.3", :required false, :repeats false, :type "ID"}]]]]]]]
-      (schema-zip)
+      (sch/schema-zip)
       (complex))
   ;;=> [:sending-application
   ;;    {:field "MSH.3", :required false, :repeats false, :type "HD"}
@@ -184,7 +174,7 @@
            [:alternate-text {:field "CE.5", :required false, :repeats false, :type "ST"}]
            [:name-of-alternate-coding-system {:field "CE.6", :required false, :repeats false, :type "ID"}]]
           ["any" {:processContents "lax", :namespace "##other", :minOccurs "0"} []]]]]]
-      (schema-zip)
+      (sch/schema-zip)
       (group))
   ;;=> [:MSA
   ;;    {:required false, :repeats false}
@@ -207,11 +197,11 @@
         ["sequence"
          [:MSH]
          [:SFT]]]]
-      (schema-zip)
+      (sch/schema-zip)
       (root))
   ;;=> [:ACK [:MSH] [:SFT]]
 
-  (schema-zip (sch/load-schema "ACK" "/Users/guille/Downloads/HL7-xml-v2.5.1"))
+  (sch/schema-zip (sch/load-schema "ACK" "/Users/guille/Downloads/HL7-xml-v2.5.1"))
 
   (gen-structure "ORU_R01"
                  :standard-dir "/Users/guille/Downloads/HL7-xml-v2.5.1"
