@@ -146,15 +146,16 @@
     (parse-encoding (char-seq rx)))
   ;;=> {:separators #{\& \newline \return \\ \| \^},
   ;;    :index
-  ;;    {:ks {:fld \|, :cmp \^, :rep \~, :esc \\, :seg \newline},
-  ;;     :sk {\| :fld, \^ :cmp, \~ :rep, \\ :esc, \return :seg, \newline :seg}},
+  ;;    {:ks {:fld \|, :cmp \^, :rep \~, :sub \&, :esc \\, :seg \newline},
+  ;;     :sk {\| :fld, \^ :cmp, \~ :rep, \& :sub, \\ :esc, \return :seg, \newline :seg}},
   ;;    :remaining [\|]}
 
   (format-encoding {:separators #{\& \newline \return \\ \| \^},
-                    :index {:ks {:fld \|, :cmp \^, :rep \~, :esc \\, :seg \newline},
-                            :sk {\| :fld, \^ :cmp, \~ :rep, \\ :esc, \return :seg, \newline :seg}},
+                    :index
+                    {:ks {:fld \|, :cmp \^, :rep \~, :sub \&, :esc \\, :seg \newline},
+                     :sk {\| :fld, \^ :cmp, \~ :rep, \& :sub, \\ :esc, \return :seg, \newline :seg}},
                     :remaining [\|]})
-  ;;=> "MSH|^~\\|"
+  ;;=> "MSH|^~\\&|"
 
   (with-open [rx (io/reader (.getBytes "testing\\&escape\\^chars"))]
     (into [] (escape \\ (char-seq rx))))
@@ -173,7 +174,7 @@
   (let [f (io/file "test/hl7v2/data/oru-r01.hl7")]
     (= (str/trim-newline (slurp f))
        (format-er7 (parse-er7 f))))
-  ;;=> true
+  ;;=> false
 
   (parse-er7 (.getBytes "MSH|^~\\&|ULTRA|TML|OLIS|OLIS")
              :val-fn (juxt :value :loc))

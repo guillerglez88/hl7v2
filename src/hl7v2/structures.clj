@@ -108,6 +108,31 @@
         (recur (zip/replace loc sub) processors)
         (recur (zip/next loc) processors)))))
 
+(defn spec-tag [spec]
+  (when (vector? spec)
+    (first spec)))
+
+(defn spec-attrs [spec]
+  (when (vector? spec)
+    (when-let [snd (second spec)]
+      (when (map? snd)
+        snd))))
+
+(defn spec-children [spec]
+  (if (spec-attrs spec)
+    (drop 2 spec)
+    (drop 1 spec)))
+
+(defn spec-zip [spec]
+  (zip/zipper (comp seq spec-children)
+              spec-children
+              (fn [node children]
+                (->> [[(spec-tag node) (spec-attrs node)] children]
+                     (apply concat)
+                     (remove nil?)
+                     (into [])))
+              spec))
+
 (comment
 
   (-> ["annotation"
@@ -207,5 +232,13 @@
                  :standard-dir "/Users/guille/Downloads/HL7-xml-v2.5.1"
                  :versiown "2.5.1"
                  :lang "en")
+
+  (->> (spec-zip
+        (read-string
+         (slurp "structures/v2.5.1/ORU_R01.edn")))
+       (iterate zip/next)
+       (take-while (complement zip/end?))
+       (filter #(-> % zip/node spec-tag (= :PID)))
+       (some zip/node))
 
   :.)
