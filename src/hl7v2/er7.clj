@@ -18,8 +18,8 @@
       (throw (ex-info "Unexpected segment"
                       {:expected "MSH"
                        :actual (str m s h)})))
-    (let [kind [:fld :cmp :rep :esc :seg :seg]
-          sep [fld  cmp  rep  esc  ret  nli]]
+    (let [kind [:fld :cmp :rep :sub :esc :seg :seg]
+          sep [fld cmp rep sub esc ret nli]]
       {:separators #{fld cmp sub esc ret nli}
        :index {:ks (zipmap kind sep)
                :sk (zipmap sep kind)}

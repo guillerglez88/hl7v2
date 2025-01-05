@@ -1,8 +1,7 @@
 (ns user
   (:require
    [clojure.pprint :as pp]
-   [hl7v2.schema :refer [gen-structure]]
-   [hl7v2.config :refer [config]]))
+   [hl7v2.structures :refer [gen-structure]]))
 
 (def trigger-events
   ["ACK"
@@ -197,15 +196,15 @@
 
 (comment
 
-  (with-redefs [config (delay {:standard-dir "/Users/guille/Downloads/HL7-xml-v2.5.1"
-                               :lang "en"})]
-    (let [output-dir "structures/v2.5.1"]
-      (doseq [item trigger-events
-              :when (= "ORU_R01" item)]
-        (println "generating structure for" item)
-        (spit
-         (format "%s/%s.edn" output-dir item)
-         (with-out-str
-           (pp/pprint (gen-structure item)))))))
+  (let [output-dir "structures/v2.5.1"]
+    (doseq [item trigger-events]
+      (println "generating structure for" item)
+      (spit
+       (format "%s/%s.edn" output-dir item)
+       (with-out-str
+         (pp/pprint (gen-structure item
+                                   :standard-dir "/Users/guille/Downloads/HL7-xml-v2.5.1"
+                                   :version "2.5.1"
+                                   :lang "en"))))))
 
   :.)
