@@ -20,7 +20,7 @@
                        :actual (str m s h)})))
     (let [kind [:fld :cmp :rep :sub :esc :seg :seg]
           sep [fld cmp rep sub esc ret nli]]
-      {:separators #{fld cmp sub esc ret nli}
+      {:separators #{fld cmp rep sub esc ret nli}
        :index {:ks (zipmap kind sep)
                :sk (zipmap sep kind)}
        :remaining (into [] (concat (take-while (partial not= fld) more) [fld]))})))
@@ -60,12 +60,8 @@
              seg-x2? (= :seg kind (get-in encoding [:index :sk next]))
              sep-to [line (+ (second to) (if seg-x2? 2 1))]]
          (concat
-          [{:value value
-            :kind :data
-            :loc {:from from :to to}}
-           {:value (if seg-x2? (str sep next) (str sep))
-            :kind kind
-            :loc {:from to :to sep-to}}]
+          [{:value value, :kind :data, :loc {:from from :to to}}
+           {:value (if seg-x2? (str sep next) (str sep)), :kind kind, :loc {:from to :to sep-to}}]
           (lazy-seq
            (tokens encoding
                    (if (= :seg kind) [(inc line) 0] sep-to)
@@ -108,7 +104,14 @@
                            (sorted-map)
                            (for [[idx component] (kind-groups :cmp seg-id repetition)
                                  :let [cmp-idx (inc idx)]]
-                             [cmp-idx (val-fn (first component))]))])))]))})
+                             [cmp-idx
+                              (if (= 1 (count component))
+                                (val-fn (first component))
+                                (into
+                                 (sorted-map)
+                                 (for [[idx subcomponent] (kind-groups :sub seg-id component)
+                                       :let [sub-idx (inc idx)]]
+                                   [sub-idx (val-fn (first subcomponent))])))]))])))]))})
              (into [])
              (clean))))))
 
@@ -137,8 +140,14 @@
                       rep
                       (str/join
                        (get-in enc [:index :ks :cmp])
-                       (for [idx (range 1 (inc (apply max (keys rep))))]
-                         (get rep idx))))))))))))))
+                       (for [idx (range 1 (inc (apply max (keys rep))))
+                             :let [cmp (get rep idx)]]
+                         (if-not (map? cmp)
+                           cmp
+                           (str/join
+                            (get-in enc [:index :ks :sub])
+                            (for [idx (range 1 (inc (apply max (keys cmp))))]
+                              (get cmp idx)))))))))))))))))
 
 (comment
 
@@ -185,5 +194,14 @@
   ;;      4 ["TML" {:from [1 15], :to [1 18]}],
   ;;      5 ["OLIS" {:from [1 19], :to [1 23]}],
   ;;      6 {1 {1 ["OLIS" {:from [1 24], :to [1 28]}]}}}}]
+
+  (with-open [rx (io/reader (io/file "test/hl7v2/data/oru-r01.hl7"))]
+    (let [cs (char-seq rx)
+          enc (parse-encoding cs)]
+      (->> (tokens enc cs)
+           (into [])
+           (drop-while #(not= "PID" (:value %))))))
+
+  (format-er7 (parse-er7 (io/file "test/hl7v2/data/oru-r01.hl7")))
 
   :.)
