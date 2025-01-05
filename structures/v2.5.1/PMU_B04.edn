@@ -1,1068 +1,1178 @@
 [:PMU_B04
+ {:version "2.5.1"}
  [:MSH
-  {:required true, :repeats false, :segment true}
+  {:required false, :repeats false}
   [:field-separator
-   {:required true, :repeats false, :data-type :string}]
+   {:field "MSH.1", :required true, :repeats false, :type "ST"}]
   [:encoding-characters
-   {:required true, :repeats false, :data-type :string}]
+   {:field "MSH.2", :required true, :repeats false, :type "ST"}]
   [:sending-application
-   {:required false, :repeats false}
+   {:field "MSH.3", :required false, :repeats false, :type "HD"}
    [:namespace-id
-    {:required false, :repeats false, :data-type :string}]
+    {:field "HD.1", :required false, :repeats false, :type "IS"}]
    [:universal-id
-    {:required false, :repeats false, :data-type :string}]
+    {:field "HD.2", :required false, :repeats false, :type "ST"}]
    [:universal-id-type
-    {:required false, :repeats false, :data-type :string}]]
+    {:field "HD.3", :required false, :repeats false, :type "ID"}]]
   [:sending-facility
-   {:required false, :repeats false}
+   {:field "MSH.4", :required false, :repeats false, :type "HD"}
    [:namespace-id
-    {:required false, :repeats false, :data-type :string}]
+    {:field "HD.1", :required false, :repeats false, :type "IS"}]
    [:universal-id
-    {:required false, :repeats false, :data-type :string}]
+    {:field "HD.2", :required false, :repeats false, :type "ST"}]
    [:universal-id-type
-    {:required false, :repeats false, :data-type :string}]]
+    {:field "HD.3", :required false, :repeats false, :type "ID"}]]
   [:receiving-application
-   {:required false, :repeats false}
+   {:field "MSH.5", :required false, :repeats false, :type "HD"}
    [:namespace-id
-    {:required false, :repeats false, :data-type :string}]
+    {:field "HD.1", :required false, :repeats false, :type "IS"}]
    [:universal-id
-    {:required false, :repeats false, :data-type :string}]
+    {:field "HD.2", :required false, :repeats false, :type "ST"}]
    [:universal-id-type
-    {:required false, :repeats false, :data-type :string}]]
+    {:field "HD.3", :required false, :repeats false, :type "ID"}]]
   [:receiving-facility
-   {:required false, :repeats false}
+   {:field "MSH.6", :required false, :repeats false, :type "HD"}
    [:namespace-id
-    {:required false, :repeats false, :data-type :string}]
+    {:field "HD.1", :required false, :repeats false, :type "IS"}]
    [:universal-id
-    {:required false, :repeats false, :data-type :string}]
+    {:field "HD.2", :required false, :repeats false, :type "ST"}]
    [:universal-id-type
-    {:required false, :repeats false, :data-type :string}]]
+    {:field "HD.3", :required false, :repeats false, :type "ID"}]]
   [:dateortime-of-message
-   {:required true, :repeats false}
-   [:time {:required true, :repeats false, :data-type :string}]
+   {:field "MSH.7", :required true, :repeats false, :type "TS"}
+   [:time {:field "TS.1", :required true, :repeats false, :type "DTM"}]
    [:degree-of-precision
-    {:required false, :repeats false, :data-type :string}]]
-  [:security {:required false, :repeats false, :data-type :string}]
+    {:field "TS.2", :required false, :repeats false, :type "ID"}]]
+  [:security
+   {:field "MSH.8", :required false, :repeats false, :type "ST"}]
   [:message-type
-   {:required true, :repeats false}
-   [:message-code {:required true, :repeats false, :data-type :string}]
+   {:field "MSH.9", :required true, :repeats false, :type "MSG"}
+   [:message-code
+    {:field "MSG.1", :required true, :repeats false, :type "ID"}]
    [:trigger-event
-    {:required true, :repeats false, :data-type :string}]
+    {:field "MSG.2", :required true, :repeats false, :type "ID"}]
    [:message-structure
-    {:required true, :repeats false, :data-type :string}]]
+    {:field "MSG.3", :required true, :repeats false, :type "ID"}]]
   [:message-control-id
-   {:required true, :repeats false, :data-type :string}]
+   {:field "MSH.10", :required true, :repeats false, :type "ST"}]
   [:processing-id
-   {:required true, :repeats false}
+   {:field "MSH.11", :required true, :repeats false, :type "PT"}
    [:processing-id
-    {:required false, :repeats false, :data-type :string}]
+    {:field "PT.1", :required false, :repeats false, :type "ID"}]
    [:processing-mode
-    {:required false, :repeats false, :data-type :string}]]
+    {:field "PT.2", :required false, :repeats false, :type "ID"}]]
   [:version-id
-   {:required true, :repeats false}
-   [:version-id {:required false, :repeats false, :data-type :string}]
+   {:field "MSH.12", :required true, :repeats false, :type "VID"}
+   [:version-id
+    {:field "VID.1", :required false, :repeats false, :type "ID"}]
    [:internationalization-code
-    {:required false, :repeats false}
-    [:identifier {:required false, :repeats false, :data-type :string}]
-    [:text {:required false, :repeats false, :data-type :string}]
+    {:field "VID.2", :required false, :repeats false, :type "CE"}
+    [:identifier
+     {:field "CE.1", :required false, :repeats false, :type "ST"}]
+    [:text
+     {:field "CE.2", :required false, :repeats false, :type "ST"}]
     [:name-of-coding-system
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CE.3", :required false, :repeats false, :type "ID"}]
     [:alternate-identifier
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CE.4", :required false, :repeats false, :type "ST"}]
     [:alternate-text
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CE.5", :required false, :repeats false, :type "ST"}]
     [:name-of-alternate-coding-system
-     {:required false, :repeats false, :data-type :string}]]
+     {:field "CE.6", :required false, :repeats false, :type "ID"}]]
    [:international-version-id
-    {:required false, :repeats false}
-    [:identifier {:required false, :repeats false, :data-type :string}]
-    [:text {:required false, :repeats false, :data-type :string}]
+    {:field "VID.3", :required false, :repeats false, :type "CE"}
+    [:identifier
+     {:field "CE.1", :required false, :repeats false, :type "ST"}]
+    [:text
+     {:field "CE.2", :required false, :repeats false, :type "ST"}]
     [:name-of-coding-system
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CE.3", :required false, :repeats false, :type "ID"}]
     [:alternate-identifier
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CE.4", :required false, :repeats false, :type "ST"}]
     [:alternate-text
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CE.5", :required false, :repeats false, :type "ST"}]
     [:name-of-alternate-coding-system
-     {:required false, :repeats false, :data-type :string}]]]
+     {:field "CE.6", :required false, :repeats false, :type "ID"}]]]
   [:sequence-number
-   {:required false, :repeats false, :data-type :string}]
+   {:field "MSH.13", :required false, :repeats false, :type "NM"}]
   [:continuation-pointer
-   {:required false, :repeats false, :data-type :string}]
+   {:field "MSH.14", :required false, :repeats false, :type "ST"}]
   [:accept-acknowledgment-type
-   {:required false, :repeats false, :data-type :string}]
+   {:field "MSH.15", :required false, :repeats false, :type "ID"}]
   [:application-acknowledgment-type
-   {:required false, :repeats false, :data-type :string}]
-  [:country-code {:required false, :repeats false, :data-type :string}]
-  [:character-set {:required false, :repeats true, :data-type :string}]
+   {:field "MSH.16", :required false, :repeats false, :type "ID"}]
+  [:country-code
+   {:field "MSH.17", :required false, :repeats false, :type "ID"}]
+  [:character-set
+   {:field "MSH.18", :required false, :repeats true, :type "ID"}]
   [:principal-language-of-message
-   {:required false, :repeats false}
-   [:identifier {:required false, :repeats false, :data-type :string}]
-   [:text {:required false, :repeats false, :data-type :string}]
+   {:field "MSH.19", :required false, :repeats false, :type "CE"}
+   [:identifier
+    {:field "CE.1", :required false, :repeats false, :type "ST"}]
+   [:text {:field "CE.2", :required false, :repeats false, :type "ST"}]
    [:name-of-coding-system
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.3", :required false, :repeats false, :type "ID"}]
    [:alternate-identifier
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.4", :required false, :repeats false, :type "ST"}]
    [:alternate-text
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.5", :required false, :repeats false, :type "ST"}]
    [:name-of-alternate-coding-system
-    {:required false, :repeats false, :data-type :string}]]
+    {:field "CE.6", :required false, :repeats false, :type "ID"}]]
   [:alternate-character-set-handling-scheme
-   {:required false, :repeats false, :data-type :string}]
+   {:field "MSH.20", :required false, :repeats false, :type "ID"}]
   [:message-profile-identifier
-   {:required false, :repeats true}
+   {:field "MSH.21", :required false, :repeats true, :type "EI"}
    [:entity-identifier
-    {:required false, :repeats false, :data-type :string}]
+    {:field "EI.1", :required false, :repeats false, :type "ST"}]
    [:namespace-id
-    {:required false, :repeats false, :data-type :string}]
+    {:field "EI.2", :required false, :repeats false, :type "IS"}]
    [:universal-id
-    {:required false, :repeats false, :data-type :string}]
+    {:field "EI.3", :required false, :repeats false, :type "ST"}]
    [:universal-id-type
-    {:required false, :repeats false, :data-type :string}]]]
+    {:field "EI.4", :required false, :repeats false, :type "ID"}]]]
  [:SFT
-  {:required false, :repeats true, :segment true}
+  {:required false, :repeats true}
   [:software-vendor-organization
-   {:required true, :repeats false}
+   {:field "SFT.1", :required true, :repeats false, :type "XON"}
    [:organization-name
-    {:required false, :repeats false, :data-type :string}]
+    {:field "XON.1", :required false, :repeats false, :type "ST"}]
    [:organization-name-type-code
-    {:required false, :repeats false, :data-type :string}]
-   [:id-number {:required false, :repeats false, :data-type :string}]
-   [:check-digit {:required false, :repeats false, :data-type :string}]
+    {:field "XON.2", :required false, :repeats false, :type "IS"}]
+   [:id-number
+    {:field "XON.3", :required false, :repeats false, :type "NM"}]
+   [:check-digit
+    {:field "XON.4", :required false, :repeats false, :type "NM"}]
    [:check-digit-scheme
-    {:required false, :repeats false, :data-type :string}]
+    {:field "XON.5", :required false, :repeats false, :type "ID"}]
    [:assigning-authority
-    {:required false, :repeats false}
+    {:field "XON.6", :required false, :repeats false, :type "HD"}
     [:namespace-id
-     {:required false, :repeats false, :data-type :string}]
+     {:field "HD.1", :required false, :repeats false, :type "IS"}]
     [:universal-id
-     {:required false, :repeats false, :data-type :string}]
+     {:field "HD.2", :required false, :repeats false, :type "ST"}]
     [:universal-id-type
-     {:required false, :repeats false, :data-type :string}]]
+     {:field "HD.3", :required false, :repeats false, :type "ID"}]]
    [:identifier-type-code
-    {:required false, :repeats false, :data-type :string}]
+    {:field "XON.7", :required false, :repeats false, :type "ID"}]
    [:assigning-facility
-    {:required false, :repeats false}
+    {:field "XON.8", :required false, :repeats false, :type "HD"}
     [:namespace-id
-     {:required false, :repeats false, :data-type :string}]
+     {:field "HD.1", :required false, :repeats false, :type "IS"}]
     [:universal-id
-     {:required false, :repeats false, :data-type :string}]
+     {:field "HD.2", :required false, :repeats false, :type "ST"}]
     [:universal-id-type
-     {:required false, :repeats false, :data-type :string}]]
+     {:field "HD.3", :required false, :repeats false, :type "ID"}]]
    [:name-representation-code
-    {:required false, :repeats false, :data-type :string}]
+    {:field "XON.9", :required false, :repeats false, :type "ID"}]
    [:organization-identifier
-    {:required false, :repeats false, :data-type :string}]]
+    {:field "XON.10", :required false, :repeats false, :type "ST"}]]
   [:software-certified-version-or-release-number
-   {:required true, :repeats false, :data-type :string}]
+   {:field "SFT.2", :required true, :repeats false, :type "ST"}]
   [:software-product-name
-   {:required true, :repeats false, :data-type :string}]
+   {:field "SFT.3", :required true, :repeats false, :type "ST"}]
   [:software-binary-id
-   {:required true, :repeats false, :data-type :string}]
+   {:field "SFT.4", :required true, :repeats false, :type "ST"}]
   [:software-product-information
-   {:required false, :repeats false}
-   [:escape]]
+   {:field "SFT.5", :required false, :repeats false, :type "TX"}
+   ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
   [:software-install-date
-   {:required false, :repeats false}
-   [:time {:required true, :repeats false, :data-type :string}]
+   {:field "SFT.6", :required false, :repeats false, :type "TS"}
+   [:time {:field "TS.1", :required true, :repeats false, :type "DTM"}]
    [:degree-of-precision
-    {:required false, :repeats false, :data-type :string}]]]
+    {:field "TS.2", :required false, :repeats false, :type "ID"}]]]
  [:EVN
-  {:required true, :repeats false, :segment true}
+  {:required false, :repeats false}
   [:event-type-code
-   {:required false, :repeats false, :data-type :string}]
+   {:field "EVN.1", :required false, :repeats false, :type "ID"}]
   [:recorded-dateortime
-   {:required true, :repeats false}
-   [:time {:required true, :repeats false, :data-type :string}]
+   {:field "EVN.2", :required true, :repeats false, :type "TS"}
+   [:time {:field "TS.1", :required true, :repeats false, :type "DTM"}]
    [:degree-of-precision
-    {:required false, :repeats false, :data-type :string}]]
+    {:field "TS.2", :required false, :repeats false, :type "ID"}]]
   [:dateortime-planned-event
-   {:required false, :repeats false}
-   [:time {:required true, :repeats false, :data-type :string}]
+   {:field "EVN.3", :required false, :repeats false, :type "TS"}
+   [:time {:field "TS.1", :required true, :repeats false, :type "DTM"}]
    [:degree-of-precision
-    {:required false, :repeats false, :data-type :string}]]
+    {:field "TS.2", :required false, :repeats false, :type "ID"}]]
   [:event-reason-code
-   {:required false, :repeats false, :data-type :string}]
+   {:field "EVN.4", :required false, :repeats false, :type "IS"}]
   [:operator-id
-   {:required false, :repeats true}
-   [:id-number {:required false, :repeats false, :data-type :string}]
+   {:field "EVN.5", :required false, :repeats true, :type "XCN"}
+   [:id-number
+    {:field "XCN.1", :required false, :repeats false, :type "ST"}]
    [:family-name
-    {:required false, :repeats false}
-    [:surname {:required true, :repeats false, :data-type :string}]
+    {:field "XCN.2", :required false, :repeats false, :type "FN"}
+    [:surname
+     {:field "FN.1", :required true, :repeats false, :type "ST"}]
     [:own-surname-prefix
-     {:required false, :repeats false, :data-type :string}]
+     {:field "FN.2", :required false, :repeats false, :type "ST"}]
     [:own-surname
-     {:required false, :repeats false, :data-type :string}]
+     {:field "FN.3", :required false, :repeats false, :type "ST"}]
     [:surname-prefix-from-partnerorspouse
-     {:required false, :repeats false, :data-type :string}]
+     {:field "FN.4", :required false, :repeats false, :type "ST"}]
     [:surname-from-partnerorspouse
-     {:required false, :repeats false, :data-type :string}]]
-   [:given-name {:required false, :repeats false, :data-type :string}]
+     {:field "FN.5", :required false, :repeats false, :type "ST"}]]
+   [:given-name
+    {:field "XCN.3", :required false, :repeats false, :type "ST"}]
    [:second-and-further-given-names-or-initials-thereof
-    {:required false, :repeats false, :data-type :string}]
-   [:suffix {:required false, :repeats false, :data-type :string}]
-   [:prefix {:required false, :repeats false, :data-type :string}]
-   [:degree {:required false, :repeats false, :data-type :string}]
+    {:field "XCN.4", :required false, :repeats false, :type "ST"}]
+   [:suffix
+    {:field "XCN.5", :required false, :repeats false, :type "ST"}]
+   [:prefix
+    {:field "XCN.6", :required false, :repeats false, :type "ST"}]
+   [:degree
+    {:field "XCN.7", :required false, :repeats false, :type "IS"}]
    [:source-table
-    {:required false, :repeats false, :data-type :string}]
+    {:field "XCN.8", :required false, :repeats false, :type "IS"}]
    [:assigning-authority
-    {:required false, :repeats false}
+    {:field "XCN.9", :required false, :repeats false, :type "HD"}
     [:namespace-id
-     {:required false, :repeats false, :data-type :string}]
+     {:field "HD.1", :required false, :repeats false, :type "IS"}]
     [:universal-id
-     {:required false, :repeats false, :data-type :string}]
+     {:field "HD.2", :required false, :repeats false, :type "ST"}]
     [:universal-id-type
-     {:required false, :repeats false, :data-type :string}]]
+     {:field "HD.3", :required false, :repeats false, :type "ID"}]]
    [:name-type-code
-    {:required false, :repeats false, :data-type :string}]
+    {:field "XCN.10", :required false, :repeats false, :type "ID"}]
    [:identifier-check-digit
-    {:required false, :repeats false, :data-type :string}]
+    {:field "XCN.11", :required false, :repeats false, :type "ST"}]
    [:check-digit-scheme
-    {:required false, :repeats false, :data-type :string}]
+    {:field "XCN.12", :required false, :repeats false, :type "ID"}]
    [:identifier-type-code
-    {:required false, :repeats false, :data-type :string}]
+    {:field "XCN.13", :required false, :repeats false, :type "ID"}]
    [:assigning-facility
-    {:required false, :repeats false}
+    {:field "XCN.14", :required false, :repeats false, :type "HD"}
     [:namespace-id
-     {:required false, :repeats false, :data-type :string}]
+     {:field "HD.1", :required false, :repeats false, :type "IS"}]
     [:universal-id
-     {:required false, :repeats false, :data-type :string}]
+     {:field "HD.2", :required false, :repeats false, :type "ST"}]
     [:universal-id-type
-     {:required false, :repeats false, :data-type :string}]]
+     {:field "HD.3", :required false, :repeats false, :type "ID"}]]
    [:name-representation-code
-    {:required false, :repeats false, :data-type :string}]
+    {:field "XCN.15", :required false, :repeats false, :type "ID"}]
    [:name-context
-    {:required false, :repeats false}
-    [:identifier {:required false, :repeats false, :data-type :string}]
-    [:text {:required false, :repeats false, :data-type :string}]
+    {:field "XCN.16", :required false, :repeats false, :type "CE"}
+    [:identifier
+     {:field "CE.1", :required false, :repeats false, :type "ST"}]
+    [:text
+     {:field "CE.2", :required false, :repeats false, :type "ST"}]
     [:name-of-coding-system
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CE.3", :required false, :repeats false, :type "ID"}]
     [:alternate-identifier
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CE.4", :required false, :repeats false, :type "ST"}]
     [:alternate-text
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CE.5", :required false, :repeats false, :type "ST"}]
     [:name-of-alternate-coding-system
-     {:required false, :repeats false, :data-type :string}]]
+     {:field "CE.6", :required false, :repeats false, :type "ID"}]]
    [:name-validity-range
-    {:required false, :repeats false}
+    {:field "XCN.17", :required false, :repeats false, :type "DR"}
     [:range-start-dateortime
-     {:required false, :repeats false}
-     [:time {:required true, :repeats false, :data-type :string}]
+     {:field "DR.1", :required false, :repeats false, :type "TS"}
+     [:time
+      {:field "TS.1", :required true, :repeats false, :type "DTM"}]
      [:degree-of-precision
-      {:required false, :repeats false, :data-type :string}]]
+      {:field "TS.2", :required false, :repeats false, :type "ID"}]]
     [:range-end-dateortime
-     {:required false, :repeats false}
-     [:time {:required true, :repeats false, :data-type :string}]
+     {:field "DR.2", :required false, :repeats false, :type "TS"}
+     [:time
+      {:field "TS.1", :required true, :repeats false, :type "DTM"}]
      [:degree-of-precision
-      {:required false, :repeats false, :data-type :string}]]]
+      {:field "TS.2", :required false, :repeats false, :type "ID"}]]]
    [:name-assembly-order
-    {:required false, :repeats false, :data-type :string}]
+    {:field "XCN.18", :required false, :repeats false, :type "ID"}]
    [:effective-date
-    {:required false, :repeats false}
-    [:time {:required true, :repeats false, :data-type :string}]
+    {:field "XCN.19", :required false, :repeats false, :type "TS"}
+    [:time
+     {:field "TS.1", :required true, :repeats false, :type "DTM"}]
     [:degree-of-precision
-     {:required false, :repeats false, :data-type :string}]]
+     {:field "TS.2", :required false, :repeats false, :type "ID"}]]
    [:expiration-date
-    {:required false, :repeats false}
-    [:time {:required true, :repeats false, :data-type :string}]
+    {:field "XCN.20", :required false, :repeats false, :type "TS"}
+    [:time
+     {:field "TS.1", :required true, :repeats false, :type "DTM"}]
     [:degree-of-precision
-     {:required false, :repeats false, :data-type :string}]]
+     {:field "TS.2", :required false, :repeats false, :type "ID"}]]
    [:professional-suffix
-    {:required false, :repeats false, :data-type :string}]
+    {:field "XCN.21", :required false, :repeats false, :type "ST"}]
    [:assigning-jurisdiction
-    {:required false, :repeats false}
-    [:identifier {:required false, :repeats false, :data-type :string}]
-    [:text {:required false, :repeats false, :data-type :string}]
+    {:field "XCN.22", :required false, :repeats false, :type "CWE"}
+    [:identifier
+     {:field "CWE.1", :required false, :repeats false, :type "ST"}]
+    [:text
+     {:field "CWE.2", :required false, :repeats false, :type "ST"}]
     [:name-of-coding-system
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CWE.3", :required false, :repeats false, :type "ID"}]
     [:alternate-identifier
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CWE.4", :required false, :repeats false, :type "ST"}]
     [:alternate-text
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CWE.5", :required false, :repeats false, :type "ST"}]
     [:name-of-alternate-coding-system
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CWE.6", :required false, :repeats false, :type "ID"}]
     [:coding-system-version-id
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CWE.7", :required false, :repeats false, :type "ST"}]
     [:alternate-coding-system-version-id
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CWE.8", :required false, :repeats false, :type "ST"}]
     [:original-text
-     {:required false, :repeats false, :data-type :string}]]
+     {:field "CWE.9", :required false, :repeats false, :type "ST"}]]
    [:assigning-agency-or-department
-    {:required false, :repeats false}
-    [:identifier {:required false, :repeats false, :data-type :string}]
-    [:text {:required false, :repeats false, :data-type :string}]
+    {:field "XCN.23", :required false, :repeats false, :type "CWE"}
+    [:identifier
+     {:field "CWE.1", :required false, :repeats false, :type "ST"}]
+    [:text
+     {:field "CWE.2", :required false, :repeats false, :type "ST"}]
     [:name-of-coding-system
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CWE.3", :required false, :repeats false, :type "ID"}]
     [:alternate-identifier
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CWE.4", :required false, :repeats false, :type "ST"}]
     [:alternate-text
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CWE.5", :required false, :repeats false, :type "ST"}]
     [:name-of-alternate-coding-system
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CWE.6", :required false, :repeats false, :type "ID"}]
     [:coding-system-version-id
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CWE.7", :required false, :repeats false, :type "ST"}]
     [:alternate-coding-system-version-id
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CWE.8", :required false, :repeats false, :type "ST"}]
     [:original-text
-     {:required false, :repeats false, :data-type :string}]]]
+     {:field "CWE.9", :required false, :repeats false, :type "ST"}]]]
   [:event-occurred
-   {:required false, :repeats false}
-   [:time {:required true, :repeats false, :data-type :string}]
+   {:field "EVN.6", :required false, :repeats false, :type "TS"}
+   [:time {:field "TS.1", :required true, :repeats false, :type "DTM"}]
    [:degree-of-precision
-    {:required false, :repeats false, :data-type :string}]]
+    {:field "TS.2", :required false, :repeats false, :type "ID"}]]
   [:event-facility
-   {:required false, :repeats false}
+   {:field "EVN.7", :required false, :repeats false, :type "HD"}
    [:namespace-id
-    {:required false, :repeats false, :data-type :string}]
+    {:field "HD.1", :required false, :repeats false, :type "IS"}]
    [:universal-id
-    {:required false, :repeats false, :data-type :string}]
+    {:field "HD.2", :required false, :repeats false, :type "ST"}]
    [:universal-id-type
-    {:required false, :repeats false, :data-type :string}]]]
+    {:field "HD.3", :required false, :repeats false, :type "ID"}]]]
  [:STF
-  {:required true, :repeats false, :segment true}
+  {:required false, :repeats false}
   [:primary-key-value-stf
-   {:required false, :repeats false}
-   [:identifier {:required false, :repeats false, :data-type :string}]
-   [:text {:required false, :repeats false, :data-type :string}]
+   {:field "STF.1", :required false, :repeats false, :type "CE"}
+   [:identifier
+    {:field "CE.1", :required false, :repeats false, :type "ST"}]
+   [:text {:field "CE.2", :required false, :repeats false, :type "ST"}]
    [:name-of-coding-system
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.3", :required false, :repeats false, :type "ID"}]
    [:alternate-identifier
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.4", :required false, :repeats false, :type "ST"}]
    [:alternate-text
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.5", :required false, :repeats false, :type "ST"}]
    [:name-of-alternate-coding-system
-    {:required false, :repeats false, :data-type :string}]]
+    {:field "CE.6", :required false, :repeats false, :type "ID"}]]
   [:staff-identifier-list
-   {:required false, :repeats true}
-   [:id-number {:required true, :repeats false, :data-type :string}]
-   [:check-digit {:required false, :repeats false, :data-type :string}]
+   {:field "STF.2", :required false, :repeats true, :type "CX"}
+   [:id-number
+    {:field "CX.1", :required true, :repeats false, :type "ST"}]
+   [:check-digit
+    {:field "CX.2", :required false, :repeats false, :type "ST"}]
    [:check-digit-scheme
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CX.3", :required false, :repeats false, :type "ID"}]
    [:assigning-authority
-    {:required false, :repeats false}
+    {:field "CX.4", :required false, :repeats false, :type "HD"}
     [:namespace-id
-     {:required false, :repeats false, :data-type :string}]
+     {:field "HD.1", :required false, :repeats false, :type "IS"}]
     [:universal-id
-     {:required false, :repeats false, :data-type :string}]
+     {:field "HD.2", :required false, :repeats false, :type "ST"}]
     [:universal-id-type
-     {:required false, :repeats false, :data-type :string}]]
+     {:field "HD.3", :required false, :repeats false, :type "ID"}]]
    [:identifier-type-code
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CX.5", :required false, :repeats false, :type "ID"}]
    [:assigning-facility
-    {:required false, :repeats false}
+    {:field "CX.6", :required false, :repeats false, :type "HD"}
     [:namespace-id
-     {:required false, :repeats false, :data-type :string}]
+     {:field "HD.1", :required false, :repeats false, :type "IS"}]
     [:universal-id
-     {:required false, :repeats false, :data-type :string}]
+     {:field "HD.2", :required false, :repeats false, :type "ST"}]
     [:universal-id-type
-     {:required false, :repeats false, :data-type :string}]]
+     {:field "HD.3", :required false, :repeats false, :type "ID"}]]
    [:effective-date
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CX.7", :required false, :repeats false, :type "DT"}]
    [:expiration-date
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CX.8", :required false, :repeats false, :type "DT"}]
    [:assigning-jurisdiction
-    {:required false, :repeats false}
-    [:identifier {:required false, :repeats false, :data-type :string}]
-    [:text {:required false, :repeats false, :data-type :string}]
+    {:field "CX.9", :required false, :repeats false, :type "CWE"}
+    [:identifier
+     {:field "CWE.1", :required false, :repeats false, :type "ST"}]
+    [:text
+     {:field "CWE.2", :required false, :repeats false, :type "ST"}]
     [:name-of-coding-system
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CWE.3", :required false, :repeats false, :type "ID"}]
     [:alternate-identifier
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CWE.4", :required false, :repeats false, :type "ST"}]
     [:alternate-text
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CWE.5", :required false, :repeats false, :type "ST"}]
     [:name-of-alternate-coding-system
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CWE.6", :required false, :repeats false, :type "ID"}]
     [:coding-system-version-id
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CWE.7", :required false, :repeats false, :type "ST"}]
     [:alternate-coding-system-version-id
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CWE.8", :required false, :repeats false, :type "ST"}]
     [:original-text
-     {:required false, :repeats false, :data-type :string}]]
+     {:field "CWE.9", :required false, :repeats false, :type "ST"}]]
    [:assigning-agency-or-department
-    {:required false, :repeats false}
-    [:identifier {:required false, :repeats false, :data-type :string}]
-    [:text {:required false, :repeats false, :data-type :string}]
+    {:field "CX.10", :required false, :repeats false, :type "CWE"}
+    [:identifier
+     {:field "CWE.1", :required false, :repeats false, :type "ST"}]
+    [:text
+     {:field "CWE.2", :required false, :repeats false, :type "ST"}]
     [:name-of-coding-system
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CWE.3", :required false, :repeats false, :type "ID"}]
     [:alternate-identifier
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CWE.4", :required false, :repeats false, :type "ST"}]
     [:alternate-text
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CWE.5", :required false, :repeats false, :type "ST"}]
     [:name-of-alternate-coding-system
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CWE.6", :required false, :repeats false, :type "ID"}]
     [:coding-system-version-id
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CWE.7", :required false, :repeats false, :type "ST"}]
     [:alternate-coding-system-version-id
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CWE.8", :required false, :repeats false, :type "ST"}]
     [:original-text
-     {:required false, :repeats false, :data-type :string}]]]
+     {:field "CWE.9", :required false, :repeats false, :type "ST"}]]]
   [:staff-name
-   {:required false, :repeats true}
+   {:field "STF.3", :required false, :repeats true, :type "XPN"}
    [:family-name
-    {:required false, :repeats false}
-    [:surname {:required true, :repeats false, :data-type :string}]
+    {:field "XPN.1", :required false, :repeats false, :type "FN"}
+    [:surname
+     {:field "FN.1", :required true, :repeats false, :type "ST"}]
     [:own-surname-prefix
-     {:required false, :repeats false, :data-type :string}]
+     {:field "FN.2", :required false, :repeats false, :type "ST"}]
     [:own-surname
-     {:required false, :repeats false, :data-type :string}]
+     {:field "FN.3", :required false, :repeats false, :type "ST"}]
     [:surname-prefix-from-partnerorspouse
-     {:required false, :repeats false, :data-type :string}]
+     {:field "FN.4", :required false, :repeats false, :type "ST"}]
     [:surname-from-partnerorspouse
-     {:required false, :repeats false, :data-type :string}]]
-   [:given-name {:required false, :repeats false, :data-type :string}]
+     {:field "FN.5", :required false, :repeats false, :type "ST"}]]
+   [:given-name
+    {:field "XPN.2", :required false, :repeats false, :type "ST"}]
    [:second-and-further-given-names-or-initials-thereof
-    {:required false, :repeats false, :data-type :string}]
-   [:suffix {:required false, :repeats false, :data-type :string}]
-   [:prefix {:required false, :repeats false, :data-type :string}]
-   [:degree {:required false, :repeats false, :data-type :string}]
+    {:field "XPN.3", :required false, :repeats false, :type "ST"}]
+   [:suffix
+    {:field "XPN.4", :required false, :repeats false, :type "ST"}]
+   [:prefix
+    {:field "XPN.5", :required false, :repeats false, :type "ST"}]
+   [:degree
+    {:field "XPN.6", :required false, :repeats false, :type "IS"}]
    [:name-type-code
-    {:required false, :repeats false, :data-type :string}]
+    {:field "XPN.7", :required false, :repeats false, :type "ID"}]
    [:name-representation-code
-    {:required false, :repeats false, :data-type :string}]
+    {:field "XPN.8", :required false, :repeats false, :type "ID"}]
    [:name-context
-    {:required false, :repeats false}
-    [:identifier {:required false, :repeats false, :data-type :string}]
-    [:text {:required false, :repeats false, :data-type :string}]
+    {:field "XPN.9", :required false, :repeats false, :type "CE"}
+    [:identifier
+     {:field "CE.1", :required false, :repeats false, :type "ST"}]
+    [:text
+     {:field "CE.2", :required false, :repeats false, :type "ST"}]
     [:name-of-coding-system
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CE.3", :required false, :repeats false, :type "ID"}]
     [:alternate-identifier
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CE.4", :required false, :repeats false, :type "ST"}]
     [:alternate-text
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CE.5", :required false, :repeats false, :type "ST"}]
     [:name-of-alternate-coding-system
-     {:required false, :repeats false, :data-type :string}]]
+     {:field "CE.6", :required false, :repeats false, :type "ID"}]]
    [:name-validity-range
-    {:required false, :repeats false}
+    {:field "XPN.10", :required false, :repeats false, :type "DR"}
     [:range-start-dateortime
-     {:required false, :repeats false}
-     [:time {:required true, :repeats false, :data-type :string}]
+     {:field "DR.1", :required false, :repeats false, :type "TS"}
+     [:time
+      {:field "TS.1", :required true, :repeats false, :type "DTM"}]
      [:degree-of-precision
-      {:required false, :repeats false, :data-type :string}]]
+      {:field "TS.2", :required false, :repeats false, :type "ID"}]]
     [:range-end-dateortime
-     {:required false, :repeats false}
-     [:time {:required true, :repeats false, :data-type :string}]
+     {:field "DR.2", :required false, :repeats false, :type "TS"}
+     [:time
+      {:field "TS.1", :required true, :repeats false, :type "DTM"}]
      [:degree-of-precision
-      {:required false, :repeats false, :data-type :string}]]]
+      {:field "TS.2", :required false, :repeats false, :type "ID"}]]]
    [:name-assembly-order
-    {:required false, :repeats false, :data-type :string}]
+    {:field "XPN.11", :required false, :repeats false, :type "ID"}]
    [:effective-date
-    {:required false, :repeats false}
-    [:time {:required true, :repeats false, :data-type :string}]
+    {:field "XPN.12", :required false, :repeats false, :type "TS"}
+    [:time
+     {:field "TS.1", :required true, :repeats false, :type "DTM"}]
     [:degree-of-precision
-     {:required false, :repeats false, :data-type :string}]]
+     {:field "TS.2", :required false, :repeats false, :type "ID"}]]
    [:expiration-date
-    {:required false, :repeats false}
-    [:time {:required true, :repeats false, :data-type :string}]
+    {:field "XPN.13", :required false, :repeats false, :type "TS"}
+    [:time
+     {:field "TS.1", :required true, :repeats false, :type "DTM"}]
     [:degree-of-precision
-     {:required false, :repeats false, :data-type :string}]]
+     {:field "TS.2", :required false, :repeats false, :type "ID"}]]
    [:professional-suffix
-    {:required false, :repeats false, :data-type :string}]]
-  [:staff-type {:required false, :repeats true, :data-type :string}]
+    {:field "XPN.14", :required false, :repeats false, :type "ST"}]]
+  [:staff-type
+   {:field "STF.4", :required false, :repeats true, :type "IS"}]
   [:administrative-sex
-   {:required false, :repeats false, :data-type :string}]
+   {:field "STF.5", :required false, :repeats false, :type "IS"}]
   [:dateortime-of-birth
-   {:required false, :repeats false}
-   [:time {:required true, :repeats false, :data-type :string}]
+   {:field "STF.6", :required false, :repeats false, :type "TS"}
+   [:time {:field "TS.1", :required true, :repeats false, :type "DTM"}]
    [:degree-of-precision
-    {:required false, :repeats false, :data-type :string}]]
+    {:field "TS.2", :required false, :repeats false, :type "ID"}]]
   [:activeorinactive-flag
-   {:required false, :repeats false, :data-type :string}]
+   {:field "STF.7", :required false, :repeats false, :type "ID"}]
   [:department
-   {:required false, :repeats true}
-   [:identifier {:required false, :repeats false, :data-type :string}]
-   [:text {:required false, :repeats false, :data-type :string}]
+   {:field "STF.8", :required false, :repeats true, :type "CE"}
+   [:identifier
+    {:field "CE.1", :required false, :repeats false, :type "ST"}]
+   [:text {:field "CE.2", :required false, :repeats false, :type "ST"}]
    [:name-of-coding-system
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.3", :required false, :repeats false, :type "ID"}]
    [:alternate-identifier
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.4", :required false, :repeats false, :type "ST"}]
    [:alternate-text
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.5", :required false, :repeats false, :type "ST"}]
    [:name-of-alternate-coding-system
-    {:required false, :repeats false, :data-type :string}]]
+    {:field "CE.6", :required false, :repeats false, :type "ID"}]]
   [:hospital-service-stf
-   {:required false, :repeats true}
-   [:identifier {:required false, :repeats false, :data-type :string}]
-   [:text {:required false, :repeats false, :data-type :string}]
+   {:field "STF.9", :required false, :repeats true, :type "CE"}
+   [:identifier
+    {:field "CE.1", :required false, :repeats false, :type "ST"}]
+   [:text {:field "CE.2", :required false, :repeats false, :type "ST"}]
    [:name-of-coding-system
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.3", :required false, :repeats false, :type "ID"}]
    [:alternate-identifier
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.4", :required false, :repeats false, :type "ST"}]
    [:alternate-text
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.5", :required false, :repeats false, :type "ST"}]
    [:name-of-alternate-coding-system
-    {:required false, :repeats false, :data-type :string}]]
+    {:field "CE.6", :required false, :repeats false, :type "ID"}]]
   [:phone
-   {:required false, :repeats true}
+   {:field "STF.10", :required false, :repeats true, :type "XTN"}
    [:telephone-number
-    {:required false, :repeats false, :data-type :string}]
+    {:field "XTN.1", :required false, :repeats false, :type "ST"}]
    [:telecommunication-use-code
-    {:required false, :repeats false, :data-type :string}]
+    {:field "XTN.2", :required false, :repeats false, :type "ID"}]
    [:telecommunication-equipment-type
-    {:required false, :repeats false, :data-type :string}]
+    {:field "XTN.3", :required false, :repeats false, :type "ID"}]
    [:email-address
-    {:required false, :repeats false, :data-type :string}]
+    {:field "XTN.4", :required false, :repeats false, :type "ST"}]
    [:country-code
-    {:required false, :repeats false, :data-type :string}]
+    {:field "XTN.5", :required false, :repeats false, :type "NM"}]
    [:areaorcity-code
-    {:required false, :repeats false, :data-type :string}]
+    {:field "XTN.6", :required false, :repeats false, :type "NM"}]
    [:local-number
-    {:required false, :repeats false, :data-type :string}]
-   [:extension {:required false, :repeats false, :data-type :string}]
-   [:any-text {:required false, :repeats false, :data-type :string}]
+    {:field "XTN.7", :required false, :repeats false, :type "NM"}]
+   [:extension
+    {:field "XTN.8", :required false, :repeats false, :type "NM"}]
+   [:any-text
+    {:field "XTN.9", :required false, :repeats false, :type "ST"}]
    [:extension-prefix
-    {:required false, :repeats false, :data-type :string}]
+    {:field "XTN.10", :required false, :repeats false, :type "ST"}]
    [:speed-dial-code
-    {:required false, :repeats false, :data-type :string}]
+    {:field "XTN.11", :required false, :repeats false, :type "ST"}]
    [:unformatted-telephone-number
-    {:required false, :repeats false, :data-type :string}]]
+    {:field "XTN.12", :required false, :repeats false, :type "ST"}]]
   [:officeorhome-addressorbirthplace
-   {:required false, :repeats true}
+   {:field "STF.11", :required false, :repeats true, :type "XAD"}
    [:street-address
-    {:required false, :repeats false}
+    {:field "XAD.1", :required false, :repeats false, :type "SAD"}
     [:street-or-mailing-address
-     {:required false, :repeats false, :data-type :string}]
+     {:field "SAD.1", :required false, :repeats false, :type "ST"}]
     [:street-name
-     {:required false, :repeats false, :data-type :string}]
+     {:field "SAD.2", :required false, :repeats false, :type "ST"}]
     [:dwelling-number
-     {:required false, :repeats false, :data-type :string}]]
+     {:field "SAD.3", :required false, :repeats false, :type "ST"}]]
    [:other-designation
-    {:required false, :repeats false, :data-type :string}]
-   [:city {:required false, :repeats false, :data-type :string}]
+    {:field "XAD.2", :required false, :repeats false, :type "ST"}]
+   [:city
+    {:field "XAD.3", :required false, :repeats false, :type "ST"}]
    [:state-or-province
-    {:required false, :repeats false, :data-type :string}]
+    {:field "XAD.4", :required false, :repeats false, :type "ST"}]
    [:zip-or-postal-code
-    {:required false, :repeats false, :data-type :string}]
-   [:country {:required false, :repeats false, :data-type :string}]
+    {:field "XAD.5", :required false, :repeats false, :type "ST"}]
+   [:country
+    {:field "XAD.6", :required false, :repeats false, :type "ID"}]
    [:address-type
-    {:required false, :repeats false, :data-type :string}]
+    {:field "XAD.7", :required false, :repeats false, :type "ID"}]
    [:other-geographic-designation
-    {:required false, :repeats false, :data-type :string}]
+    {:field "XAD.8", :required false, :repeats false, :type "ST"}]
    [:countyorparish-code
-    {:required false, :repeats false, :data-type :string}]
+    {:field "XAD.9", :required false, :repeats false, :type "IS"}]
    [:census-tract
-    {:required false, :repeats false, :data-type :string}]
+    {:field "XAD.10", :required false, :repeats false, :type "IS"}]
    [:address-representation-code
-    {:required false, :repeats false, :data-type :string}]
+    {:field "XAD.11", :required false, :repeats false, :type "ID"}]
    [:address-validity-range
-    {:required false, :repeats false}
+    {:field "XAD.12", :required false, :repeats false, :type "DR"}
     [:range-start-dateortime
-     {:required false, :repeats false}
-     [:time {:required true, :repeats false, :data-type :string}]
+     {:field "DR.1", :required false, :repeats false, :type "TS"}
+     [:time
+      {:field "TS.1", :required true, :repeats false, :type "DTM"}]
      [:degree-of-precision
-      {:required false, :repeats false, :data-type :string}]]
+      {:field "TS.2", :required false, :repeats false, :type "ID"}]]
     [:range-end-dateortime
-     {:required false, :repeats false}
-     [:time {:required true, :repeats false, :data-type :string}]
+     {:field "DR.2", :required false, :repeats false, :type "TS"}
+     [:time
+      {:field "TS.1", :required true, :repeats false, :type "DTM"}]
      [:degree-of-precision
-      {:required false, :repeats false, :data-type :string}]]]
+      {:field "TS.2", :required false, :repeats false, :type "ID"}]]]
    [:effective-date
-    {:required false, :repeats false}
-    [:time {:required true, :repeats false, :data-type :string}]
+    {:field "XAD.13", :required false, :repeats false, :type "TS"}
+    [:time
+     {:field "TS.1", :required true, :repeats false, :type "DTM"}]
     [:degree-of-precision
-     {:required false, :repeats false, :data-type :string}]]
+     {:field "TS.2", :required false, :repeats false, :type "ID"}]]
    [:expiration-date
-    {:required false, :repeats false}
-    [:time {:required true, :repeats false, :data-type :string}]
+    {:field "XAD.14", :required false, :repeats false, :type "TS"}
+    [:time
+     {:field "TS.1", :required true, :repeats false, :type "DTM"}]
     [:degree-of-precision
-     {:required false, :repeats false, :data-type :string}]]]
+     {:field "TS.2", :required false, :repeats false, :type "ID"}]]]
   [:institution-activation-date
-   {:required false, :repeats true}
+   {:field "STF.12", :required false, :repeats true, :type "DIN"}
    [:date
-    {:required true, :repeats false}
-    [:time {:required true, :repeats false, :data-type :string}]
+    {:field "DIN.1", :required true, :repeats false, :type "TS"}
+    [:time
+     {:field "TS.1", :required true, :repeats false, :type "DTM"}]
     [:degree-of-precision
-     {:required false, :repeats false, :data-type :string}]]
+     {:field "TS.2", :required false, :repeats false, :type "ID"}]]
    [:institution-name
-    {:required true, :repeats false}
-    [:identifier {:required false, :repeats false, :data-type :string}]
-    [:text {:required false, :repeats false, :data-type :string}]
+    {:field "DIN.2", :required true, :repeats false, :type "CE"}
+    [:identifier
+     {:field "CE.1", :required false, :repeats false, :type "ST"}]
+    [:text
+     {:field "CE.2", :required false, :repeats false, :type "ST"}]
     [:name-of-coding-system
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CE.3", :required false, :repeats false, :type "ID"}]
     [:alternate-identifier
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CE.4", :required false, :repeats false, :type "ST"}]
     [:alternate-text
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CE.5", :required false, :repeats false, :type "ST"}]
     [:name-of-alternate-coding-system
-     {:required false, :repeats false, :data-type :string}]]]
+     {:field "CE.6", :required false, :repeats false, :type "ID"}]]]
   [:institution-inactivation-date
-   {:required false, :repeats true}
+   {:field "STF.13", :required false, :repeats true, :type "DIN"}
    [:date
-    {:required true, :repeats false}
-    [:time {:required true, :repeats false, :data-type :string}]
+    {:field "DIN.1", :required true, :repeats false, :type "TS"}
+    [:time
+     {:field "TS.1", :required true, :repeats false, :type "DTM"}]
     [:degree-of-precision
-     {:required false, :repeats false, :data-type :string}]]
+     {:field "TS.2", :required false, :repeats false, :type "ID"}]]
    [:institution-name
-    {:required true, :repeats false}
-    [:identifier {:required false, :repeats false, :data-type :string}]
-    [:text {:required false, :repeats false, :data-type :string}]
+    {:field "DIN.2", :required true, :repeats false, :type "CE"}
+    [:identifier
+     {:field "CE.1", :required false, :repeats false, :type "ST"}]
+    [:text
+     {:field "CE.2", :required false, :repeats false, :type "ST"}]
     [:name-of-coding-system
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CE.3", :required false, :repeats false, :type "ID"}]
     [:alternate-identifier
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CE.4", :required false, :repeats false, :type "ST"}]
     [:alternate-text
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CE.5", :required false, :repeats false, :type "ST"}]
     [:name-of-alternate-coding-system
-     {:required false, :repeats false, :data-type :string}]]]
+     {:field "CE.6", :required false, :repeats false, :type "ID"}]]]
   [:backup-person-id
-   {:required false, :repeats true}
-   [:identifier {:required false, :repeats false, :data-type :string}]
-   [:text {:required false, :repeats false, :data-type :string}]
+   {:field "STF.14", :required false, :repeats true, :type "CE"}
+   [:identifier
+    {:field "CE.1", :required false, :repeats false, :type "ST"}]
+   [:text {:field "CE.2", :required false, :repeats false, :type "ST"}]
    [:name-of-coding-system
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.3", :required false, :repeats false, :type "ID"}]
    [:alternate-identifier
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.4", :required false, :repeats false, :type "ST"}]
    [:alternate-text
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.5", :required false, :repeats false, :type "ST"}]
    [:name-of-alternate-coding-system
-    {:required false, :repeats false, :data-type :string}]]
-  [:email-address {:required false, :repeats true, :data-type :string}]
+    {:field "CE.6", :required false, :repeats false, :type "ID"}]]
+  [:email-address
+   {:field "STF.15", :required false, :repeats true, :type "ST"}]
   [:preferred-method-of-contact
-   {:required false, :repeats false}
-   [:identifier {:required false, :repeats false, :data-type :string}]
-   [:text {:required false, :repeats false, :data-type :string}]
+   {:field "STF.16", :required false, :repeats false, :type "CE"}
+   [:identifier
+    {:field "CE.1", :required false, :repeats false, :type "ST"}]
+   [:text {:field "CE.2", :required false, :repeats false, :type "ST"}]
    [:name-of-coding-system
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.3", :required false, :repeats false, :type "ID"}]
    [:alternate-identifier
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.4", :required false, :repeats false, :type "ST"}]
    [:alternate-text
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.5", :required false, :repeats false, :type "ST"}]
    [:name-of-alternate-coding-system
-    {:required false, :repeats false, :data-type :string}]]
+    {:field "CE.6", :required false, :repeats false, :type "ID"}]]
   [:marital-status
-   {:required false, :repeats false}
-   [:identifier {:required false, :repeats false, :data-type :string}]
-   [:text {:required false, :repeats false, :data-type :string}]
+   {:field "STF.17", :required false, :repeats false, :type "CE"}
+   [:identifier
+    {:field "CE.1", :required false, :repeats false, :type "ST"}]
+   [:text {:field "CE.2", :required false, :repeats false, :type "ST"}]
    [:name-of-coding-system
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.3", :required false, :repeats false, :type "ID"}]
    [:alternate-identifier
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.4", :required false, :repeats false, :type "ST"}]
    [:alternate-text
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.5", :required false, :repeats false, :type "ST"}]
    [:name-of-alternate-coding-system
-    {:required false, :repeats false, :data-type :string}]]
-  [:job-title {:required false, :repeats false, :data-type :string}]
+    {:field "CE.6", :required false, :repeats false, :type "ID"}]]
+  [:job-title
+   {:field "STF.18", :required false, :repeats false, :type "ST"}]
   [:job-codeorclass
-   {:required false, :repeats false}
-   [:job-code {:required false, :repeats false, :data-type :string}]
-   [:job-class {:required false, :repeats false, :data-type :string}]
-   [:job-description-text {:required false, :repeats false} [:escape]]]
+   {:field "STF.19", :required false, :repeats false, :type "JCC"}
+   [:job-code
+    {:field "JCC.1", :required false, :repeats false, :type "IS"}]
+   [:job-class
+    {:field "JCC.2", :required false, :repeats false, :type "IS"}]
+   [:job-description-text
+    {:field "JCC.3", :required false, :repeats false, :type "TX"}
+    ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]]
   [:employment-status-code
-   {:required false, :repeats false}
-   [:identifier {:required false, :repeats false, :data-type :string}]
-   [:text {:required false, :repeats false, :data-type :string}]
+   {:field "STF.20", :required false, :repeats false, :type "CE"}
+   [:identifier
+    {:field "CE.1", :required false, :repeats false, :type "ST"}]
+   [:text {:field "CE.2", :required false, :repeats false, :type "ST"}]
    [:name-of-coding-system
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.3", :required false, :repeats false, :type "ID"}]
    [:alternate-identifier
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.4", :required false, :repeats false, :type "ST"}]
    [:alternate-text
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.5", :required false, :repeats false, :type "ST"}]
    [:name-of-alternate-coding-system
-    {:required false, :repeats false, :data-type :string}]]
+    {:field "CE.6", :required false, :repeats false, :type "ID"}]]
   [:additional-insured-on-auto
-   {:required false, :repeats false, :data-type :string}]
+   {:field "STF.21", :required false, :repeats false, :type "ID"}]
   [:drivers-license-number-staff
-   {:required false, :repeats false}
+   {:field "STF.22", :required false, :repeats false, :type "DLN"}
    [:license-number
-    {:required true, :repeats false, :data-type :string}]
+    {:field "DLN.1", :required true, :repeats false, :type "ST"}]
    [:issuing-state,-province,-country
-    {:required false, :repeats false, :data-type :string}]
+    {:field "DLN.2", :required false, :repeats false, :type "IS"}]
    [:expiration-date
-    {:required false, :repeats false, :data-type :string}]]
+    {:field "DLN.3", :required false, :repeats false, :type "DT"}]]
   [:copy-auto-ins
-   {:required false, :repeats false, :data-type :string}]
-  [:auto-ins.-expires
-   {:required false, :repeats false, :data-type :string}]
+   {:field "STF.23", :required false, :repeats false, :type "ID"}]
+  [:auto-ins-expires
+   {:field "STF.24", :required false, :repeats false, :type "DT"}]
   [:date-last-dmv-review
-   {:required false, :repeats false, :data-type :string}]
+   {:field "STF.25", :required false, :repeats false, :type "DT"}]
   [:date-next-dmv-review
-   {:required false, :repeats false, :data-type :string}]
+   {:field "STF.26", :required false, :repeats false, :type "DT"}]
   [:race
-   {:required false, :repeats false}
-   [:identifier {:required false, :repeats false, :data-type :string}]
-   [:text {:required false, :repeats false, :data-type :string}]
+   {:field "STF.27", :required false, :repeats false, :type "CE"}
+   [:identifier
+    {:field "CE.1", :required false, :repeats false, :type "ST"}]
+   [:text {:field "CE.2", :required false, :repeats false, :type "ST"}]
    [:name-of-coding-system
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.3", :required false, :repeats false, :type "ID"}]
    [:alternate-identifier
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.4", :required false, :repeats false, :type "ST"}]
    [:alternate-text
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.5", :required false, :repeats false, :type "ST"}]
    [:name-of-alternate-coding-system
-    {:required false, :repeats false, :data-type :string}]]
+    {:field "CE.6", :required false, :repeats false, :type "ID"}]]
   [:ethnic-group
-   {:required false, :repeats false}
-   [:identifier {:required false, :repeats false, :data-type :string}]
-   [:text {:required false, :repeats false, :data-type :string}]
+   {:field "STF.28", :required false, :repeats false, :type "CE"}
+   [:identifier
+    {:field "CE.1", :required false, :repeats false, :type "ST"}]
+   [:text {:field "CE.2", :required false, :repeats false, :type "ST"}]
    [:name-of-coding-system
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.3", :required false, :repeats false, :type "ID"}]
    [:alternate-identifier
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.4", :required false, :repeats false, :type "ST"}]
    [:alternate-text
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.5", :required false, :repeats false, :type "ST"}]
    [:name-of-alternate-coding-system
-    {:required false, :repeats false, :data-type :string}]]
+    {:field "CE.6", :required false, :repeats false, :type "ID"}]]
   [:reactivation-approval-indicator
-   {:required false, :repeats false, :data-type :string}]
+   {:field "STF.29", :required false, :repeats false, :type "ID"}]
   [:citizenship
-   {:required false, :repeats true}
-   [:identifier {:required false, :repeats false, :data-type :string}]
-   [:text {:required false, :repeats false, :data-type :string}]
+   {:field "STF.30", :required false, :repeats true, :type "CE"}
+   [:identifier
+    {:field "CE.1", :required false, :repeats false, :type "ST"}]
+   [:text {:field "CE.2", :required false, :repeats false, :type "ST"}]
    [:name-of-coding-system
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.3", :required false, :repeats false, :type "ID"}]
    [:alternate-identifier
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.4", :required false, :repeats false, :type "ST"}]
    [:alternate-text
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.5", :required false, :repeats false, :type "ST"}]
    [:name-of-alternate-coding-system
-    {:required false, :repeats false, :data-type :string}]]
+    {:field "CE.6", :required false, :repeats false, :type "ID"}]]
   [:death-date-and-time
-   {:required false, :repeats false}
-   [:time {:required true, :repeats false, :data-type :string}]
+   {:field "STF.31", :required false, :repeats false, :type "TS"}
+   [:time {:field "TS.1", :required true, :repeats false, :type "DTM"}]
    [:degree-of-precision
-    {:required false, :repeats false, :data-type :string}]]
+    {:field "TS.2", :required false, :repeats false, :type "ID"}]]
   [:death-indicator
-   {:required false, :repeats false, :data-type :string}]
+   {:field "STF.32", :required false, :repeats false, :type "ID"}]
   [:institution-relationship-type-code
-   {:required false, :repeats false}
-   [:identifier {:required false, :repeats false, :data-type :string}]
-   [:text {:required false, :repeats false, :data-type :string}]
+   {:field "STF.33", :required false, :repeats false, :type "CWE"}
+   [:identifier
+    {:field "CWE.1", :required false, :repeats false, :type "ST"}]
+   [:text
+    {:field "CWE.2", :required false, :repeats false, :type "ST"}]
    [:name-of-coding-system
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CWE.3", :required false, :repeats false, :type "ID"}]
    [:alternate-identifier
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CWE.4", :required false, :repeats false, :type "ST"}]
    [:alternate-text
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CWE.5", :required false, :repeats false, :type "ST"}]
    [:name-of-alternate-coding-system
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CWE.6", :required false, :repeats false, :type "ID"}]
    [:coding-system-version-id
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CWE.7", :required false, :repeats false, :type "ST"}]
    [:alternate-coding-system-version-id
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CWE.8", :required false, :repeats false, :type "ST"}]
    [:original-text
-    {:required false, :repeats false, :data-type :string}]]
+    {:field "CWE.9", :required false, :repeats false, :type "ST"}]]
   [:institution-relationship-period
-   {:required false, :repeats false}
+   {:field "STF.34", :required false, :repeats false, :type "DR"}
    [:range-start-dateortime
-    {:required false, :repeats false}
-    [:time {:required true, :repeats false, :data-type :string}]
+    {:field "DR.1", :required false, :repeats false, :type "TS"}
+    [:time
+     {:field "TS.1", :required true, :repeats false, :type "DTM"}]
     [:degree-of-precision
-     {:required false, :repeats false, :data-type :string}]]
+     {:field "TS.2", :required false, :repeats false, :type "ID"}]]
    [:range-end-dateortime
-    {:required false, :repeats false}
-    [:time {:required true, :repeats false, :data-type :string}]
+    {:field "DR.2", :required false, :repeats false, :type "TS"}
+    [:time
+     {:field "TS.1", :required true, :repeats false, :type "DTM"}]
     [:degree-of-precision
-     {:required false, :repeats false, :data-type :string}]]]
+     {:field "TS.2", :required false, :repeats false, :type "ID"}]]]
   [:expected-return-date
-   {:required false, :repeats false, :data-type :string}]
+   {:field "STF.35", :required false, :repeats false, :type "DT"}]
   [:cost-center-code
-   {:required false, :repeats true}
-   [:identifier {:required false, :repeats false, :data-type :string}]
-   [:text {:required false, :repeats false, :data-type :string}]
+   {:field "STF.36", :required false, :repeats true, :type "CWE"}
+   [:identifier
+    {:field "CWE.1", :required false, :repeats false, :type "ST"}]
+   [:text
+    {:field "CWE.2", :required false, :repeats false, :type "ST"}]
    [:name-of-coding-system
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CWE.3", :required false, :repeats false, :type "ID"}]
    [:alternate-identifier
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CWE.4", :required false, :repeats false, :type "ST"}]
    [:alternate-text
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CWE.5", :required false, :repeats false, :type "ST"}]
    [:name-of-alternate-coding-system
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CWE.6", :required false, :repeats false, :type "ID"}]
    [:coding-system-version-id
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CWE.7", :required false, :repeats false, :type "ST"}]
    [:alternate-coding-system-version-id
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CWE.8", :required false, :repeats false, :type "ST"}]
    [:original-text
-    {:required false, :repeats false, :data-type :string}]]
+    {:field "CWE.9", :required false, :repeats false, :type "ST"}]]
   [:generic-classification-indicator
-   {:required false, :repeats false, :data-type :string}]
+   {:field "STF.37", :required false, :repeats false, :type "ID"}]
   [:inactive-reason-code
-   {:required false, :repeats false}
-   [:identifier {:required false, :repeats false, :data-type :string}]
-   [:text {:required false, :repeats false, :data-type :string}]
+   {:field "STF.38", :required false, :repeats false, :type "CWE"}
+   [:identifier
+    {:field "CWE.1", :required false, :repeats false, :type "ST"}]
+   [:text
+    {:field "CWE.2", :required false, :repeats false, :type "ST"}]
    [:name-of-coding-system
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CWE.3", :required false, :repeats false, :type "ID"}]
    [:alternate-identifier
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CWE.4", :required false, :repeats false, :type "ST"}]
    [:alternate-text
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CWE.5", :required false, :repeats false, :type "ST"}]
    [:name-of-alternate-coding-system
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CWE.6", :required false, :repeats false, :type "ID"}]
    [:coding-system-version-id
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CWE.7", :required false, :repeats false, :type "ST"}]
    [:alternate-coding-system-version-id
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CWE.8", :required false, :repeats false, :type "ST"}]
    [:original-text
-    {:required false, :repeats false, :data-type :string}]]]
+    {:field "CWE.9", :required false, :repeats false, :type "ST"}]]]
  [:PRA
-  {:required false, :repeats true, :segment true}
+  {:required false, :repeats true}
   [:primary-key-value-pra
-   {:required false, :repeats false}
-   [:identifier {:required false, :repeats false, :data-type :string}]
-   [:text {:required false, :repeats false, :data-type :string}]
+   {:field "PRA.1", :required false, :repeats false, :type "CE"}
+   [:identifier
+    {:field "CE.1", :required false, :repeats false, :type "ST"}]
+   [:text {:field "CE.2", :required false, :repeats false, :type "ST"}]
    [:name-of-coding-system
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.3", :required false, :repeats false, :type "ID"}]
    [:alternate-identifier
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.4", :required false, :repeats false, :type "ST"}]
    [:alternate-text
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.5", :required false, :repeats false, :type "ST"}]
    [:name-of-alternate-coding-system
-    {:required false, :repeats false, :data-type :string}]]
+    {:field "CE.6", :required false, :repeats false, :type "ID"}]]
   [:practitioner-group
-   {:required false, :repeats true}
-   [:identifier {:required false, :repeats false, :data-type :string}]
-   [:text {:required false, :repeats false, :data-type :string}]
+   {:field "PRA.2", :required false, :repeats true, :type "CE"}
+   [:identifier
+    {:field "CE.1", :required false, :repeats false, :type "ST"}]
+   [:text {:field "CE.2", :required false, :repeats false, :type "ST"}]
    [:name-of-coding-system
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.3", :required false, :repeats false, :type "ID"}]
    [:alternate-identifier
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.4", :required false, :repeats false, :type "ST"}]
    [:alternate-text
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.5", :required false, :repeats false, :type "ST"}]
    [:name-of-alternate-coding-system
-    {:required false, :repeats false, :data-type :string}]]
+    {:field "CE.6", :required false, :repeats false, :type "ID"}]]
   [:practitioner-category
-   {:required false, :repeats true, :data-type :string}]
+   {:field "PRA.3", :required false, :repeats true, :type "IS"}]
   [:provider-billing
-   {:required false, :repeats false, :data-type :string}]
+   {:field "PRA.4", :required false, :repeats false, :type "ID"}]
   [:specialty
-   {:required false, :repeats true}
+   {:field "PRA.5", :required false, :repeats true, :type "SPD"}
    [:specialty-name
-    {:required true, :repeats false, :data-type :string}]
+    {:field "SPD.1", :required true, :repeats false, :type "ST"}]
    [:governing-board
-    {:required false, :repeats false, :data-type :string}]
+    {:field "SPD.2", :required false, :repeats false, :type "ST"}]
    [:eligible-or-certified
-    {:required false, :repeats false, :data-type :string}]
+    {:field "SPD.3", :required false, :repeats false, :type "ID"}]
    [:date-of-certification
-    {:required false, :repeats false, :data-type :string}]]
+    {:field "SPD.4", :required false, :repeats false, :type "DT"}]]
   [:practitioner-id-numbers
-   {:required false, :repeats true}
-   [:id-number {:required true, :repeats false, :data-type :string}]
+   {:field "PRA.6", :required false, :repeats true, :type "PLN"}
+   [:id-number
+    {:field "PLN.1", :required true, :repeats false, :type "ST"}]
    [:type-of-id-number
-    {:required true, :repeats false, :data-type :string}]
+    {:field "PLN.2", :required true, :repeats false, :type "IS"}]
    [:stateorother-qualifying-information
-    {:required false, :repeats false, :data-type :string}]
+    {:field "PLN.3", :required false, :repeats false, :type "ST"}]
    [:expiration-date
-    {:required false, :repeats false, :data-type :string}]]
+    {:field "PLN.4", :required false, :repeats false, :type "DT"}]]
   [:privileges
-   {:required false, :repeats true}
+   {:field "PRA.7", :required false, :repeats true, :type "PIP"}
    [:privilege
-    {:required true, :repeats false}
-    [:identifier {:required false, :repeats false, :data-type :string}]
-    [:text {:required false, :repeats false, :data-type :string}]
+    {:field "PIP.1", :required true, :repeats false, :type "CE"}
+    [:identifier
+     {:field "CE.1", :required false, :repeats false, :type "ST"}]
+    [:text
+     {:field "CE.2", :required false, :repeats false, :type "ST"}]
     [:name-of-coding-system
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CE.3", :required false, :repeats false, :type "ID"}]
     [:alternate-identifier
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CE.4", :required false, :repeats false, :type "ST"}]
     [:alternate-text
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CE.5", :required false, :repeats false, :type "ST"}]
     [:name-of-alternate-coding-system
-     {:required false, :repeats false, :data-type :string}]]
+     {:field "CE.6", :required false, :repeats false, :type "ID"}]]
    [:privilege-class
-    {:required false, :repeats false}
-    [:identifier {:required false, :repeats false, :data-type :string}]
-    [:text {:required false, :repeats false, :data-type :string}]
+    {:field "PIP.2", :required false, :repeats false, :type "CE"}
+    [:identifier
+     {:field "CE.1", :required false, :repeats false, :type "ST"}]
+    [:text
+     {:field "CE.2", :required false, :repeats false, :type "ST"}]
     [:name-of-coding-system
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CE.3", :required false, :repeats false, :type "ID"}]
     [:alternate-identifier
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CE.4", :required false, :repeats false, :type "ST"}]
     [:alternate-text
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CE.5", :required false, :repeats false, :type "ST"}]
     [:name-of-alternate-coding-system
-     {:required false, :repeats false, :data-type :string}]]
+     {:field "CE.6", :required false, :repeats false, :type "ID"}]]
    [:expiration-date
-    {:required false, :repeats false, :data-type :string}]
+    {:field "PIP.3", :required false, :repeats false, :type "DT"}]
    [:activation-date
-    {:required false, :repeats false, :data-type :string}]
+    {:field "PIP.4", :required false, :repeats false, :type "DT"}]
    [:facility
-    {:required false, :repeats false}
+    {:field "PIP.5", :required false, :repeats false, :type "EI"}
     [:entity-identifier
-     {:required false, :repeats false, :data-type :string}]
+     {:field "EI.1", :required false, :repeats false, :type "ST"}]
     [:namespace-id
-     {:required false, :repeats false, :data-type :string}]
+     {:field "EI.2", :required false, :repeats false, :type "IS"}]
     [:universal-id
-     {:required false, :repeats false, :data-type :string}]
+     {:field "EI.3", :required false, :repeats false, :type "ST"}]
     [:universal-id-type
-     {:required false, :repeats false, :data-type :string}]]]
+     {:field "EI.4", :required false, :repeats false, :type "ID"}]]]
   [:date-entered-practice
-   {:required false, :repeats false, :data-type :string}]
+   {:field "PRA.8", :required false, :repeats false, :type "DT"}]
   [:institution
-   {:required false, :repeats false}
-   [:identifier {:required false, :repeats false, :data-type :string}]
-   [:text {:required false, :repeats false, :data-type :string}]
+   {:field "PRA.9", :required false, :repeats false, :type "CE"}
+   [:identifier
+    {:field "CE.1", :required false, :repeats false, :type "ST"}]
+   [:text {:field "CE.2", :required false, :repeats false, :type "ST"}]
    [:name-of-coding-system
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.3", :required false, :repeats false, :type "ID"}]
    [:alternate-identifier
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.4", :required false, :repeats false, :type "ST"}]
    [:alternate-text
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.5", :required false, :repeats false, :type "ST"}]
    [:name-of-alternate-coding-system
-    {:required false, :repeats false, :data-type :string}]]
+    {:field "CE.6", :required false, :repeats false, :type "ID"}]]
   [:date-left-practice
-   {:required false, :repeats false, :data-type :string}]
+   {:field "PRA.10", :required false, :repeats false, :type "DT"}]
   [:government-reimbursement-billing-eligibility
-   {:required false, :repeats true}
-   [:identifier {:required false, :repeats false, :data-type :string}]
-   [:text {:required false, :repeats false, :data-type :string}]
+   {:field "PRA.11", :required false, :repeats true, :type "CE"}
+   [:identifier
+    {:field "CE.1", :required false, :repeats false, :type "ST"}]
+   [:text {:field "CE.2", :required false, :repeats false, :type "ST"}]
    [:name-of-coding-system
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.3", :required false, :repeats false, :type "ID"}]
    [:alternate-identifier
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.4", :required false, :repeats false, :type "ST"}]
    [:alternate-text
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.5", :required false, :repeats false, :type "ST"}]
    [:name-of-alternate-coding-system
-    {:required false, :repeats false, :data-type :string}]]
-  [:set-id-pra {:required false, :repeats false, :data-type :string}]]
+    {:field "CE.6", :required false, :repeats false, :type "ID"}]]
+  [:set-id-pra
+   {:field "PRA.12", :required false, :repeats false, :type "SI"}]]
  [:ORG
-  {:required false, :repeats true, :segment true}
-  [:set-id-org {:required true, :repeats false, :data-type :string}]
+  {:required false, :repeats true}
+  [:set-id-org
+   {:field "ORG.1", :required true, :repeats false, :type "SI"}]
   [:organization-unit-code
-   {:required false, :repeats false}
-   [:identifier {:required false, :repeats false, :data-type :string}]
-   [:text {:required false, :repeats false, :data-type :string}]
+   {:field "ORG.2", :required false, :repeats false, :type "CE"}
+   [:identifier
+    {:field "CE.1", :required false, :repeats false, :type "ST"}]
+   [:text {:field "CE.2", :required false, :repeats false, :type "ST"}]
    [:name-of-coding-system
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.3", :required false, :repeats false, :type "ID"}]
    [:alternate-identifier
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.4", :required false, :repeats false, :type "ST"}]
    [:alternate-text
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.5", :required false, :repeats false, :type "ST"}]
    [:name-of-alternate-coding-system
-    {:required false, :repeats false, :data-type :string}]]
+    {:field "CE.6", :required false, :repeats false, :type "ID"}]]
   [:organization-unit-type-code
-   {:required false, :repeats false}
-   [:identifier {:required false, :repeats false, :data-type :string}]
-   [:text {:required false, :repeats false, :data-type :string}]
+   {:field "ORG.3", :required false, :repeats false, :type "CE"}
+   [:identifier
+    {:field "CE.1", :required false, :repeats false, :type "ST"}]
+   [:text {:field "CE.2", :required false, :repeats false, :type "ST"}]
    [:name-of-coding-system
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.3", :required false, :repeats false, :type "ID"}]
    [:alternate-identifier
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.4", :required false, :repeats false, :type "ST"}]
    [:alternate-text
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.5", :required false, :repeats false, :type "ST"}]
    [:name-of-alternate-coding-system
-    {:required false, :repeats false, :data-type :string}]]
+    {:field "CE.6", :required false, :repeats false, :type "ID"}]]
   [:primary-org-unit-indicator
-   {:required false, :repeats false, :data-type :string}]
+   {:field "ORG.4", :required false, :repeats false, :type "ID"}]
   [:practitioner-org-unit-identifier
-   {:required false, :repeats false}
-   [:id-number {:required true, :repeats false, :data-type :string}]
-   [:check-digit {:required false, :repeats false, :data-type :string}]
+   {:field "ORG.5", :required false, :repeats false, :type "CX"}
+   [:id-number
+    {:field "CX.1", :required true, :repeats false, :type "ST"}]
+   [:check-digit
+    {:field "CX.2", :required false, :repeats false, :type "ST"}]
    [:check-digit-scheme
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CX.3", :required false, :repeats false, :type "ID"}]
    [:assigning-authority
-    {:required false, :repeats false}
+    {:field "CX.4", :required false, :repeats false, :type "HD"}
     [:namespace-id
-     {:required false, :repeats false, :data-type :string}]
+     {:field "HD.1", :required false, :repeats false, :type "IS"}]
     [:universal-id
-     {:required false, :repeats false, :data-type :string}]
+     {:field "HD.2", :required false, :repeats false, :type "ST"}]
     [:universal-id-type
-     {:required false, :repeats false, :data-type :string}]]
+     {:field "HD.3", :required false, :repeats false, :type "ID"}]]
    [:identifier-type-code
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CX.5", :required false, :repeats false, :type "ID"}]
    [:assigning-facility
-    {:required false, :repeats false}
+    {:field "CX.6", :required false, :repeats false, :type "HD"}
     [:namespace-id
-     {:required false, :repeats false, :data-type :string}]
+     {:field "HD.1", :required false, :repeats false, :type "IS"}]
     [:universal-id
-     {:required false, :repeats false, :data-type :string}]
+     {:field "HD.2", :required false, :repeats false, :type "ST"}]
     [:universal-id-type
-     {:required false, :repeats false, :data-type :string}]]
+     {:field "HD.3", :required false, :repeats false, :type "ID"}]]
    [:effective-date
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CX.7", :required false, :repeats false, :type "DT"}]
    [:expiration-date
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CX.8", :required false, :repeats false, :type "DT"}]
    [:assigning-jurisdiction
-    {:required false, :repeats false}
-    [:identifier {:required false, :repeats false, :data-type :string}]
-    [:text {:required false, :repeats false, :data-type :string}]
+    {:field "CX.9", :required false, :repeats false, :type "CWE"}
+    [:identifier
+     {:field "CWE.1", :required false, :repeats false, :type "ST"}]
+    [:text
+     {:field "CWE.2", :required false, :repeats false, :type "ST"}]
     [:name-of-coding-system
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CWE.3", :required false, :repeats false, :type "ID"}]
     [:alternate-identifier
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CWE.4", :required false, :repeats false, :type "ST"}]
     [:alternate-text
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CWE.5", :required false, :repeats false, :type "ST"}]
     [:name-of-alternate-coding-system
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CWE.6", :required false, :repeats false, :type "ID"}]
     [:coding-system-version-id
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CWE.7", :required false, :repeats false, :type "ST"}]
     [:alternate-coding-system-version-id
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CWE.8", :required false, :repeats false, :type "ST"}]
     [:original-text
-     {:required false, :repeats false, :data-type :string}]]
+     {:field "CWE.9", :required false, :repeats false, :type "ST"}]]
    [:assigning-agency-or-department
-    {:required false, :repeats false}
-    [:identifier {:required false, :repeats false, :data-type :string}]
-    [:text {:required false, :repeats false, :data-type :string}]
+    {:field "CX.10", :required false, :repeats false, :type "CWE"}
+    [:identifier
+     {:field "CWE.1", :required false, :repeats false, :type "ST"}]
+    [:text
+     {:field "CWE.2", :required false, :repeats false, :type "ST"}]
     [:name-of-coding-system
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CWE.3", :required false, :repeats false, :type "ID"}]
     [:alternate-identifier
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CWE.4", :required false, :repeats false, :type "ST"}]
     [:alternate-text
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CWE.5", :required false, :repeats false, :type "ST"}]
     [:name-of-alternate-coding-system
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CWE.6", :required false, :repeats false, :type "ID"}]
     [:coding-system-version-id
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CWE.7", :required false, :repeats false, :type "ST"}]
     [:alternate-coding-system-version-id
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CWE.8", :required false, :repeats false, :type "ST"}]
     [:original-text
-     {:required false, :repeats false, :data-type :string}]]]
+     {:field "CWE.9", :required false, :repeats false, :type "ST"}]]]
   [:health-care-provider-type-code
-   {:required false, :repeats false}
-   [:identifier {:required false, :repeats false, :data-type :string}]
-   [:text {:required false, :repeats false, :data-type :string}]
+   {:field "ORG.6", :required false, :repeats false, :type "CE"}
+   [:identifier
+    {:field "CE.1", :required false, :repeats false, :type "ST"}]
+   [:text {:field "CE.2", :required false, :repeats false, :type "ST"}]
    [:name-of-coding-system
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.3", :required false, :repeats false, :type "ID"}]
    [:alternate-identifier
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.4", :required false, :repeats false, :type "ST"}]
    [:alternate-text
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.5", :required false, :repeats false, :type "ST"}]
    [:name-of-alternate-coding-system
-    {:required false, :repeats false, :data-type :string}]]
+    {:field "CE.6", :required false, :repeats false, :type "ID"}]]
   [:health-care-provider-classification-code
-   {:required false, :repeats false}
-   [:identifier {:required false, :repeats false, :data-type :string}]
-   [:text {:required false, :repeats false, :data-type :string}]
+   {:field "ORG.7", :required false, :repeats false, :type "CE"}
+   [:identifier
+    {:field "CE.1", :required false, :repeats false, :type "ST"}]
+   [:text {:field "CE.2", :required false, :repeats false, :type "ST"}]
    [:name-of-coding-system
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.3", :required false, :repeats false, :type "ID"}]
    [:alternate-identifier
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.4", :required false, :repeats false, :type "ST"}]
    [:alternate-text
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.5", :required false, :repeats false, :type "ST"}]
    [:name-of-alternate-coding-system
-    {:required false, :repeats false, :data-type :string}]]
+    {:field "CE.6", :required false, :repeats false, :type "ID"}]]
   [:health-care-provider-area-of-specialization-code
-   {:required false, :repeats false}
-   [:identifier {:required false, :repeats false, :data-type :string}]
-   [:text {:required false, :repeats false, :data-type :string}]
+   {:field "ORG.8", :required false, :repeats false, :type "CE"}
+   [:identifier
+    {:field "CE.1", :required false, :repeats false, :type "ST"}]
+   [:text {:field "CE.2", :required false, :repeats false, :type "ST"}]
    [:name-of-coding-system
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.3", :required false, :repeats false, :type "ID"}]
    [:alternate-identifier
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.4", :required false, :repeats false, :type "ST"}]
    [:alternate-text
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.5", :required false, :repeats false, :type "ST"}]
    [:name-of-alternate-coding-system
-    {:required false, :repeats false, :data-type :string}]]
+    {:field "CE.6", :required false, :repeats false, :type "ID"}]]
   [:effective-date-range
-   {:required false, :repeats false}
+   {:field "ORG.9", :required false, :repeats false, :type "DR"}
    [:range-start-dateortime
-    {:required false, :repeats false}
-    [:time {:required true, :repeats false, :data-type :string}]
+    {:field "DR.1", :required false, :repeats false, :type "TS"}
+    [:time
+     {:field "TS.1", :required true, :repeats false, :type "DTM"}]
     [:degree-of-precision
-     {:required false, :repeats false, :data-type :string}]]
+     {:field "TS.2", :required false, :repeats false, :type "ID"}]]
    [:range-end-dateortime
-    {:required false, :repeats false}
-    [:time {:required true, :repeats false, :data-type :string}]
+    {:field "DR.2", :required false, :repeats false, :type "TS"}
+    [:time
+     {:field "TS.1", :required true, :repeats false, :type "DTM"}]
     [:degree-of-precision
-     {:required false, :repeats false, :data-type :string}]]]
+     {:field "TS.2", :required false, :repeats false, :type "ID"}]]]
   [:employment-status-code
-   {:required false, :repeats false}
-   [:identifier {:required false, :repeats false, :data-type :string}]
-   [:text {:required false, :repeats false, :data-type :string}]
+   {:field "ORG.10", :required false, :repeats false, :type "CE"}
+   [:identifier
+    {:field "CE.1", :required false, :repeats false, :type "ST"}]
+   [:text {:field "CE.2", :required false, :repeats false, :type "ST"}]
    [:name-of-coding-system
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.3", :required false, :repeats false, :type "ID"}]
    [:alternate-identifier
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.4", :required false, :repeats false, :type "ST"}]
    [:alternate-text
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.5", :required false, :repeats false, :type "ST"}]
    [:name-of-alternate-coding-system
-    {:required false, :repeats false, :data-type :string}]]
+    {:field "CE.6", :required false, :repeats false, :type "ID"}]]
   [:board-approval-indicator
-   {:required false, :repeats false, :data-type :string}]
+   {:field "ORG.11", :required false, :repeats false, :type "ID"}]
   [:primary-care-physician-indicator
-   {:required false, :repeats false, :data-type :string}]]]
+   {:field "ORG.12", :required false, :repeats false, :type "ID"}]]]

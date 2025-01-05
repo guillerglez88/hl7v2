@@ -1,181 +1,257 @@
 [:NMD_N02
+ {:version "2.3.1"}
  [:MSH
-  {:required true, :repeats false, :segment true}
+  {:required false, :repeats false}
   [:field-separator
-   {:required true, :repeats false, :data-type :string}]
+   {:field "MSH.1", :required true, :repeats false, :type "ST"}]
   [:encoding-characters
-   {:required true, :repeats false, :data-type :string}]
+   {:field "MSH.2", :required true, :repeats false, :type "ST"}]
   [:sending-application
-   {:required false, :repeats false}
+   {:field "MSH.3", :required false, :repeats false, :type "HD"}
    [:namespace-id
-    {:required false, :repeats false, :data-type :string}]
+    {:field "HD.1", :required false, :repeats false, :type "IS"}]
    [:universal-id
-    {:required false, :repeats false, :data-type :string}]
+    {:field "HD.2", :required false, :repeats false, :type "ST"}]
    [:universal-id-type
-    {:required false, :repeats false, :data-type :string}]]
+    {:field "HD.3", :required false, :repeats false, :type "ID"}]]
   [:sending-facility
-   {:required false, :repeats false}
+   {:field "MSH.4", :required false, :repeats false, :type "HD"}
    [:namespace-id
-    {:required false, :repeats false, :data-type :string}]
+    {:field "HD.1", :required false, :repeats false, :type "IS"}]
    [:universal-id
-    {:required false, :repeats false, :data-type :string}]
+    {:field "HD.2", :required false, :repeats false, :type "ST"}]
    [:universal-id-type
-    {:required false, :repeats false, :data-type :string}]]
+    {:field "HD.3", :required false, :repeats false, :type "ID"}]]
   [:receiving-application
-   {:required false, :repeats false}
+   {:field "MSH.5", :required false, :repeats false, :type "HD"}
    [:namespace-id
-    {:required false, :repeats false, :data-type :string}]
+    {:field "HD.1", :required false, :repeats false, :type "IS"}]
    [:universal-id
-    {:required false, :repeats false, :data-type :string}]
+    {:field "HD.2", :required false, :repeats false, :type "ST"}]
    [:universal-id-type
-    {:required false, :repeats false, :data-type :string}]]
+    {:field "HD.3", :required false, :repeats false, :type "ID"}]]
   [:receiving-facility
-   {:required false, :repeats false}
+   {:field "MSH.6", :required false, :repeats false, :type "HD"}
    [:namespace-id
-    {:required false, :repeats false, :data-type :string}]
+    {:field "HD.1", :required false, :repeats false, :type "IS"}]
    [:universal-id
-    {:required false, :repeats false, :data-type :string}]
+    {:field "HD.2", :required false, :repeats false, :type "ST"}]
    [:universal-id-type
-    {:required false, :repeats false, :data-type :string}]]
+    {:field "HD.3", :required false, :repeats false, :type "ID"}]]
   [:dateortime-of-message
-   {:required false, :repeats false}
+   {:field "MSH.7", :required false, :repeats false, :type "TS"}
    [:time-of-an-event
-    {:required false, :repeats false, :data-type :string}]
+    {:field "TS.1", :required false, :repeats false, :type "ST"}]
    [:degree-of-precision
-    {:required false, :repeats false, :data-type :string}]]
-  [:security {:required false, :repeats false, :data-type :string}]
+    {:field "TS.2", :required false, :repeats false, :type "ST"}]]
+  [:security
+   {:field "MSH.8", :required false, :repeats false, :type "ST"}]
   [:message-type
-   {:required true, :repeats false}
+   {:field "MSH.9", :required true, :repeats false, :type "MSG"}
    [:message-type
-    {:required false, :repeats false, :data-type :string}]
+    {:field "MSG.1", :required false, :repeats false, :type "ID"}]
    [:trigger-event
-    {:required false, :repeats false, :data-type :string}]
+    {:field "MSG.2", :required false, :repeats false, :type "ID"}]
    [:message-structure
-    {:required false, :repeats false, :data-type :string}]]
+    {:field "MSG.3", :required false, :repeats false, :type "ID"}]]
   [:message-control-id
-   {:required true, :repeats false, :data-type :string}]
+   {:field "MSH.10", :required true, :repeats false, :type "ST"}]
   [:processing-id
-   {:required true, :repeats false}
+   {:field "MSH.11", :required true, :repeats false, :type "PT"}
    [:processing-id
-    {:required false, :repeats false, :data-type :string}]
+    {:field "PT.1", :required false, :repeats false, :type "ID"}]
    [:processing-mode
-    {:required false, :repeats false, :data-type :string}]]
+    {:field "PT.2", :required false, :repeats false, :type "ID"}]]
   [:version-id
-   {:required true, :repeats false}
-   [:version-id {:required false, :repeats false, :data-type :string}]
+   {:field "MSH.12", :required true, :repeats false, :type "VID"}
+   [:version-id
+    {:field "VID.1", :required false, :repeats false, :type "ID"}]
    [:internationalization-code
-    {:required false, :repeats false}
-    [:identifier {:required false, :repeats false, :data-type :string}]
-    [:text {:required false, :repeats false, :data-type :string}]
+    {:field "VID.2", :required false, :repeats false, :type "CE"}
+    [:identifier
+     {:field "CE.1", :required false, :repeats false, :type "ST"}]
+    [:text
+     {:field "CE.2", :required false, :repeats false, :type "ST"}]
     [:name-of-coding-system
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CE.3", :required false, :repeats false, :type "ST"}]
     [:alternate-identifier
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CE.4", :required false, :repeats false, :type "ST"}]
     [:alternate-text
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CE.5", :required false, :repeats false, :type "ST"}]
     [:name-of-alternate-coding-system
-     {:required false, :repeats false, :data-type :string}]]
+     {:field "CE.6", :required false, :repeats false, :type "ST"}]]
    [:international-version-id
-    {:required false, :repeats false}
-    [:identifier {:required false, :repeats false, :data-type :string}]
-    [:text {:required false, :repeats false, :data-type :string}]
+    {:field "VID.3", :required false, :repeats false, :type "CE"}
+    [:identifier
+     {:field "CE.1", :required false, :repeats false, :type "ST"}]
+    [:text
+     {:field "CE.2", :required false, :repeats false, :type "ST"}]
     [:name-of-coding-system
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CE.3", :required false, :repeats false, :type "ST"}]
     [:alternate-identifier
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CE.4", :required false, :repeats false, :type "ST"}]
     [:alternate-text
-     {:required false, :repeats false, :data-type :string}]
+     {:field "CE.5", :required false, :repeats false, :type "ST"}]
     [:name-of-alternate-coding-system
-     {:required false, :repeats false, :data-type :string}]]]
+     {:field "CE.6", :required false, :repeats false, :type "ST"}]]]
   [:sequence-number
-   {:required false, :repeats false, :data-type :string}]
+   {:field "MSH.13", :required false, :repeats false, :type "NM"}]
   [:continuation-pointer
-   {:required false, :repeats false, :data-type :string}]
+   {:field "MSH.14", :required false, :repeats false, :type "ST"}]
   [:accept-acknowledgment-type
-   {:required false, :repeats false, :data-type :string}]
+   {:field "MSH.15", :required false, :repeats false, :type "ID"}]
   [:application-acknowledgment-type
-   {:required false, :repeats false, :data-type :string}]
-  [:country-code {:required false, :repeats false, :data-type :string}]
-  [:character-set {:required false, :repeats true, :data-type :string}]
+   {:field "MSH.16", :required false, :repeats false, :type "ID"}]
+  [:country-code
+   {:field "MSH.17", :required false, :repeats false, :type "ID"}]
+  [:character-set
+   {:field "MSH.18", :required false, :repeats true, :type "ID"}]
   [:principal-language-of-message
-   {:required false, :repeats false}
-   [:identifier {:required false, :repeats false, :data-type :string}]
-   [:text {:required false, :repeats false, :data-type :string}]
+   {:field "MSH.19", :required false, :repeats false, :type "CE"}
+   [:identifier
+    {:field "CE.1", :required false, :repeats false, :type "ST"}]
+   [:text {:field "CE.2", :required false, :repeats false, :type "ST"}]
    [:name-of-coding-system
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.3", :required false, :repeats false, :type "ST"}]
    [:alternate-identifier
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.4", :required false, :repeats false, :type "ST"}]
    [:alternate-text
-    {:required false, :repeats false, :data-type :string}]
+    {:field "CE.5", :required false, :repeats false, :type "ST"}]
    [:name-of-alternate-coding-system
-    {:required false, :repeats false, :data-type :string}]]
+    {:field "CE.6", :required false, :repeats false, :type "ST"}]]
   [:alternate-character-set-handling-scheme
-   {:required false, :repeats false, :data-type :string}]]
+   {:field "MSH.20", :required false, :repeats false, :type "ID"}]]
  [:CLOCK_AND_STATS_WITH_NOTES
-  {:required true, :repeats true}
+  {:required false, :repeats true}
   [:CLOCK
    {:required false, :repeats false}
-   [:NCK {:required true, :repeats false, :segment true}]
+   [:NCK {:required false, :repeats false}]
    [:NTE
-    {:required false, :repeats true, :segment true}
-    [:set-id-nte {:required false, :repeats false, :data-type :string}]
+    {:required false, :repeats true}
+    [:set-id-nte
+     {:field "NTE.1", :required false, :repeats false, :type "SI"}]
     [:source-of-comment
-     {:required false, :repeats false, :data-type :string}]
-    [:comment {:required false, :repeats true} [:escape]]
+     {:field "NTE.2", :required false, :repeats false, :type "ID"}]
+    [:comment
+     {:field "NTE.3", :required false, :repeats true, :type "FT"}
+     ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
     [:comment-type
-     {:required false, :repeats false}
+     {:field "NTE.4", :required false, :repeats false, :type "CE_0364"}
      [:identifier
-      {:required false, :repeats false, :data-type :string}]
-     [:text {:required false, :repeats false, :data-type :string}]
+      {:field "CE_0364.1",
+       :required false,
+       :repeats false,
+       :type "ST"}]
+     [:text
+      {:field "CE_0364.2",
+       :required false,
+       :repeats false,
+       :type "ST"}]
      [:name-of-coding-system
-      {:required false, :repeats false, :data-type :string}]
+      {:field "CE_0364.3",
+       :required false,
+       :repeats false,
+       :type "ST"}]
      [:alternate-identifier
-      {:required false, :repeats false, :data-type :string}]
+      {:field "CE_0364.4",
+       :required false,
+       :repeats false,
+       :type "ST"}]
      [:alternate-text
-      {:required false, :repeats false, :data-type :string}]
+      {:field "CE_0364.5",
+       :required false,
+       :repeats false,
+       :type "ST"}]
      [:name-of-alternate-coding-system
-      {:required false, :repeats false, :data-type :string}]]]]
+      {:field "CE_0364.6",
+       :required false,
+       :repeats false,
+       :type "ST"}]]]]
   [:APP_STATS
    {:required false, :repeats false}
-   [:NST {:required true, :repeats false, :segment true}]
+   [:NST {:required false, :repeats false}]
    [:NTE
-    {:required false, :repeats true, :segment true}
-    [:set-id-nte {:required false, :repeats false, :data-type :string}]
+    {:required false, :repeats true}
+    [:set-id-nte
+     {:field "NTE.1", :required false, :repeats false, :type "SI"}]
     [:source-of-comment
-     {:required false, :repeats false, :data-type :string}]
-    [:comment {:required false, :repeats true} [:escape]]
+     {:field "NTE.2", :required false, :repeats false, :type "ID"}]
+    [:comment
+     {:field "NTE.3", :required false, :repeats true, :type "FT"}
+     ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
     [:comment-type
-     {:required false, :repeats false}
+     {:field "NTE.4", :required false, :repeats false, :type "CE_0364"}
      [:identifier
-      {:required false, :repeats false, :data-type :string}]
-     [:text {:required false, :repeats false, :data-type :string}]
+      {:field "CE_0364.1",
+       :required false,
+       :repeats false,
+       :type "ST"}]
+     [:text
+      {:field "CE_0364.2",
+       :required false,
+       :repeats false,
+       :type "ST"}]
      [:name-of-coding-system
-      {:required false, :repeats false, :data-type :string}]
+      {:field "CE_0364.3",
+       :required false,
+       :repeats false,
+       :type "ST"}]
      [:alternate-identifier
-      {:required false, :repeats false, :data-type :string}]
+      {:field "CE_0364.4",
+       :required false,
+       :repeats false,
+       :type "ST"}]
      [:alternate-text
-      {:required false, :repeats false, :data-type :string}]
+      {:field "CE_0364.5",
+       :required false,
+       :repeats false,
+       :type "ST"}]
      [:name-of-alternate-coding-system
-      {:required false, :repeats false, :data-type :string}]]]]
+      {:field "CE_0364.6",
+       :required false,
+       :repeats false,
+       :type "ST"}]]]]
   [:APP_STATUS
    {:required false, :repeats false}
-   [:NSC {:required true, :repeats false, :segment true}]
+   [:NSC {:required false, :repeats false}]
    [:NTE
-    {:required false, :repeats true, :segment true}
-    [:set-id-nte {:required false, :repeats false, :data-type :string}]
+    {:required false, :repeats true}
+    [:set-id-nte
+     {:field "NTE.1", :required false, :repeats false, :type "SI"}]
     [:source-of-comment
-     {:required false, :repeats false, :data-type :string}]
-    [:comment {:required false, :repeats true} [:escape]]
+     {:field "NTE.2", :required false, :repeats false, :type "ID"}]
+    [:comment
+     {:field "NTE.3", :required false, :repeats true, :type "FT"}
+     ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
     [:comment-type
-     {:required false, :repeats false}
+     {:field "NTE.4", :required false, :repeats false, :type "CE_0364"}
      [:identifier
-      {:required false, :repeats false, :data-type :string}]
-     [:text {:required false, :repeats false, :data-type :string}]
+      {:field "CE_0364.1",
+       :required false,
+       :repeats false,
+       :type "ST"}]
+     [:text
+      {:field "CE_0364.2",
+       :required false,
+       :repeats false,
+       :type "ST"}]
      [:name-of-coding-system
-      {:required false, :repeats false, :data-type :string}]
+      {:field "CE_0364.3",
+       :required false,
+       :repeats false,
+       :type "ST"}]
      [:alternate-identifier
-      {:required false, :repeats false, :data-type :string}]
+      {:field "CE_0364.4",
+       :required false,
+       :repeats false,
+       :type "ST"}]
      [:alternate-text
-      {:required false, :repeats false, :data-type :string}]
+      {:field "CE_0364.5",
+       :required false,
+       :repeats false,
+       :type "ST"}]
      [:name-of-alternate-coding-system
-      {:required false, :repeats false, :data-type :string}]]]]]]
+      {:field "CE_0364.6",
+       :required false,
+       :repeats false,
+       :type "ST"}]]]]]]

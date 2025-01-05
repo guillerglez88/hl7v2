@@ -1,22 +1,8 @@
 (ns hl7v2.zipper
   (:require
    [clojure.string :as str]
-   [clojure.zip :as zip]))
-
-(defn spec-tag [spec]
-  (when (vector? spec)
-    (first spec)))
-
-(defn spec-attrs [spec]
-  (when (vector? spec)
-    (when-let [snd (second spec)]
-      (when (map? snd)
-        snd))))
-
-(defn spec-children [spec]
-  (if (spec-attrs spec)
-    (drop 2 spec)
-    (drop 1 spec)))
+   [clojure.zip :as zip]
+   [hl7v2.structures :refer [spec-tag spec-attrs spec-children]]))
 
 (defn seg-id [seg]
   (when (and seg (map? seg))
@@ -179,5 +165,8 @@
        (map #(zip/edit % assoc-in [:PID :birth-place] "Some City"))
        (first)
        (zip/root))
+
+  (-> (hl7-zip hl7)
+      (zip/down))
 
   :.)
