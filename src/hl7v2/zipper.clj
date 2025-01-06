@@ -2,7 +2,7 @@
   (:require
    [clojure.string :as str]
    [clojure.zip :as zip]
-   [hl7v2.structures :refer [spec-tag spec-attrs spec-children]]))
+   [hl7v2.structures :refer [struc-tag struc-attrs struc-children]]))
 
 (defn seg-id [seg]
   (when (and seg (map? seg))
@@ -16,7 +16,7 @@
               (= id (str/upper-case id))))))
 
 (defn match-components [spec data]
-  (if-let [components (seq (spec-children spec))]
+  (if-let [components (seq (struc-children spec))]
     (->> (for [[idx cmp-spec] (map-indexed (fn [idx cmp]
                                              [(inc idx) cmp])
                                            components)
@@ -32,12 +32,12 @@
 (defn match-fields [spec data]
   (->> (for [[idx field-spec] (map-indexed (fn [idx field]
                                              [(inc idx) field])
-                                           (spec-children spec))
-             :let [attr (spec-tag field-spec)
-                   field-data (get-in data [(spec-tag spec) idx])]
+                                           (struc-children spec))
+             :let [attr (struc-tag field-spec)
+                   field-data (get-in data [(struc-tag spec) idx])]
              :when field-data]
          [attr
-          (if (:repeats (spec-attrs field-spec))
+          (if (:repeats (struc-attrs field-spec))
             (mapv (partial match-components field-spec)
                   (if (map? field-data)
                     (vals field-data)
@@ -49,22 +49,22 @@
        (into {})))
 
 (defn match-segment [spec data]
-  (let [id (spec-tag spec)]
+  (let [id (struc-tag spec)]
     (loop [[seg & more :as segs] data
            acc []]
       (if (or (nil? seg) (not= id (seg-id seg)))
         [(when (seq acc)
-           (if (-> spec spec-attrs :repeats)
+           (if (-> spec struc-attrs :repeats)
              {id (mapv (comp val first) acc)}
              (first acc)))
          segs]
         (recur more (conj acc {id (match-fields spec seg)}))))))
 
 (defn match-group [spec data]
-  (loop [[curr & more] (spec-children spec)
+  (loop [[curr & more] (struc-children spec)
          [seg :as segs] data
          acc []]
-    (let [{:keys [required segment]} (spec-attrs curr)]
+    (let [{:keys [required segment]} (struc-attrs curr)]
       (if (and curr seg)
         (let [[result segs] (if segment
                               (match-segment curr segs)
@@ -73,9 +73,9 @@
             (recur nil segs acc)
             (recur more segs (conj acc result))))
         (if-let [items (->> acc (remove nil?) seq)]
-          (let [group-id (spec-tag spec)
+          (let [group-id (struc-tag spec)
                 group-data (apply merge items)]
-            (if (-> spec spec-attrs :repeats)
+            (if (-> spec struc-attrs :repeats)
               (let [[result segs] (match-group spec segs)]
                 [{group-id (->> (get result group-id)
                                 (cons group-data)
@@ -85,7 +85,7 @@
           [nil segs])))))
 
 (defn match-trigger-event [er7 structure]
-  (let [spec-tgr-evt (spec-tag structure)
+  (let [spec-tgr-evt (struc-tag structure)
         msh (first (filter (comp #{:MSH} key first) er7))
         er7-tgr-evt (format "%s_%s" (get-in msh [:MSH 9 1 1]) (get-in msh [:MSH 9 1 2]))]
     (when-not (= (name spec-tgr-evt) er7-tgr-evt)

@@ -108,26 +108,26 @@
         (recur (zip/replace loc sub) processors)
         (recur (zip/next loc) processors)))))
 
-(defn spec-tag [spec]
+(defn struc-tag [spec]
   (when (vector? spec)
     (first spec)))
 
-(defn spec-attrs [spec]
+(defn struc-attrs [spec]
   (when (vector? spec)
     (when-let [snd (second spec)]
       (when (map? snd)
         snd))))
 
-(defn spec-children [spec]
-  (if (spec-attrs spec)
+(defn struc-children [spec]
+  (if (struc-attrs spec)
     (drop 2 spec)
     (drop 1 spec)))
 
-(defn spec-zip [spec]
-  (zip/zipper (comp seq spec-children)
-              spec-children
+(defn struc-zip [spec]
+  (zip/zipper (comp seq struc-children)
+              struc-children
               (fn [node children]
-                (->> [[(spec-tag node) (spec-attrs node)] children]
+                (->> [[(struc-tag node) (struc-attrs node)] children]
                      (apply concat)
                      (remove nil?)
                      (into [])))
@@ -233,12 +233,12 @@
                  :versiown "2.5.1"
                  :lang "en")
 
-  (->> (spec-zip
+  (->> (struc-zip
         (read-string
          (slurp "structures/v2.5.1/ORU_R01.edn")))
        (iterate zip/next)
        (take-while (complement zip/end?))
-       (filter #(-> % zip/node spec-tag (= :PID)))
+       (filter #(-> % zip/node struc-tag (= :PID)))
        (some zip/node))
 
   :.)

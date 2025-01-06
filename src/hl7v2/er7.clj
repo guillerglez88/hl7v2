@@ -2,7 +2,8 @@
   (:require
    [clojure.java.io :as io]
    [clojure.string :as str]
-   [hl7v2.complex :refer [clean]])
+   [hl7v2.complex :refer [clean]]
+   [clojure.zip :as zip])
   (:import
    (java.io Reader)))
 
@@ -149,6 +150,27 @@
                             (for [idx (range 1 (inc (apply max (keys cmp))))]
                               (get cmp idx)))))))))))))))))
 
+(defn er7-zip [er7]
+  (letfn [(root? [n]
+            (and (vector? n)
+                 (map? (first n))
+                 (keyword? (ffirst (first n)))))
+          (seg? [n]
+            (and (vector? n)
+                 (keyword? (first n))))
+          (complex? [n]
+            (and (vector? n)
+                 (number? (first n))
+                 (map? (second n))))]
+    (zip/zipper (some-fn root? seg? complex?)
+                (fn [n]
+                  (cond
+                    (root? n) (apply concat n)
+                    (seg? n) (sort-by first < (second n))
+                    (complex? n) (sort-by first < (second n))))
+                nil
+                er7)))
+
 (comment
 
   (with-open [rx (io/reader (.getBytes "MSH|^~\\&|ULTRA|TML|OLIS"))]
@@ -202,6 +224,10 @@
            (into [])
            (drop-while #(not= "PID" (:value %))))))
 
-  (format-er7 (parse-er7 (io/file "test/hl7v2/data/oru-r01.hl7")))
+  (->> (er7-zip (parse-er7 (io/file "test/hl7v2/data/oru-r01.hl7")))
+       (iterate zip/next)
+       (take-while (complement zip/end?))
+       (map zip/node)
+       (drop 1))
 
   :.)
