@@ -6,7 +6,6 @@ ORC|RE|ORD777888^OrdFac^2.3.4.5.6^ISO|LAB4432^LabFac^8.7.6.5.4^ISO|GORD874244^Or
 OBR|1||||||20251014154001||||||||||||||||||||^^^^|||||||||
 OBR|1|ORD777888^OrdFac^2.3.4.5.6^ISO|LAB4432^LabFac^8.7.6.5.4^ISO|51523-9^Grass Pollen Mix^LN|R|201506011608|201506011608|||||||||5742200012^Radon^Nicholas^^^^^^&372526&L^L^^^NPI|^WPN^PH^^1^555^5559908^34|||||201506011811|||F||1^^^20150601^^R|10092000194^Hamlin^Pafford^^^^^^&372526&L^L^^^NPI
 NTE|1||Allergy test interpretations are subjective.|RE|8945432^Gonzalez^Maria^^^^^^&372526&L^L^^^NPI|201506011810
-PRT|1^^372520^L|AD||RCT^Result Copies To^HL70912^^^^^^Send blind carbon copies to|10092000194^Hamlin^Pafford^^^^^^&372526&L^L^^^NPI||||||||||^^FX^^^323^5555555
 OBX|1|DT|64991-3^Kentucky blue grass IgE Ab ^LN|1|3.9|kU/L|<0.10|A^Abnormal^HL70078|||F|||201506011608|||||201506011605||||||||||RSLT
 OBX|1|ST|HR||68|/min|||||R
 OBX|2|ST|PVC||0|#/min|||||R

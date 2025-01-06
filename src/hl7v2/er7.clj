@@ -2,7 +2,6 @@
   (:require
    [clojure.java.io :as io]
    [clojure.string :as str]
-   [hl7v2.complex :refer [clean]]
    [clojure.zip :as zip])
   (:import
    (java.io Reader)))
@@ -84,37 +83,37 @@
             enc (parse-encoding cseq)
             esc (get-in enc [:index :ks :esc])
             tokens (->> cseq (escape esc) (tokens enc))]
-        (->> (for [segment (partition-by (comp #{:seg} :kind) tokens)
-                   :when (not= :seg (:kind (first segment)))
-                   :let [[seg-id-token & data] segment
-                         seg-id (keyword (:value seg-id-token))]]
-               {seg-id
-                (into
-                 (sorted-map)
-                 (for [[idx field] (kind-groups :fld seg-id data)
-                       :let [fld-idx (inc idx)]]
-                   [fld-idx
-                    (if (= 1 (count field))
-                      (val-fn (first field))
+        (into
+         []
+         (for [segment (partition-by (comp #{:seg} :kind) tokens)
+               :when (not= :seg (:kind (first segment)))
+               :let [[seg-id-token & data] segment
+                     seg-id (keyword (:value seg-id-token))]]
+           {seg-id
+            (into
+             (sorted-map)
+             (for [[idx field] (kind-groups :fld seg-id data)
+                   :let [fld-idx (inc idx)]]
+               [fld-idx
+                (if (= 1 (count field))
+                  (val-fn (first field))
+                  (into
+                   (sorted-map)
+                   (for [[idx repetition] (kind-groups :rep seg-id field)
+                         :let [rep-idx (inc idx)]]
+                     [rep-idx
                       (into
                        (sorted-map)
-                       (for [[idx repetition] (kind-groups :rep seg-id field)
-                             :let [rep-idx (inc idx)]]
-                         [rep-idx
-                          (into
-                           (sorted-map)
-                           (for [[idx component] (kind-groups :cmp seg-id repetition)
-                                 :let [cmp-idx (inc idx)]]
-                             [cmp-idx
-                              (if (= 1 (count component))
-                                (val-fn (first component))
-                                (into
-                                 (sorted-map)
-                                 (for [[idx subcomponent] (kind-groups :sub seg-id component)
-                                       :let [sub-idx (inc idx)]]
-                                   [sub-idx (val-fn (first subcomponent))])))]))])))]))})
-             (into [])
-             (clean))))))
+                       (for [[idx component] (kind-groups :cmp seg-id repetition)
+                             :let [cmp-idx (inc idx)]]
+                         [cmp-idx
+                          (if (= 1 (count component))
+                            (val-fn (first component))
+                            (into
+                             (sorted-map)
+                             (for [[idx subcomponent] (kind-groups :sub seg-id component)
+                                   :let [sub-idx (inc idx)]]
+                               [sub-idx (val-fn (first subcomponent))])))]))])))]))}))))))
 
 (defn format-er7 [msg & {:keys [line-break] :or {line-break "\n"}}]
   (let [enc (parse-encoding (str "MSH"
@@ -150,26 +149,29 @@
                             (for [idx (range 1 (inc (apply max (keys cmp))))]
                               (get cmp idx)))))))))))))))))
 
+(defn root-node? [n]
+  (and (vector? n)
+       (map? (first n))
+       (keyword? (ffirst (first n)))))
+
+(defn seg-node? [n]
+  (and (vector? n)
+       (keyword? (first n))))
+
+(defn complex-node? [n]
+  (and (vector? n)
+       (number? (first n))
+       (map? (second n))))
+
 (defn er7-zip [er7]
-  (letfn [(root? [n]
-            (and (vector? n)
-                 (map? (first n))
-                 (keyword? (ffirst (first n)))))
-          (seg? [n]
-            (and (vector? n)
-                 (keyword? (first n))))
-          (complex? [n]
-            (and (vector? n)
-                 (number? (first n))
-                 (map? (second n))))]
-    (zip/zipper (some-fn root? seg? complex?)
-                (fn [n]
-                  (cond
-                    (root? n) (apply concat n)
-                    (seg? n) (sort-by first < (second n))
-                    (complex? n) (sort-by first < (second n))))
-                nil
-                er7)))
+  (zip/zipper (some-fn root-node? seg-node? complex-node?)
+              (fn [n]
+                (cond
+                  (root-node? n) (apply concat n)
+                  (seg-node? n) (sort-by first < (second n))
+                  (complex-node? n) (sort-by first < (second n))))
+              nil
+              er7))
 
 (comment
 
@@ -207,15 +209,18 @@
        (format-er7 (parse-er7 f))))
   ;;=> false
 
-  (parse-er7 (.getBytes "MSH|^~\\&|ULTRA|TML|OLIS|OLIS")
-             :val-fn (juxt :value :loc))
+  (parse-er7 (.getBytes "MSH|^~\\&|ULTRA|TML|OLIS|OLIS\n"))
+  ;;=> [{:MSH {1 "|", 2 "^~\\&", 3 "ULTRA", 4 "TML", 5 "OLIS", 6 "OLIS"}}]
+
+  (parse-er7 (.getBytes "MSH|^~\\&|ULTRA|TML|OLIS|OLIS\n")
+             :val-fn identity)
   ;;=> [{:MSH
-  ;;     {1 ["|" {:from [1 3], :to [1 4]}],
-  ;;      2 ["^~\\&" {:from [1 4], :to [1 8]}],
-  ;;      3 ["ULTRA" {:from [1 9], :to [1 14]}],
-  ;;      4 ["TML" {:from [1 15], :to [1 18]}],
-  ;;      5 ["OLIS" {:from [1 19], :to [1 23]}],
-  ;;      6 {1 {1 ["OLIS" {:from [1 24], :to [1 28]}]}}}}]
+  ;;     {1 {:value "|", :kind :fld, :loc {:from [1 3], :to [1 4]}},
+  ;;      2 {:value "^~\\&", :kind :data, :loc {:from [1 4], :to [1 8]}},
+  ;;      3 {:value "ULTRA", :kind :data, :loc {:from [1 9], :to [1 14]}},
+  ;;      4 {:value "TML", :kind :data, :loc {:from [1 15], :to [1 18]}},
+  ;;      5 {:value "OLIS", :kind :data, :loc {:from [1 19], :to [1 23]}},
+  ;;      6 {:value "OLIS", :kind :data, :loc {:from [1 24], :to [1 28]}}}}]
 
   (with-open [rx (io/reader (io/file "test/hl7v2/data/oru-r01.hl7"))]
     (let [cs (char-seq rx)
