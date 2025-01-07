@@ -147,3 +147,14 @@
                      (remove nil?)
                      (into [])))
               schema))
+
+(comment
+
+  (require '[clojure.pprint :as pp])
+
+  (spit "tmp/ORU_R01.schema.edn"
+        (with-out-str
+          (pp/pprint
+           (load-schema "ORU_R01" "/Users/guille/Downloads/v2.5.1"))))
+
+  :.)

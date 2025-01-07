@@ -408,9 +408,7 @@
     {:field "TQ.6", :required false, :repeats false, :type "ST"}]
    [:condition
     {:field "TQ.7", :required false, :repeats false, :type "ST"}]
-   [:text
-    {:field "TQ.8", :required false, :repeats false, :type "TX"}
-    ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+   [:text {:field "TQ.8", :required false, :repeats false, :type "TX"}]
    [:conjunction
     {:field "TQ.9", :required false, :repeats false, :type "ID"}]
    [:order-sequencing

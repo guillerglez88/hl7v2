@@ -173,8 +173,7 @@
   [:software-binary-id
    {:field "SFT.4", :required true, :repeats false, :type "ST"}]
   [:software-product-information
-   {:field "SFT.5", :required false, :repeats false, :type "TX"}
-   ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+   {:field "SFT.5", :required false, :repeats false, :type "TX"}]
   [:software-install-date
    {:field "SFT.6", :required false, :repeats false, :type "TS"}
    [:time {:field "TS.1", :required true, :repeats false, :type "DTM"}]
@@ -264,8 +263,7 @@
    [:degree-of-precision
     {:field "TS.2", :required false, :repeats false, :type "ID"}]]
   [:transaction-data
-   {:field "EQP.5", :required true, :repeats false, :type "FT"}
-   ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]]
+   {:field "EQP.5", :required true, :repeats false, :type "FT"}]]
  [:ROL
   {:required false, :repeats false}
   [:role-instance-id

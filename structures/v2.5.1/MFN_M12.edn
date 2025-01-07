@@ -173,8 +173,7 @@
   [:software-binary-id
    {:field "SFT.4", :required true, :repeats false, :type "ST"}]
   [:software-product-information
-   {:field "SFT.5", :required false, :repeats false, :type "TX"}
-   ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+   {:field "SFT.5", :required false, :repeats false, :type "TX"}]
   [:software-install-date
    {:field "SFT.6", :required false, :repeats false, :type "TS"}
    [:time {:field "TS.1", :required true, :repeats false, :type "DTM"}]
@@ -272,8 +271,7 @@
     [:name-of-alternate-coding-system
      {:field "CE.6", :required false, :repeats false, :type "ID"}]]
    [:observation-description
-    {:field "OM1.6", :required false, :repeats false, :type "TX"}
-    ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+    {:field "OM1.6", :required false, :repeats false, :type "TX"}]
    [:other-serviceortestorobservation-ids-for-the-observation
     {:field "OM1.7", :required false, :repeats false, :type "CE"}
     [:identifier
@@ -537,8 +535,7 @@
     [:name-of-alternate-coding-system
      {:field "CE.6", :required false, :repeats false, :type "ID"}]]
    [:interpretation-of-observations
-    {:field "OM1.32", :required false, :repeats false, :type "TX"}
-    ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+    {:field "OM1.32", :required false, :repeats false, :type "TX"}]
    [:contraindications-to-observations
     {:field "OM1.33", :required false, :repeats false, :type "CE"}
     [:identifier
@@ -568,8 +565,7 @@
     [:name-of-alternate-coding-system
      {:field "CE.6", :required false, :repeats false, :type "ID"}]]
    [:rules-that-trigger-reflex-testing
-    {:field "OM1.35", :required false, :repeats false, :type "TX"}
-    ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+    {:field "OM1.35", :required false, :repeats false, :type "TX"}]
    [:fixed-canned-message
     {:field "OM1.36", :required false, :repeats false, :type "CE"}
     [:identifier
@@ -585,8 +581,7 @@
     [:name-of-alternate-coding-system
      {:field "CE.6", :required false, :repeats false, :type "ID"}]]
    [:patient-preparation
-    {:field "OM1.37", :required false, :repeats false, :type "TX"}
-    ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+    {:field "OM1.37", :required false, :repeats false, :type "TX"}]
    [:procedure-medication
     {:field "OM1.38", :required false, :repeats false, :type "CE"}
     [:identifier
@@ -602,13 +597,11 @@
     [:name-of-alternate-coding-system
      {:field "CE.6", :required false, :repeats false, :type "ID"}]]
    [:factors-that-may-affect-the-observation
-    {:field "OM1.39", :required false, :repeats false, :type "TX"}
-    ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+    {:field "OM1.39", :required false, :repeats false, :type "TX"}]
    [:serviceortestorobservation-performance-schedule
     {:field "OM1.40", :required false, :repeats true, :type "ST"}]
    [:description-of-test-methods
-    {:field "OM1.41", :required false, :repeats false, :type "TX"}
-    ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+    {:field "OM1.41", :required false, :repeats false, :type "TX"}]
    [:kind-of-quantity-observed
     {:field "OM1.42", :required false, :repeats false, :type "CE"}
     [:identifier
@@ -638,8 +631,7 @@
     [:name-of-alternate-coding-system
      {:field "CE.6", :required false, :repeats false, :type "ID"}]]
    [:challenge-information
-    {:field "OM1.44", :required false, :repeats false, :type "TX"}
-    ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+    {:field "OM1.44", :required false, :repeats false, :type "TX"}]
    [:relationship-modifier
     {:field "OM1.45", :required false, :repeats false, :type "CE"}
     [:identifier
@@ -715,8 +707,7 @@
     [:name-of-alternate-coding-system
      {:field "CE.6", :required false, :repeats false, :type "ID"}]]
    [:category-description
-    {:field "OM7.4", :required false, :repeats false, :type "TX"}
-    ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+    {:field "OM7.4", :required false, :repeats false, :type "TX"}]
    [:category-synonym
     {:field "OM7.5", :required false, :repeats true, :type "ST"}]
    [:effective-testorservice-start-dateortime

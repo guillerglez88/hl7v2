@@ -236,11 +236,9 @@
   [:application-error-parameter
    {:field "ERR.6", :required false, :repeats false, :type "ST"}]
   [:diagnostic-information
-   {:field "ERR.7", :required false, :repeats false, :type "TX"}
-   ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+   {:field "ERR.7", :required false, :repeats false, :type "TX"}]
   [:user-message
-   {:field "ERR.8", :required false, :repeats false, :type "TX"}
-   ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+   {:field "ERR.8", :required false, :repeats false, :type "TX"}]
   [:inform-person-indicator
    {:field "ERR.9", :required false, :repeats true, :type "IS"}]
   [:override-type
@@ -352,8 +350,7 @@
   [:software-binary-id
    {:field "SFT.4", :required true, :repeats false, :type "ST"}]
   [:software-product-information
-   {:field "SFT.5", :required false, :repeats false, :type "TX"}
-   ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+   {:field "SFT.5", :required false, :repeats false, :type "TX"}]
   [:software-install-date
    {:field "SFT.6", :required false, :repeats false, :type "TS"}
    [:time {:field "TS.1", :required true, :repeats false, :type "DTM"}]

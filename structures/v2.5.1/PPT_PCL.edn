@@ -173,8 +173,7 @@
   [:software-binary-id
    {:field "SFT.4", :required true, :repeats false, :type "ST"}]
   [:software-product-information
-   {:field "SFT.5", :required false, :repeats false, :type "TX"}
-   ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+   {:field "SFT.5", :required false, :repeats false, :type "TX"}]
   [:software-install-date
    {:field "SFT.6", :required false, :repeats false, :type "TS"}
    [:time {:field "TS.1", :required true, :repeats false, :type "DTM"}]
@@ -286,11 +285,9 @@
   [:application-error-parameter
    {:field "ERR.6", :required false, :repeats false, :type "ST"}]
   [:diagnostic-information
-   {:field "ERR.7", :required false, :repeats false, :type "TX"}
-   ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+   {:field "ERR.7", :required false, :repeats false, :type "TX"}]
   [:user-message
-   {:field "ERR.8", :required false, :repeats false, :type "TX"}
-   ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+   {:field "ERR.8", :required false, :repeats false, :type "TX"}]
   [:inform-person-indicator
    {:field "ERR.9", :required false, :repeats true, :type "IS"}]
   [:override-type
@@ -3256,8 +3253,7 @@
     [:source-of-comment
      {:field "NTE.2", :required false, :repeats false, :type "ID"}]
     [:comment
-     {:field "NTE.3", :required false, :repeats true, :type "FT"}
-     ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+     {:field "NTE.3", :required false, :repeats true, :type "FT"}]
     [:comment-type
      {:field "NTE.4", :required false, :repeats false, :type "CE"}
      [:identifier
@@ -4132,8 +4128,7 @@
       [:condition
        {:field "TQ.7", :required false, :repeats false, :type "ST"}]
       [:text
-       {:field "TQ.8", :required false, :repeats false, :type "TX"}
-       ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+       {:field "TQ.8", :required false, :repeats false, :type "TX"}]
       [:conjunction
        {:field "TQ.9", :required false, :repeats false, :type "ID"}]
       [:order-sequencing
@@ -4314,8 +4309,7 @@
      [:source-of-comment
       {:field "NTE.2", :required false, :repeats false, :type "ID"}]
      [:comment
-      {:field "NTE.3", :required false, :repeats true, :type "FT"}
-      ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+      {:field "NTE.3", :required false, :repeats true, :type "FT"}]
      [:comment-type
       {:field "NTE.4", :required false, :repeats false, :type "CE"}
       [:identifier
@@ -5578,8 +5572,7 @@
       [:source-of-comment
        {:field "NTE.2", :required false, :repeats false, :type "ID"}]
       [:comment
-       {:field "NTE.3", :required false, :repeats true, :type "FT"}
-       ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+       {:field "NTE.3", :required false, :repeats true, :type "FT"}]
       [:comment-type
        {:field "NTE.4", :required false, :repeats false, :type "CE"}
        [:identifier
@@ -5842,8 +5835,7 @@
       [:source-of-comment
        {:field "NTE.2", :required false, :repeats false, :type "ID"}]
       [:comment
-       {:field "NTE.3", :required false, :repeats true, :type "FT"}
-       ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+       {:field "NTE.3", :required false, :repeats true, :type "FT"}]
       [:comment-type
        {:field "NTE.4", :required false, :repeats false, :type "CE"}
        [:identifier
@@ -7562,10 +7554,7 @@
        [:source-of-comment
         {:field "NTE.2", :required false, :repeats false, :type "ID"}]
        [:comment
-        {:field "NTE.3", :required false, :repeats true, :type "FT"}
-        ["escape"
-         {:type "escapeType"}
-         ["escape" {:type "escapeType"}]]]
+        {:field "NTE.3", :required false, :repeats true, :type "FT"}]
        [:comment-type
         {:field "NTE.4", :required false, :repeats false, :type "CE"}
         [:identifier
@@ -7671,10 +7660,7 @@
        [:condition
         {:field "TQ.7", :required false, :repeats false, :type "ST"}]
        [:text
-        {:field "TQ.8", :required false, :repeats false, :type "TX"}
-        ["escape"
-         {:type "escapeType"}
-         ["escape" {:type "escapeType"}]]]
+        {:field "TQ.8", :required false, :repeats false, :type "TX"}]
        [:conjunction
         {:field "TQ.9", :required false, :repeats false, :type "ID"}]
        [:order-sequencing
@@ -9529,10 +9515,7 @@
              {:field "SPS.3",
               :required false,
               :repeats false,
-              :type "TX"}
-             ["escape"
-              {:type "escapeType"}
-              ["escape" {:type "escapeType"}]]]
+              :type "TX"}]
             [:body-site
              {:field "SPS.4",
               :required false,
@@ -10292,10 +10275,7 @@
              {:field "PRL.3",
               :required false,
               :repeats false,
-              :type "TX"}
-             ["escape"
-              {:type "escapeType"}
-              ["escape" {:type "escapeType"}]]]]
+              :type "TX"}]]
            [:quantityortiming
             {:field "OBR.27",
              :required false,
@@ -10410,10 +10390,7 @@
              {:field "TQ.8",
               :required false,
               :repeats false,
-              :type "TX"}
-             ["escape"
-              {:type "escapeType"}
-              ["escape" {:type "escapeType"}]]]
+              :type "TX"}]
             [:conjunction
              {:field "TQ.9",
               :required false,
@@ -11984,10 +11961,7 @@
        [:source-of-comment
         {:field "NTE.2", :required false, :repeats false, :type "ID"}]
        [:comment
-        {:field "NTE.3", :required false, :repeats true, :type "FT"}
-        ["escape"
-         {:type "escapeType"}
-         ["escape" {:type "escapeType"}]]]
+        {:field "NTE.3", :required false, :repeats true, :type "FT"}]
        [:comment-type
         {:field "NTE.4", :required false, :repeats false, :type "CE"}
         [:identifier
@@ -13315,10 +13289,7 @@
         [:source-of-comment
          {:field "NTE.2", :required false, :repeats false, :type "ID"}]
         [:comment
-         {:field "NTE.3", :required false, :repeats true, :type "FT"}
-         ["escape"
-          {:type "escapeType"}
-          ["escape" {:type "escapeType"}]]]
+         {:field "NTE.3", :required false, :repeats true, :type "FT"}]
         [:comment-type
          {:field "NTE.4", :required false, :repeats false, :type "CE"}
          [:identifier

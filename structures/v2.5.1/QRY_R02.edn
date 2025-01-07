@@ -173,8 +173,7 @@
   [:software-binary-id
    {:field "SFT.4", :required true, :repeats false, :type "ST"}]
   [:software-product-information
-   {:field "SFT.5", :required false, :repeats false, :type "TX"}
-   ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+   {:field "SFT.5", :required false, :repeats false, :type "TX"}]
   [:software-install-date
    {:field "SFT.6", :required false, :repeats false, :type "TS"}
    [:time {:field "TS.1", :required true, :repeats false, :type "DTM"}]
@@ -458,9 +457,7 @@
     {:field "TQ.6", :required false, :repeats false, :type "ST"}]
    [:condition
     {:field "TQ.7", :required false, :repeats false, :type "ST"}]
-   [:text
-    {:field "TQ.8", :required false, :repeats false, :type "TX"}
-    ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+   [:text {:field "TQ.8", :required false, :repeats false, :type "TX"}]
    [:conjunction
     {:field "TQ.9", :required false, :repeats false, :type "ID"}]
    [:order-sequencing

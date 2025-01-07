@@ -2,11 +2,7 @@
   (:require
    [clojure.string :as str]
    [clojure.zip :as zip]
-   [hl7v2.structures :refer [struc-tag struc-attrs struc-children]]))
-
-(defn seg-id [seg]
-  (when (and seg (map? seg))
-    (-> seg first key)))
+   [hl7v2.structures :refer [struc-tag struc-attrs struc-children struc-zip]]))
 
 (defn hl7-seg? [n]
   (and (map? n)
@@ -48,20 +44,23 @@
        (into {})))
 
 (defn match-segment [spec data]
-  (let [id (struc-tag spec)
-        {:keys [repeats]} (struc-attrs spec)]
-    (loop [[seg & more :as segs] data
-           acc []]
-      (if (or (nil? seg)
-              (not= id (seg-id seg))
-              (and (not repeats)
-                   (seq acc)))
-        [(when (seq acc)
-           (if repeats
-             {id (mapv (comp val first) acc)}
-             (first acc)))
-         segs]
-        (recur more (conj acc {id (match-fields spec seg)}))))))
+  (letfn [(seg-id [seg]
+            (when (and seg (map? seg))
+              (-> seg first key)))]
+    (let [id (struc-tag spec)
+          {:keys [repeats]} (struc-attrs spec)]
+      (loop [[seg & more :as segs] data
+             acc []]
+        (if (or (nil? seg)
+                (not= id (seg-id seg))
+                (and (not repeats)
+                     (seq acc)))
+          [(when (seq acc)
+             (if repeats
+               {id (mapv (comp val first) acc)}
+               (first acc)))
+           segs]
+          (recur more (conj acc {id (match-fields spec seg)})))))))
 
 (defn match-group [spec data]
   (letfn [(seg? [spec]
@@ -91,14 +90,14 @@
                 [{group-id group-data} segs]))
             [nil segs]))))))
 
-(defn match-trigger-event [er7 structure]
-  (let [spec-tgr-evt (struc-tag structure)
+(defn hl7 [er7 struc]
+  (let [spec-tgr-evt (struc-tag struc)
         msh (first (filter (comp #{:MSH} key first) er7))
         er7-tgr-evt (format "%s_%s" (get-in msh [:MSH 9 1 1]) (get-in msh [:MSH 9 1 2]))]
     (when-not (= (name spec-tgr-evt) er7-tgr-evt)
       (throw (ex-info "Trigger event mismatch"
                       {:spec spec-tgr-evt, :er7 er7-tgr-evt})))
-    (let [[matched rem-segs] (match-group structure er7)]
+    (let [[matched rem-segs] (match-group struc er7)]
       (when (seq rem-segs)
         (throw (ex-info "Incomplete trigger-event or incorrect er7"
                         {:matched matched, :remaining-segments rem-segs})))
@@ -139,7 +138,7 @@
   (require '[clojure.edn :as edn])
   (require '[hl7v2.er7 :refer [parse-er7]])
 
-  (def spec
+  (def struc
     (-> (slurp "structures/v2.5.1/ORU_R01.edn")
         (edn/read-string)))
 
@@ -147,10 +146,14 @@
     (-> (io/file "test/hl7v2/data/oru-r01.hl7")
         (parse-er7)))
 
-  (try
-    (def hl7 (match-trigger-event er7 spec))
-    (catch Exception ex
-      (ex-data ex)))
+  (def hl7 (hl7 er7 struc))
+
+  (time
+   (try
+     (hl7 (parse-er7 (io/file "test/hl7v2/data/oru-r01.hl7"))
+          (edn/read-string (slurp "structures/v2.5.1/ORU_R01.edn")))
+     (catch Exception ex
+       (ex-data ex))))
 
   (-> (hl7-zip hl7)
       (zip/down)
@@ -161,13 +164,19 @@
   (->> (hl7-zip hl7)
        (iterate zip/next)
        (take-while (complement zip/end?))
-       (filter (comp #{:PID} ffirst zip/node))
-       (take 1)
-       (map #(zip/edit % assoc-in [:PID :birth-place] "Some City"))
-       (first)
-       (zip/root))
+       (filter (comp hl7-seg? zip/node))
+       (map zip/node)
+       (first))
 
-  (-> (hl7-zip hl7)
-      (zip/down))
+  (->> (struc-zip struc)
+       (iterate zip/next)
+       (take-while (complement zip/end?))
+       (filter (fn [loc]
+                 (let [tag (some-> loc zip/node struc-tag name)]
+                   (and (some? tag)
+                        (= 3 (count tag))
+                        (= tag (str/upper-case tag))))))
+       (map (juxt (comp struc-tag zip/node) zip/node))
+       (into {}))
 
   :.)

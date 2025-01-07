@@ -173,8 +173,7 @@
   [:software-binary-id
    {:field "SFT.4", :required true, :repeats false, :type "ST"}]
   [:software-product-information
-   {:field "SFT.5", :required false, :repeats false, :type "TX"}
-   ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+   {:field "SFT.5", :required false, :repeats false, :type "TX"}]
   [:software-install-date
    {:field "SFT.6", :required false, :repeats false, :type "TS"}
    [:time {:field "TS.1", :required true, :repeats false, :type "DTM"}]
@@ -187,8 +186,7 @@
   [:source-of-comment
    {:field "NTE.2", :required false, :repeats false, :type "ID"}]
   [:comment
-   {:field "NTE.3", :required false, :repeats true, :type "FT"}
-   ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+   {:field "NTE.3", :required false, :repeats true, :type "FT"}]
   [:comment-type
    {:field "NTE.4", :required false, :repeats false, :type "CE"}
    [:identifier
@@ -1453,8 +1451,7 @@
    [:source-of-comment
     {:field "NTE.2", :required false, :repeats false, :type "ID"}]
    [:comment
-    {:field "NTE.3", :required false, :repeats true, :type "FT"}
-    ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+    {:field "NTE.3", :required false, :repeats true, :type "FT"}]
    [:comment-type
     {:field "NTE.4", :required false, :repeats false, :type "CE"}
     [:identifier
@@ -1694,8 +1691,7 @@
     [:job-class
      {:field "JCC.2", :required false, :repeats false, :type "IS"}]
     [:job-description-text
-     {:field "JCC.3", :required false, :repeats false, :type "TX"}
-     ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]]
+     {:field "JCC.3", :required false, :repeats false, :type "TX"}]]
    [:next-of-kin-or-associated-parties-employee-number
     {:field "NK1.12", :required false, :repeats false, :type "CX"}
     [:id-number
@@ -5830,8 +5826,7 @@
      [:job-class
       {:field "JCC.2", :required false, :repeats false, :type "IS"}]
      [:job-description-text
-      {:field "JCC.3", :required false, :repeats false, :type "TX"}
-      ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]]
+      {:field "JCC.3", :required false, :repeats false, :type "TX"}]]
     [:job-status
      {:field "IN2.48", :required false, :repeats false, :type "IS"}]
     [:employer-contact-person-name
@@ -8170,8 +8165,7 @@
     [:job-class
      {:field "JCC.2", :required false, :repeats false, :type "IS"}]
     [:job-description-text
-     {:field "JCC.3", :required false, :repeats false, :type "TX"}
-     ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]]
+     {:field "JCC.3", :required false, :repeats false, :type "TX"}]]
    [:guarantor-employers-organization-name
     {:field "GT1.51", :required false, :repeats true, :type "XON"}
     [:organization-name
@@ -8373,8 +8367,7 @@
     [:condition
      {:field "TQ.7", :required false, :repeats false, :type "ST"}]
     [:text
-     {:field "TQ.8", :required false, :repeats false, :type "TX"}
-     ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+     {:field "TQ.8", :required false, :repeats false, :type "TX"}]
     [:conjunction
      {:field "TQ.9", :required false, :repeats false, :type "ID"}]
     [:order-sequencing
@@ -9563,11 +9556,9 @@
      [:original-text
       {:field "CWE.9", :required false, :repeats false, :type "ST"}]]
     [:condition-text
-     {:field "TQ1.10", :required false, :repeats false, :type "TX"}
-     ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+     {:field "TQ1.10", :required false, :repeats false, :type "TX"}]
     [:text-instruction
-     {:field "TQ1.11", :required false, :repeats false, :type "TX"}
-     ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+     {:field "TQ1.11", :required false, :repeats false, :type "TX"}]
     [:conjunction
      {:field "TQ1.12", :required false, :repeats false, :type "ID"}]
     [:occurrence-duration
@@ -9935,8 +9926,7 @@
       [:original-text
        {:field "CWE.9", :required false, :repeats false, :type "ST"}]]
      [:specimen-collection-method
-      {:field "SPS.3", :required false, :repeats false, :type "TX"}
-      ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+      {:field "SPS.3", :required false, :repeats false, :type "TX"}]
      [:body-site
       {:field "SPS.4", :required false, :repeats false, :type "CWE"}
       [:identifier
@@ -10240,8 +10230,7 @@
      [:parent-observation-subidentifier
       {:field "PRL.2", :required false, :repeats false, :type "ST"}]
      [:parent-observation-value-descriptor
-      {:field "PRL.3", :required false, :repeats false, :type "TX"}
-      ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]]
+      {:field "PRL.3", :required false, :repeats false, :type "TX"}]]
     [:quantityortiming
      {:field "OBR.27", :required false, :repeats true, :type "TQ"}
      [:quantity
@@ -10287,8 +10276,7 @@
      [:condition
       {:field "TQ.7", :required false, :repeats false, :type "ST"}]
      [:text
-      {:field "TQ.8", :required false, :repeats false, :type "TX"}
-      ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+      {:field "TQ.8", :required false, :repeats false, :type "TX"}]
      [:conjunction
       {:field "TQ.9", :required false, :repeats false, :type "ID"}]
      [:order-sequencing
@@ -10994,8 +10982,7 @@
     [:source-of-comment
      {:field "NTE.2", :required false, :repeats false, :type "ID"}]
     [:comment
-     {:field "NTE.3", :required false, :repeats true, :type "FT"}
-     ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+     {:field "NTE.3", :required false, :repeats true, :type "FT"}]
     [:comment-type
      {:field "NTE.4", :required false, :repeats false, :type "CE"}
      [:identifier
@@ -12096,8 +12083,7 @@
      [:source-of-comment
       {:field "NTE.2", :required false, :repeats false, :type "ID"}]
      [:comment
-      {:field "NTE.3", :required false, :repeats true, :type "FT"}
-      ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+      {:field "NTE.3", :required false, :repeats true, :type "FT"}]
      [:comment-type
       {:field "NTE.4", :required false, :repeats false, :type "CE"}
       [:identifier
@@ -13168,10 +13154,7 @@
           :repeats false,
           :type "ST"}]]
        [:specimen-collection-method
-        {:field "SPS.3", :required false, :repeats false, :type "TX"}
-        ["escape"
-         {:type "escapeType"}
-         ["escape" {:type "escapeType"}]]]
+        {:field "SPS.3", :required false, :repeats false, :type "TX"}]
        [:body-site
         {:field "SPS.4", :required false, :repeats false, :type "CWE"}
         [:identifier
@@ -17458,10 +17441,7 @@
        [:condition
         {:field "TQ.7", :required false, :repeats false, :type "ST"}]
        [:text
-        {:field "TQ.8", :required false, :repeats false, :type "TX"}
-        ["escape"
-         {:type "escapeType"}
-         ["escape" {:type "escapeType"}]]]
+        {:field "TQ.8", :required false, :repeats false, :type "TX"}]
        [:conjunction
         {:field "TQ.9", :required false, :repeats false, :type "ID"}]
        [:order-sequencing
@@ -18909,10 +18889,7 @@
           :repeats false,
           :type "ST"}]]
        [:specimen-collection-method
-        {:field "SPS.3", :required false, :repeats false, :type "TX"}
-        ["escape"
-         {:type "escapeType"}
-         ["escape" {:type "escapeType"}]]]
+        {:field "SPS.3", :required false, :repeats false, :type "TX"}]
        [:body-site
         {:field "SPS.4", :required false, :repeats false, :type "CWE"}
         [:identifier
@@ -19246,10 +19223,7 @@
        [:parent-observation-subidentifier
         {:field "PRL.2", :required false, :repeats false, :type "ST"}]
        [:parent-observation-value-descriptor
-        {:field "PRL.3", :required false, :repeats false, :type "TX"}
-        ["escape"
-         {:type "escapeType"}
-         ["escape" {:type "escapeType"}]]]]
+        {:field "PRL.3", :required false, :repeats false, :type "TX"}]]
       [:quantityortiming
        {:field "OBR.27", :required false, :repeats true, :type "TQ"}
        [:quantity
@@ -19298,10 +19272,7 @@
        [:condition
         {:field "TQ.7", :required false, :repeats false, :type "ST"}]
        [:text
-        {:field "TQ.8", :required false, :repeats false, :type "TX"}
-        ["escape"
-         {:type "escapeType"}
-         ["escape" {:type "escapeType"}]]]
+        {:field "TQ.8", :required false, :repeats false, :type "TX"}]
        [:conjunction
         {:field "TQ.9", :required false, :repeats false, :type "ID"}]
        [:order-sequencing
@@ -19990,8 +19961,7 @@
       [:source-of-comment
        {:field "NTE.2", :required false, :repeats false, :type "ID"}]
       [:comment
-       {:field "NTE.3", :required false, :repeats true, :type "FT"}
-       ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+       {:field "NTE.3", :required false, :repeats true, :type "FT"}]
       [:comment-type
        {:field "NTE.4", :required false, :repeats false, :type "CE"}
        [:identifier
@@ -20188,15 +20158,9 @@
           :repeats false,
           :type "ST"}]]
        [:condition-text
-        {:field "TQ1.10", :required false, :repeats false, :type "TX"}
-        ["escape"
-         {:type "escapeType"}
-         ["escape" {:type "escapeType"}]]]
+        {:field "TQ1.10", :required false, :repeats false, :type "TX"}]
        [:text-instruction
-        {:field "TQ1.11", :required false, :repeats false, :type "TX"}
-        ["escape"
-         {:type "escapeType"}
-         ["escape" {:type "escapeType"}]]]
+        {:field "TQ1.11", :required false, :repeats false, :type "TX"}]
        [:conjunction
         {:field "TQ1.12", :required false, :repeats false, :type "ID"}]
        [:occurrence-duration
@@ -21047,10 +21011,7 @@
        [:source-of-comment
         {:field "NTE.2", :required false, :repeats false, :type "ID"}]
        [:comment
-        {:field "NTE.3", :required false, :repeats true, :type "FT"}
-        ["escape"
-         {:type "escapeType"}
-         ["escape" {:type "escapeType"}]]]
+        {:field "NTE.3", :required false, :repeats true, :type "FT"}]
        [:comment-type
         {:field "NTE.4", :required false, :repeats false, :type "CE"}
         [:identifier

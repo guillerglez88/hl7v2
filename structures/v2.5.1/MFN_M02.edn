@@ -173,8 +173,7 @@
   [:software-binary-id
    {:field "SFT.4", :required true, :repeats false, :type "ST"}]
   [:software-product-information
-   {:field "SFT.5", :required false, :repeats false, :type "TX"}
-   ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+   {:field "SFT.5", :required false, :repeats false, :type "TX"}]
   [:software-install-date
    {:field "SFT.6", :required false, :repeats false, :type "TS"}
    [:time {:field "TS.1", :required true, :repeats false, :type "DTM"}]
@@ -612,8 +611,7 @@
     [:job-class
      {:field "JCC.2", :required false, :repeats false, :type "IS"}]
     [:job-description-text
-     {:field "JCC.3", :required false, :repeats false, :type "TX"}
-     ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]]
+     {:field "JCC.3", :required false, :repeats false, :type "TX"}]]
    [:employment-status-code
     {:field "STF.20", :required false, :repeats false, :type "CE"}
     [:identifier
@@ -1599,8 +1597,7 @@
     [:encoding
      {:field "ED.4", :required true, :repeats false, :type "ID"}]
     [:data
-     {:field "ED.5", :required true, :repeats false, :type "TX"}
-     ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]]
+     {:field "ED.5", :required true, :repeats false, :type "TX"}]]
    [:granting-country
     {:field "CER.7", :required false, :repeats false, :type "ID"}]
    [:granting-stateorprovince
@@ -1914,8 +1911,7 @@
    [:source-of-comment
     {:field "NTE.2", :required false, :repeats false, :type "ID"}]
    [:comment
-    {:field "NTE.3", :required false, :repeats true, :type "FT"}
-    ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+    {:field "NTE.3", :required false, :repeats true, :type "FT"}]
    [:comment-type
     {:field "NTE.4", :required false, :repeats false, :type "CE"}
     [:identifier

@@ -24,11 +24,12 @@
              (= (some-> loc zip/down zip/node sch/node-attrs :type)
                 (some-> loc zip/down zip/down zip/node sch/node-tag))
              (= (some-> loc zip/down zip/down zip/down zip/node sch/node-tag) "annotation")
-             (or (= (some-> loc zip/down zip/down zip/down zip/right zip/node sch/node-tag) "complexContent")
-                 (= (some-> loc zip/down zip/down zip/down zip/right zip/node sch/node-tag) "simpleContent"))
+             (#{"complexContent" "simpleContent"} (some-> loc zip/down zip/down zip/down zip/right zip/node sch/node-tag))
              (or (= (some-> loc zip/down zip/down zip/down zip/right zip/down zip/down zip/node sch/node-tag) "restriction")
                  (= (some-> loc zip/down zip/down zip/down zip/right zip/down zip/node sch/node-tag) "extension")
-                 (= (some-> loc zip/down zip/down zip/down zip/right zip/down zip/node sch/node-tag) "varies")))
+                 (= (some-> loc zip/down zip/down zip/down zip/right zip/down zip/node sch/node-tag) "varies")
+                 (and (= (some-> loc zip/down zip/down zip/down zip/right zip/down zip/down zip/node sch/node-tag) "sequence")
+                      (= (some-> loc zip/down zip/down zip/down zip/right zip/down zip/down zip/down zip/node sch/node-tag) "escape"))))
     [(-> loc zip/down zip/down zip/down (annotation :lang lang))
      (let [{:keys [minOccurs maxOccurs]} (-> loc zip/node sch/node-attrs)]
        (clean
@@ -119,9 +120,10 @@
         snd))))
 
 (defn struc-children [spec]
-  (if (struc-attrs spec)
-    (drop 2 spec)
-    (drop 1 spec)))
+  (when (vector? spec)
+    (if (struc-attrs spec)
+      (drop 2 spec)
+      (drop 1 spec))))
 
 (defn struc-zip [spec]
   (zip/zipper (comp seq struc-children)
@@ -156,6 +158,36 @@
       (sch/schema-zip)
       (leaf))
   ;;=> [:namespace-id {:field "HD.1", :required false, :repeats false, :type "IS"}]
+
+  (-> ["SFT.5"
+       {:minOccurs "0", :maxOccurs "1"}
+       ["SFT.5"
+        {:type "SFT.5.CONTENT"}
+        ["SFT.5.CONTENT"
+         ["annotation"
+          ["documentation"
+           {:lang "en"}
+           ["Software Product Information"]]
+          ["documentation"
+           {:lang "de"}
+           ["Zusatzinformation zum eingesetzten Produkt"]]
+          ["appinfo"
+           ["Item" ["1838"]]
+           ["Type" ["TX"]]
+           ["LongName" ["HL7Software Product Information"]]]]
+         ["complexContent"
+          ["TX"
+           {:mixed "true"}
+           ["sequence"
+            ["escape"
+             {:type "escapeType"}
+             ["escape" {:type "escapeType"}]]]]]]]]
+      (sch/schema-zip)
+      (leaf))
+
+  ;;=> [:software-product-information
+  ;;    {:field "SFT.5", :required false, :repeats false, :type "TX"}
+  ;;    ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
 
   (-> ["MSH.3"
        {:minOccurs "0", :maxOccurs "1"}

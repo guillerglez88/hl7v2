@@ -173,8 +173,7 @@
   [:software-binary-id
    {:field "SFT.4", :required true, :repeats false, :type "ST"}]
   [:software-product-information
-   {:field "SFT.5", :required false, :repeats false, :type "TX"}
-   ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+   {:field "SFT.5", :required false, :repeats false, :type "TX"}]
   [:software-install-date
    {:field "SFT.6", :required false, :repeats false, :type "TS"}
    [:time {:field "TS.1", :required true, :repeats false, :type "DTM"}]
@@ -286,11 +285,9 @@
   [:application-error-parameter
    {:field "ERR.6", :required false, :repeats false, :type "ST"}]
   [:diagnostic-information
-   {:field "ERR.7", :required false, :repeats false, :type "TX"}
-   ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+   {:field "ERR.7", :required false, :repeats false, :type "TX"}]
   [:user-message
-   {:field "ERR.8", :required false, :repeats false, :type "TX"}
-   ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+   {:field "ERR.8", :required false, :repeats false, :type "TX"}]
   [:inform-person-indicator
    {:field "ERR.9", :required false, :repeats true, :type "IS"}]
   [:override-type
@@ -662,9 +659,7 @@
     {:field "TQ.6", :required false, :repeats false, :type "ST"}]
    [:condition
     {:field "TQ.7", :required false, :repeats false, :type "ST"}]
-   [:text
-    {:field "TQ.8", :required false, :repeats false, :type "TX"}
-    ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+   [:text {:field "TQ.8", :required false, :repeats false, :type "TX"}]
    [:conjunction
     {:field "TQ.9", :required false, :repeats false, :type "ID"}]
    [:order-sequencing
@@ -2664,8 +2659,7 @@
     [:job-class
      {:field "JCC.2", :required false, :repeats false, :type "IS"}]
     [:job-description-text
-     {:field "JCC.3", :required false, :repeats false, :type "TX"}
-     ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]]
+     {:field "JCC.3", :required false, :repeats false, :type "TX"}]]
    [:next-of-kin-or-associated-parties-employee-number
     {:field "NK1.12", :required false, :repeats false, :type "CX"}
     [:id-number
@@ -8118,8 +8112,7 @@
     [:job-class
      {:field "JCC.2", :required false, :repeats false, :type "IS"}]
     [:job-description-text
-     {:field "JCC.3", :required false, :repeats false, :type "TX"}
-     ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]]
+     {:field "JCC.3", :required false, :repeats false, :type "TX"}]]
    [:guarantor-employers-organization-name
     {:field "GT1.51", :required false, :repeats true, :type "XON"}
     [:organization-name
@@ -10075,8 +10068,7 @@
      [:job-class
       {:field "JCC.2", :required false, :repeats false, :type "IS"}]
      [:job-description-text
-      {:field "JCC.3", :required false, :repeats false, :type "TX"}
-      ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]]
+      {:field "JCC.3", :required false, :repeats false, :type "TX"}]]
     [:job-status
      {:field "IN2.48", :required false, :repeats false, :type "IS"}]
     [:employer-contact-person-name

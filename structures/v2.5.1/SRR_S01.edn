@@ -236,11 +236,9 @@
   [:application-error-parameter
    {:field "ERR.6", :required false, :repeats false, :type "ST"}]
   [:diagnostic-information
-   {:field "ERR.7", :required false, :repeats false, :type "TX"}
-   ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+   {:field "ERR.7", :required false, :repeats false, :type "TX"}]
   [:user-message
-   {:field "ERR.8", :required false, :repeats false, :type "TX"}
-   ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+   {:field "ERR.8", :required false, :repeats false, :type "TX"}]
   [:inform-person-indicator
    {:field "ERR.9", :required false, :repeats true, :type "IS"}]
   [:override-type
@@ -462,8 +460,7 @@
     [:condition
      {:field "TQ.7", :required false, :repeats false, :type "ST"}]
     [:text
-     {:field "TQ.8", :required false, :repeats false, :type "TX"}
-     ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+     {:field "TQ.8", :required false, :repeats false, :type "TX"}]
     [:conjunction
      {:field "TQ.9", :required false, :repeats false, :type "ID"}]
     [:order-sequencing
@@ -1428,11 +1425,9 @@
     [:original-text
      {:field "CWE.9", :required false, :repeats false, :type "ST"}]]
    [:condition-text
-    {:field "TQ1.10", :required false, :repeats false, :type "TX"}
-    ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+    {:field "TQ1.10", :required false, :repeats false, :type "TX"}]
    [:text-instruction
-    {:field "TQ1.11", :required false, :repeats false, :type "TX"}
-    ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+    {:field "TQ1.11", :required false, :repeats false, :type "TX"}]
    [:conjunction
     {:field "TQ1.12", :required false, :repeats false, :type "ID"}]
    [:occurrence-duration
@@ -1462,8 +1457,7 @@
    [:source-of-comment
     {:field "NTE.2", :required false, :repeats false, :type "ID"}]
    [:comment
-    {:field "NTE.3", :required false, :repeats true, :type "FT"}
-    ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+    {:field "NTE.3", :required false, :repeats true, :type "FT"}]
    [:comment-type
     {:field "NTE.4", :required false, :repeats false, :type "CE"}
     [:identifier
@@ -4480,8 +4474,7 @@
      [:source-of-comment
       {:field "NTE.2", :required false, :repeats false, :type "ID"}]
      [:comment
-      {:field "NTE.3", :required false, :repeats true, :type "FT"}
-      ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+      {:field "NTE.3", :required false, :repeats true, :type "FT"}]
      [:comment-type
       {:field "NTE.4", :required false, :repeats false, :type "CE"}
       [:identifier
@@ -4623,8 +4616,7 @@
      [:source-of-comment
       {:field "NTE.2", :required false, :repeats false, :type "ID"}]
      [:comment
-      {:field "NTE.3", :required false, :repeats true, :type "FT"}
-      ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+      {:field "NTE.3", :required false, :repeats true, :type "FT"}]
      [:comment-type
       {:field "NTE.4", :required false, :repeats false, :type "CE"}
       [:identifier
@@ -4780,8 +4772,7 @@
      [:source-of-comment
       {:field "NTE.2", :required false, :repeats false, :type "ID"}]
      [:comment
-      {:field "NTE.3", :required false, :repeats true, :type "FT"}
-      ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+      {:field "NTE.3", :required false, :repeats true, :type "FT"}]
      [:comment-type
       {:field "NTE.4", :required false, :repeats false, :type "CE"}
       [:identifier
@@ -5037,8 +5028,7 @@
      [:source-of-comment
       {:field "NTE.2", :required false, :repeats false, :type "ID"}]
      [:comment
-      {:field "NTE.3", :required false, :repeats true, :type "FT"}
-      ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+      {:field "NTE.3", :required false, :repeats true, :type "FT"}]
      [:comment-type
       {:field "NTE.4", :required false, :repeats false, :type "CE"}
       [:identifier

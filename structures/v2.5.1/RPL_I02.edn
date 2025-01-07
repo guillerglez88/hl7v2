@@ -173,8 +173,7 @@
   [:software-binary-id
    {:field "SFT.4", :required true, :repeats false, :type "ST"}]
   [:software-product-information
-   {:field "SFT.5", :required false, :repeats false, :type "TX"}
-   ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+   {:field "SFT.5", :required false, :repeats false, :type "TX"}]
   [:software-install-date
    {:field "SFT.6", :required false, :repeats false, :type "TS"}
    [:time {:field "TS.1", :required true, :repeats false, :type "DTM"}]
@@ -698,8 +697,7 @@
   [:source-of-comment
    {:field "NTE.2", :required false, :repeats false, :type "ID"}]
   [:comment
-   {:field "NTE.3", :required false, :repeats true, :type "FT"}
-   ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+   {:field "NTE.3", :required false, :repeats true, :type "FT"}]
   [:comment-type
    {:field "NTE.4", :required false, :repeats false, :type "CE"}
    [:identifier
@@ -720,13 +718,11 @@
   [:display-level
    {:field "DSP.2", :required false, :repeats false, :type "SI"}]
   [:data-line
-   {:field "DSP.3", :required true, :repeats false, :type "TX"}
-   ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+   {:field "DSP.3", :required true, :repeats false, :type "TX"}]
   [:logical-break-point
    {:field "DSP.4", :required false, :repeats false, :type "ST"}]
   [:result-id
-   {:field "DSP.5", :required false, :repeats false, :type "TX"}
-   ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]]
+   {:field "DSP.5", :required false, :repeats false, :type "TX"}]]
  [:DSC
   {:required false, :repeats false}
   [:continuation-pointer
