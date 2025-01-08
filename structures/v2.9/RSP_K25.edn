@@ -2461,7 +2461,7 @@
     {:field "STF.22", :required false, :repeats false, :type "DLN"}
     [:driver-license-number
      {:field "DLN.1", :required true, :repeats false, :type "ST"}]
-    [:issuing-state,-province,-country
+    [:issuing-state-province-country
      {:field "DLN.2", :required false, :repeats false, :type "CWE"}
      [:identifier
       {:field "CWE.1", :required false, :repeats false, :type "ST"}]

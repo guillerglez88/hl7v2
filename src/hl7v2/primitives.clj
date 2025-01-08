@@ -13,7 +13,7 @@
   (-> s
       (str/replace #"/" "or")
       (str/replace #"&" "and")
-      (str/replace #"[-'’\)\.]" "")))
+      (str/replace #"[-'’\)\.,]" "")))
 
 (defn normalize-text [s]
   (-> (rm-diacritics s)

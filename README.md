@@ -252,17 +252,3 @@ Structure parsed hl7 according to a message structure. Structure is a trigger-ev
 
 Standard: https://www.hl7.org/implement/standards/product_brief.cfm?product_id=185   
 Schema: https://www.hl7.org/documentcenter/private/standards/V251/HL7-xml%20v2.5.1.zip
-
-Plan: 
-
-- [X] ER7 api
-  - [X] Encoding parser/formatter
-  - [X] Tokenization
-  - [X] Message Parser/formatter
-  - [X] Value token info
-- [-] Trigger Events api
-  - [X] Message xsd to hiccup
-  - [ ] DataType xsd to hiccup
-  - [ ] Render er7 into hiccup
-- [ ] Message as a db
-  - [ ] 

@@ -31194,7 +31194,7 @@
            :required false,
            :repeats false,
            :type "DTM"}]]
-        [:diet,-supplement,-or-preference-code
+        [:diet-supplement-or-preference-code
          {:field "ODS.3", :required true, :repeats false, :type "CWE"}
          [:identifier
           {:field "CWE.1",

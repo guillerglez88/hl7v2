@@ -1869,7 +1869,7 @@
   {:required false, :repeats false}
   [:AUT
    {:required false, :repeats false}
-   [:authorizing-payor,-plan-id
+   [:authorizing-payor-plan-id
     {:field "AUT.1", :required false, :repeats false, :type "CWE"}
     [:identifier
      {:field "CWE.1", :required false, :repeats false, :type "ST"}]
@@ -1915,7 +1915,7 @@
      {:field "CWE.21", :required false, :repeats false, :type "ST"}]
     [:second-alternate-value-set-version-id
      {:field "CWE.22", :required false, :repeats false, :type "DTM"}]]
-   [:authorizing-payor,-company-id
+   [:authorizing-payor-company-id
     {:field "AUT.2", :required true, :repeats false, :type "CWE"}
     [:identifier
      {:field "CWE.1", :required false, :repeats false, :type "ST"}]
@@ -1961,7 +1961,7 @@
      {:field "CWE.21", :required false, :repeats false, :type "ST"}]
     [:second-alternate-value-set-version-id
      {:field "CWE.22", :required false, :repeats false, :type "DTM"}]]
-   [:authorizing-payor,-company-name
+   [:authorizing-payor-company-name
     {:field "AUT.3", :required false, :repeats false, :type "ST"}]
    [:authorization-effective-date
     {:field "AUT.4", :required false, :repeats false, :type "DTM"}]
@@ -24060,7 +24060,7 @@
    {:required false, :repeats false}
    [:AUT
     {:required false, :repeats false}
-    [:authorizing-payor,-plan-id
+    [:authorizing-payor-plan-id
      {:field "AUT.1", :required false, :repeats false, :type "CWE"}
      [:identifier
       {:field "CWE.1", :required false, :repeats false, :type "ST"}]
@@ -24106,7 +24106,7 @@
       {:field "CWE.21", :required false, :repeats false, :type "ST"}]
      [:second-alternate-value-set-version-id
       {:field "CWE.22", :required false, :repeats false, :type "DTM"}]]
-    [:authorizing-payor,-company-id
+    [:authorizing-payor-company-id
      {:field "AUT.2", :required true, :repeats false, :type "CWE"}
      [:identifier
       {:field "CWE.1", :required false, :repeats false, :type "ST"}]
@@ -24152,7 +24152,7 @@
       {:field "CWE.21", :required false, :repeats false, :type "ST"}]
      [:second-alternate-value-set-version-id
       {:field "CWE.22", :required false, :repeats false, :type "DTM"}]]
-    [:authorizing-payor,-company-name
+    [:authorizing-payor-company-name
      {:field "AUT.3", :required false, :repeats false, :type "ST"}]
     [:authorization-effective-date
      {:field "AUT.4", :required false, :repeats false, :type "DTM"}]

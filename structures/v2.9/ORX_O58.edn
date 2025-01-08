@@ -8266,7 +8266,7 @@
      {:field "TXA.20", :required false, :repeats false, :type "ID"}]
     [:document-change-reason
      {:field "TXA.21", :required false, :repeats false, :type "ST"}]
-    [:authentication-person,-time-stamp
+    [:authentication-person-time-stamp
      {:field "TXA.22", :required false, :repeats true, :type "PPN"}
      [:person-identifier
       {:field "PPN.1", :required false, :repeats false, :type "ST"}]

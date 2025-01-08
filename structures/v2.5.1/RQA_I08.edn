@@ -298,7 +298,7 @@
   {:required false, :repeats false}
   [:AUT
    {:required false, :repeats false}
-   [:authorizing-payor,-plan-id
+   [:authorizing-payor-plan-id
     {:field "AUT.1", :required false, :repeats false, :type "CE"}
     [:identifier
      {:field "CE.1", :required false, :repeats false, :type "ST"}]
@@ -312,7 +312,7 @@
      {:field "CE.5", :required false, :repeats false, :type "ST"}]
     [:name-of-alternate-coding-system
      {:field "CE.6", :required false, :repeats false, :type "ID"}]]
-   [:authorizing-payor,-company-id
+   [:authorizing-payor-company-id
     {:field "AUT.2", :required true, :repeats false, :type "CE"}
     [:identifier
      {:field "CE.1", :required false, :repeats false, :type "ST"}]
@@ -326,7 +326,7 @@
      {:field "CE.5", :required false, :repeats false, :type "ST"}]
     [:name-of-alternate-coding-system
      {:field "CE.6", :required false, :repeats false, :type "ID"}]]
-   [:authorizing-payor,-company-name
+   [:authorizing-payor-company-name
     {:field "AUT.3", :required false, :repeats false, :type "ST"}]
    [:authorization-effective-date
     {:field "AUT.4", :required false, :repeats false, :type "TS"}
@@ -1790,7 +1790,7 @@
    {:field "PID.20", :required false, :repeats false, :type "DLN"}
    [:license-number
     {:field "DLN.1", :required true, :repeats false, :type "ST"}]
-   [:issuing-state,-province,-country
+   [:issuing-state-province-country
     {:field "DLN.2", :required false, :repeats false, :type "IS"}]
    [:expiration-date
     {:field "DLN.3", :required false, :repeats false, :type "DT"}]]
@@ -8257,7 +8257,7 @@
    {:required false, :repeats false}
    [:AUT
     {:required false, :repeats false}
-    [:authorizing-payor,-plan-id
+    [:authorizing-payor-plan-id
      {:field "AUT.1", :required false, :repeats false, :type "CE"}
      [:identifier
       {:field "CE.1", :required false, :repeats false, :type "ST"}]
@@ -8271,7 +8271,7 @@
       {:field "CE.5", :required false, :repeats false, :type "ST"}]
      [:name-of-alternate-coding-system
       {:field "CE.6", :required false, :repeats false, :type "ID"}]]
-    [:authorizing-payor,-company-id
+    [:authorizing-payor-company-id
      {:field "AUT.2", :required true, :repeats false, :type "CE"}
      [:identifier
       {:field "CE.1", :required false, :repeats false, :type "ST"}]
@@ -8285,7 +8285,7 @@
       {:field "CE.5", :required false, :repeats false, :type "ST"}]
      [:name-of-alternate-coding-system
       {:field "CE.6", :required false, :repeats false, :type "ID"}]]
-    [:authorizing-payor,-company-name
+    [:authorizing-payor-company-name
      {:field "AUT.3", :required false, :repeats false, :type "ST"}]
     [:authorization-effective-date
      {:field "AUT.4", :required false, :repeats false, :type "TS"}
