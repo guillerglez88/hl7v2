@@ -2014,11 +2014,9 @@
      [:name-of-alternate-coding-system
       {:field "CE.6", :required false, :repeats false, :type "ST"}]]
     [:additives
-     {:field "SPS.2", :required false, :repeats false, :type "TX"}
-     ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+     {:field "SPS.2", :required false, :repeats false, :type "TX"}]
     [:freetext
-     {:field "SPS.3", :required false, :repeats false, :type "TX"}
-     ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+     {:field "SPS.3", :required false, :repeats false, :type "TX"}]
     [:body-site
      {:field "SPS.4", :required false, :repeats false, :type "CE"}
      [:identifier
@@ -2201,8 +2199,7 @@
     [:obx4-subid-of-parent-result
      {:field "PRL.2", :required false, :repeats false, :type "ST"}]
     [:part-of-obx5-observation-result-from-parent
-     {:field "PRL.3", :required false, :repeats false, :type "TX"}
-     ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]]
+     {:field "PRL.3", :required false, :repeats false, :type "TX"}]]
    [:quantityortiming
     {:field "OBR.27", :required false, :repeats true, :type "TQ"}
     [:quantity
@@ -2734,8 +2731,7 @@
    [:source-of-comment
     {:field "NTE.2", :required false, :repeats false, :type "ID"}]
    [:comment
-    {:field "NTE.3", :required false, :repeats true, :type "FT"}
-    ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+    {:field "NTE.3", :required false, :repeats true, :type "FT"}]
    [:comment-type
     {:field "NTE.4", :required false, :repeats false, :type "CE_0364"}
     [:identifier
@@ -2900,8 +2896,7 @@
     [:source-of-comment
      {:field "NTE.2", :required false, :repeats false, :type "ID"}]
     [:comment
-     {:field "NTE.3", :required false, :repeats true, :type "FT"}
-     ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+     {:field "NTE.3", :required false, :repeats true, :type "FT"}]
     [:comment-type
      {:field "NTE.4", :required false, :repeats false, :type "CE_0364"}
      [:identifier
@@ -3743,8 +3738,7 @@
   [:source-of-comment
    {:field "NTE.2", :required false, :repeats false, :type "ID"}]
   [:comment
-   {:field "NTE.3", :required false, :repeats true, :type "FT"}
-   ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+   {:field "NTE.3", :required false, :repeats true, :type "FT"}]
   [:comment-type
    {:field "NTE.4", :required false, :repeats false, :type "CE_0364"}
    [:identifier

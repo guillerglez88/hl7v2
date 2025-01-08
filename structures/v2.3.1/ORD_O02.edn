@@ -177,8 +177,7 @@
   [:source-of-comment
    {:field "NTE.2", :required false, :repeats false, :type "ID"}]
   [:comment
-   {:field "NTE.3", :required false, :repeats true, :type "FT"}
-   ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+   {:field "NTE.3", :required false, :repeats true, :type "FT"}]
   [:comment-type
    {:field "NTE.4", :required false, :repeats false, :type "CE_0364"}
    [:identifier
@@ -769,8 +768,7 @@
     [:source-of-comment
      {:field "NTE.2", :required false, :repeats false, :type "ID"}]
     [:comment
-     {:field "NTE.3", :required false, :repeats true, :type "FT"}
-     ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+     {:field "NTE.3", :required false, :repeats true, :type "FT"}]
     [:comment-type
      {:field "NTE.4", :required false, :repeats false, :type "CE_0364"}
      [:identifier
@@ -982,8 +980,7 @@
     [:source-of-comment
      {:field "NTE.2", :required false, :repeats false, :type "ID"}]
     [:comment
-     {:field "NTE.3", :required false, :repeats true, :type "FT"}
-     ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+     {:field "NTE.3", :required false, :repeats true, :type "FT"}]
     [:comment-type
      {:field "NTE.4", :required false, :repeats false, :type "CE_0364"}
      [:identifier
@@ -1211,8 +1208,7 @@
     [:source-of-comment
      {:field "NTE.2", :required false, :repeats false, :type "ID"}]
     [:comment
-     {:field "NTE.3", :required false, :repeats true, :type "FT"}
-     ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+     {:field "NTE.3", :required false, :repeats true, :type "FT"}]
     [:comment-type
      {:field "NTE.4", :required false, :repeats false, :type "CE_0364"}
      [:identifier

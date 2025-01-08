@@ -739,8 +739,7 @@
   [:source-of-comment
    {:field "NTE.2", :required false, :repeats false, :type "ID"}]
   [:comment
-   {:field "NTE.3", :required false, :repeats true, :type "FT"}
-   ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+   {:field "NTE.3", :required false, :repeats true, :type "FT"}]
   [:comment-type
    {:field "NTE.4", :required false, :repeats false, :type "CE_0364"}
    [:identifier
@@ -1700,11 +1699,9 @@
    [:sender-sequence-number
     {:field "PES.6", :required false, :repeats false, :type "NM"}]
    [:sender-event-description
-    {:field "PES.7", :required false, :repeats true, :type "FT"}
-    ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+    {:field "PES.7", :required false, :repeats true, :type "FT"}]
    [:sender-comment
-    {:field "PES.8", :required false, :repeats false, :type "FT"}
-    ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+    {:field "PES.8", :required false, :repeats false, :type "FT"}]
    [:sender-aware-dateortime
     {:field "PES.9", :required false, :repeats false, :type "TS"}
     [:time-of-an-event
@@ -1814,20 +1811,15 @@
     [:patient-outcome
      {:field "PEO.12", :required false, :repeats false, :type "ID"}]
     [:event-description-from-others
-     {:field "PEO.13", :required false, :repeats true, :type "FT"}
-     ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+     {:field "PEO.13", :required false, :repeats true, :type "FT"}]
     [:event-from-original-reporter
-     {:field "PEO.14", :required false, :repeats true, :type "FT"}
-     ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+     {:field "PEO.14", :required false, :repeats true, :type "FT"}]
     [:event-description-from-patient
-     {:field "PEO.15", :required false, :repeats true, :type "FT"}
-     ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+     {:field "PEO.15", :required false, :repeats true, :type "FT"}]
     [:event-description-from-practitioner
-     {:field "PEO.16", :required false, :repeats true, :type "FT"}
-     ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+     {:field "PEO.16", :required false, :repeats true, :type "FT"}]
     [:event-description-from-autopsy
-     {:field "PEO.17", :required false, :repeats true, :type "FT"}
-     ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+     {:field "PEO.17", :required false, :repeats true, :type "FT"}]
     [:cause-of-death
      {:field "PEO.18", :required false, :repeats true, :type "CE"}
      [:identifier
@@ -3553,8 +3545,7 @@
      [:source-of-comment
       {:field "NTE.2", :required false, :repeats false, :type "ID"}]
      [:comment
-      {:field "NTE.3", :required false, :repeats true, :type "FT"}
-      ["escape" {:type "escapeType"} ["escape" {:type "escapeType"}]]]
+      {:field "NTE.3", :required false, :repeats true, :type "FT"}]
      [:comment-type
       {:field "NTE.4",
        :required false,
