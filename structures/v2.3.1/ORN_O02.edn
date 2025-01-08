@@ -300,7 +300,7 @@
       {:field "XPN.7", :required false, :repeats false, :type "ID"}]
      [:name-representation-code
       {:field "XPN.8", :required false, :repeats false, :type "ID"}]]
-    [:mother’s-maiden-name
+    [:mothers-maiden-name
      {:field "PID.6", :required false, :repeats true, :type "XPN"}
      [:family+last-name
       {:field "XPN.1", :required false, :repeats false, :type "FN"}
@@ -1039,7 +1039,7 @@
       {:field "CE.5", :required false, :repeats false, :type "ST"}]
      [:name-of-alternate-coding-system
       {:field "CE.6", :required false, :repeats false, :type "ST"}]]
-    [:manufacturer’s-catalog
+    [:manufacturers-catalog
      {:field "RQ1.3", :required false, :repeats false, :type "ST"}]
     [:vendor-id
      {:field "RQ1.4", :required false, :repeats false, :type "CE"}

@@ -2588,7 +2588,7 @@
      {:field "CWE.21", :required false, :repeats false, :type "ST"}]
     [:second-alternate-value-set-version-id
      {:field "CWE.22", :required false, :repeats false, :type "DTM"}]]
-   [:observationoridentifier-associated-with-producer’s-serviceortestorobservation-id
+   [:observationoridentifier-associated-with-producers-serviceortestorobservation-id
     {:field "OM1.56", :required false, :repeats false, :type "CWE"}
     [:identifier
      {:field "CWE.1", :required false, :repeats false, :type "ST"}]

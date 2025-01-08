@@ -436,7 +436,7 @@
     {:field "STF.20", :required false, :repeats false, :type "IS"}]
    [:additional-insured-on-auto
     {:field "STF.21", :required false, :repeats false, :type "ID"}]
-   [:driver’s-license-number-staff
+   [:drivers-license-number-staff
     {:field "STF.22", :required false, :repeats false, :type "DLN"}
     [:drivers-license-number
      {:field "DLN.1", :required false, :repeats false, :type "ST"}]

@@ -294,7 +294,7 @@
     {:field "XPN.7", :required false, :repeats false, :type "ID"}]
    [:name-representation-code
     {:field "XPN.8", :required false, :repeats false, :type "ID"}]]
-  [:mother’s-maiden-name
+  [:mothers-maiden-name
    {:field "PID.6", :required false, :repeats true, :type "XPN"}
    [:family+last-name
     {:field "XPN.1", :required false, :repeats false, :type "FN"}
@@ -1899,7 +1899,7 @@
       {:field "XTN.8", :required false, :repeats false, :type "NM"}]
      [:any-text
       {:field "XTN.9", :required false, :repeats false, :type "ST"}]]
-    [:primary-observer’s-qualification
+    [:primary-observers-qualification
      {:field "PEO.22", :required false, :repeats false, :type "ID"}]
     [:confirmation-provided-by
      {:field "PEO.23", :required false, :repeats false, :type "ID"}]
@@ -1909,7 +1909,7 @@
       {:field "TS.1", :required false, :repeats false, :type "ST"}]
      [:degree-of-precision
       {:field "TS.2", :required false, :repeats false, :type "ST"}]]
-    [:primary-observer’s-identity-may-be-divulged
+    [:primary-observers-identity-may-be-divulged
      {:field "PEO.25", :required false, :repeats false, :type "ID"}]]
    [:PEX_CAUSE
     {:required false, :repeats true}
@@ -2258,7 +2258,7 @@
         {:field "CE.5", :required false, :repeats false, :type "ST"}]
        [:name-of-alternate-coding-system
         {:field "CE.6", :required false, :repeats false, :type "ST"}]]
-      [:provider’s-administration-instructions
+      [:providers-administration-instructions
        {:field "RXE.7", :required false, :repeats true, :type "CE"}
        [:identifier
         {:field "CE.1", :required false, :repeats false, :type "ST"}]
@@ -2337,7 +2337,7 @@
         {:field "CE.6", :required false, :repeats false, :type "ST"}]]
       [:number-of-refills
        {:field "RXE.12", :required false, :repeats false, :type "NM"}]
-      [:ordering-provider’s-dea-number
+      [:ordering-providers-dea-number
        {:field "RXE.13", :required false, :repeats true, :type "XCN"}
        [:id-number
         {:field "XCN.1", :required false, :repeats false, :type "ST"}]
@@ -2388,7 +2388,7 @@
          :required false,
          :repeats false,
          :type "ID"}]]
-      [:pharmacistortreatment-supplier’s-verifier-id
+      [:pharmacistortreatment-suppliers-verifier-id
        {:field "RXE.14", :required false, :repeats true, :type "XCN"}
        [:id-number
         {:field "XCN.1", :required false, :repeats false, :type "ST"}]
@@ -2474,7 +2474,7 @@
           :type "ST"}]]]
       [:needs-human-review
        {:field "RXE.20", :required false, :repeats false, :type "ID"}]
-      [:pharmacyortreatment-supplier’s-special-dispensing-instructions
+      [:pharmacyortreatment-suppliers-special-dispensing-instructions
        {:field "RXE.21", :required false, :repeats true, :type "CE"}
        [:identifier
         {:field "CE.1", :required false, :repeats false, :type "ST"}]
@@ -4012,7 +4012,7 @@
          :required false,
          :repeats false,
          :type "ST"}]]
-      [:mother’s-maiden-name
+      [:mothers-maiden-name
        {:field "NK1.26", :required false, :repeats true, :type "XPN"}
        [:family+last-name
         {:field "XPN.1", :required false, :repeats false, :type "FN"}
@@ -4139,7 +4139,7 @@
          :required false,
          :repeats false,
          :type "ST"}]]
-      [:contact-person’s-name
+      [:contact-persons-name
        {:field "NK1.30", :required false, :repeats true, :type "XPN"}
        [:family+last-name
         {:field "XPN.1", :required false, :repeats false, :type "FN"}
@@ -4161,7 +4161,7 @@
         {:field "XPN.7", :required false, :repeats false, :type "ID"}]
        [:name-representation-code
         {:field "XPN.8", :required false, :repeats false, :type "ID"}]]
-      [:contact-person’s-telephone-number
+      [:contact-persons-telephone-number
        {:field "NK1.31", :required false, :repeats true, :type "XTN"}
        [:[
         {:field "XTN.1", :required false, :repeats false, :type "TN"}]
@@ -4181,7 +4181,7 @@
         {:field "XTN.8", :required false, :repeats false, :type "NM"}]
        [:any-text
         {:field "XTN.9", :required false, :repeats false, :type "ST"}]]
-      [:contact-person’s-address
+      [:contact-persons-address
        {:field "NK1.32", :required false, :repeats true, :type "XAD"}
        [:street-address
         {:field "XAD.1", :required false, :repeats false, :type "ST"}]
@@ -4208,7 +4208,7 @@
          :required false,
          :repeats false,
          :type "ID"}]]
-      [:next-of-kinorassociated-party’s-identifiers
+      [:next-of-kinorassociated-partys-identifiers
        {:field "NK1.33", :required false, :repeats true, :type "CX"}
        [:id
         {:field "CX.1", :required false, :repeats false, :type "ST"}]
@@ -4503,7 +4503,7 @@
          {:field "CE.5", :required false, :repeats false, :type "ST"}]
         [:name-of-alternate-coding-system
          {:field "CE.6", :required false, :repeats false, :type "ST"}]]
-       [:provider’s-administration-instructions
+       [:providers-administration-instructions
         {:field "RXE.7", :required false, :repeats true, :type "CE"}
         [:identifier
          {:field "CE.1", :required false, :repeats false, :type "ST"}]
@@ -4585,7 +4585,7 @@
          {:field "CE.6", :required false, :repeats false, :type "ST"}]]
        [:number-of-refills
         {:field "RXE.12", :required false, :repeats false, :type "NM"}]
-       [:ordering-provider’s-dea-number
+       [:ordering-providers-dea-number
         {:field "RXE.13", :required false, :repeats true, :type "XCN"}
         [:id-number
          {:field "XCN.1", :required false, :repeats false, :type "ST"}]
@@ -4657,7 +4657,7 @@
           :required false,
           :repeats false,
           :type "ID"}]]
-       [:pharmacistortreatment-supplier’s-verifier-id
+       [:pharmacistortreatment-suppliers-verifier-id
         {:field "RXE.14", :required false, :repeats true, :type "XCN"}
         [:id-number
          {:field "XCN.1", :required false, :repeats false, :type "ST"}]
@@ -4764,7 +4764,7 @@
            :type "ST"}]]]
        [:needs-human-review
         {:field "RXE.20", :required false, :repeats false, :type "ID"}]
-       [:pharmacyortreatment-supplier’s-special-dispensing-instructions
+       [:pharmacyortreatment-suppliers-special-dispensing-instructions
         {:field "RXE.21", :required false, :repeats true, :type "CE"}
         [:identifier
          {:field "CE.1", :required false, :repeats false, :type "ST"}]

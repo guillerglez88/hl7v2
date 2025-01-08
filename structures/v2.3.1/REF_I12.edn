@@ -731,7 +731,7 @@
     {:field "XPN.7", :required false, :repeats false, :type "ID"}]
    [:name-representation-code
     {:field "XPN.8", :required false, :repeats false, :type "ID"}]]
-  [:mother’s-maiden-name
+  [:mothers-maiden-name
    {:field "PID.6", :required false, :repeats true, :type "XPN"}
    [:family+last-name
     {:field "XPN.1", :required false, :repeats false, :type "FN"}
@@ -1304,7 +1304,7 @@
     {:field "CE_0006.5", :required false, :repeats false, :type "ST"}]
    [:name-of-alternate-coding-system
     {:field "CE_0006.6", :required false, :repeats false, :type "ST"}]]
-  [:mother’s-maiden-name
+  [:mothers-maiden-name
    {:field "NK1.26", :required false, :repeats true, :type "XPN"}
    [:family+last-name
     {:field "XPN.1", :required false, :repeats false, :type "FN"}
@@ -1368,7 +1368,7 @@
     {:field "CE_0222.5", :required false, :repeats false, :type "ST"}]
    [:name-of-alternate-coding-system
     {:field "CE_0222.6", :required false, :repeats false, :type "ST"}]]
-  [:contact-person’s-name
+  [:contact-persons-name
    {:field "NK1.30", :required false, :repeats true, :type "XPN"}
    [:family+last-name
     {:field "XPN.1", :required false, :repeats false, :type "FN"}
@@ -1390,7 +1390,7 @@
     {:field "XPN.7", :required false, :repeats false, :type "ID"}]
    [:name-representation-code
     {:field "XPN.8", :required false, :repeats false, :type "ID"}]]
-  [:contact-person’s-telephone-number
+  [:contact-persons-telephone-number
    {:field "NK1.31", :required false, :repeats true, :type "XTN"}
    [:[ {:field "XTN.1", :required false, :repeats false, :type "TN"}]
    [:telecommunication-use-code
@@ -1409,7 +1409,7 @@
     {:field "XTN.8", :required false, :repeats false, :type "NM"}]
    [:any-text
     {:field "XTN.9", :required false, :repeats false, :type "ST"}]]
-  [:contact-person’s-address
+  [:contact-persons-address
    {:field "NK1.32", :required false, :repeats true, :type "XAD"}
    [:street-address
     {:field "XAD.1", :required false, :repeats false, :type "ST"}]
@@ -1433,7 +1433,7 @@
     {:field "XAD.10", :required false, :repeats false, :type "IS"}]
    [:address-representation-code
     {:field "XAD.11", :required false, :repeats false, :type "ID"}]]
-  [:next-of-kinorassociated-party’s-identifiers
+  [:next-of-kinorassociated-partys-identifiers
    {:field "NK1.33", :required false, :repeats true, :type "CX"}
    [:id {:field "CX.1", :required false, :repeats false, :type "ST"}]
    [:check-digit
@@ -1948,7 +1948,7 @@
     {:field "CE_0006.5", :required false, :repeats false, :type "ST"}]
    [:name-of-alternate-coding-system
     {:field "CE_0006.6", :required false, :repeats false, :type "ST"}]]
-  [:mother’s-maiden-name
+  [:mothers-maiden-name
    {:field "GT1.42", :required false, :repeats true, :type "XPN"}
    [:family+last-name
     {:field "XPN.1", :required false, :repeats false, :type "FN"}
@@ -1998,7 +1998,7 @@
     {:field "CE_0189.5", :required false, :repeats false, :type "ST"}]
    [:name-of-alternate-coding-system
     {:field "CE_0189.6", :required false, :repeats false, :type "ST"}]]
-  [:contact-person’s-name
+  [:contact-persons-name
    {:field "GT1.45", :required false, :repeats true, :type "XPN"}
    [:family+last-name
     {:field "XPN.1", :required false, :repeats false, :type "FN"}
@@ -2020,7 +2020,7 @@
     {:field "XPN.7", :required false, :repeats false, :type "ID"}]
    [:name-representation-code
     {:field "XPN.8", :required false, :repeats false, :type "ID"}]]
-  [:contact-person’s-telephone-number
+  [:contact-persons-telephone-number
    {:field "GT1.46", :required false, :repeats true, :type "XTN"}
    [:[ {:field "XTN.1", :required false, :repeats false, :type "TN"}]
    [:telecommunication-use-code
@@ -2063,7 +2063,7 @@
     {:field "JCC.1", :required false, :repeats false, :type "IS"}]
    [:job-class
     {:field "JCC.2", :required false, :repeats false, :type "IS"}]]
-  [:guarantor-employer’s-organization-name
+  [:guarantor-employers-organization-name
    {:field "GT1.51", :required false, :repeats true, :type "XON"}
    [:organization-name
     {:field "XON.1", :required false, :repeats false, :type "ST"}]
@@ -2305,7 +2305,7 @@
       {:field "HD.3", :required false, :repeats false, :type "ID"}]]
     [:name-representation-code
      {:field "XON.9", :required false, :repeats false, :type "ID"}]]
-   [:insured’s-group-emp-id
+   [:insureds-group-emp-id
     {:field "IN1.10", :required false, :repeats true, :type "CX"}
     [:id {:field "CX.1", :required false, :repeats false, :type "ST"}]
     [:check-digit
@@ -2330,7 +2330,7 @@
       {:field "HD.2", :required false, :repeats false, :type "ST"}]
      [:universal-id-type
       {:field "HD.3", :required false, :repeats false, :type "ID"}]]]
-   [:insured’s-group-emp-name
+   [:insureds-group-emp-name
     {:field "IN1.11", :required false, :repeats true, :type "XON"}
     [:organization-name
      {:field "XON.1", :required false, :repeats false, :type "ST"}]
@@ -2402,7 +2402,7 @@
      {:field "XPN.7", :required false, :repeats false, :type "ID"}]
     [:name-representation-code
      {:field "XPN.8", :required false, :repeats false, :type "ID"}]]
-   [:insured’s-relationship-to-patient
+   [:insureds-relationship-to-patient
     {:field "IN1.17", :required false, :repeats false, :type "CE_0063"}
     [:identifier
      {:field "CE_0063.1", :required false, :repeats false, :type "ST"}]
@@ -2419,13 +2419,13 @@
       :required false,
       :repeats false,
       :type "ST"}]]
-   [:insured’s-date-of-birth
+   [:insureds-date-of-birth
     {:field "IN1.18", :required false, :repeats false, :type "TS"}
     [:time-of-an-event
      {:field "TS.1", :required false, :repeats false, :type "ST"}]
     [:degree-of-precision
      {:field "TS.2", :required false, :repeats false, :type "ST"}]]
-   [:insured’s-address
+   [:insureds-address
     {:field "IN1.19", :required false, :repeats true, :type "XAD"}
     [:street-address
      {:field "XAD.1", :required false, :repeats false, :type "ST"}]
@@ -2655,7 +2655,7 @@
       {:field "CE.6", :required false, :repeats false, :type "ST"}]]
     [:range-type
      {:field "CP.6", :required false, :repeats false, :type "ID"}]]
-   [:insured’s-employment-status
+   [:insureds-employment-status
     {:field "IN1.42", :required false, :repeats false, :type "CE_0066"}
     [:identifier
      {:field "CE_0066.1", :required false, :repeats false, :type "ST"}]
@@ -2672,9 +2672,9 @@
       :required false,
       :repeats false,
       :type "ST"}]]
-   [:insured’s-sex
+   [:insureds-sex
     {:field "IN1.43", :required false, :repeats false, :type "IS"}]
-   [:insured’s-employer’s-address
+   [:insureds-employers-address
     {:field "IN1.44", :required false, :repeats true, :type "XAD"}
     [:street-address
      {:field "XAD.1", :required false, :repeats false, :type "ST"}]
@@ -2706,7 +2706,7 @@
     {:field "IN1.47", :required false, :repeats false, :type "IS"}]
    [:handicap
     {:field "IN1.48", :required false, :repeats false, :type "IS"}]
-   [:insured’s-id-number
+   [:insureds-id-number
     {:field "IN1.49", :required false, :repeats true, :type "CX"}
     [:id {:field "CX.1", :required false, :repeats false, :type "ST"}]
     [:check-digit
@@ -2733,7 +2733,7 @@
       {:field "HD.3", :required false, :repeats false, :type "ID"}]]]]
   [:IN2
    {:required false, :repeats false}
-   [:insured’s-employee-id
+   [:insureds-employee-id
     {:field "IN2.1", :required false, :repeats true, :type "CX"}
     [:id {:field "CX.1", :required false, :repeats false, :type "ST"}]
     [:check-digit
@@ -2758,9 +2758,9 @@
       {:field "HD.2", :required false, :repeats false, :type "ST"}]
      [:universal-id-type
       {:field "HD.3", :required false, :repeats false, :type "ID"}]]]
-   [:insured’s-social-security-number
+   [:insureds-social-security-number
     {:field "IN2.2", :required false, :repeats false, :type "ST"}]
-   [:insured’s-employer’s-name-and-id
+   [:insureds-employers-name-and-id
     {:field "IN2.3", :required false, :repeats true, :type "XCN"}
     [:id-number
      {:field "XCN.1", :required false, :repeats false, :type "ST"}]
@@ -3079,7 +3079,7 @@
       :required false,
       :repeats false,
       :type "ST"}]]
-   [:mother’s-maiden-name
+   [:mothers-maiden-name
     {:field "IN2.40", :required false, :repeats true, :type "XPN"}
     [:family+last-name
      {:field "XPN.1", :required false, :repeats false, :type "FN"}
@@ -3152,7 +3152,7 @@
       :required false,
       :repeats false,
       :type "ST"}]]
-   [:insured’s-employment-start-date
+   [:insureds-employment-start-date
     {:field "IN2.44", :required false, :repeats false, :type "DT"}]
    [:employment-stop-date
     {:field "IN2.45", :required false, :repeats false, :type "DT"}]
@@ -3209,7 +3209,7 @@
      {:field "XTN.9", :required false, :repeats false, :type "ST"}]]
    [:employer-contact-reason
     {:field "IN2.51", :required false, :repeats false, :type "IS"}]
-   [:insured’s-contact-person’s-name
+   [:insureds-contact-persons-name
     {:field "IN2.52", :required false, :repeats true, :type "XPN"}
     [:family+last-name
      {:field "XPN.1", :required false, :repeats false, :type "FN"}
@@ -3231,7 +3231,7 @@
      {:field "XPN.7", :required false, :repeats false, :type "ID"}]
     [:name-representation-code
      {:field "XPN.8", :required false, :repeats false, :type "ID"}]]
-   [:insured’s-contact-person-phone-number
+   [:insureds-contact-person-phone-number
     {:field "IN2.53", :required false, :repeats true, :type "XTN"}
     [:[ {:field "XTN.1", :required false, :repeats false, :type "TN"}]
     [:telecommunication-use-code
@@ -3250,7 +3250,7 @@
      {:field "XTN.8", :required false, :repeats false, :type "NM"}]
     [:any-text
      {:field "XTN.9", :required false, :repeats false, :type "ST"}]]
-   [:insured’s-contact-person-reason
+   [:insureds-contact-person-reason
     {:field "IN2.54", :required false, :repeats true, :type "IS"}]
    [:relationship-to-the-patient-start-date
     {:field "IN2.55", :required false, :repeats false, :type "DT"}]
@@ -3306,7 +3306,7 @@
       {:field "HD.2", :required false, :repeats false, :type "ST"}]
      [:universal-id-type
       {:field "HD.3", :required false, :repeats false, :type "ID"}]]]
-   [:guarantor’s-relationship-to-insured
+   [:guarantors-relationship-to-insured
     {:field "IN2.62", :required false, :repeats false, :type "CE_0063"}
     [:identifier
      {:field "CE_0063.1", :required false, :repeats false, :type "ST"}]
@@ -3323,7 +3323,7 @@
       :required false,
       :repeats false,
       :type "ST"}]]
-   [:insured’s-phone-number-home
+   [:insureds-phone-number-home
     {:field "IN2.63", :required false, :repeats true, :type "XTN"}
     [:[ {:field "XTN.1", :required false, :repeats false, :type "TN"}]
     [:telecommunication-use-code
@@ -3342,7 +3342,7 @@
      {:field "XTN.8", :required false, :repeats false, :type "NM"}]
     [:any-text
      {:field "XTN.9", :required false, :repeats false, :type "ST"}]]
-   [:insured’s-employer-phone-number
+   [:insureds-employer-phone-number
     {:field "IN2.64", :required false, :repeats true, :type "XTN"}
     [:[ {:field "XTN.1", :required false, :repeats false, :type "TN"}]
     [:telecommunication-use-code
@@ -3465,7 +3465,7 @@
       :required false,
       :repeats false,
       :type "ST"}]]
-   [:hcfa-patient’s-relationship-to-insured
+   [:hcfa-patients-relationship-to-insured
     {:field "IN2.72", :required false, :repeats false, :type "CE_0344"}
     [:identifier
      {:field "CE_0344.1", :required false, :repeats false, :type "ST"}]
@@ -5437,7 +5437,7 @@
      {:field "CE.5", :required false, :repeats false, :type "ST"}]
     [:name-of-alternate-coding-system
      {:field "CE.6", :required false, :repeats false, :type "ST"}]]
-   [:collector’s-comment-*
+   [:collectors-comment-*
     {:field "OBR.39", :required false, :repeats true, :type "CE"}
     [:identifier
      {:field "CE.1", :required false, :repeats false, :type "ST"}]

@@ -222,7 +222,7 @@
     {:field "XPN.7", :required false, :repeats false, :type "ID"}]
    [:name-representation-code
     {:field "XPN.8", :required false, :repeats false, :type "ID"}]]
-  [:mother’s-maiden-name
+  [:mothers-maiden-name
    {:field "PID.6", :required false, :repeats true, :type "XPN"}
    [:family+last-name
     {:field "XPN.1", :required false, :repeats false, :type "FN"}
@@ -5365,7 +5365,7 @@
              :required false,
              :repeats false,
              :type "ST"}]]
-          [:collector’s-comment-*
+          [:collectors-comment-*
            {:field "OBR.39",
             :required false,
             :repeats true,
@@ -5667,7 +5667,7 @@
              :required false,
              :repeats false,
              :type "ST"}]]
-          [:provider’s-pharmacyortreatment-instructions
+          [:providers-pharmacyortreatment-instructions
            {:field "RXO.6", :required false, :repeats true, :type "CE"}
            [:identifier
             {:field "CE.1",
@@ -5699,7 +5699,7 @@
              :required false,
              :repeats false,
              :type "ST"}]]
-          [:provider’s-administration-instructions
+          [:providers-administration-instructions
            {:field "RXO.7", :required false, :repeats true, :type "CE"}
            [:identifier
             {:field "CE.1",
@@ -5921,7 +5921,7 @@
             :required false,
             :repeats false,
             :type "NM"}]
-          [:ordering-provider’s-dea-number
+          [:ordering-providers-dea-number
            {:field "RXO.14",
             :required false,
             :repeats true,
@@ -6041,7 +6041,7 @@
              :required false,
              :repeats false,
              :type "ID"}]]
-          [:pharmacistortreatment-supplier’s-verifier-id
+          [:pharmacistortreatment-suppliers-verifier-id
            {:field "RXO.15",
             :required false,
             :repeats true,
