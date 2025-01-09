@@ -8,8 +8,10 @@ Hl7v2 Clojure library.
 - Use clojure data structures and built in tools like the powerful zipper api.
 - Control over the spec, field names, data types, additional fields, etc.
 
+**deps.edn**
+
 ```
-com.github.guillerglez88/hl7v2 {:git/tag "0.0.1-SNAPSHOT", :git/sha "17efce5"}
+com.github.guillerglez88/hl7v2 {:git/tag "0.1.0-SNAPSHOT", :git/sha "a6f53a9"}
 ```
 
 ## Structures
