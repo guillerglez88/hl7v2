@@ -630,6 +630,7 @@ Encode hl7 data into er7 format.
 ```clj
 (require '[clojure.edn :as edn])
 (require '[clojure.java.io :as io])
+(require '[hl7v2.core :refer [parse-hl7 format-hl7]])
 
 (let [struc (edn/read-string (slurp "structures/v2.5.1/ORU_R01.edn"))]
   (-> (io/file "test/hl7v2/data/oru-r01.hl7")
@@ -669,6 +670,89 @@ Advanced features can be used from the namespaces:
 - [hl7v2.zipper](./src/hl7v2/zipper.clj)
 
 ...doc [wip]
+
+### hl7-zip
+
+Convert an hl7 into a clojure zipper, so you can use it for creating, searching and changing(CRUD) nodes of the hl7 message.
+
+#### Search
+
+```clj
+(require '[clojure.edn :as edn])
+(require '[clojure.java.io :as io])
+(require '[clojure.zip :as zip])
+(require '[hl7v2.core :refer [parse-hl7 format-hl7]])
+(require '[hl7v2.zipper :as hz])
+
+(let [struc (edn/read-string (slurp "structures/v2.5.1/ORU_R01.edn"))]
+  (->> (parse-hl7 (io/file "test/hl7v2/data/oru-r01.hl7") struc)
+       (hz/hl7-zip)
+       (iterate zip/next)
+       (take-while (complement zip/end?))
+       (map zip/node)
+       (filter (fn [node]
+                 (and (= :OBX (hz/hl7-seg-id node))
+                      (= "CO2RR" (get-in node [:OBX :observation-identifier :identifier])))))))
+;;=> ({:OBX
+;;     {:observation-value ["14"],
+;;      :set-id-obx "6",
+;;      :observation-result-status "R",
+;;      :observation-identifier {:identifier "CO2RR"},
+;;      :observation-subid "",
+;;      :probability "",
+;;      :references-range "",
+;;      :abnormal-flags [""],
+;;      :units {:identifier "breaths/min"},
+;;      :nature-of-abnormal-test [""],
+;;      :value-type "ST"}})
+```
+
+#### Edit
+
+```clj
+(require '[clojure.edn :as edn])
+(require '[clojure.java.io :as io])
+(require '[clojure.zip :as zip])
+(require '[hl7v2.core :refer [parse-hl7 format-hl7]])
+(require '[hl7v2.zipper :as hz])
+
+(letfn [(edit-obx [loc]
+          (zip/edit loc assoc-in [:OBX :abnormal-flags] ["H"]))]
+  (let [struc (edn/read-string (slurp "structures/v2.5.1/ORU_R01.edn"))]
+    (->> (parse-hl7 (io/file "test/hl7v2/data/oru-r01.hl7") struc)
+         (hz/hl7-zip)
+         (iterate zip/next)
+         (take-while (complement zip/end?))
+         (filter (fn [loc]
+                   (let [node (zip/node loc)]
+                     (and (= :OBX (hz/hl7-seg-id node))
+                          (= "CO2RR" (get-in node [:OBX :observation-identifier :identifier]))))))
+         (first)
+         (edit-obx)
+         (zip/root))))
+    ;; ...
+    ;;   :units {:identifier "mm(hg)"},
+    ;;   :nature-of-abnormal-test [""],
+    ;;   :value-type "ST"}}
+    ;; {:OBX
+    ;;  {:observation-value ["14"],
+    ;;   :set-id-obx "6",
+    ;;   :observation-result-status "R",
+    ;;   :observation-identifier {:identifier "CO2RR"},
+    ;;   :observation-subid "",
+    ;;   :probability "",
+    ;;   :references-range "",
+    ;;   :abnormal-flags ["H"],
+    ;;   :units {:identifier "breaths/min"},
+    ;;   :nature-of-abnormal-test [""],
+    ;;   :value-type "ST"}}
+    ;; {:OBX
+    ;;  {:observation-value ["71"],
+    ;;   :set-id-obx "7",
+    ;;   :observation-result-status "R",
+    ;;   :observation-identifier {:identifier "SPO2R"},
+    ;; ...
+```
 
 ---
 
