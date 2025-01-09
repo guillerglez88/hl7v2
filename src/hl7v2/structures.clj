@@ -109,32 +109,6 @@
         (recur (zip/replace loc sub) processors)
         (recur (zip/next loc) processors)))))
 
-(defn struc-tag [spec]
-  (when (vector? spec)
-    (first spec)))
-
-(defn struc-attrs [spec]
-  (when (vector? spec)
-    (when-let [snd (second spec)]
-      (when (map? snd)
-        snd))))
-
-(defn struc-children [spec]
-  (when (vector? spec)
-    (if (struc-attrs spec)
-      (drop 2 spec)
-      (drop 1 spec))))
-
-(defn struc-zip [spec]
-  (zip/zipper (comp seq struc-children)
-              struc-children
-              (fn [node children]
-                (->> [[(struc-tag node) (struc-attrs node)] children]
-                     (apply concat)
-                     (remove nil?)
-                     (into [])))
-              spec))
-
 (comment
 
   (-> ["annotation"
@@ -264,13 +238,5 @@
                  :standard-dir "/Users/guille/Downloads/HL7-xml-v2.5.1"
                  :versiown "2.5.1"
                  :lang "en")
-
-  (->> (struc-zip
-        (read-string
-         (slurp "structures/v2.5.1/ORU_R01.edn")))
-       (iterate zip/next)
-       (take-while (complement zip/end?))
-       (filter #(-> % zip/node struc-tag (= :PID)))
-       (some zip/node))
 
   :.)

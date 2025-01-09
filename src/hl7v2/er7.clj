@@ -115,13 +115,11 @@
                                    :let [sub-idx (inc idx)]]
                                [sub-idx (val-fn (first subcomponent))])))]))])))]))}))))))
 
-(defn format-er7 [msg & {:keys [line-break] :or {line-break "\n"}}]
-  (let [enc (parse-encoding (str "MSH"
-                                 (get-in msg [0 :MSH 1])
-                                 (get-in msg [0 :MSH 2])))]
+(defn format-er7 [er7 & {:keys [line-break] :or {line-break "\n"}}]
+  (let [enc (parse-encoding (str "MSH" (get-in er7 [0 :MSH 1]) (get-in er7 [0 :MSH 2])))]
     (str/join
      line-break
-     (for [seg msg
+     (for [seg er7
            [seg-id data] seg]
        (str (name seg-id)
             (get-in enc [:index :ks :fld])
