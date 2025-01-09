@@ -4,9 +4,9 @@ Hl7v2 Clojure library.
 
 ## Motivation
 
-- Avoid interop necessary with existing java libraries.
-- Use clojure data structures and built in tools like the powerful zipper api.
-- Control over the spec, field names, data types, additional fields, etc.
+- Minimize the need for interoperability with existing Java libraries.
+- Leverage Clojure's native data structures and built-in tools, such as the powerful Zipper API.
+- Gain full control over specifications, including field names, data types, and additional fields.
 
 **deps.edn**
 
@@ -16,7 +16,7 @@ com.github.guillerglez88/hl7v2 {:git/tag "0.1.0-SNAPSHOT", :git/sha "a6f53a9"}
 
 ## Structures
 
-A comprehensive library of trigger-events structures can be found in [structures](./structures) folder. The structure is hiccup data structure describing the trigger-event, you can modify the structure is you want. Currently, only v2.3.1, v2.5.1, and v2.9 structures have been generated. Ask for more versions if needed. The structure management is out of the scope of this lib, the developer is supposed to copy the structure from this repo and version it as part of the client code.
+A comprehensive library of trigger-events structures can be found in [structures](./structures) folder. Each structure is represented as a Hiccup data structure describing the trigger-event, which you can modify as needed. Currently, structures for versions v2.3.1, v2.5.1, and v2.9 have been generated. If additional versions are required, please make a request. Structure management is beyond the scope of this lib. Developers are expected to copy the desired structure from this repository and include it as part of their codebase.
 
 example of structure: [structures/v2.5.1/ORU_R01.edn](./structures/v2.5.1/ORU_R01.edn)
 
@@ -27,9 +27,9 @@ Parse er7 formatted hl7 message, any `io/reader` input is allowed.
 - [structures/v2.5.1/ORU_R01.edn](./structures/v2.5.1/ORU_R01.edn)
 
 ```clojure
-(require '[hl7v2.core :refer [parse-hl7 format-hl7]])
 (require '[clojure.edn :as edn])
 (require '[clojure.java.io :as io])
+(require '[hl7v2.core :refer [parse-hl7 format-hl7]])
 
 (parse-hl7 (io/file "test/hl7v2/data/oru-r01.hl7")
            (edn/read-string (slurp "structures/v2.5.1/ORU_R01.edn")))
