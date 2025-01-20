@@ -11,7 +11,7 @@ Hl7v2 Clojure library.
 **deps.edn**
 
 ```
-com.github.guillerglez88/hl7v2 {:git/tag "0.1.0-SNAPSHOT", :git/sha "a6f53a9"}
+com.github.guijealth/hl7v2 {:git/tag "0.1.0-SNAPSHOT", :git/sha "a6f53a9"}
 ```
 
 ## Structures
